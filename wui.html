@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>wui</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+	<script type="text/javascript" src="./jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="./wui.css">
+	<script type="text/javascript" src="./wui.js"></script>
+
+	<script type="text/javascript" src="./wui.countdown.js"></script>
+
+</head>
+<body style="padding-top: 2.5em; padding-bottom: 3em">
+
+	<div class="loading"><i class="loading-icon"></i></div>
+	
+	<script type="text/javascript">
+	//loading...test
+	for(i=0; i<10; i++){
+		
+		var img = new Image();
+		// img.src = 'http://www.bbdd.com/s='+i+'>';
+	}
+	</script>
+
+	<!-- layout-sidebar{ -->
+	<div class="layout-sidebar">
+
+		<!-- header{ -->
+		<div class="header">
+			<div class="container">
+
+				<div class="header-left">
+					<span class="header-button sidebar-toggle"> <i class="icon i-right"></i>
+					</span>
+				</div>
+
+				<div class="header-right">
+					<span class="header-button nav-toggle">
+						<i class="icon i-menu"></i>
+					</span>
+				</div>
+
+				<h1 class="header-title">
+					<a href="">APPNAME</a>
+				</h1>
+
+				<div class="nav">
+					<ul class="nav-menu">
+						<li class="nav-menu-item active">
+							<a href="">当前导航</a>
+						</li>
+						<li class="nav-menu-item">
+							<a href="">导航</a>
+						</li>
+					</ul>
+					<ul class="nav-menu-right">
+						<li class="nav-menu-item">
+							<a href="">右导航</a>
+						</li>
+						<li class="nav-menu-item">
+							<a href="">右导航</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<!-- }header -->
+
+		<!-- sidebar{ -->
+		<div class="sidebar">
+
+			<ul class="sidebar-menu">
+				<li class="sidebar-menu-item active">
+					<a href="">
+						<i class="icon i-home"></i>
+						菜单
+					</a>
+				</li>
+				<li class="sidebar-menu-item">
+					<a href="">菜单</a>
+				</li>
+
+				<li class="sidebar-menu-item">
+					<a class="menu-toggle" href="">二级菜单</a>
+					<ul class="second-menu">
+						<li class="sidebar-menu-item">
+							<a class="selected" href="">子菜单一</a>
+						</li>
+						<li class="sidebar-menu-item">
+							<a href="">子菜单二</a>
+						</li>
+					</ul>
+				</li>
+
+				<li class="sidebar-menu-item">
+					<a class="menu-toggle" href="">二级菜单</a>
+					<ul class="second-menu open">
+						<li class="sidebar-menu-item">
+							<a class="selected" href="">子菜单一</a>
+						</li>
+						<li class="sidebar-menu-item">
+							<a href="">子菜单二</a>
+						</li>
+					</ul>
+				</li>
+
+			</ul>
+
+			<!-- 树 -->
+			<div class="tree">
+
+				<i class="node"><a href="#1">文件</a></i> 
+
+				<a class="node" href="#2">文件</a>
+
+				<div class="folder">
+					<i class="folder-title">文件夹</i>
+
+					<div class="folder-content open">
+
+						<i class="node">文件</i>
+
+						<div class="folder">
+							<i class="folder-title">文件夹</i>
+
+							<div class="folder-content">
+
+								<i class="node"><a href="">文件</a></i> 
+
+								<div class="folder">
+									<i class="folder-title">文件夹</i>
+
+									<div class="folder-content">
+
+										<i class="node">文件</i>
+
+										<div class="folder">
+											<i class="folder-title">文件夹</i>
+
+											<div class="folder-content">
+
+												<i class="node">文件</i>
+												<i class="node">文件</i>
+												<i class="node">文件</i>
+
+											</div>
+
+										</div>
+
+										<i class="node">文件</i>
+
+									</div>
+
+								</div>
+
+								<i class="node">文件</i>
+
+							</div>
+
+						</div>
+
+						<i class="node">文件</i>
+						<i class="node">文件</i>
+
+					</div>
+
+				</div>
+
+				<i class="node">文件</i>
+				<i class="node">文件</i>
+
+			</div>
+
+		</div>
+		<!-- }sidebar -->
+
+		<!-- container{ -->
+		<div class="container">
+
+			<div class="content">
+
+				<!-- 标签导航 -->
+				<div class="tab-nav">
+					<ul class="tab-nav-menu">
+						<li>
+							<a href="">标签导航</a>
+						</li>
+						<li>
+							<a href="">标签导航</a>
+						</li>
+						<li>
+							<a href="">标签导航</a>
+						</li>
+					</ul>
+				</div>
+
+				<!-- 路径 -->
+				<div class="path">
+					<span>位置：</span>
+					<a href="">首页</a>
+					<a href="">父页</a>
+					<span>当前页</span>
+				</div>
+
+				<!-- panel{ -->
+				<div class="panel">
+					倒计时：
+					<span class="wuijs-countdown c-danger">1406885567022</span>
+
+				</div>
+				<!-- }panel -->
+
+				<!-- panel{ -->
+				<div class="panel">
+					<div class="panel-header">对话框</div>
+					<div class="panel-body">
+
+						<a class="button" data-dialog="{content:'content', title:'ok'}">点击弹出对话框</a>
+						<a class="button" data-dialog="{content:'content2', close:1}">1</a>
+						<a class="button" data-dialog="{content:'content2', close:0}">2</a>
+
+						<!-- 对话框 -->
+						<div class="dialog" style="position:static">
+							<div class="dialog-close"></div>
+							<div class="dialog-header">消息</div>
+							<div class="dialog-body">中华人民共和国中华人民共和国中华人民共和国中华人民共和国</div>
+						</div>
+
+						<div class="dialog" style="position:static">
+							<div class="dialog-close"></div>
+							<div class="dialog-body">中华人民共和国中华人民共和国中华人民共和国中华人民共和国</div>
+						</div>
+
+					</div>
+				</div>
+				<!-- }panel -->
+
+				<!-- panel{ -->
+				<div class="panel">
+					<div class="panel-header">进度条</div>
+					<!-- 进度条 -->
+					<div class="progress">
+						<div class="progress-completed" style="width:60%">60%</div>
+					</div>
+				</div>
+				<!-- }panel -->
+
+				<!-- tabs{ -->
+				<div class="tabs">
+					<ul class="tabs-indexs">
+						<li>标签页一</li>
+						<li>标签页二</li>
+					</ul>
+					<div class="tabs-body">
+
+						<div class="tab">
+
+							<!-- 加减 -->
+							<div class="x">
+								<a href="">-</a>
+								<input value="1" />
+								<a href="">+</a>
+							</div>
+
+						</div>
+
+						<div class="tab">
+							标签页二
+							<br />
+							内容
+						</div>
+
+					</div>
+				</div>
+				<!-- }tabs -->
+				<!-- tabs{ -->
+				<div class="tabs">
+					<ul class="tabs-indexs justified">
+						<li>标签页一</li>
+						<li>标签页二</li>
+						<li>标签页三</li>
+					</ul>
+					<div class="tabs-body">
+
+						<div class="tab">标签页一 内容</div>
+
+					</div>
+				</div>
+				<!-- }tabs -->
+
+				<!-- tabs{ -->
+				<div class="tabs">
+					<ul class="tabs-indexs justified">
+						<li>
+							<a href="">标签页</a>
+						</li>
+						<li>
+							<a href="">标签页</a>
+						</li>
+						<li>
+							<a href="">标签页</a>
+						</li>
+					</ul>
+				</div>
+				<!-- }tabs -->
+
+				<!-- 列表 -->
+				<ul class="list">
+					<li class="list-item">列表项一</li>
+					<li class="list-item">
+						<a class="list-item-a" href="">列表项二</a>
+					</li>
+					<li class="list-item">
+						<a class="list-item-a" href="">
+							列表项
+							<br />
+							三
+						</a>
+					</li>
+				</ul>
+
+				<ul class="list inset-false">
+					<li class="list-item">列表项一</li>
+					<li class="list-item">
+						<a class="list-item-a" href="">列表项二</a>
+					</li>
+					<li class="list-item">
+						<a class="list-item-a" href="">
+							列表项
+							<br />
+							三
+						</a>
+					</li>
+				</ul>
+
+				<!-- 面板 -->
+				<div class="panel">
+					<div class="panel-header">面板头部</div>
+					<div class="panel-body">面板内容</div>
+					<div class="panel-footer">面板底部</div>
+				</div>
+
+				<!-- 图标 -->
+				<div class="panel">
+					<i class="icon i-left   "></i>
+					<i class="icon i-right  "></i>
+					<i class="icon i-up     "></i>
+					<i class="icon i-down   "></i>
+					<i class="icon i-min    "></i>
+					<i class="icon i-plus   "></i>
+					<i class="icon i-ok     "></i>
+					<i class="icon i-x      "></i>
+					<i class="icon i-back   "></i>
+					<i class="icon i-forward"></i>
+					<i class="icon i-menu   "></i>
+					<i class="icon i-grid   "></i>
+					<i class="icon i-home   "></i>
+					<i class="icon i-search "></i>
+					<i class="icon i-person "></i>
+					<i class="icon i-pen    "></i>
+					<i class="icon i-setting"></i>
+				</div>
+
+				<!-- 栅格 -->
+				<div class="grid g-2 inset-false">
+					<div class="col">
+						<div class="content">
+							<div class="panel">这是面板</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="content">
+							<div class="panel">这是面板</div>
+						</div>
+					</div>
+				</div>
+				<div class="grid g-2">
+					<div class="col">
+						<div class="content">
+							<div class="panel">这是面板</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="content">
+							<div class="panel">这是面板</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 表单 -->
+				<div class="grid g-3">
+
+					<div class="col">
+						<!-- 单选 -->
+						<div class="list">
+							<label class="list-item">
+								<input type="radio" name="o" />
+								单选
+							</label>
+							<label class="list-item">
+								<input type="radio" name="o" />
+								单选
+							</label>
+							<label class="list-item">
+								<input type="radio" name="o" />
+								单选
+							</label>
+							<label class="list-item">
+								<input type="radio" name="o" />
+								单选
+							</label>
+						</div>
+					</div>
+
+					<div class="col">
+						<!-- 文本框 -->
+						<div class="list">
+							<label class="list-item-input">
+								<input class="input" type="text" placeholder="用户名" />
+							</label>
+							<label class="list-item-input">
+								<input class="input" type="password" placeholder="密码" />
+							</label>
+							<label class="list-item-input">
+								<select class="input">
+									<option>下拉</option>
+								</select>
+							</label>
+						</div>
+
+					</div>
+
+					<div class="col">
+
+						<!-- 多选 -->
+						<div class="list">
+							<label class="list-item">
+								<input type="checkbox" />
+								多选
+							</label>
+							<label class="list-item">
+								<input type="checkbox" />
+								多选
+							</label>
+							<label class="list-item">
+								<input type="checkbox" />
+								多选
+							</label>
+						</div>
+
+					</div>
+
+				</div>
+
+				<!-- 表格 -->
+				<div class="data-r">
+					<table class="data">
+						<tr>
+							<th>一</th>
+							<th>二</th>
+							<th>三</th>
+						</tr>
+						<tr>
+							<td>1111111111111111111111111111111111111111111111111111111</td>
+							<td>22222222222</td>
+							<td>33333333333</td>
+						</tr>
+						<tr>
+							<td>11111111111</td>
+							<td>
+								<input />
+							</td>
+							<td>33333333333</td>
+						</tr>
+						<tr>
+							<td>11111111111</td>
+							<td>22222222222</td>
+							<td>33333333333</td>
+						</tr>
+					</table>
+				</div>
+
+				<!-- 分页 -->
+				<div class="pagination">
+					<span class="disable">&larr;</span>
+					<a href="">1</a>
+					<span>...</span>
+					<a href="">4</a>
+					<a href="">5</a>
+					<a class="active" href="">6</a>
+					<a href="">7</a>
+					<a href="">8</a>
+					<span>...</span>
+					<a href="">99</a>
+					<a href="">&rarr;</a>
+				</div>
+				<div class="page-jump">
+					<input />
+					<a href="">跳</a>
+				</div>
+
+				<!-- 翻页 -->
+				<div class="pager">
+					<a class="pre" href="">&larr;上一页</a>
+					<a class="next" href="">下一页&rarr;</a>
+				</div>
+
+			</div>
+
+		</div>
+		<!-- }container -->
+
+		<!-- 
+	<ul class="foot-nav">
+		<li class="active">
+			<a href="">
+				<i class="icon i-home"></i>
+				<p>首页</p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<i class="icon i-home"></i>
+				<p>首页</p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<i class="icon i-home"></i>
+				<p>首页</p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<i class="icon i-home"></i>
+				<p>首页</p>
+			</a>
+		</li>
+	</ul>
+	-->
+
+	<div class="content">
+
+		<div class="wui"></div>
+
+		<div class="wui">wui</div>
+
+		<div class="wui">
+			<div class="wui-item">wui</div>
+		</div>
+
+		<div class="wui">
+			<div class="wui-item">title</div>
+			<div class="wui-item">content</div>
+		</div>
+
+		<div class="wui">
+			<a class="wui-item" href="">1</a>
+			<a class="wui-item" href="">2</a>
+			<a class="wui-item" href="">3</a>
+		</div>
+
+		<div class="wui horizontal">
+			<label class="wui-item"><input type="radio" name="r" />单选</label>
+			<label class="wui-item"><input type="radio" name="r" />单选</label>
+			<label class="wui-item"><input type="radio" name="r" />单选</label>
+		</div>
+
+		<div class="wui">
+			<label class="wui-item"><input type="checkbox" name="r" />多选</label>
+			<label class="wui-item"><input type="checkbox" name="r" />多选</label>
+			<label class="wui-item"><input type="checkbox" name="r" />多选</label>
+		</div>
+
+		<div class="wui horizontal">
+			<div class="wui-item">1</div>
+			<div class="wui-item">2</div>
+			<div class="wui-item">3</div>
+		</div>
+
+		<div class="wui horizontal small">
+			<a class="wui-item" href="">←</a>
+			<a class="wui-item" href="">1</a>
+			<span class="wui-item" href="">...</span>
+			<a class="wui-item" href="">5</a>
+			<a class="wui-item" href="">6</a>
+			<a class="wui-item" href="">7</a>
+			<span class="wui-item" href="">...</span>
+			<a class="wui-item" href="">99</a>
+			<a class="wui-item" href="">→</a>
+		</div>
+
+		<div class="wui justified small">
+			<div class="wui-item">←</div>
+			<div class="wui-item">1</div>
+			<div class="wui-item">...</div>
+			<div class="wui-item">5</div>
+			<div class="wui-item">6</div>
+			<div class="wui-item">7</div>
+			<div class="wui-item">...</div>
+			<div class="wui-item">99</div>
+			<div class="wui-item">→</div>
+		</div>
+
+		<div class="wui justified">
+			<div class="wui-item">1</div>
+			<div class="wui-item">2</div>
+			<div class="wui-item">3</div>
+		</div>
+
+		<div class="wui collapse">
+			<div class="collapse-header">折叠</div>
+			<div class="collapse-body">折叠内容</div>
+		</div>
+
+		<div class="wui">
+			<div class="collapse">
+				<div class="collapse-header">折叠</div>
+				<div class="collapse-body">折叠内容</div>
+			</div>
+		</div>
+
+		<div class="wui">
+			<div class="collapse">
+				<div class="collapse-header">折叠</div>
+				<div class="collapse-body">折叠内容</div>
+			</div>
+			<div class="collapse">
+				<div class="collapse-header">折叠</div>
+				<div class="collapse-body">折叠内容</div>
+			</div>
+		</div>
+
+
+		<div class="wui">
+			<div class="collapse">
+				<div class="collapse-header">折叠</div>
+				<div class="collapse-body">折叠内容</div>
+			</div>
+			<div class="collapse">
+				<div class="collapse-header">折叠</div>
+				<div class="collapse-body">
+
+					<div class="wui">
+						<div class="wui-item">1</div>
+						<div class="wui-item">2</div>
+						<div class="wui-item">3</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="collapse">
+				<div class="collapse-header">折叠</div>
+				<div class="collapse-body">
+
+					<div class="wui">
+						<div class="wui-item">1</div>
+						<div class="collapse">
+							<div class="collapse-header">折叠</div>
+							<div class="collapse-body">折叠内容</div>
+						</div>
+						<div class="wui-item">3</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- }layout-sidebar -->
+
+<script type="text/javascript">
+
+function f (a) {
+	alert(a)
+}
+
+	$(function(){
+
+		// 导航
+		$('.nav-toggle').click(function(){
+			$('.nav').slideToggle(function(){
+				$(this).toggleClass('active');
+				$(this).removeAttr('style');
+			});
+		});
+
+		// 侧边栏
+		$('.sidebar-toggle').click(function(){
+			$('.layout-sidebar').toggleClass('active');
+		});
+
+		// 侧边栏二级菜单
+		$('.menu-toggle').click(function(){
+			$(this).next().slideToggle();
+			return false;
+		})
+
+
+
+		// 树折叠
+		$('.folder-title').click(function(){
+			$(this).next().slideToggle();
+			return false;
+		})
+	});
+</script>
+
+</body>
+</html>

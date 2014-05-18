@@ -1,0 +1,555 @@
+@CHARSET "UTF-8";
+/*
+2014年3月23日 20:22:23;
+
+wui new
+by wushufen;
+2014.3.21
+
+2014年3月23日 20:07:30
+	搜狗兼容模式下栅格系统有问题，
+	浏览器缩小约半屏时栅格会挤下一行
+*/
+
+/*
+基本
+布局
+容器
+留白
+头部、导航
+面板
+列表视图
+选项卡
+表单
+表格
+栅格系统
+颜色
+响应
+*/
+
+/*
+间距.75em
+*/
+
+/************************************************\
+	基本
+\************************************************/
+*{margin: 0; padding: 0; font: inherit}
+
+/*背景、颜色*/
+html{background:#fff; color:#333}
+
+/*字体*/
+html{
+	font:16px/1.5
+		Helvetica,"Helvetica Neue","Trebuchet MS","Microsoft YaHei",Arial,sans-serif
+}
+
+/* 链接 */
+a{text-decoration:none; color:#0af}
+a:visited{color:#0af}
+a:hover{color:#8EE3FF}
+a:active{color:#00789F}
+
+/*到文档顶部有一条线*/
+html.top-line{border-top: solid .15em #0af}
+
+
+
+/************************************************\
+	容器
+	居中、响应
+	不再有留白
+\************************************************/
+/*
+.header{
+	.container{}
+}
+.container{
+	.content{
+		
+	}
+}
+.footer{
+	.container{}
+}
+*/
+.container{
+	width: 960px;/*非响应时宽度*/
+	max-width: 100%;/*被嵌套时，比如在一个iframe里*/
+	margin: 0 auto;
+}
+div .container{height: 100%}/*确保后代可用百分比高度*/
+
+
+
+/************************************************\
+	留白
+	所有组件要放于 .content 内
+	父容器留白左上padding
+	组件自留白右下margin
+	//纯文本要放于 .text 内作为一个组件
+	这样能使所有组件在栅格系统中和组件嵌套时也能有一致的间距
+\************************************************/
+/*留白padding 左上*/
+.content{padding: .75em 0 0 .75em}
+
+/*留白margin 右下*/
+.panel,
+.list,
+.data-r,
+.data{margin: 0 .75em .75em 0}
+
+/*纯文本，本身有行高，故上抵消.5em，下留.5em，右同上为1em*/
+
+
+/************************************************\
+	头部
+\************************************************/
+/*
+.header{
+	.header-title{a{AppName}}
+	.sidebar-toggle{}
+	.nav-button{}
+	.nav{
+		.nav-menu{
+			nav-menu-item{a{}}
+			nav-menu-item{a{}}
+		}
+		.nav-menu-right{
+			nav-menu-item{a{}}
+			nav-menu-item{a{}}
+		}
+	}
+}
+*/
+.header{position: fixed; z-index: 10; left: 0; top: 0; width: 100%; line-height: 2.5em; border-bottom: solid 1px #333; background: rgba(255,255,255, .8)}
+.header:after{content: ""; display: block; clear: both}
+
+.header-title{float: left; font-size: 1.6em; padding: 0 .75em}
+
+.nav{background: rgba(255,255,255, .8)}
+
+.nav-menu,
+.nav-menu-right{list-style: none}
+.nav-menu{float: left}
+.nav-menu-right{float: right}
+
+.nav-menu-item{float: left}
+.nav-menu-item a{display: block; padding: 0 .75em}
+
+.nav-button{display: none; position: absolute; top: 0; right: 0; padding: 0 .75em; cursor: pointer}
+
+
+@media (max-width: 700px){
+.header-title{float: none; text-align: center}
+
+.nav{display: none; position: absolute; width: 100%; border-bottom: solid 1px #555}
+
+.nav-menu,
+.nav-menu-right{float: none}
+
+.nav-menu-item{float: none}
+.nav-menu-item a{border-top: solid 1px #bbb}
+
+.nav-button{display: block}
+}
+
+
+
+
+
+/************************************************\
+	布局
+\************************************************/
+
+/************************\
+	layout-sidebar
+\************************/
+/*
+.layout-sidebar{
+	.header{}
+	.sidebar{
+		.sidebar-menu{
+			.sidebar-menu-item{a{}}
+			.sidebar-menu-item{a{}}
+		}
+	}
+	.container{
+		
+	}
+	.footer{
+	
+	}
+}
+*/
+.layout-sidebar{
+	padding-left: 14.1em;/*14em留给.sidebar的.5em间距*/
+}
+
+.sidebar-toggle{display: none; position: absolute; top: 0; left: 0; padding: 0 .75em; cursor: pointer}
+
+.sidebar{
+	position: fixed;
+	_position: absolute;/*ie6就让它跟着文档滚动*/
+	/*left: auto;*//*[默认就是]left:auto;是让其自动贴在父左边，而不一定在浏览器左边。比如.layout-sidebar套在.container里。发现在搜狗兼容模式下显示不正常*/
+	top: 2.5em;/*让它..*/
+	bottom: 0;/*..的高度占满浏览器，所以父级不要有position了，【关键】*/
+	width: 14em;
+	margin-left: -14.1em;/*向左占.layout-sidebar留的padding-left*/
+	overflow: auto;/*让菜单超出时可以滚动*/
+	z-index: 10;
+	border: solid #555;
+	border-width: 1px 1px 0 0;
+	background: rgba(255,255,255, .8);
+}
+
+
+
+@media (max-width: 900px){
+.sidebar-toggle{display: block}
+.layout-sidebar{padding-left: 0}
+}
+
+
+
+.sidebar-menu{list-style: none}
+
+.sidebar-menu-item{}
+
+.sidebar-menu-item span,
+.sidebar-menu-item a{position: relative; display: block; padding: .5em .75em; border-bottom: solid 1px #bbb}
+
+.sidebar-menu-item .sidebar-menu-item a{padding-left: 1.75em}
+
+.sidebar-menu-item span:after,
+.sidebar-menu-item a:after{
+	content: "";
+	position: absolute;
+	right: .75em;
+	top: 50%;
+	margin-top: -.6em;
+	display: block;
+	width: 1.2em;
+	height: 1.2em;
+	border-radius: 9em;
+	background-image: url(icons.png);
+	background-repeat: no-repeat;
+	background-color: #bbb;
+	background-position: 12.8% center;
+}
+
+
+/*过渡效果*/
+.layout-sidebar,
+.col{
+	-webkit-transition: .75s;
+}
+
+
+
+/************************************************\
+	面板
+\************************************************/
+/*
+.panel{
+  .panel-header{
+    panel-title{}
+  }
+  .panel-body{}
+}
+*/
+.panel{border: solid 1px #bbb; border-radius: 4px; padding: .5em .75em}
+
+.panel-header{border-bottom: solid 1px #aaa; margin: -.5em -.75em 0 ; padding: .5em .75em}
+.panel-header:after{content: ""; display: block; clear: both}
+.panel-title{
+  border-bottom: solid 1px #0af;
+  float: left;/*代替inline。实现宽度为内容宽度*/
+  position: relative;
+  bottom: -1px;
+  color: #111;
+}
+
+.panel-body{margin: 0 -.75em -.5em; padding: .5em .75em}
+
+
+
+/************************************************\
+	列表视图
+\************************************************/
+/*
+.list{
+	.list-item{}
+	.list-item{}
+	.list-item{a{}}
+	.list-item{a{}}
+}
+*/
+.list{list-style: none; border: solid 1px #bbb; border-radius: 4px; border-bottom: 0; overflow: hidden}
+
+.list-item{display: block; position: relative; border-bottom: solid 1px #bbb; padding: .5em .75em}
+.list-item:nth-last-child(1){border-radius: 4px; overflow: hidden;}
+
+.list-item a{display: block; margin: -.5em -1em; padding: .5em 1em}
+.list-item a:after{
+	content: "";
+	position: absolute;
+	right: .75em;
+	top: 50%;
+	margin-top: -.6em;
+	display: block;
+	width: 1.2em;
+	height: 1.2em;
+	border-radius: 9em;
+	background-image: url(icons.png);
+	background-repeat: no-repeat;
+	background-color: #bbb;
+	background-position: 12.8% center;
+}
+
+
+
+/************************************************\
+	表单
+\************************************************/
+/*列表文本框*/
+/*
+.list{
+	label.list-item-input{input[text].input}
+	label.list-item-input{input[password].input}
+	label.list-item-input{select.input}
+}
+*/
+.list-item-input{display: block; position: relative; border-bottom: solid 1px #bbb; overflow: hidden;}
+.list-item-input:nth-last-child(1){border-radius: 4px; overflow: hidden;}
+.list-item-input .input{width: 100%; border: 0; padding: .5em .75em; box-sizing: border-box;}
+
+
+/*列表选择*/
+/*
+.list{
+	label.list-item{input[radio]}
+	label.list-item{input[radio]}
+}
+.list{
+	label.list-item{input[checkbox]}
+	label.list-item{input[checkbox]}
+}
+*/
+label.list-item{cursor: pointer}
+
+
+
+/************************************************\
+  表格
+\************************************************/
+/*
+[.data-r]{
+  .data
+}
+*/
+.data{border-collapse: collapse; border-spacing: 0; width: 100%}
+
+.data tr{border-bottom: solid 1px #ddd}
+.data tr:nth-child(2n+1){background: #f9fdff}
+.data tr:hover{background: #e4f6ff}
+
+.data th,
+.data td{padding: .25em 0 .25em .75em; max-width: 10em; overflow: hidden; text-overflow: ellipsis;}
+.data th{text-align: left; border-bottom: solid 1px #aaa}
+
+.data-r{overflow: auto; border: solid 1px #bbb; border-radius: 4px}
+.data-r .data{margin: 0 0 1.5em}/*webkit下table右margin不撑开父奇怪*/
+
+
+
+
+/************************************************\
+	图标
+\************************************************/
+.icon{
+	display: block;
+	width: 1.2em;
+	height: 1.2em;
+	border-radius: 9em;
+	background-image: url(icons.png);
+	background-repeat: no-repeat;
+	background-color: #0af;
+}
+
+.i-home{background-position: 68.1% center}
+
+
+
+/************************************************\
+	栅格系统
+	总12格
+	.grid-* 嵌套时，因为父也有 .grid-* 可能会影响到子的 .col
+	因为排在后面的优先级高，
+	并且嵌套时栅格已比较小了，
+	所以 .grid-* 小在排后面。
+	当子 .grid-* 大于 父 .grid-* 时，
+	父的 .grid-* 更优先，影响到了子的 .col
+	所有子栅格数会等于父栅格数。
+	当需要子栅格数大于父栅格数时，
+	子的 .col 请用 .span-*
+\************************************************/
+
+.col{float: left}
+
+/***********************\
+	等宽
+\***********************/
+/*
+grid-*{
+	.col{}
+	.col{}
+}
+*/
+.grid-12 .col{width: 8.3333%}
+.grid-11 .col{width: 9.0909%}
+.grid-10 .col{width: 10%}
+.grid-9 .col{width: 11.1111%}
+.grid-8 .col{width: 12.5%}
+.grid-7 .col{width: 14.2857%}
+.grid-6 .col{width: 16.6667%}
+.grid-5 .col{width: 20%}
+.grid-4 .col{width: 25%}
+.grid-3 .col{width: 33.3333%}
+.grid-2 .col{width: 50%}
+.grid-1 .col{width: 100%}
+
+.grid-12:after,
+.grid-11:after,
+.grid-10:after,
+.grid-9:after,
+.grid-8:after,
+.grid-7:after,
+.grid-6:after,
+.grid-5:after,
+.grid-4:after,
+.grid-3:after,
+.grid-2:after,
+.grid-1:after{content: ""; display: block; clear: both}
+.grid-12,
+.grid-11,
+.grid-10,
+.grid-9,
+.grid-8,
+.grid-7,
+.grid-6,
+.grid-5,
+.grid-4,
+.grid-3,
+.grid-2,
+.grid-1{*zoom:1}
+
+/***********************\
+	自由
+\***********************/
+/*
+.col.span-*{}
+.col.span-*{}
+*/
+.span-1{width: 8.3333%}
+.span-2{width: 16.6667%}
+.span-3{width: 25%}
+.span-4{width: 33.3333%}
+.span-5{width: 41.6667%}
+.span-6{width: 50%}
+.span-7{width: 58.3333%}
+.span-8{width: 66.6667%}
+.span-9{width: 75%}
+.span-10{width: 83.3333%}
+.span-11{width: 91.6667%}
+.span-12{width: 100%}
+
+/***********************\
+	偏移
+	向右移父的12分之N
+\***********************/
+.offset-1{margin-left: 8.3333%}
+.offset-2{margin-left: 16.6667%}
+.offset-3{margin-left: 25%}
+.offset-4{margin-left: 33.3333%}
+.offset-5{margin-left: 41.6667%}
+.offset-6{margin-left: 50%}
+.offset-7{margin-left: 58.3333%}
+.offset-8{margin-left: 66.6667%}
+.offset-9{margin-left: 75%}
+.offset-10{margin-left: 83.3333%}
+.offset-11{margin-left: 91.6667%}
+.offset-12{margin-left: 100%}
+
+
+@media (max-width: 700px){
+.col{width: 100% !important}
+}
+
+
+
+/************************************************\
+    适应设备
+    要考虑桌面浏览器的滚动条宽度
+\************************************************/
+
+/*--------->>>>往大设备都生效*/
+
+@media (min-width: 1px){/*手机 [ , 768)*/
+
+.container{width: 100%}/*为了过渡效果好给宽度*/
+
+}
+
+@media (min-width: 768px){/*平板 [768, 992)*/
+
+.container{width: 100%}
+
+}
+
+@media (min-width: 992px){/*中等桌面 [992, 1200)*/
+
+.container{width: 930px}
+
+}
+
+@media (min-width: 1200px){/*大桌面 [1200, ]*/
+
+.container{width: 1140px}
+
+}
+
+/*<<<<--------往小设备都生效*/
+
+@media (max-width: 768px){/*手机 [ , 768)*/
+
+
+}
+
+@media (max-width: 992px){/*平板 [768, 992)*/
+
+
+}
+
+@media (max-width: 1200px){/*中等桌面 [992, 1200)*/
+
+
+}
+
+@media (max-width: 9999px){/*大桌面 [1200, ]*/
+
+}
+
+
+
+/************************************************\
+    测试
+\************************************************/
+/* 显示元素边框、背景 */
+.t{border:1px solid #f00; box-sizing: border-box}
+.t2{border:1px solid #0f0; box-sizing: border-box}
+.b{background:#f00}
+.b2{background:#0f0}
+
+

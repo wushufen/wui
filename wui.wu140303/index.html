@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!-- 2014年3月3日 02:02:14 -->
+<html id="wui">
+<head>
+	<title>wui</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script type="text/javascript" src="./jquery.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="./wu.css">
+	<script type="text/javascript" src="./wu.js"></script>
+</head>
+<body>
+
+<!-- header{ -->
+<div class="header">
+
+	<!-- container{ -->
+	<div class="container">
+
+		<div class="navbar">
+			<h1 class="navbar-header">APP NAME</h1>
+			<ul class="nav">
+				<li class="nav-item selected">
+					<a href="">导航</a>
+				</li>
+				<li class="nav-item">
+					<a href="">导航</a>
+				</li>
+			</ul>
+			<ul class="nav_right">
+				<li class="nav-item">
+					<a href="">右导航</a>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	<!-- }container -->
+
+</div>
+<!-- }header -->
+
+<!-- container{ -->
+<div class="container padding-0">
+
+	<!-- col{ -->
+	<div class="col span-3 padding-lr">
+
+		<!-- sidebar{ -->
+		<ul class="sidebar">
+			<li>
+				<a href="">菜单一</a>
+			</li>
+			<li>
+				<a href="">菜单二</a>
+				<ul>
+					<li>
+						<a class="selected" href="">子菜单一</a>
+					</li>
+					<li>
+						<a href="">子菜单二</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="">菜单三</a>
+				<ul>
+					<li>
+						<a href="">子菜单一</a>
+					</li>
+					<li>
+						<a href="">子菜单二</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<!-- }sidebar -->
+
+	</div>
+	<!-- }col -->
+
+	<!-- col{ -->
+	<div class="col span-9 sm-span-1 padding-lr">
+	
+		<!-- panel{ -->
+		<div class="panel">
+			<div class="panel-header">
+				<div class="panel-title">
+					面板标题
+				</div>
+			</div>
+			<div class="panel-body">
+		
+				面板内容
+		
+			</div>
+		</div>
+		<!-- }panel -->
+
+		<!-- panel{ -->
+		<div class="panel">
+			<div class="panel-header">
+				<div class="panel-title">
+					标签页
+				</div>
+			</div>
+			<div class="panel-body">
+		
+				<!-- tabs{ -->
+				<div class="tabs">
+					<ul class="tabs-indexs">
+						<li>标签页一</li>
+						<li>标签页二</li>
+					</ul>
+					<div class="tabs-body">
+
+						<div class="tab">
+
+							标签页一 内容
+
+						</div>
+
+						<div class="tab">
+
+							<!-- tabs{ -->
+							<div class="tabs">
+								<ul class="tabs-indexs">
+									<li>标签页一</li>
+									<li>标签页二</li>
+								</ul>
+								<div class="tabs-body">
+							
+									<div class="tab">
+							
+										标签页一 内容
+							
+									</div>
+							
+									<div class="tab">
+							
+										标签页二<br />内容
+							
+									</div>
+							
+								</div>
+							</div>
+							<!-- }tabs -->
+
+						</div>
+
+					</div>
+				</div>
+				<!-- }tabs -->
+
+			</div>
+		</div>
+		<!-- }panel -->
+
+		<!-- panel{ -->
+		<div class="panel">
+			<div class="panel-header">
+				<div class="panel-title">
+					表单
+				</div>
+			</div>
+			<div class="panel-body">
+
+				<!-- form{ -->
+				<form action="" method="POST">
+					
+					<!-- form-group{ -->
+					<div class="form-group">
+						<label class="label">用户名</label>
+						<input class="input b-success" type="text" name="username" placeholder="请输入用户名" />
+					</div>
+					<!-- }form-group -->
+				
+					<!-- form-group{ -->
+					<div class="form-group">
+						<label class="label">密码</label>
+						<input class="input b-error" type="password" name="password" placeholder="请输入密码" />
+					</div>
+					<!-- }form-group -->
+				
+					<!-- form-group{ -->
+					<div class="form-group">
+						<label class="label">性别</label>
+						<div class="controls-inline">
+							<label>
+								<input class="radio" type="radio" name="sex" />
+								男
+							</label>
+							<label>
+								<input class="radio" type="radio" name="sex" />
+								女
+							</label>
+						</div>
+					</div>
+					<!-- }form-group -->
+				
+					<!-- form-group{ -->
+					<div class="form-group">
+						<label class="label">爱好</label>
+						<div class="controls">
+							<label>
+								<input class="checkbox" type="checkbox" name="sex" />
+								男
+							</label>
+							<label>
+								<input class="checkbox" type="checkbox" name="sex" />
+								女
+							</label>
+						</div>
+					</div>
+					<!-- }form-group -->
+				
+					<!-- form-group{ -->
+					<div class="form-group">
+						<label class="label">国家</label>
+						<select class="select b-warning">
+							<option>中国</option>
+							<option>美国</option>
+						</select>
+					</div>
+					<!-- }form-group -->
+
+					<!-- form-group{ -->
+					<div class="form-group">
+						<label class="label">备注</label>
+						<textarea class="textarea" rows="3"></textarea>
+					</div>
+					<!-- }form-group -->
+				
+					<!-- form-group{ -->
+					<div class="form-group">
+						<label class="label"></label>
+						<div class="controls">
+							<button class="button btn-primary" type="submit">提交</button>
+							<button class="button" type="reset">重置</button>
+						</div>
+					</div>
+					<!-- }form-group -->
+				
+				</form>
+				<!-- }form -->
+
+			</div>
+		</div>
+		<!-- }panel -->
+
+		<!-- panel{ -->
+		<div class="panel">
+			<div class="panel-header">
+				<div class="panel-title">
+					按钮
+				</div>
+			</div>
+			<div class="panel-body">
+		
+				<div class="margin-b">
+					<button class="button btn-primary btn-lg">主要</button>
+					<button class="button btn-success btn-lg">成功</button>
+					<button class="button btn-warning btn-lg">警告</button>
+					<button class="button btn-danger btn-lg">危险</button>
+					<button class="button btn-error btn-lg">错误</button>
+					<button class="button btn-info btn-lg">信息</button>
+					<button class="button btn-lg">普通</button>
+				</div>
+				<div class="margin-b">
+					<button class="button btn-primary">主要</button>
+					<button class="button btn-success">成功</button>
+					<button class="button btn-warning">警告</button>
+					<button class="button btn-danger">危险</button>
+					<button class="button btn-error">错误</button>
+					<button class="button btn-info">信息</button>
+					<button class="button">普通</button>
+				</div>
+				<div class="margin-b">
+					<button class="button btn-primary btn-sm">主要</button>
+					<button class="button btn-success btn-sm">成功</button>
+					<button class="button btn-warning btn-sm">警告</button>
+					<button class="button btn-danger btn-sm">危险</button>
+					<button class="button btn-error btn-sm">错误</button>
+					<button class="button btn-info btn-sm">信息</button>
+					<button class="button btn-sm">普通</button>
+				</div>
+		
+			</div>
+		</div>
+		<!-- }panel -->
+
+		<!-- panel{ -->
+		<div class="panel">
+			<div class="panel-header">
+				<div class="panel-title">
+					表格
+				</div>
+			</div>
+			<div class="panel-body">
+
+				<!-- data-r{ -->
+				<div class="data-r">
+					<table class="data">
+						<tr>
+							<th>一</th>
+							<th>二</th>
+							<th>三</th>
+							<th>三</th>
+							<th>三</th>
+							<th>三</th>
+						</tr>
+						<tr>
+							<td>11111111111</td>
+							<td>22222222222</td>
+							<td>33333333333</td>
+							<td>33333333333</td>
+							<td>33333333333</td>
+							<td>33333333333</td>
+						</tr>
+						<tr>
+							<td>11111111111</td>
+							<td>
+								<input />
+							</td>
+							<td>33333333333</td>
+						</tr>
+						<tr>
+							<td>11111111111</td>
+							<td>22222222222</td>
+							<td>33333333333</td>
+						</tr>
+					</table>
+				</div>
+				<!-- }data-r -->
+
+				<!-- data-r{ -->
+				<div class="data-r">
+					<table class="data">
+						<tr>
+							<th>选择</th>
+							<th>名称</th>
+							<th>操作</th>
+						</tr>
+						<tr>
+							<td>
+								<label class="block">
+									<input type="checkbox" name="" />
+								</label>
+							</td>
+							<td>
+								<input class="input error" type="text" name="" />
+							</td>
+							<td>
+								<a class="button btn-danger">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label class="block">
+									<input type="checkbox" name="" />
+								</label>
+							</td>
+							<td>
+								<input class="input" type="text" name="" />
+							</td>
+							<td>
+								<a class="button btn-danger">删除</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<!-- }data-r -->
+
+			</div>
+		</div>
+		<!-- }panel -->
+
+	</div>
+	<!-- }col -->
+
+</div>
+<!-- }container -->
+
+</body>
+</html>

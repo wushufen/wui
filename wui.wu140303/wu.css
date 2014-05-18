@@ -1,0 +1,884 @@
+@CHARSET "UTF-8";
+
+/**
+2014年3月3日 02:01:52;
+
+by wushufen;
+2014.02.24;
+
+
+-----------------------------------
+html#wui
+
+-----------------------------------
+盒模型
+box-sizing: border-box
+
+-----------------------------------
+字体1em=15px
+行高=1.5em
+
+2em=30px
+
+-----------------------------------
+一行实占高度
+2em             
+  .25em        上填充
+      .25em          | 1.5em
+      1em       字体 | 行
+      .25em          | 高
+  .25em        下填充
+行间距为 .25em + .25em = .5em
+
+2em
+  .5em         | 2em
+  1em     字体 | 行
+  .5em         | 高
+行间距为 .5em + .5em = 1em
+
+-----------------------------------
+留白
+1em
+.5em
+
+-----------------------------------
+边框
+1px
+
+-----------------------------------
+圆角
+2px
+
+-----------------------------------
+阴影
+box-shadow: 0px 5px 10px #000;
+
+**/
+
+
+
+/************************************************\
+    基本
+    2014.02.24
+\************************************************/
+/*盒子模型*/
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*{margin:0;padding:0}
+html,body{height:100%}
+/*body{overflow-x: hidden}*/
+img{border: 0}
+
+/*背景*/
+body{background:#fff}
+
+/*颜色*/
+body{color:#333}
+
+/*字体*/
+body,
+input,/*2013/12/24有些元素有代理默认值，比继承优先*/
+button,
+select,
+table{
+  font:15px/1.5
+    "Microsoft YaHei","微软雅黑", Arial, Helvetica, sans-serif
+}
+
+/* 链接 */
+a{text-decoration:none}
+a{color:#0af}/*去掉:link，避免用.button时冲突*/
+a:visited{color:#26C9FF}
+a:hover{color:#8EE3FF}
+a:active{color:#00789F}
+
+
+
+/************************************************\
+  容器
+  居中、响应、左右留白
+\************************************************/
+/*
+.header{
+  .container{}
+}
+.container{
+  
+}
+.footer{
+  .container{}
+}
+*/
+.container{
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-left: 1em;
+  padding-right: 1em;
+}
+/*hack*/
+.container{width: 960px}/*不支持响应的则固定宽度*/
+body{text-align: center}
+  .container{text-align: left}/*居中*/
+
+
+
+/************************************************\
+  头部
+\************************************************/
+/*
+.header{
+  .container{
+    .navbar{
+      .navbar-header{ appName }
+      .nav{
+        .nav-item{}
+      }
+      .nav_right{
+        .nav-item{}
+      }
+    }
+  }
+}
+*/
+.header{
+  background: #333;
+  color: #fff;
+}
+
+/* *********************
+    导航
+ ********************* */
+.navbar{line-height:2em}
+
+.navbar-header{float: left; font-size: 1.5em; padding-right: .5em}
+
+.nav,
+.nav_right{list-style: none; margin-right: -1em}
+.nav{float: left}
+.nav_right{float: right}
+
+.nav-item{float: left}
+.nav-item.selected{background: #555}
+.nav-item:hover{background: #666}
+
+.nav-header a,
+.nav-item a{display: block; padding: 0 1em; color: #fff; }
+.nav-item a:hover{color: #00ABE3;}
+ /*导航下拉按钮*/
+.nav-btn{display: none; float: right; background: #fff; height: 1.5em; position: relative; top: 1.25em; width: 30px; border-radius: 2px; cursor: pointer;}
+.nav-btn:before,
+.nav-btn:after{content: ""; display: block; width: 100%; height: .3em; background: #555; position: absolute;}
+.nav-btn:before{top: .3em}
+.nav-btn:after{top: .9em}
+
+
+
+/************************************************\
+  侧边栏
+  菜单最好三级内
+\************************************************/
+/*
+ul.sidebar{
+  li{a{}}
+  li{
+    a{}
+    ul{
+      li{a{}}
+      li{a{}}
+      li{
+        a{}
+        ul{
+          li{a{}}
+          ...
+        }
+      }
+      ...
+    }
+  }
+  ...
+}
+*/
+.sidebar{
+  list-style: none;
+  background: #333;
+}
+.sidebar li{margin-bottom: 1px}
+.sidebar li a{
+  background: #cceeff;
+  display: block;
+  padding: .25em 1em;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+.sidebar li a.selected{border-right: solid 2px #0af; background: #59686b}
+/*二级*/
+.sidebar li ul{
+  /*border: solid 1px #e5e9e9;*/
+  border-top: none;
+  padding: .25em 0;
+  list-style: none;
+  box-shadow: #000 1px 1px 5px inset;
+}
+.sidebar li li a{background: none; padding-left: 2em}
+/*三级*/
+.sidebar li li li a{padding-left: 3em}
+
+
+
+/************************************************\
+  主iframe
+\************************************************/
+/*
+.iframe-wraper{
+  iframe 
+}
+*/
+.iframe-wraper{height: 100%}
+.iframe-wraper iframe{width: 100%; height: 100%; border: 0}
+
+
+
+/************************************************\
+  面板
+\************************************************/
+/*
+.panel{
+  .panel-header{
+    panel-title{}
+  }
+  .panel-body{}
+}
+*/
+.panel{}
+.panel-header{border-bottom: solid 2px #eee; padding-top: .5em}
+.panel-title{
+  border-bottom: solid 2px #0af;
+  float: left;/*代替inline。实现宽度为内容宽度*/
+  position: relative;
+  bottom: -2px;
+  color: #000;
+}
+.panel-body{padding: 1em 0}
+
+
+
+/************************************************\
+  选项卡
+\************************************************/
+/*
+.tabs{
+  .tabs-indexs{
+    li{}
+    li{}
+    ...
+    li.right{右标签}
+  }
+  .tabs-body{
+    .tab{}
+    .tab{}
+    .tab{}
+    ...
+  }
+}
+*/
+.tabs{}
+ul.tabs-indexs{list-style: none; background: #fff; padding: 0 .5em}
+.tabs-indexs li{/*点击*/
+  float:left;
+  padding: .25em .5em;
+  cursor: pointer;
+  border-radius: 3px 3px 0 0;
+  border: solid 1px transparent;
+  border-bottom: none;
+  margin-right: 1px;
+}
+.tabs-indexs li.right{float:right}/*右标签*/
+
+.tabs-body{border: solid 1px #bbb; padding: 1em}
+.tab{/*标签页*/
+  display: none;
+}
+.tabs-indexs li.selected{
+  background: #fff;
+  border-color: #bbb;
+  
+  position: relative;
+  bottom: -1px;
+}
+.tab.selected{
+  display: block;
+}
+
+
+
+/************************************************\
+  表单
+\************************************************/
+/*
+form{
+  .form-group{
+    .label
+    .input/.select/.textarea
+  }
+
+  .form-group{
+    .label
+    .controls-inline{
+      label{.radio 单选}
+      label{.radio 单选}
+    }
+  }
+
+  .form-group{
+    .label
+    .controls{
+      label{.checkbox 复选}
+      label{.checkbox 复选}
+    }
+  }
+
+  .form-group{
+    .label[空]
+    .controls{
+      .button
+      .button
+    }
+  }
+}
+*/
+
+/*表单组*/
+.form-group{
+  padding-bottom: .5em;
+}
+
+.form-group .label,
+.form-group .input,
+.form-group .select,
+.form-group .textarea{
+  float: left;
+  width: 33.3333%
+}
+
+.form-group .controls,
+.form-group .controls-inline{
+  float: left;
+  width: 33.3333%;
+  padding: .25em 0;
+}
+.form-group .controls label{
+  display: block;
+  cursor: pointer;
+}
+.form-group .controls-inline label{
+  display: inline-block;
+  padding-right: .5em;
+  cursor: pointer;
+}
+
+.label,
+.input,
+.select,
+.button,
+.textarea{
+  display: inline-block;
+   *display:inline;*zoom:1;/*ie6,7 hack*/
+  border-radius: .2em;
+ }
+
+/* label 标签*/
+.label{
+  padding: .25em 1em .25em 0;
+  text-align: right;
+  color: #111;
+  border:1px solid transparent;
+}
+
+/* 文本框、选择框 */
+/*input,*//*避免影响 非input[text]*/
+.input,
+.select,
+.textarea{
+  background:#fff;
+  border:1px solid #aaa;
+  padding: .25em 0;
+  width: 100%;
+  /*box-shadow: #bbb 0 0 5px inset;*/
+}
+.input{text-indent: .25em}
+
+.input:focus,
+.select:focus,
+.button:focus,
+.textarea:focus{border-color: #0af; outline: 0; box-shadow: 0 0 5px 1px #a9eaff}
+
+/*大小*/
+.input.small{
+  padding: 0;
+}
+
+
+/* 按钮 */
+a.button,
+.button{
+  background: #eee;
+  color: #333;
+  border: 1px solid #bbb;
+  padding: .25em 1em;
+  text-align: center;
+  box-shadow: 0px 2px 3px #aaa;
+}
+/* 按钮鼠标悬浮效果 */
+.button:hover{box-shadow:0px 1px 3px #333}
+/* 按钮点击效果 */
+.button:active{box-shadow:0px 1px 2px #333 inset}/*:active必须在:hover后（优先）才有效果，因为点击时鼠标还在hover*/
+
+/* 大按钮 */
+.btn-lg{padding:.5em 1.5em}
+/* 小按钮 */
+.btn-sm{padding:0px .5em}
+
+
+
+input[type="radio"],
+input[type="checkbox"],
+.button{cursor:pointer}
+
+input[type="radio"],
+input[type="checkbox"]{position: relative; bottom: -1.5px}
+
+
+
+/************************************************\
+  表格
+\************************************************/
+/*
+[.data-r]{
+  .data
+}
+*/
+table.data{
+  border-collapse:collapse;
+  border-spacing:0;
+  width: 100%;
+  margin-bottom: .5em;
+}
+table.data tr{border-bottom: solid 1px #ddd}
+
+table.data th,
+table.data td{padding: .25em 0 .25em 1em}
+table.data th{background: #eee; border-bottom: solid 2px #ddd}
+
+table.data tr:nth-child(2n+1){background: #f9fdff}
+table.data tr:hover{background: #e4f6ff}
+
+.data-r{
+  overflow: auto;
+  margin-bottom: 1em;
+}
+
+
+
+/************************************************\
+  表格中的表单控件
+  默认用小号
+\************************************************/
+table.data .input{padding: 0}
+table.data .button{padding: 0 .5em}
+
+
+
+/************************************************\
+  列表
+\************************************************/
+ul.unStyle,
+ol.unStyle,
+li.unStyle{list-style: none}
+
+
+
+/************************************************\
+  栅格系统
+  总12格
+\************************************************/
+/*
+.input.span-*{}
+
+col.span-*{}
+col.span-*{}
+...
+*/
+#wui .col{float: left}
+#wui .span-1{width: 8.3333%}
+#wui .span-2{width: 16.6667%}
+#wui .span-3{width: 25%}
+#wui .span-4{width: 33.3333%}
+#wui .span-5{width: 41.6667%}
+#wui .span-6{width: 50%}
+#wui .span-7{width: 58.3333%}
+#wui .span-8{width: 66.6667%}
+#wui .span-9{width: 75%}
+#wui .span-10{width: 83.3333%}
+#wui .span-11{width: 91.6667%}
+#wui .span-12{width: 100%}
+/*响应，小于X设备时独占一行*/
+/*
+.xs-full{手机}
+.sm-full{平板}
+.md-full{中等桌面}
+*/
+
+
+
+#wui .offset-1{margin-left: 8.3333%}
+#wui .offset-2{margin-left: 16.6667%}
+#wui .offset-3{margin-left: 25%}
+#wui .offset-4{margin-left: 33.3333%}
+#wui .offset-5{margin-left: 41.6667%}
+#wui .offset-6{margin-left: 50%}
+#wui .offset-7{margin-left: 58.3333%}
+#wui .offset-8{margin-left: 66.6667%}
+#wui .offset-9{margin-left: 75%}
+#wui .offset-10{margin-left: 83.3333%}
+#wui .offset-11{margin-left: 91.6667%}
+#wui .offset-12{margin-left: 100%}
+
+
+
+/************************************************\
+  ***
+\************************************************/
+/*clearfix*/
+.container:after,
+.header:after,
+.navbar:after,
+.panel:after,
+.panel-header:after,
+.tabs-indexs:after,
+.form-group:after
+{content:""; display:block; clear:both}
+/*hack*/
+.container,
+.header,
+.navbar,
+.panel,
+.panel-header,
+.tabs-indexs,
+.form-group
+{*zoom:1}
+
+
+
+/*留白 1em*/
+#wui .padding{padding: 1em}
+#wui .padding-lr{padding-left: 1em; padding-right: 1em}
+#wui .padding-l{padding-left: 1em}
+#wui .padding-r{padding-right: 1em}
+#wui .padding-t{padding-top: 1em}
+#wui .padding-b{padding-bottom: 1em}
+
+/*去留白*/
+#wui .padding-0{padding: 0}
+#wui .padding-lr0{padding-left: 0; padding-right: 0}
+
+#wui .-margin-lr{margin-left: -1em; margin-right: -1em}/*抵消父留白*/
+
+#wui .margin{margin: 1em}
+#wui .margin-lr{margin-left: 1em; margin-right: 1em}
+#wui .margin-l{margin-left: 1em}
+#wui .margin-r{margin-right: 1em}
+#wui .margin-t{margin-top: 1em}
+#wui .margin-b{margin-bottom: 1em}
+#wui .margin-0{margin: 0}
+
+
+
+/*过渡效果*/
+/*过渡所有效果*/
+.container,
+.col,
+.input,
+.select,
+.textarea{
+  -webkit-transition: .8s;
+  -moz-transition: .8s;
+  -o-transition: .8s;
+  transition: .8s;
+}
+/*过渡颜色*/
+.tabs-indexs li{
+  -webkit-transition: .5s border-color;
+  -moz-transition: .5s border-color;
+  -o-transition: .5s border-color;
+  transition: .5s border-color;
+}
+/*sidebar*/
+.sidebar{
+  -webkit-transition: .5s right, .5s margin-right;
+  -moz-transition: .5s right, .5s margin-right;
+  -o-transition: .5s right, .5s margin-right;
+  transition: .5s right, .5s margin-right;
+}
+
+
+
+/************************************************\
+    适应设备
+    要考虑桌面浏览器的滚动条宽度
+\************************************************/
+
+/*--------->>>>往大设备都生效*/
+
+@media (min-width: 1px){/*手机 [ , 768)*/
+
+.container{width: 100%}/*为了过渡效果好给宽度*/
+
+}
+
+@media (min-width: 768px){/*平板 [768, 992)*/
+
+.container{width: 100%}
+
+}
+
+@media (min-width: 992px){/*中等桌面 [992, 1200)*/
+
+.container{width: 960px}
+
+}
+
+@media (min-width: 1200px){/*大桌面 [1200, ]*/
+
+.container{width: 1170px}
+
+}
+
+/*<<<<--------往小设备都生效*/
+
+@media (max-width: 768px){/*手机 [ , 768)*/
+
+#wui .xs-span-1{width: 100%}
+
+.form-group .label{width: 100%; text-align: left; padding: 0}
+.form-group .input,
+.form-group .select,
+.form-group .textarea{width: 100%}
+
+}
+
+@media (max-width: 992px){/*平板 [768, 992)*/
+
+#wui .sm-span-1{width: 100%}
+
+.sidebar{position: absolute; width: 50%; right: -50%; margin-right: 1em; z-index: 10;}
+.sidebar:hover{right: 0; margin-right: 0}
+
+}
+
+@media (max-width: 1200px){/*中等桌面 [992, 1200)*/
+
+#wui .md-span-1{width: 100%}
+
+}
+
+@media (max-width: 9999px){/*大桌面 [1200, ]*/
+
+}
+
+
+
+/************************************************\
+    颜色
+\************************************************/
+#wui .c-primary{color:#0af}
+#wui .c-success{color:#0a0}
+#wui .c-warning{color:#fa0}
+#wui .c-danger{color:#e00}
+#wui .c-fail,
+#wui .c-error{color:#e00}
+#wui .c-info{color:#e00}
+
+
+
+/*文本框*/
+#wui .b-primary{border-color:#3783CF}
+#wui .b-success{border-color:#40A52D}
+#wui .b-warning{border-color:#A2932D}
+#wui .b-danger{border-color:#A56B6B}
+#wui .b-fail,
+#wui .b-error{border-color:#B94242}
+#wui .b-info{border-color:#759BAD}
+
+
+
+/*按钮*/
+#wui .btn-primary{
+  background-color:#0af;
+  border-color:#3783CF;
+  color:#fff;
+}
+#wui .btn-success{
+  background-color:#21D100;
+  border-color:#40A52D;
+  color:#fff;
+}
+#wui .btn-warning{
+  background-color:#CEB500;
+  border-color:#A2932D;
+  color:#fff;
+}
+#wui .btn-danger{
+  background-color:#f05a5a;
+  border-color:#A56B6B;
+  color:#fff;
+}
+#wui .btn-fail,
+#wui .btn-error{
+  background-color:#ff0000;
+  border-color:#B94242;
+  color:#fff;
+}
+#wui .btn-info{
+  background-color:#5AC0F0;
+  border-color:#759BAD;
+  color:#fff;
+}
+
+
+
+/************************************************\
+    其它常用类
+\************************************************/
+/* 宽高 */
+.widthFull{width:100%}
+.widthAuto{width:auto}
+.heightFull{height:100%}
+.heightAuto{width:auto}
+
+/* 阴影 */
+.noShadow{box-shadow:none}
+.shadow{box-shadow:0px 2px 3px 0px #333}
+.shadowInset{box-shadow:0px 2px 3px 0px #333 inset}
+
+/* 圆角 */
+.noRadius{border-radius:0}
+.radius{border-radius:5px}
+.radius2{border-radius:2px}
+.radius3{border-radius:3px}
+.radius4{border-radius:4px}
+.radius5{border-radius:5px}
+
+/* 边框 */
+.noBorder{border:0}
+.border{border:1px solid #bbb}
+.border2{border:2px solid #bbb}
+.border3{border:3px solid #bbb}
+
+.borderBottom{border-bottom:1px solid #bbb}
+.borderBottom2{border-bottom:2px solid #bbb}
+.borderBottom3{border-bottom:3px solid #bbb}
+
+/* 文字 */
+.bold{font-weight: bold}
+.bolder{font-weight: bolder}
+.textCenter{text-align: center}
+.textLeft{text-align: left}
+.textRight{text-align: right}
+.noWrap {white-space:nowrap}
+
+.noSelect{
+user-select:none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+}
+
+/* 垂直对齐 */
+.vMiddle{vertical-align:middle}
+.vTop{vertical-align:top}
+.vBottom{vertical-align:bottom}
+
+
+/* 鼠标 */
+.pointer{cursor:pointer}
+
+/* 显隐 */
+.none{display:none }
+.block{display:block }
+.inline{display: inline}
+.inlineBlock{display:inline-block ;
+  *display:inline ; *zoom:1;/*ie6,7 hack*/}
+.hidden{visibility:hidden}
+
+/* 居中 */
+.center{margin-left:auto; margin-right:auto}
+  .centerParent{text-align:center}/*ie6*/
+  .centerParent .center{text-align:left}/*center纠正*/
+
+/* 位置 */
+.fixed{position:fixed; top:0; z-index: 2;
+	_position:absolute;
+	_top:expression(documentElement.scrollTop||document.body.scrollTop+0);
+}
+.relative{position:relative}
+.absolute{position:absolute}
+
+/* 浮动 */
+.floatLeft{float:left}
+.floatRight{float:right}
+/* 清除 */
+.clear{clear:both}
+.clearLeft{clear:left}
+.clearRight{clear:right}
+/* 撑开 */
+.clearfix:after {content:""; display:block; clear:both; }
+.clearfix {*zoom:1}/*ie hack*/
+
+
+.zIndex1{z-index: 1}
+
+
+
+/************************************************\
+    测试
+\************************************************/
+/* 显示元素边框、背景 */
+.t{border:1px solid #f00; box-sizing: border-box}
+.t2{border:1px solid #0f0; box-sizing: border-box}
+.b{background:#f00}
+.b2{background:#0f0}
+/* 显示作者 */
+.showAuthor:before{margin-left:50%;content:"\5434\8ff0\82ac";}
+/* 显示script */
+.showScript script{
+  background:#272822;
+  display:block;
+  white-space:pre-wrap;
+  position:absolute;
+  color:#aaa;
+  width:500px;
+  min-height:100px;
+  max-height:300px;
+  overflow:auto;
+  box-shadow:5px 5px 5px #437C81;
+  opacity:0.2;
+}
+script:hover{
+  color:#66D9EF;
+  box-shadow:10px 10px 10px #51969B;
+  z-index:99999;
+  opacity:0.8;
+}
+.showScript script + :before{
+  display:block;
+  content:"";
+  width:50px;
+  border-top:3px solid #f00;
+}

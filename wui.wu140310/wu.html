@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- 2014年3月3日 02:02:14 -->
+<html id="wui">
+<head>
+	<title>wui</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script type="text/javascript" src="./jquery.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="./wu.css">
+	<script type="text/javascript" src="./wu.js"></script>
+</head>
+<body>
+
+<!-- header{ -->
+<div class="header">
+
+	<!-- container{ -->
+	<div class="container">
+
+		<div class="navbar">
+			<h1 class="navbar-header">APP NAME</h1>
+			<ul class="nav">
+				<li class="nav-item selected">
+					<a href="">导航</a>
+				</li>
+				<li class="nav-item">
+					<a href="">导航</a>
+				</li>
+			</ul>
+			<ul class="nav_right">
+				<li class="nav-item">
+					<a href="">右导航</a>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	<!-- }container -->
+
+</div>
+<!-- }header -->
+
+<!-- container{ -->
+<div class="text-left padding-0">
+
+	<div class="layout-sidebar">
+
+		<div class="sidebar">
+			<button class="sidebar-toggle">菜单</button>
+
+			<!-- menu{ -->
+			<ul class="menu">
+				<li>
+					<a href="">菜单一</a>
+				</li>
+				<li>
+					<a href="">菜单二</a>
+					<ul>
+						<li>
+							<a class="selected" href="">子菜单一</a>
+						</li>
+						<li>
+							<a href="">子菜单二</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="">菜单三</a>
+					<ul>
+						<li>
+							<a href="">子菜单一</a>
+						</li>
+						<li>
+							<a href="">子菜单二</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="">菜单三</a>
+					<ul>
+						<li>
+							<a href="">子菜单一</a>
+						</li>
+						<li>
+							<a href="">子菜单二</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<!-- }menu -->
+
+		</div>
+
+		<div class="container main">
+			<!-- panel{ -->
+			<div class="panel">
+				<div class="panel-header">
+					<div class="panel-title">
+						面板标题
+					</div>
+				</div>
+				<div class="panel-body">
+			
+					<!-- tabs{ -->
+					<div class="tabs">
+						<ul class="tabs-indexs">
+							<li>标签页一</li>
+							<li>标签页二</li>
+						</ul>
+						<div class="tabs-body">
+					
+							<div class="tab">
+					
+								标签页一 内容
+					
+							</div>
+					
+							<div class="tab">
+					
+								标签页二<br />内容
+					
+							</div>
+					
+						</div>
+					</div>
+					<!-- }tabs -->
+			
+				</div>
+			</div>
+			<!-- }panel -->
+		</div>
+
+	</div>
+
+</div>
+<!-- }container -->
+
+<script type="text/javascript">
+	$('.sidebar-toggle').click(function(){
+		$('.layout-sidebar').toggleClass('active')
+	});
+</script>
+
+</body>
+</html>
