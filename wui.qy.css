@@ -122,21 +122,21 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 \************************************************/
 .data,
 .wui{
-	border: solid 1px #e6e6e6;
+	/* border: solid 1px #e6e6e6; */
 	
 	overflow: hidden;
 	vertical-align: top;
 	margin-bottom: 1em;
 
 	box-shadow:0px 2px 3px #aaa;
-	border-radius: 4px;
+	/* border-radius: 4px; */
 	background: #fff;
 
 }
 .wui-item{
 	display: block;
 
-	border: solid 1px #e6e6e6;
+	border: solid 1px #9C9C9C;
 	padding: .5em 1em;
 	
 	border-right: 0;
