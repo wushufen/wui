@@ -36,7 +36,7 @@ html,
 input,/*2014.05.19 这些元素有默认值，比继承优先*/
 select,
 textarea,
-button{font: 16px/1.5 "Microsoft YaHei",Helvetica,"Helvetica Neue","Trebuchet MS",Arial,sans-serif; color: #333}
+button{font: 16px/1.5 "Microsoft YaHei",Helvetica,"Helvetica Neue","Trebuchet MS",Arial,sans-serif; color: #555}
 /**{font: 16px/1.5 "Microsoft YaHei",Helvetica,"Helvetica Neue","Trebuchet MS",Arial,sans-serif;}*//*2014.05.19 这样所有都无法继承了*/
 
 /* 链接 */
@@ -252,8 +252,28 @@ label.wui-item{cursor: pointer}
 /*标签页*/
 .tabs{}
 .tabs-indexs .wui-item{cursor: pointer}
-.tabs-indexs .wui-item.active{background: #fff}
+.tabs-indexs .wui-item.active{
+	/*{2014.05.19 + 当.tab有opacity时(fadeIn)，其层次会变高，就无法挡住其border-top*/
+	position: relative;
+	z-index: 1;
+	/*}*/
+
+	background: #fff;
+	border-radius: 4px 4px 0 0;
+}
 .tab{display: none}
+
+
+
+/*抵消padding*/
+/*
+.wui-item{
+	.wui.horizontal.small.-small-margin{}
+}
+*/
+.-small-margin{
+	margin: -1.25em -0.25em -1em;
+}
 
 
 
@@ -315,6 +335,21 @@ table.data{overflow: hidden}
 	text-align: right;
 	line-height: 1em;
 	max-width: 100%;
+}
+
+
+
+/************************************************\
+	badge
+\************************************************/
+.badge{
+	display: inline-block;
+	padding: 0.25em;
+	line-height: .85;
+
+	border-radius: 9em;
+	background: #0af;
+	color: #fff;
 }
 
 
@@ -385,7 +420,7 @@ table.data{overflow: hidden}
 
 
 /*按钮*/
-.btn-primary {background-color:#FD376F; border-color:#CA7295; color:#fff}
+.btn-primary {background-color:#0af; border-color:#3783CF; color:#fff}
 .btn-success {background-color:#21D100; border-color:#40A52D; color:#fff}
 .btn-warning {background-color:#CEB500; border-color:#A2932D; color:#fff}
 .btn-danger  {background-color:#f05a5a; border-color:#A56B6B; color:#fff}
@@ -523,18 +558,30 @@ for(i=0; i<10; i++){
 
 
 
-<div class="container">
+<div class="wui horizontal2">
 
-	<div class="content">
+	<div class="container">
+		<a class="wui-item" href="">APPNAME</a>
 
-		<div class="wui horizontal2">
-			<span class="wui-item" href="">APPNAME</span>
+		<div class="group">
+			<a class="wui-item" href="">导航</a>
+			<a class="wui-item" href="">导航</a>
+			<span class="wui-item">
+				<div class="wui horizontal small -small-margin">
+					<input class="wui-item" type="text" name="" value="1" style="width:auto;" />
+					<button class="wui-item button" type="button">Q</button>
+				</div>
+			</span>
+		</div>
+		<div class="group float-right">
 			<a class="wui-item" href="">导航</a>
 			<a class="wui-item" href="">导航</a>
 		</div>
-
 	</div>
 
+</div>
+
+<div class="container">
 
 	<div class="span-3">
 
@@ -577,8 +624,8 @@ for(i=0; i<10; i++){
 
 
 			<div class="wui horizontal2 small">
-				<a class="wui-item wuijs-back" href="返回"><i class="icon i-back"></i></a>
-				<a class="wui-item" href=""><i class="icon i-home"></i></a>
+				<a class="wui-item wuijs-back" href="" title="返回"><i class="icon i-back"></i></a>
+				<a class="wui-item" href="" title="首页"><i class="icon i-home"></i></a>
 				<a class="wui-item" href="">父页</a>
 				<span class="wui-item" href="">当前页</span>
 			</div>
@@ -606,11 +653,12 @@ for(i=0; i<10; i++){
 
 
 			<div class="wui">
-				<a class="wui-item" href="">列表</a>
-				<a class="wui-item" href="">列表 <i class="icon i-right float-right"></i></a>
+				<a class="wui-item" href="">列表<span class="badge float-right"></span></a>
+				<a class="wui-item" href="">列表 <i class="icon i-right float-right"></i><span class="badge float-right">9</span></a>
 				<a class="wui-item" href="">
 					<div class="wui-close"></div>
 					列表
+					<span class="badge">99</span>
 				</a>
 			</div>
 
@@ -822,16 +870,28 @@ for(i=0; i<10; i++){
 					</div>
 
 					<div class="wui vertical small">
-						<a class="wui-item button">链接按钮</a>
-						<a class="wui-item button">链接按钮</a>
-						<a class="wui-item button">链接按钮</a>
+						<button class="wui-item button" type="button">按钮</button>
+						<button class="wui-item button" type="button">按钮</button>
+						<button class="wui-item button" type="button">按钮</button>
 					</div>
 
 				</div>
 
 				<div class="wui-item">
 
-					<button class="button">提交</button>
+					<button class="button">按钮</button>
+					<button class="button btn-primary">按钮</button>
+					<button class="button btn-success">按钮</button>
+					<button class="button btn-warning">按钮</button>
+					<button class="button btn-danger">按钮</button>
+					<button class="button btn-error">按钮</button>
+					<button class="button btn-info">按钮</button>
+
+				</div>
+
+				<div class="wui-item">
+
+					<button class="button btn-primary">提交</button>
 
 				</div>
 			</div>
