@@ -144,6 +144,14 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	margin-top: -1px;
 	margin-left: -1px;
 
+	/*{2014.05.20 + 
+		这样换行时可以占满一行，注意修改padding时的换算
+		2014.05.20 x 这样标签页和两端对齐有问题
+		*/
+	padding-right: 91em;
+	margin-right: -90em;
+	/*}*/
+
 	/*
 	border-top: 0;
 	border-left: 0;
@@ -179,6 +187,10 @@ label.wui-item{cursor: pointer}
 /*大小*/
 .small .wui-item{
 	padding: .25em .75em;
+
+	/*{2014.05.20 + */
+	padding-right: 90.75em;
+	/*}*/
 }
 .small .wui-close{
 	width: 2em;
