@@ -8,27 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="wui.qy.css">
 	<link rel="stylesheet" type="text/css" href="wui.layout.s.css">
 
-	<link rel="stylesheet" type="text/css" href="http://192.168.1.1">
-	<link rel="stylesheet" type="text/css" href="http://baiduawefawfe.com">
-
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="wui.dialog.js"></script>
-
-	<script type="text/javascript">
-		var cssCount = $('link').size();
-		var scriptCount = 0;
-		var fileCount = cssCount + scriptCount;
-		var loadedCount = 0;
-
-		var links = document.getElementsByTagName('link');
-		for (var i = 0; i < links.length; i++) {
-			links[i].onload = function(){
-				loadedCount++;
-				document.title = loadedCount+'/'+fileCount;
-			}
-		};
-
-	</script>
 
 </head>
 <body>
@@ -43,6 +24,7 @@ for (var i = 0; i < 1; i++) {
 </script>
 
 <div class="layout-sidebar">
+
 
 
 
