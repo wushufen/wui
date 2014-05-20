@@ -124,12 +124,14 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .wui{
 	border: solid 1px #e6e6e6;
 	
-	overflow: hidden;
+	/*{2014.05.20 - 当有下拉框时隐藏了*/
+	/*overflow: hidden;*/
+	/*}*/
 	vertical-align: top;
 	margin-bottom: 1em;
 
 	box-shadow:0px 2px 3px #aaa;
-	border-radius: 4px;
+	/*border-radius: 4px;*/
 	background: #fff;
 
 }
@@ -146,10 +148,10 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 
 	/*{2014.05.20 + 
 		这样换行时可以占满一行，注意修改padding时的换算
-		2014.05.20 x 这样标签页和两端对齐有问题
+		2014.05.20 - 这样标签页和两端对齐有问题
 		*/
-	padding-right: 91em;
-	margin-right: -90em;
+/*	padding-right: 91em;
+	margin-right: -90em;*/
 	/*}*/
 
 	/*
@@ -170,6 +172,8 @@ label.wui-item{cursor: pointer}
 .wui-close{
 	float: right;
 	/* position: absolute; */
+	position: relative;
+	z-index: 1;
 	width: 2.5em;
 	height: 2.5em;
 	background-image:url(wui-icons.png);
@@ -189,7 +193,8 @@ label.wui-item{cursor: pointer}
 	padding: .25em .75em;
 
 	/*{2014.05.20 + */
-	padding-right: 90.75em;
+	/*2014.05.20 -*/
+	/*padding-right: 90.75em;*/
 	/*}*/
 }
 .small .wui-close{
@@ -366,6 +371,36 @@ table.data{overflow: hidden}
 	border-radius: 9em;
 	background: #0af;
 	color: #fff;
+}
+}
+
+
+
+/************************************************\
+	下拉框
+\************************************************/
+/*
+.dropdown{
+	.dropdown-toggle{}
+	.dropdown-menu{}
+}
+*/
+.dropdown{position: relative}
+.dropdown-menu{
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	margin-top: .25em;
+}
+
+/*open*/
+.dropdown.open .dropdown-toggle{
+	box-shadow:0px 1px 5px #333 inset;
+}
+.dropdown.open .dropdown-menu{
+	display: block;
+	box-shadow: 1px 3px 5px #888;
 }
 
 

@@ -416,6 +416,29 @@ for(i=0; i<1; i++){
 					</div>
 				</div>
 
+
+
+
+				<div class="wui">
+					<div class="wui-item wui-header">
+						下拉框
+					</div>
+					<div class="wui-item">
+
+						<div class="dropdown" style="position:relative">
+							<span class="button dropdown-toggle">下拉 <i class="icon i-down"></i></span>
+							<div class="wui dropdown-menu">
+								<div class="wui-item">1</div>
+								<div class="wui-item">222222</div>
+								<div class="wui-item">33333333333</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
 				<!-- 表格 -->
 				<table class="data">
 					<tr>
@@ -548,6 +571,21 @@ $(function(){
 
 			curTab.fadeIn();
 		});
+
+
+
+
+		// 下拉框
+		$('.dropdown-toggle').click(function(){
+			$(this).closest('.dropdown').toggleClass('open');
+			return false;
+		});
+		$('body').click(function(){
+			$('.dropdown').removeClass('open');
+		});
+		$('.dropdown-menu').click(function(e){
+			e.stopPropagation();
+		})
 
 
 
