@@ -8,6 +8,10 @@
 
 	<script type="text/javascript" src="jquery.js"></script>
 
+	<style type="text/css">
+	.ok{color: #0f0}
+	</style>
+
 </head>
 <body>
 
@@ -16,8 +20,11 @@
 	<div class="content">
 
 		<div class="wui">
-			<div class="wui-item">
+			<div id="string" class="wui-item">
 				string
+			</div>
+			<div id="result" class="wui-item">
+				
 			</div>
 		</div>
 
@@ -29,13 +36,16 @@
 
 <script type="text/javascript">
 
-var string = "中华人民共和国中华人民共和国"
-$('.wui-item').html(string);
+var string = '中华人民共和国中华人民共和国';
+			//中
+
+$('#string').html(string);
 
 $('textarea').keyup(function(){
-	$('body').prepend($(this).val())
-	$('body').prepend('<br />')
-
+	var val = $(this).val();
+	if (val[val.length-1] == string[val.length-1]) {
+		$('#result').append('<i class="ok">'+ val[val.length-1] +'</i>')
+	};
 })
 
 </script>
