@@ -16,7 +16,7 @@ by wushufen
 }
 */
 .loading{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: #fff; z-index: 99999}
-.loading-icon{position: absolute; top: 38.2%; left: 50%; width: 46px; height: 46px; margin: -23px; background: url(wui-loading.gif) center no-repeat; opacity: .5}
+.loading-icon{position: absolute; top: 38.2%; left: 50%; width: 46px; height: 46px; margin: -23px; background: url(wui-loading.gif) center no-repeat; opacity: .9}
 
 
 
@@ -122,6 +122,9 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 \************************************************/
 .data,
 .wui{
+	/*{2014.05.21 + */
+	position: relative;
+	/*}*/
 	border: solid 1px #e6e6e6;
 	
 	/*{2014.05.20 - 当有下拉框时隐藏了*/
@@ -136,6 +139,9 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 
 }
 .wui-item{
+	/*{2014.05.21 + */
+	position: relative;
+	/*}*/
 	display: block;
 
 	border: solid 1px #e6e6e6;
@@ -149,8 +155,9 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	/*{2014.05.20 + 
 		这样换行时可以占满一行，注意修改padding时的换算
 		2014.05.20 - 这样标签页和两端对齐有问题
-		*/
-/*	padding-right: 91em;
+	*/	
+	/*	
+	padding-right: 91em;
 	margin-right: -90em;*/
 	/*}*/
 
@@ -170,10 +177,19 @@ label.wui-item{cursor: pointer}
 
 /*关闭*/
 .wui-close{
-	float: right;
-	/* position: absolute; */
+	/*{2014.05.21 + */
+	 position: absolute;
+	 right: 0;
+	 top: 0;
+	 z-index: 1;
+	 /*}*/
+
+	/*{2014.05.21 - */
+	/*float: right;
 	position: relative;
-	z-index: 1;
+	z-index: 1;*/
+	/*}*/
+
 	width: 2.5em;
 	height: 2.5em;
 	background-image:url(wui-icons.png);
@@ -184,7 +200,7 @@ label.wui-item{cursor: pointer}
 	cursor: pointer;
 }
 .wui-item .wui-close{margin: -.5em -1em 0 0}
-.wui-close:hover{background-color: #e6e6e6}
+.wui-close:hover{background-color: #f80; background-color: rgba(246, 161, 171, 0.5)}
 
 
 
@@ -294,6 +310,13 @@ label.wui-item{cursor: pointer}
 .-small-margin{
 	margin: -1.25em -0.25em -1em;
 }
+
+
+
+/*clearfix 2014.05.21+*/
+.clearfix:after{content: ""; display: block; clear: both;}
+.clearfix{*zoom:1}
+
 
 
 

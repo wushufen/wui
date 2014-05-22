@@ -13,9 +13,9 @@ by wushufen
 	覆盖 wui
 \************************************************/
 .loading{background: rgba(255,255,255, .6);}
+
 .wui{
-	border: 0;
 	overflow: hidden;
-	border-radius: none;
+	border-radius: 0;
 }
 .wui-item{border-color: #666;}

@@ -65,3 +65,13 @@
 .layout-sidebar,
 .sidebar,
 .header{-webkit-transition:.75s}
+
+
+
+/************************************************\
+	三栏 2014.05.21
+\************************************************/
+@media (max-width: 1024px){
+.ii-content{width: 100%}
+.iii-content{width: 100%}
+}

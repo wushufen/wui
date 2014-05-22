@@ -36,6 +36,10 @@ $(function() {
 		if (data['content']) {
 			dialog.append('<div class="wui-item">' + data['content'] + '</div>');
 		};
+		if (data['img']) {
+			dialog.append($(this).clone().css({width:'100%', height:'auto', float:'none'}));
+			dialog.removeClass('wui')
+		};
 
 		// 关闭
 		var dialogClose = $('<div class="wui-close"></div>');
