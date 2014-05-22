@@ -31,6 +31,10 @@ $(function() {
 		history.go(-1);
 		return false;
 	});
+	// 2014.05.22 + 没有历史则隐藏返回按钮
+	if (history.length<2) {
+		$('.wuijs-back').hide();
+	}
 });
 
 

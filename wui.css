@@ -414,7 +414,11 @@ table.data{overflow: hidden}
 	display: none;
 	top: 100%;
 	left: 0;
-	margin-top: .25em;
+	margin-top: .125em;
+
+	/*{2014.05.22 +*/
+	z-index: 1;
+	/*}*/
 }
 
 /*open*/
