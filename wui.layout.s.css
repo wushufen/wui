@@ -1,4 +1,5 @@
 /*
+2014.05.22
 2014.05.19
 */
 /************************************************\
@@ -27,7 +28,7 @@
 .layout-sidebar{
 	padding-left:14.1em;/*14em留给.sidebar的.1em间距*/
 }
-.layout-sidebar .header{margin-left:14.1em}
+/*.layout-sidebar .header{margin-left:14.1em}*//*2014.05.22 -*/
 
 .sidebar-toggle{display:none}
 

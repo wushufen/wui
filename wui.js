@@ -1,8 +1,10 @@
 // 侧边栏
-$('.sidebar-toggle').click(function() {
-	$('.layout-sidebar').toggleClass('active');
-	return false;
-});
+$(function(){
+	$('.sidebar-toggle').click(function() {
+		$('.layout-sidebar').toggleClass('active');
+		return false;
+	});
+})
 
 
 
