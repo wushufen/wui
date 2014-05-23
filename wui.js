@@ -21,7 +21,12 @@ $(function(){
 $(window).load(function() {
 	$('.loading').fadeOut();
 });
-
+//2014.05.23 + 设置超时
+$(function(){
+	setTimeout(function(){
+		$('.loading').fadeOut();
+	}, 10000);
+});
 
 
 /**
