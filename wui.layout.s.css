@@ -26,7 +26,8 @@
 }
 */
 .layout-sidebar{
-	padding-left:14.1em;/*14em留给.sidebar的.1em间距*/
+	/*2014.05.26 - .1em*/
+	padding-left:14em;/*14em留给.sidebar的.1em间距*/
 }
 /*.layout-sidebar .header{margin-left:14.1em}*//*2014.05.22 -*/
 
@@ -43,10 +44,14 @@
 	left:0;
 	overflow:auto;/*让菜单超出时可以滚动*/
 
+	/*2014.05.26 -*/
+	/*
 	border:solid #e6e6e6;
 	border-width:1px 1px 0 0;
+	*/
+
 	background:#fff;
-	box-shadow:#888 0 0 5px
+	box-shadow:0px 1px 3px #E2F1FF;
 }
 
 /*缩*/
@@ -59,20 +64,12 @@
 
 .layout-sidebar.active{padding-left:14.1em;	margin-right:-14.1em}
 .layout-sidebar.active .sidebar{margin-left:0;z-index:10}
-.layout-sidebar.active .header{margin-left: 14.1em;	margin-right:-14.1em}
+
+/*2014.05.26 - fixed时才要*/
+/*.layout-sidebar.active .header{margin-left: 14.1em;	margin-right:-14.1em}*/
 
 }
 
 .layout-sidebar,
 .sidebar,
 .header{-webkit-transition:.75s}
-
-
-
-/************************************************\
-	三栏 2014.05.21
-\************************************************/
-@media (max-width: 1024px){
-.ii-content{width: 100%}
-.iii-content{width: 100%}
-}

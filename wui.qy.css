@@ -14,8 +14,17 @@ by wushufen
 \************************************************/
 .loading{background: rgba(255,255,255, .6);}
 
-.wui{
-	overflow: hidden;
-	border-radius: 0;
-}
-.wui-item{border-color: #666;}
+.wui{overflow: hidden; border-radius: 0; border: 0; box-shadow:0px 1px 3px #E2F1FF;}
+.wui-header{background: #F8F8F8}
+.wui-item{border-color: #F5F5F5}
+
+/*active*/
+.wui-item.active{background: #4ABEFF; color: #fff;}
+
+
+
+/************************************************\
+\************************************************/
+a{color: #3096C9}
+
+.appname{font-size: 1.5em; font-weight: normal; text-align: center;}

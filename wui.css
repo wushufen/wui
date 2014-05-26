@@ -37,7 +37,12 @@ html,
 input,/*2014.05.19 这些元素有默认值，比继承优先*/
 select,
 textarea,
-button{font: 16px/1.5 "Microsoft YaHei",Helvetica,"Helvetica Neue","Trebuchet MS",Arial,sans-serif; color: #555}
+button,
+th{
+	font: 16px/1.5 "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+	color: #555;
+}
+/*{font: 16px/1.5 "Microsoft YaHei",Helvetica,"Helvetica Neue","Trebuchet MS",Arial,sans-serif; color: #555}*/
 /**{font: 16px/1.5 "Microsoft YaHei",Helvetica,"Helvetica Neue","Trebuchet MS",Arial,sans-serif;}*//*2014.05.19 这样所有都无法继承了*/
 
 /* 链接 */
@@ -91,13 +96,16 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 \************************************************/
 .button{
 	display:inline-block;
-	border:1px solid #e6e6e6;
-	border-radius: 4px;
+
+	/*border:1px solid #e6e6e6;*/
+	border: 0;
+
+	/*border-radius: 4px;*/
 	padding:.25em 1em;
 	box-shadow:0px 2px 3px #aaa;
 	vertical-align: top;
 	text-align:center;
-	background:#eee;
+	background:#F8F8F8;
 	color:#333;
 	cursor:pointer;
 }
@@ -117,6 +125,9 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 .input:focus{border-color: #0af}
 
+/*大小*/
+.button.small{padding: .05em .5em}
+
 
 
 /************************************************\
@@ -127,7 +138,9 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	/*{2014.05.21 + */
 	position: relative;
 	/*}*/
-	border: solid 1px #e6e6e6;
+
+	/*border: solid 1px #e6e6e6;*/
+	border: 0;
 	
 	/*{2014.05.20 - 当有下拉框时隐藏了*/
 	/*overflow: hidden;*/
@@ -135,7 +148,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	vertical-align: top;
 	margin-bottom: 1em;
 
-	box-shadow:0px 2px 3px #aaa;
+	box-shadow:0px 1px 3px #E2F1FF;
 	/*border-radius: 4px;*/
 	background: #fff;
 
@@ -146,7 +159,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	/*}*/
 	display: block;
 
-	border: solid 1px #e6e6e6;
+	border: solid 1px #F5F5F5;
 	padding: .5em 1em;
 	
 	border-right: 0;
@@ -174,6 +187,11 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	box-shadow: none;
 }
 label.wui-item{cursor: pointer}
+
+
+
+/*active*/
+.wui-item.active{background: #4ABEFF; color: #fff;}
 
 
 
@@ -280,7 +298,7 @@ label.wui-item{cursor: pointer}
 .group{padding: 0}
 
 /*头部*/
-.wui-header{/*background: #f0faff;*/ background: #f1f1f1; color: #000}
+.wui-header{background: #F8F8F8; color: #000}
 
 /*折叠*/
 .collapse{cursor: pointer}
