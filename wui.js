@@ -85,10 +85,11 @@ $(function() {
 
 		tabsBody.find('.tab').hide();
 		var curTab = tabsBody.children('.tab').eq(index);
-		var curTabHeight = curTab.outerHeight();
 
-		var beforeTab = tabsBody.children('.tab').eq(beforeTabIndex);
-		var beforeTabHeight = beforeTab.outerHeight();
+		// var curTabHeight = curTab.outerHeight();
+
+		// var beforeTab = tabsBody.children('.tab').eq(beforeTabIndex);
+		// var beforeTabHeight = beforeTab.outerHeight();
 		// // 效果
 		// tabsBody.height(beforeTabHeight);
 		// tabsBody.stop().animate({height: curTabHeight}, 500, function(){
@@ -98,6 +99,21 @@ $(function() {
 
 		curTab.fadeIn();
 	});
+
+
+
+	// 下拉框
+	$('.dropdown-toggle').click(function(){
+		$(this).closest('.dropdown').toggleClass('open');
+		return false;
+	});
+	$('body').click(function(){
+		$('.dropdown').removeClass('open');
+	});
+	$('.dropdown-menu').click(function(e){
+		e.stopPropagation();
+	})
+
 
 
 
