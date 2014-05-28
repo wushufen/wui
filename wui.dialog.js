@@ -38,13 +38,31 @@ $(function() {
 		};
 		if (data['img']) {
 			dialog.append($(this).clone().css({width:'100%', height:'auto', float:'none'}));
-			dialog.removeClass('wui')
+			dialog.removeClass('wui');
+		};
+		// 自定义内容
+		if (data['id']) {
+			var el = $('#'+data['id']);
+			// 标记一下它原本在哪里
+			var flag = $('<i style="display:none"></i>');//标记
+			el.after(flag);
+
+			var elDisplay = el.css('display');
+			if (elDisplay == 'none') {
+				el.show();
+			};
+			dialog.append(el).removeClass('wui');
 		};
 
 		// 关闭
 		var dialogClose = $('<div class="wui-close"></div>');
 
 		function close() {
+			//如果是自定义内容，将它放回原处
+			if (data['id']) {
+				flag.after(el.css('display',elDisplay)).remove();
+			};
+
 			dialog.remove();
 			overlay.fadeOut(function() {
 				$(this).remove();
