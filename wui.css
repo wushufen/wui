@@ -1,6 +1,13 @@
 /*
-2014.05.26 github test
-update 2014.05.19
+
+2014.05.30
+	添加 .text-ellipsis 超长自动在后省略号
+	修改 .data th 不换行
+	修改 .button 按钮默认不可换行，不然在表格里挤得很难看
+
+2014.05.19 ...
+↑
+update
 
 wui
 by wushufen
@@ -112,6 +119,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	background:#F8F8F8;
 	color:#333;
 	cursor:pointer;
+	white-space: nowrap;/*2014.05.30 + 不换行*/
 }
 .button:hover{box-shadow:0px 1px 3px #333}
 .button:active{box-shadow:0px 1px 5px #333 inset}
@@ -125,6 +133,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	height: 1.5em;
 	line-height: 1.25em;
 	background: transparent;
+	color: #aaa;
 	/*text-indent: .25em;*/
 }
 .input:focus{border-color: #0af}
@@ -362,7 +371,7 @@ table.data{}
 	padding:.25em 0 .25em .75em;
 	max-width:10em;
 
-	/*2014.5.27 - 隐藏的内容看不到*/
+	/*2014.5.27 - 隐藏的内容看不到，如按钮*/
 	/*{
 	overflow:hidden;
 	text-overflow:ellipsis
@@ -372,7 +381,10 @@ table.data{}
 	text-align:left;
 	border-bottom:solid 1px #aaa;
 	background: #f8f8f8;
-	color: #111;		
+	color: #111;
+
+	/*2014.05.30 +*/
+	white-space: nowrap;
 }
 .data td{
 	border-top:solid 1px #e6e6e6;
@@ -523,7 +535,7 @@ table.data{overflow: hidden; width: auto}
 .btn-primary {background-color:#0af; border-color:#3783CF; color:#fff}
 .btn-success {background-color:#21D100; border-color:#40A52D; color:#fff}
 .btn-warning {background-color:#CEB500; border-color:#A2932D; color:#fff}
-.btn-danger  {background-color:#f05a5a; border-color:#A56B6B; color:#fff}
+.btn-danger  {background-color:#FF8181; border-color:#A56B6B; color:#fff}
 .btn-error   {background-color:#ff0000; border-color:#B94242; color:#fff}
 .btn-info    {background-color:#5AC0F0; border-color:#759BAD; color:#fff}
 
@@ -558,7 +570,9 @@ table.data{overflow: hidden; width: auto}
 .text-left{text-align: left}
 .text-right{text-align: right}
 
-.nowrap{white-space:nowrap}
+.nowrap{white-space:nowrap}/*不换行*/
+.text-ellipsis /*超长自动在后加省略号*/
+{display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 /*圆角*/
 .radius{border-radius: 4px}
