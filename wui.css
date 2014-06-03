@@ -1,5 +1,10 @@
 /*
 
+2014.06.03
+	+ .xs-full 格栅响应
+	+ .sm-full
+	+ .md-full
+
 2014.05.30
 	添加 .text-ellipsis 超长自动在后省略号
 	修改 .data th 不换行
@@ -99,6 +104,11 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .span-10 {width:83.3333%}
 .span-11 {width:91.6667%}
 .span-12 {width:100%}
+
+
+/*2014.06.03 + todo*/
+.content .col.content,
+.content .col .content{margin: 0 -.5em}
 
 
 
@@ -328,6 +338,7 @@ label.wui-item{cursor: pointer}
 	/*}*/
 
 	background: #fff;
+	color: #4ABEFF;
 	border-radius: 4px 4px 0 0;
 }
 .tab{display: none}
@@ -629,10 +640,13 @@ table.data{overflow: hidden; width: auto}
 
 @media (max-width: 768px){/*手机 [ , 768)*/
 
+.xs-full{width: 100%}
 
 }
 
 @media (max-width: 992px){/*平板 [768, 992)*/
+
+.sm-full{width: 100%}
 
 .content{padding: .25em .25em 0}
 
@@ -640,6 +654,7 @@ table.data{overflow: hidden; width: auto}
 
 @media (max-width: 1200px){/*中等桌面 [992, 1200)*/
 
+.md-full{width: 100%}
 
 }
 
