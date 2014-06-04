@@ -87,6 +87,17 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .content{padding: 1em; padding-bottom: 0}
 
 
+/*2014.06.04 +*/
+/*行*/
+/*
+.row{
+	.col.span-*{}
+	.col.span-*{}
+}
+*/
+.row{*zoom}
+.row:after{content: ""; display: block; clear: both;}
+
 /*栅格*/
 /*
 .col.span-*{}
@@ -106,7 +117,8 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .span-12 {width:100%}
 
 
-/*2014.06.03 + todo*/
+/*2014.06.03 + */
+.content .row{margin: 0 -.5em}
 .content .col.content,
 .content .col .content{margin: 0 -.5em}
 
@@ -242,7 +254,8 @@ label.wui-item{cursor: pointer}
 	/*margin-top: -1px;*/
 	cursor: pointer;
 }
-.wui-item .wui-close{margin: -.5em -1em 0 0}
+/*2014.06.04 - */
+/*.wui-item .wui-close{margin: -.5em -1em 0 0}*/
 .wui-close:hover{background-color: #f80; background-color: rgba(246, 161, 171, 0.5)}
 
 
@@ -318,10 +331,10 @@ label.wui-item{cursor: pointer}
 
 
 /*组*/
-.group{padding: 0}
+.group{position: relative; padding: 0}
 
 /*头部*/
-.wui-header{background: #F8F8F8; color: #000}
+.wui-header{background: #f1f1f1; color: #000}
 
 /*折叠*/
 .collapse{cursor: pointer}
@@ -338,7 +351,7 @@ label.wui-item{cursor: pointer}
 	/*}*/
 
 	background: #fff;
-	color: #4ABEFF;
+	color: #3096C9;
 	border-radius: 4px 4px 0 0;
 }
 .tab{display: none}
@@ -391,7 +404,7 @@ table.data{}
 .data th{
 	text-align:left;
 	border-bottom:solid 1px #aaa;
-	background: #f8f8f8;
+	background: #f1f1f1;
 	color: #111;
 
 	/*2014.05.30 +*/
@@ -515,7 +528,7 @@ table.data{overflow: hidden; width: auto}
 
 /*文本颜色*/
 .c-primary {color:#0af}
-.c-success {color:#0a0}
+.c-success {color:#0d0}
 .c-warning {color:#fa0}
 .c-danger  {color:#e00}
 .c-error   {color:#e00}
@@ -649,6 +662,9 @@ table.data{overflow: hidden; width: auto}
 .sm-full{width: 100%}
 
 .content{padding: .25em .25em 0}
+.content .row{margin: 0 -.125em}
+.content .col.content,
+.content .col .content{margin: 0 -.125em}
 
 }
 
@@ -669,6 +685,7 @@ table.data{overflow: hidden; width: auto}
 .transition,
 .container,
 .content,
+.row,
 .col,
 .input,
 .progress-completed{
