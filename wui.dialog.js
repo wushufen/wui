@@ -83,6 +83,8 @@ $(function() {
 			position: 'fixed',
 			'min-width': '200px',
 			'max-width': '600px',
+			'max-height': '100%',
+			'overflow': 'auto',
 			'_width': '400px',
 			zIndex: 99999
 		});

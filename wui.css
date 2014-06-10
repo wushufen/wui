@@ -40,7 +40,7 @@ by wushufen
 *{margin: 0; padding: 0}
 
 /*背景*/
-html{background: #f8f8f8}
+html{background: #f8f8f8;}
 /*html{color: #333}*//*2014.05.19 - 字体与颜色一起*/
 /**{color: #333}*//*2014.05.18 u 这样就无法继承了*/
 
