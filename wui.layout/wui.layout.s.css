@@ -1,0 +1,75 @@
+/*
+2014.05.22
+2014.05.19
+*/
+/************************************************\
+	布局
+\************************************************/
+
+/************************\
+	layout-sidebar
+\************************/
+/*
+.layout-sidebar{
+	.header{}
+	.sidebar{
+		...
+	}
+	.container{
+		[.content]{
+			
+		}
+	}
+	x.footer{
+	
+	}
+}
+*/
+.layout-sidebar{
+	/*2014.05.26 - .1em*/
+	padding-left:14em;/*14em留给.sidebar的.1em间距*/
+}
+/*.layout-sidebar .header{margin-left:14.1em}*//*2014.05.22 -*/
+
+.sidebar-toggle{display:none}
+
+.sidebar{
+	position:fixed;
+	_position:absolute;/*ie6就让它跟着文档滚动*/
+	/*left: auto;*//*[默认就是]left:auto;是让其自动贴在父左边，而不一定在浏览器左边。比如.layout-sidebar套在.container里。发现在搜狗兼容模式下显示不正常*/
+	top: 0;/*让它..*/
+	bottom: 0;/*..的高度占满浏览器，所以父级不要有position了，【关键】*/
+	width:14em;
+	/*margin-left: -14.1em;*//*向左占.layout-sidebar留的padding-left*/
+	left:0;
+	overflow:auto;/*让菜单超出时可以滚动*/
+
+	/*2014.05.26 -*/
+	/*
+	border:solid #e6e6e6;
+	border-width:1px 1px 0 0;
+	*/
+
+	background:#fff;
+	box-shadow:0px 1px 3px #E2F1FF;
+}
+
+/*缩*/
+@media (max-width:700px){
+.sidebar-toggle{display:inline-block}
+
+.layout-sidebar{padding-left:0}
+.layout-sidebar .sidebar{margin-left:-14.1em}
+.layout-sidebar .header{margin-left:0}
+
+.layout-sidebar.active{padding-left:14.1em;	margin-right:-14.1em}
+.layout-sidebar.active .sidebar{margin-left:0;z-index:10}
+
+/*2014.05.26 - fixed时才要*/
+/*.layout-sidebar.active .header{margin-left: 14.1em;	margin-right:-14.1em}*/
+
+}
+
+.layout-sidebar,
+.sidebar,
+.header{-webkit-transition:.75s}
