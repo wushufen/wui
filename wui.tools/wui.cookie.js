@@ -1,6 +1,7 @@
 /*
 by wushufen
 wusfun@foxmail.com
+2014.06.11
 2014.01.05
 
 cookie('name');                   //get
@@ -9,54 +10,52 @@ cookie('name', null);             //delete
 cookie(null);                     //delete all
 cookie();                         //get all {}
 cookie()['name']                  //get
-cookie('name', 'value', {expires:1000*60*20});   //期限毫秒
+cookie('name', 'value', {expires: ms, domain: '', path: '/', secure: true});
 */
 function cookie(name, value, options) {
-	function trim(str){
-		return (''+str).replace(/^\s+|\s+$/g,'');
-	}
+	function trim(str){return (''+str).replace(/^\s+|\s+$/g,'')}
 
-	/*写, cookie(name, value, {})*/
-	if (value!==undefined&&value!==null) {
-		var cookieStr = trim(name)+'='+escape(trim(value));//值转十六进制
-		//参数
-		if (options instanceof Object){
-			//期限毫秒
-			if (options['expires']!==undefined){
-				var date = new Date();
-				date.setTime(date.getTime()+options['expires']);
-				cookieStr += ';expires='+date.toGMTString();
-			}
-		}
-		document.cookie= cookieStr;
-	}
-
-	/*删, cookie(name, null)*/
+	/*delete: cookie(name, null)*/
 	if (value===null) {
-		document.cookie= name+'=;expires='+new Date().toGMTString();
+		options.expires = -1;
 	}
 
-	/*递归删除所有, cookie(null)*/
+	/*delete all: cookie(null)*/
 	if (name===null) {
 		for(i in cookie()){
 			cookie(i,null);
 		}
 	}
 
-	/*读, 保存为键值对*/
-	var cookies={};
-	var arrCookie=document.cookie?document.cookie.split(';'):[];//name=value数组
-	for (i in arrCookie) {
-		var cookieNameValue = arrCookie[i].split('=');
-		var cookieName = trim(cookieNameValue[0]);
-		var cookieValue = unescape(cookieNameValue[1]);//值十六进制反转
-		cookies[cookieName] = cookieValue;
+	/*set, add: cookie(name, value, {})*/
+	if (value!==undefined) {
+
+		if (options.expires) {
+			var date = new Date();
+			date.setTime(date.getTime() + options.expires);
+		}
+
+		document.cookie=
+			trim(name)+'='+escape(trim(value))//转十六进制
+			+ options.expires? ';expires='+ date.toUTCString():''
+			+ options.path   ? ';path=' + options.path:''
+			+ options.domain ? ';domain=' + options.domain:''
+			+ options.secure ? ';secure':'';
 	}
 
-	/*调试*/
-	console.log('document.cookie: ', document.cookie);
-	console.log('cookies: ', cookies);
+	/*get: cookie('name'), cookie(), cookie().name, cookie()['name']*/
+	var cookies={};
+	var nvs=document.cookie?document.cookie.split(';'):[];//name=value数组
+	for (i in nvs) {
+		var nv = nvs[i].split('=');
+		var n = trim(nv[0]);
+		var v = unescape(nv[1]);//十六进制反转
+		cookies[n] = v;
+	}
 
-	/*返回, 所有: cookie(), 指定: cookies(name)*/
-	return name===undefined?cookies:cookies[name];
+	/*log*/
+	console.log(document.cookie, cookies);
+
+	/*return: value=cookie('name'), obj=cookies()*/
+	return name===undefined? cookies: cookies[name];
 }
