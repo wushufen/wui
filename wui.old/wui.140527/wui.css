@@ -1,0 +1,718 @@
+/*
+
+2014.06.03
+	+ .xs-full 格栅响应
+	+ .sm-full
+	+ .md-full
+
+2014.05.30
+	添加 .text-ellipsis 超长自动在后省略号
+	修改 .data th 不换行
+	修改 .button 按钮默认不可换行，不然在表格里挤得很难看
+
+2014.05.19 ...
+↑
+update
+
+wui
+by wushufen
+2014.05.13
+*/
+
+
+
+/************************************************\
+	loading...
+\************************************************/
+/*
+.loading{
+	.loading-icon
+}
+*/
+.loading{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: #fff; z-index: 99999}
+.loading-icon{position: absolute; top: 38.2%; left: 50%; width: 46px; height: 46px; margin: -23px; background: url(wui-loading.gif) center no-repeat; opacity: .9}
+
+
+
+/************************************************\
+	基本
+\************************************************/
+*{margin: 0; padding: 0}
+
+/*背景*/
+html{background: #f8f8f8;}
+/*html{color: #333}*//*2014.05.19 - 字体与颜色一起*/
+/**{color: #333}*//*2014.05.18 u 这样就无法继承了*/
+
+/*字体、颜色*/
+html,
+input,/*2014.05.19 这些元素有默认值，比继承优先*/
+select,
+textarea,
+button,
+th{
+	font: 16px/1.5 "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+	color: #333;
+}
+/*{font: 16px/1.5 "Microsoft YaHei",Helvetica,"Helvetica Neue","Trebuchet MS",Arial,sans-serif; color: #555}*/
+/**{font: 16px/1.5 "Microsoft YaHei",Helvetica,"Helvetica Neue","Trebuchet MS",Arial,sans-serif;}*//*2014.05.19 这样所有都无法继承了*/
+
+/* 链接 */
+a{text-decoration: none; color: #0af}
+a:hover{text-decoration: underline}
+a:active{text-decoration: overline}
+
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus{outline:0}
+
+
+input[type="radio"],
+input[type="checkbox"]{width: 1em; cursor: pointer}
+
+
+
+/************************************************\
+	容器
+\************************************************/
+/*container*/
+.container{
+	width: 960px;/*非响应时宽度*/
+	max-width: 100%;/*被嵌套时，比如在一个iframe里*/
+	margin: auto;
+}
+
+.content{padding: 1em; padding-bottom: 0}
+
+
+/*2014.06.04 +*/
+/*行*/
+/*
+.row{
+	.col.span-*{}
+	.col.span-*{}
+}
+*/
+.row{*zoom}
+.row:after{content: ""; display: block; clear: both;}
+
+/*栅格*/
+/*
+.col.span-*{}
+*/
+.col{float:left}
+.span-1  {width:8.3333%}
+.span-2  {width:16.6667%}
+.span-3  {width:25%}
+.span-4  {width:33.3333%}
+.span-5  {width:41.6667%}
+.span-6  {width:50%}
+.span-7  {width:58.3333%}
+.span-8  {width:66.6667%}
+.span-9  {width:75%}
+.span-10 {width:83.3333%}
+.span-11 {width:91.6667%}
+.span-12 {width:100%}
+
+
+/*2014.06.03 + */
+.content .row{margin: 0 -.5em}
+.content .col.content,
+.content .col .content{margin: 0 -.5em}
+
+
+
+/************************************************\
+	表单
+\************************************************/
+.button{
+	display:inline-block;
+
+	/*border:1px solid #e6e6e6;*/
+	border: 0;
+
+	/*border-radius: 4px;*/
+	padding:.25em 1em;
+	box-shadow:0px 2px 3px #aaa;
+	vertical-align: top;
+	text-align:center;
+	background:#F8F8F8;
+	color:#333;
+	cursor:pointer;
+	white-space: nowrap;/*2014.05.30 + 不换行*/
+}
+.button:hover{box-shadow:0px 1px 3px #333}
+.button:active{box-shadow:0px 1px 5px #333 inset}
+
+.input{
+	position: relative;
+	display: block;
+	border: solid 1px #5da8ca;
+	border-width: 0 0 1px 0;
+	width: 100%;
+	height: 1.5em;
+	line-height: 1.25em;
+	background: transparent;
+	color: #aaa;
+	/*text-indent: .25em;*/
+}
+.input:focus{border-color: #0af}
+
+/*大小*/
+.button.small{padding: .05em .5em}
+
+
+
+/************************************************\
+	wui组件
+\************************************************/
+.data,
+.wui{
+	/*{2014.05.21 + */
+	position: relative;
+	/*}*/
+
+	/*border: solid 1px #e6e6e6;*/
+	border: 0;
+	
+	/*{2014.05.20 - 当有下拉框时隐藏了*/
+	/*overflow: hidden;*/
+	/*}*/
+	vertical-align: top;
+	margin-bottom: 1em;
+
+	box-shadow:0px 1px 3px #E2F1FF;
+	/*border-radius: 4px;*/
+	background: #fff;
+
+}
+.wui-item{
+	/*{2014.05.21 + */
+	position: relative;
+	/*}*/
+	display: block;
+
+	border: solid 1px #F5F5F5;
+	padding: .5em 1em;
+	
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -1px;
+	margin-left: -1px;
+
+	/*{2014.05.20 + 
+		这样换行时可以占满一行，注意修改padding时的换算
+		2014.05.20 - 这样标签页和两端对齐有问题
+	*/	
+	/*	
+	padding-right: 91em;
+	margin-right: -90em;*/
+	/*}*/
+
+	/*
+	border-top: 0;
+	border-left: 0;
+	margin-right: -1px;
+	margin-bottom: -1px;
+	*//*2014.05.16 u 这样后面的如果有背景颜色会挡住border*/
+
+	border-radius: 0;
+	box-shadow: none;
+}
+label.wui-item{cursor: pointer}
+
+
+
+/*active*/
+.wui-item.active{background: #4ABEFF; color: #fff;}
+
+
+
+/*关闭*/
+.wui-close{
+	/*{2014.05.21 + */
+	 position: absolute;
+	 right: 0;
+	 top: 0;
+	 z-index: 1;
+	 /*}*/
+
+	/*{2014.05.21 - */
+	/*float: right;
+	position: relative;
+	z-index: 1;*/
+	/*}*/
+
+	width: 2.5em;
+	height: 2.5em;
+	background-image:url(wui-icons.png);
+	background-position: -197px;
+	background-repeat:no-repeat;
+
+	/*margin-top: -1px;*/
+	cursor: pointer;
+}
+/*2014.06.04 - */
+/*.wui-item .wui-close{margin: -.5em -1em 0 0}*/
+.wui-close:hover{background-color: #f80; background-color: rgba(246, 161, 171, 0.5)}
+
+
+
+/*大小*/
+.small .wui-item{
+	padding: .25em .75em;
+
+	/*{2014.05.20 + */
+	/*2014.05.20 -*/
+	/*padding-right: 90.75em;*/
+	/*}*/
+}
+.small .wui-close{
+	width: 2em;
+	height: 2em;
+	background-position: -200px;
+}
+
+
+
+/*水平、2*/
+.horizontal{
+	display: inline-block; *display: inline; *zoom:1;
+
+	vertical-align: middle;
+	margin-bottom: 0;
+}
+.horizontal2{*zoom:1}
+.horizontal2:after{content: ""; display: block; clear: both;}
+
+.horizontal .wui-item,
+.horizontal2 .wui-item{
+	float: left;
+	/*
+	border: solid 1px #e6e6e6;
+	border-top: 0;
+	border-left: 0;
+	padding: .5em 1em;
+	margin-right: -1px;
+	margin-bottom: -1px;
+	*/
+}
+
+
+
+/*垂直*/
+.vertical{
+	display: inline-block; *display: inline; *zoom:1;
+}
+
+
+
+/*两端对齐*/
+.justified{
+	display: table;
+	width: 100%;
+	word-spacing: -.25em;
+	text-align: center;
+}
+.justified .wui-item{
+	float: none;
+	display: inline-block;
+	display: table-cell;
+	*display: inline; *zoom:1;
+	border-top: 0;
+	word-spacing: normal;
+}
+.justified .wui-item:nth-child(1){
+	border-left: 0;
+}
+
+
+
+/*组*/
+.group{position: relative; padding: 0}
+
+/*头部*/
+.wui-header{background: #f1f1f1; color: #000}
+
+/*折叠*/
+.collapse{cursor: pointer}
+
+
+
+/*标签页*/
+.tabs{}
+.tabs-indexs .wui-item{cursor: pointer}
+.tabs-indexs .wui-item.active{
+	/*{2014.05.19 + 当.tab有opacity时(fadeIn)，其层次会变高，就无法挡住其border-top*/
+	position: relative;
+	z-index: 1;
+	/*}*/
+
+	background: #fff;
+	color: #3096C9;
+	border-radius: 4px 4px 0 0;
+}
+.tab{display: none}
+
+
+
+/*2014.05.19 + 抵消padding*/
+/*
+.wui-item{
+	.wui.horizontal.small.-small-margin{}
+}
+*/
+.-small-margin{
+	margin: -1.25em -0.25em -1em;
+}
+
+
+
+/************************************************\
+	表格
+\************************************************/
+/*
+.data{
+	table
+}
+
+table.data{}
+*/
+.data table,
+.data{
+	*table-layout: fixed;/*避免ie7撑宽*/
+	border-collapse:collapse;
+	border-spacing:0;
+	width:100%;
+}
+.data tr:nth-child(2n+1){background:#f9fdff}
+.data tr:hover{background:#e4f6ff}
+
+.data th,
+.data td{
+	padding:.25em 0 .25em .75em;
+	max-width:10em;
+
+	/*2014.5.27 - 隐藏的内容看不到，如按钮*/
+	/*{
+	overflow:hidden;
+	text-overflow:ellipsis
+	}*/
+}
+.data th{
+	text-align:left;
+	border-bottom:solid 1px #aaa;
+	background: #f1f1f1;
+	color: #111;
+
+	/*2014.05.30 +*/
+	white-space: nowrap;
+}
+.data td{
+	border-top:solid 1px #e6e6e6;
+}
+
+
+.data{overflow:auto}
+table.data{overflow: hidden; width: auto}
+
+
+
+/************************************************\
+	进度条
+\************************************************/
+/*
+.progress{
+	.progress-completed[style="width:n%"]{n%}
+}
+*/
+.progress{
+	background: #eee;
+}
+.progress-completed{
+	background: #0af;
+	text-align: right;
+	line-height: 1em;
+	max-width: 100%;
+}
+
+
+
+/************************************************\
+	badge
+\************************************************/
+.badge{
+	display: inline-block;
+	padding: 0.25em;
+	line-height: .85;
+	font-size: .5em;
+
+	border-radius: 9em;
+	background: #0af;
+	color: #fff;
+}
+
+
+
+
+/************************************************\
+	下拉框
+\************************************************/
+/*
+.dropdown{
+	.dropdown-toggle{}
+	.dropdown-menu{}
+}
+*/
+.dropdown{position: relative}
+.dropdown-menu{
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	margin-top: .125em;
+
+	/*{2014.05.22 +*/
+	z-index: 1;
+	/*}*/
+}
+
+/*open*/
+.dropdown.open .dropdown-toggle{
+	box-shadow:0px 1px 5px #333 inset;
+}
+.dropdown.open .dropdown-menu{
+	display: block;
+	box-shadow: 1px 3px 5px #888;
+}
+
+
+
+/************************************************\
+	图标
+\************************************************/
+.icon{
+	display:inline-block; /**display: inline; *zoom:1; 看看ie7要不要*/
+	width:1em;
+	height:1.4em;
+	vertical-align:middle;
+	background-image:url(wui-icons.png);
+	background-repeat:no-repeat;
+}
+.i-left         {background-position: 0}
+.i-right        {background-position: -30px}
+.i-up           {background-position: -60px}
+.i-down         {background-position: -90px}
+.i-min          {background-position: -120px}
+.i-plus         {background-position: -150px}
+.i-ok           {background-position: -180px}
+.i-x            {background-position: -210px}
+.i-back         {background-position: -240px}
+.i-forward      {background-position: -270px}
+.i-menu         {background-position: -300px}
+.i-grid         {background-position: -330px}
+.i-home         {background-position: -360px}
+.i-search       {background-position: -390px}
+.i-person       {background-position: -420px}
+.i-pen          {background-position: -450px}
+.i-setting      {background-position: -480px}
+.i-shoppingcart {background-position: -510px}
+
+
+
+/************************************************\
+    颜色
+\************************************************/
+
+/*文本颜色*/
+.c-primary {color:#0af}
+.c-success {color:#0d0}
+.c-warning {color:#fa0}
+.c-danger  {color:#e00}
+.c-error   {color:#e00}
+.c-info    {color:#759BAD}
+
+.c-money   {color:#f80}
+
+
+/*文本框、边框*/
+.b-primary {border-color:#3783CF}
+.b-success {border-color:#40A52D}
+.b-warning {border-color:#A2932D}
+.b-danger  {border-color:#A56B6B}
+.b-error   {border-color:#B94242}
+.b-info    {border-color:#759BAD}
+
+
+/*背景*/
+.bg-primary {background-color:#3783CF}
+.bg-success {background-color:#40A52D}
+.bg-warning {background-color:#A2932D}
+.bg-danger  {background-color:#A56B6B}
+.bg-error   {background-color:#B94242}
+.bg-info    {background-color:#759BAD}
+
+
+/*按钮*/
+.btn-primary {background-color:#0af; border-color:#3783CF; color:#fff}
+.btn-success {background-color:#21D100; border-color:#40A52D; color:#fff}
+.btn-warning {background-color:#CEB500; border-color:#A2932D; color:#fff}
+.btn-danger  {background-color:#FF8181; border-color:#A56B6B; color:#fff}
+.btn-error   {background-color:#ff0000; border-color:#B94242; color:#fff}
+.btn-info    {background-color:#5AC0F0; border-color:#759BAD; color:#fff}
+
+
+
+/************************************************\
+    常用类
+\************************************************/
+/*块*/
+.none{display: none}
+.block{display: block}
+.inline{display: inline}
+.inline-block{display: inline-block; *display: inline; *zoom: 1}
+
+/* 宽高 */
+.width-full{width:100%}
+.width-auto{width:auto}
+.height-full{height:100%}
+.height-auto{width:auto}
+
+/*浮动*/
+.float-none{float: left}
+.float-left{float: left}
+.float-right{float: right}
+
+/*撑开*/
+.clearfix:after{content: ""; display: block; clear: both;}
+.clearfix{*zoom:1}
+
+/*文本*/
+.text-center{text-align: center}
+.text-left{text-align: left}
+.text-right{text-align: right}
+
+.nowrap{white-space:nowrap}/*不换行*/
+.text-ellipsis /*超长自动在后加省略号*/
+{display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+/*圆角*/
+.radius{border-radius: 4px}
+.circle{border-radius: 999em}
+
+/*阴影*/
+.shadow-none{box-shadow:none}
+.shadow{box-shadow:0px 2px 3px 0px #333}
+.shadow-inset{box-shadow:0px 2px 3px 0px #333 inset}
+
+/*禁选择*/
+.select-none{
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+
+/************************************************\
+    适应设备
+    要考虑桌面浏览器的滚动条宽度
+\************************************************/
+
+/*--------->>>>往大设备都生效*/
+
+@media (min-width: 1px){/*手机 [ , 768)*/
+
+.container{width: 100%}/*为了过渡效果好给宽度*/
+
+}
+
+@media (min-width: 768px){/*平板 [768, 992)*/
+
+.container{width: 100%}
+
+}
+
+@media (min-width: 992px){/*中等桌面 [992, 1200)*/
+
+.container{width: 930px}
+
+}
+
+@media (min-width: 1200px){/*大桌面 [1200, ]*/
+
+.container{width: 1140px}
+
+}
+
+/*<<<<--------往小设备都生效*/
+
+@media (max-width: 768px){/*手机 [ , 768)*/
+
+.xs-full{width: 100%}
+
+}
+
+@media (max-width: 992px){/*平板 [768, 992)*/
+
+.sm-full{width: 100%}
+
+.content{padding: .25em .25em 0}
+.content .row{margin: 0 -.125em}
+.content .col.content,
+.content .col .content{margin: 0 -.125em}
+
+}
+
+@media (max-width: 1200px){/*中等桌面 [992, 1200)*/
+
+.md-full{width: 100%}
+
+}
+
+@media (max-width: 9999px){/*大桌面 [1200, ]*/
+
+}
+
+/************************************************\
+    过渡效果
+\************************************************/
+/*过渡所有效果*/
+.transition,
+.container,
+.content,
+.row,
+.col,
+.input,
+.progress-completed{
+	-webkit-transition: .8s;
+	   -moz-transition: .8s;
+	     -o-transition: .8s;
+	        transition: .8s;
+}
+
+
+
+/************************************************\
+    hack
+\************************************************/
+/*ie7 的a 负margin-top和margin-bottom 有异常，点击范围变小*/
+.wui-item{*margin-top: 0}
+.wui{*border-top: 0}
+.wui.justified{*border-top: solid 1px #e6e6e6; *text-align: left; *width: auto}
+
+
+
+/************************************************\
+    测试
+\************************************************/
+/* 显示元素边框、背景 */
+.t{border:1px solid #f00; box-sizing: border-box}
+.t2{border:1px solid #0f0; box-sizing: border-box}
+.b{background:#f00}
+.b2{background:#0f0}
+
