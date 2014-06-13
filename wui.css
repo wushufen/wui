@@ -1,22 +1,7 @@
 /*
-
-2014.06.03
-	+ .xs-full 格栅响应
-	+ .sm-full
-	+ .md-full
-
-2014.05.30
-	添加 .text-ellipsis 超长自动在后省略号
-	修改 .data th 不换行
-	修改 .button 按钮默认不可换行，不然在表格里挤得很难看
-
-2014.05.19 ...
-↑
-update
-
 wui
 by wushufen
-2014.05.13
+2014.06.13
 */
 
 
@@ -30,7 +15,7 @@ by wushufen
 }
 */
 .loading{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: #fff; z-index: 99999}
-.loading-icon{position: absolute; top: 38.2%; left: 50%; width: 46px; height: 46px; margin: -23px; background: url(wui-loading.gif) center no-repeat; opacity: .9}
+.loading-icon{position: absolute; top: 38.2%; left: 50%; width: 46px; height: 46px; margin: -23px; background: url(wui.img/wui-loading.gif) center no-repeat; opacity: .9}
 
 
 
@@ -40,7 +25,7 @@ by wushufen
 *{margin: 0; padding: 0}
 
 /*背景*/
-html{background: #f8f8f8;}
+html{background: #fff;}
 /*html{color: #333}*//*2014.05.19 - 字体与颜色一起*/
 /**{color: #333}*//*2014.05.18 u 这样就无法继承了*/
 
@@ -82,6 +67,8 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	width: 960px;/*非响应时宽度*/
 	max-width: 100%;/*被嵌套时，比如在一个iframe里*/
 	margin: auto;
+	padding: 0 1em;
+	box-sizing: border-box;
 }
 
 .content{padding: 1em; padding-bottom: 0}
@@ -125,6 +112,175 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 
 
 /************************************************\
+	路径（面包屑导航）
+\************************************************/
+/*
+.path{
+	[span{当前位置：}]
+	a{}
+	span{}
+}
+*/
+.path{
+	overflow: hidden;
+}/*clearfix*/
+.path a,
+.path span{
+	position: relative;
+	float: left;
+	padding: .25em .75em;
+
+	border-bottom: solid 1px #e6e6e6;
+	margin-bottom: -1px;
+	/*分隔*/
+	border-left: solid 1px #e6e6e6;
+	margin-left: -1px;
+}
+
+/*如果支持 “+” 选择器，则覆盖上面的border-left分隔，用新的分隔符*/
+.path a + a,
+.path a + span{
+	border-left: 0;
+}
+.path a + a:before,
+.path a + span:before{
+	content: "/";/*分隔符*/
+	position: absolute;
+	left: -.15em;
+	color: #e6e6e6;
+}
+.path .disable{cursor: not-allowed; background: #e6e6e6;}
+
+
+
+/************************************************\
+	面板
+\************************************************/
+/*
+.panel{
+	.panel-header{
+		//panel-title{}
+	}
+	.panel-body{}
+	.panel-footer{}
+}
+*/
+.panel{
+	border:solid 1px #e6e6e6;
+	padding:.5em .75em;
+	border-radius: 4px;
+	margin-bottom: 1em;
+}
+.panel-header{
+	margin:-.5em -.75em .5em;
+	padding:.5em .75em;
+	border-bottom:solid 1px #ddd
+}
+.panel-title{
+	border-bottom:solid 1px #0af;
+	float:left;
+	position:relative;
+	bottom:-1px;
+	color:#111
+}
+.panel-body{
+	margin:-.5em -.75em;
+	padding:.5em .75em
+}
+.panel-footer{
+	border-top:solid 1px #e6e6e6;
+	margin:.5em -.75em -.5em;
+	padding:.5em .75em
+}
+
+
+
+
+/************************************************\
+	选项卡（标签页）
+\************************************************/
+/*
+.tabs{
+  ul.tabs-indexs{[.justified]
+    li{}
+    li{}
+    ...
+    li.right{右标签}
+  }
+  .tabs-body{
+    .tab{}
+    .tab{}
+    .tab{}
+    ...
+  }
+}
+*/
+.tabs{}/*clearfix*/
+
+.tabs-indexs{
+	list-style:none;
+
+	border-bottom:solid 1px #e6e6e6
+}/*clearifx*/
+.tabs-indexs li{
+	float:left;
+	padding:.25em .75em;
+
+	margin-bottom:-1px;
+	border:solid 1px transparent;
+	border-radius: 4px 4px 0 0;
+	cursor:pointer
+}
+.tabs-indexs li.right{
+	float:right
+}
+.tabs-indexs li a{
+	display:block;
+	margin:-.5em -.75em;
+	padding:.5em .75em
+}
+
+.tabs-body{
+	border: solid 1px #e6e6e6;
+	margin-top: -1px;
+	border-radius: 0 0 4px 4px;
+	padding:.5em .75em
+}
+
+.tab{/*display: none;*/}
+
+/*active*/
+.tabs-indexs li.active{
+	background:#fff;
+	border-color:#e6e6e6;
+	border-bottom-color: #fff;
+	position:relative;
+}
+.tab.active{display:block}
+
+
+/*justified, 低版本浏览器不支持 display:table*/
+.tabs-indexs.justified{
+	display:table;
+	width:100%;
+	table-layout:fixed;
+	box-sizing:border-box
+}
+.tabs-indexs.justified:after{display:none}/*:after也当成了一格*/
+.tabs-indexs.justified li{
+	float:none;
+	display:inline-block;
+	display:table-cell;
+	*display: inline; *zoom:1;
+	text-align:center;
+	bottom: -1px;/*margin-bottom:-1px;无效*/
+}
+
+
+
+
+
+/************************************************\
 	表单
 \************************************************/
 .button{
@@ -163,210 +319,6 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 /*大小*/
 .button.small{padding: .05em .5em}
 
-
-
-/************************************************\
-	wui组件
-\************************************************/
-.data,
-.wui{
-	/*{2014.05.21 + */
-	position: relative;
-	/*}*/
-
-	/*border: solid 1px #e6e6e6;*/
-	border: 0;
-	
-	/*{2014.05.20 - 当有下拉框时隐藏了*/
-	/*overflow: hidden;*/
-	/*}*/
-	vertical-align: top;
-	margin-bottom: 1em;
-
-	box-shadow:0px 1px 3px #E2F1FF;
-	/*border-radius: 4px;*/
-	background: #fff;
-
-}
-.wui-item{
-	/*{2014.05.21 + */
-	position: relative;
-	/*}*/
-	display: block;
-
-	border: solid 1px #F5F5F5;
-	padding: .5em 1em;
-	
-	border-right: 0;
-	border-bottom: 0;
-	margin-top: -1px;
-	margin-left: -1px;
-
-	/*{2014.05.20 + 
-		这样换行时可以占满一行，注意修改padding时的换算
-		2014.05.20 - 这样标签页和两端对齐有问题
-	*/	
-	/*	
-	padding-right: 91em;
-	margin-right: -90em;*/
-	/*}*/
-
-	/*
-	border-top: 0;
-	border-left: 0;
-	margin-right: -1px;
-	margin-bottom: -1px;
-	*//*2014.05.16 u 这样后面的如果有背景颜色会挡住border*/
-
-	border-radius: 0;
-	box-shadow: none;
-}
-label.wui-item{cursor: pointer}
-
-
-
-/*active*/
-.wui-item.active{background: #4ABEFF; color: #fff;}
-
-
-
-/*关闭*/
-.wui-close{
-	/*{2014.05.21 + */
-	 position: absolute;
-	 right: 0;
-	 top: 0;
-	 z-index: 1;
-	 /*}*/
-
-	/*{2014.05.21 - */
-	/*float: right;
-	position: relative;
-	z-index: 1;*/
-	/*}*/
-
-	width: 2.5em;
-	height: 2.5em;
-	background-image:url(wui-icons.png);
-	background-position: -197px;
-	background-repeat:no-repeat;
-
-	/*margin-top: -1px;*/
-	cursor: pointer;
-}
-/*2014.06.04 - */
-/*.wui-item .wui-close{margin: -.5em -1em 0 0}*/
-.wui-close:hover{background-color: #f80; background-color: rgba(246, 161, 171, 0.5)}
-
-
-
-/*大小*/
-.small .wui-item{
-	padding: .25em .75em;
-
-	/*{2014.05.20 + */
-	/*2014.05.20 -*/
-	/*padding-right: 90.75em;*/
-	/*}*/
-}
-.small .wui-close{
-	width: 2em;
-	height: 2em;
-	background-position: -200px;
-}
-
-
-
-/*水平、2*/
-.horizontal{
-	display: inline-block; *display: inline; *zoom:1;
-
-	vertical-align: middle;
-	margin-bottom: 0;
-}
-.horizontal2{*zoom:1}
-.horizontal2:after{content: ""; display: block; clear: both;}
-
-.horizontal .wui-item,
-.horizontal2 .wui-item{
-	float: left;
-	/*
-	border: solid 1px #e6e6e6;
-	border-top: 0;
-	border-left: 0;
-	padding: .5em 1em;
-	margin-right: -1px;
-	margin-bottom: -1px;
-	*/
-}
-
-
-
-/*垂直*/
-.vertical{
-	display: inline-block; *display: inline; *zoom:1;
-}
-
-
-
-/*两端对齐*/
-.justified{
-	display: table;
-	width: 100%;
-	word-spacing: -.25em;
-	text-align: center;
-}
-.justified .wui-item{
-	float: none;
-	display: inline-block;
-	display: table-cell;
-	*display: inline; *zoom:1;
-	border-top: 0;
-	word-spacing: normal;
-}
-.justified .wui-item:nth-child(1){
-	border-left: 0;
-}
-
-
-
-/*组*/
-.group{position: relative; padding: 0}
-
-/*头部*/
-.wui-header{background: #f1f1f1; color: #000}
-
-/*折叠*/
-.collapse{cursor: pointer}
-
-
-
-/*标签页*/
-.tabs{}
-.tabs-indexs .wui-item{cursor: pointer}
-.tabs-indexs .wui-item.active{
-	/*{2014.05.19 + 当.tab有opacity时(fadeIn)，其层次会变高，就无法挡住其border-top*/
-	position: relative;
-	z-index: 1;
-	/*}*/
-
-	background: #fff;
-	color: #3096C9;
-	border-radius: 4px 4px 0 0;
-}
-.tab{display: none}
-
-
-
-/*2014.05.19 + 抵消padding*/
-/*
-.wui-item{
-	.wui.horizontal.small.-small-margin{}
-}
-*/
-.-small-margin{
-	margin: -1.25em -0.25em -1em;
-}
 
 
 
@@ -498,7 +450,7 @@ table.data{overflow: hidden; width: auto}
 	width:1em;
 	height:1.4em;
 	vertical-align:middle;
-	background-image:url(wui-icons.png);
+	background-image:url(wui.img/wui-icons.png);
 	background-repeat:no-repeat;
 }
 .i-left         {background-position: 0}
@@ -700,10 +652,6 @@ table.data{overflow: hidden; width: auto}
 /************************************************\
     hack
 \************************************************/
-/*ie7 的a 负margin-top和margin-bottom 有异常，点击范围变小*/
-.wui-item{*margin-top: 0}
-.wui{*border-top: 0}
-.wui.justified{*border-top: solid 1px #e6e6e6; *text-align: left; *width: auto}
 
 
 

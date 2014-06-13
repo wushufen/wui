@@ -118,11 +118,9 @@ html.top-line{border-top:solid .15em #0af}
 .header{
 
 	.header-left{}
-	.header-right{}
+	.header-right{.nav-toggle{}}
 
 	.header-title{a{AppName}}
-	.sidebar-button{}
-	.nav-button{}
 	.nav{
 		.nav-menu{
 			nav-menu-item{a{}}

@@ -11,7 +11,7 @@ cookie(null);            //delete all
 cookie();                //get all {}
 cookie().name            //get
 cookie()['name']         //get
-cookie('name');          //get
+cookie('name')           //get
 */
 function cookie(name, value, options){
 	options = options||{};
@@ -52,5 +52,5 @@ function cookie(name, value, options){
 	// console.log(cookies, document.cookie);
 
 	/*return: obj=cookies(), value=cookie('name')*/
-	return name===undefined? cookies: cookies[name];
+	return name? cookies[name]: cookies;
 }

@@ -1,0 +1,67 @@
+.layout{padding-left: 12em}
+.sidebar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 12em;
+	overflow: auto;
+	z-index: 10;
+	background: #3D4F5D;
+}
+.layout,
+.sidebar{
+	transition: .5s;
+}
+.sidebar-toggle{
+	display: none;
+	position: fixed;
+	width: 2.5em;
+	height: 2.5em;
+	background: rgba(99,99,99, .8);
+}
+
+@media (max-width: 700px){
+	.layout{padding-left: 0}
+	.sidebar{left: -12em}
+	.sidebar-toggle{display: block;}
+
+	.layout.active{padding-left: 12em; margin-right: -12em}
+	.layout.active .sidebar{left: 0}
+}
+
+
+
+.menu{}
+.menu-header{
+	display: block;
+	border-bottom: solid 1px #444;
+	padding: .0625em;
+	font-size: 1.5em;
+	text-align: center;
+	color: #fff;
+}
+.menu-item{
+	display: block;
+	padding: .5em 1em;
+	color: #eee;
+	text-decoration: none;
+}
+.menu-item:hover{
+	background: rgba(255,255,255, .2)
+}
+
+
+
+@media (min-width: 700px){
+	/*滚动条，移动设备不要*/
+	::-webkit-scrollbar{width: 11px; height: 11px}
+	::-webkit-scrollbar-track{border: solid 5px #fff; background: #999}
+	::-webkit-scrollbar-thumb{background: #fff; border-radius: 9px; border: solid 1px #999}
+	::-webkit-scrollbar-thumb:hover{background: #fff}
+	::-webkit-scrollbar-thumb:active{background: #eff}
+}
+
+/*选择文本*/
+::selection{background: #576268; color: #fff}
+::-moz-selection{background: #576268; color: #fff}
