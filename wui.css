@@ -688,11 +688,6 @@ table.data{overflow: hidden; width: auto}
 
 .sm-full{width: 100%}
 
-.content{padding: .25em .25em 0}
-.content .row{margin: 0 -.125em}
-.content .col.content,
-.content .col .content{margin: 0 -.125em}
-
 }
 
 @media (max-width: 1200px){/*中等桌面 [992, 1200)*/
