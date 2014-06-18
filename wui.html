@@ -62,6 +62,20 @@
 
 		<h2 id="grid">grid</h2>
 		<div class="row" style="margin:1em 0">
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+			<div class="col span-1 t">col span-1</div>
+		</div>
+		<div class="row" style="margin:1em 0">
 			<div class="col span-3 t">col span-3</div>
 			<div class="col span-4 t">col span-4</div>
 			<div class="col span-5 t">col span-5</div>
@@ -261,7 +275,7 @@
 		$('a[href*=#]').click(function(){
 			href = $(this).attr('href');
 			$htmlBody.stop().animate({scrollTop: $(href).offset().top}, 500, function(){
-				// location.hash = href;
+				// location.hash = href; //按返回时，锚点位置不太对
 			});
 				location.hash = href;
 			return false;
