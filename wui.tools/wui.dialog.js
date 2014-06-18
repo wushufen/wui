@@ -29,17 +29,49 @@ $(function() {
 		overlay.hide().fadeIn();
 
 		//对话框
-		var dialog = $('<div class="wui"></div>');
+		var dialog = $('<div></div>');
+		dialog.css({
+			'position': 'fixed',
+			'border': 'solid 1px #ddd',
+			'min-width': '200px',
+			'max-width': '600px',
+			'_width': '400px',
+			'z-index': '9999',
+			'border-radius': '3px',
+			'box-shadow': '0 3px 10px #333',
+			'margin': '1em',
+			'text-align': 'left',
+			'background': '#fff',
+		});
+
+		//标题
 		if (data['title']) {
-			dialog.append('<div class="wui-item wui-header">' + data['title'] + '</div>');
+			var dialogHeader = $('<div></div>');
+			dialogHeader.css({
+				'border-bottom': 'solid 1px #e6e6e6',
+				'padding': '.5em 1em',
+				'color': '#111'
+			});
+			dialogHeader.append(data['title']);
+			dialog.append(dialogHeader);
 		};
+
+		//内容
 		if (data['content']) {
-			dialog.append('<div class="wui-item">' + data['content'] + '</div>');
+			var dialogBody = $('<div></div>');
+			dialogBody.css({
+				'padding': '.5em 1em'
+			});
+			dialogBody.append(data['content']);
+			dialog.append(dialogBody);
 		};
+
+		//图片
 		if (data['img']) {
 			dialog.append($(this).clone().css({width:'100%', height:'auto', float:'none'}));
 			dialog.removeClass('wui');
 		};
+
 		// 自定义内容
 		if (data['id']) {
 			var el = $('#'+data['id']);
@@ -56,6 +88,18 @@ $(function() {
 
 		// 关闭
 		var dialogClose = $('<div class="wui-close"></div>');
+		dialogClose.css({
+			'float': 'right',
+			'position': 'absolute',
+			'top': '0',
+			'right': '0',
+			'width': '2.5em',
+			'height': '2.5em',
+			'cursor': 'pointer',
+			'background-image': 'url(wui.img/wui-icons.png)',
+			'background-position': '-197px',
+			'background-repeat': 'no-repeat',
+		});
 
 		function close() {
 			//如果是自定义内容，将它放回原处
@@ -78,16 +122,6 @@ $(function() {
 				close();
 			});
 		};
-
-		dialog.css({
-			position: 'fixed',
-			'min-width': '200px',
-			'max-width': '600px',
-			'max-height': '100%',
-			'overflow': 'auto',
-			'_width': '400px',
-			zIndex: 99999
-		});
 		$('body').append(dialog);
 
 		//对话框定位

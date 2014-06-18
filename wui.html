@@ -6,11 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" type="text/css" href="wui.css">
-	<link rel="stylesheet" type="text/css" href="wui.layout/sidebar.css">
+	<link rel="stylesheet" type="text/css" href="wui.layout/sidebar.layout.css">
 
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="wui.js"></script>
-	<script type="text/javascript" src="wui.dialog.js"></script>
+	<script type="text/javascript" src="wui.tools/wui.dialog.js"></script>
+
+	<style type="text/css">
+	h2{border-bottom: solid 1px #ddd; margin: 2em 0 1em;}
+	</style>
 
 </head>
 <body>
@@ -22,178 +26,221 @@
 	<div class="sidebar-toggle"></div>
 	<div class="sidebar">
 
+		<h1 class="sidebar-header">WUI</h1>
+
 		<div class="menu">
-			<h1 class="menu-header">WUI</h1>
 			<a class="menu-item" href="#header">header</a>
 			<a class="menu-item" href="#container">container</a>
 			<a class="menu-item" href="#grid">grid</a>
-			<a class="menu-item" href="#menu">menu</a>
 			<a class="menu-item" href="#path">path</a>
-			<a class="menu-item" href="#panel">panel</a>
+			<a class="menu-item" href="#menu">menu</a>
 			<a class="menu-item" href="#tabs">tabs</a>
+			<a class="menu-item" href="#panel">panel</a>
 			<a class="menu-item" href="#list">list</a>
-			<a class="menu-item" href="#form">form</a>
 			<a class="menu-item" href="#table">table</a>
 			<a class="menu-item" href="#pagination">pagination</a>
+			<a class="menu-item" href="#form">form</a>
 			<a class="menu-item" href="#progress">progress</a>
-			<a class="menu-item" href="#dialog">dialog</a>
 			<a class="menu-item" href="#icon">icon</a>
+			<a class="menu-item" href="#dialog">dialog</a>
 		</div>
 
 	</div>
 
-	<div id="header" class="header">
-		
-	</div>
-
 	<div class="container">
 
-				<!-- path -->
-				<div class="path">
-					<a href="">首页</a>
-					<a href="">父页</a>
-					<span>当前页</span>
+
+
+		<h2 id="header">header</h2>
+
+
+
+		<h2 id="container">container</h2>
+		<div class="container t">container</div>
+
+
+
+		<h2 id="grid">grid</h2>
+		<div class="row" style="margin:1em 0">
+			<div class="col span-3 t">col span-3</div>
+			<div class="col span-4 t">col span-4</div>
+			<div class="col span-5 t">col span-5</div>
+		</div>
+		<div class="row" style="margin:1em 0">
+			<div class="col span-8 t">
+				col span-8
+				<div class="row">
+					<div class="col span-5 t">col span-5</div>
+					<div class="col span-7 t">col span-7</div>
 				</div>
+			</div>
+			<div class="col span-4 t">col span-4</div>
+		</div>
 
-				<!-- panel{ -->
-				<div class="panel">
-					面板
-				</div>
-				<!-- }panel -->
-				<!-- panel{ -->
-				<div class="panel">
-					<div class="panel-header">标题</div>
-					面板
-				</div>
-				<!-- }panel -->
-				<!-- panel{ -->
-				<div class="panel">
-					<div class="panel-header">标题</div>
-					<div class="panel-body">
-						面板
-					</div>
-				</div>
-				<!-- }panel -->
-				<div class="panel">
-					<div class="panel-header">标题</div>
-					<div class="panel-body">
-						面板
-					</div>
-					<div class="panel-footer">
-						脚注
-					</div>
-				</div>
-				<!-- }panel -->
 
-				<!-- tabs{ -->
-				<div class="tabs">
-					<ul class="tabs-indexs">
-						<li>标签页一</li>
-						<li>标签页二</li>
-						<li>标签页三</li>
-					</ul>
-					<div class="tabs-body">
 
-						<div class="tab">标签页一 内容</div>
+		<h2 id="path">path</h2>
+		<div class="path">
+			<a href="">首页</a>
+			<a href="">父页</a>
+			<span>当前页</span>
+		</div>
 
-					</div>
-				</div>
-				<!-- }tabs -->
 
-				<!-- tabs{ -->
-				<div class="tabs">
-					<ul class="tabs-indexs justified">
-						<li>标签页一</li>
-						<li>标签页二</li>
-						<li>标签页三</li>
-					</ul>
-					<div class="tabs-body">
 
-						<div class="tab">标签页一 内容</div>
+		<h2 id="menu">menu</h2>
+		<div class="menu">
+			<a class="menu-item" href="">菜单</a>
+			<a class="menu-item" href="">菜单</a>
+			<a class="menu-item" href="">菜单</a>
+		</div>
+		<div class="menu horizontal">
+			<a class="menu-item" href="">菜单</a>
+			<a class="menu-item" href="">菜单</a>
+			<a class="menu-item" href="">菜单</a>
+		</div>
 
-					</div>
-				</div>
-				<!-- }tabs -->
 
-				<!-- list -->
-				<ul class="list">
-					<li class="list-item">列表项一</li>
-					<li class="list-item">
-						<a class="list-item-a" href="">列表项二</a>
-					</li>
-					<li class="list-item">
-						<a class="list-item-a" href="">
-							列表项
-							<br />
-							三
-						</a>
-					</li>
-				</ul>
 
-				<!-- 表格 -->
-				<div class="data">
-					<table>
-						<tr>
-							<th>一</th>
-							<th>二</th>
-							<th>三</th>
-						</tr>
-						<tr>
-							<td>11111111111</td>
-							<td>22222222222</td>
-							<td>33333333333</td>
-						</tr>
-						<tr>
-							<td>11111111111</td>
-							<td>
-								<input />
-							</td>
-							<td>33333333333</td>
-						</tr>
-						<tr>
-							<td>11111111111</td>
-							<td>22222222222</td>
-							<td>33333333333</td>
-						</tr>
-					</table>
-				</div>
+		<h2 id="tabs">tabs</h2>
+		<div class="tabs">
+			<ul class="tabs-indexs">
+				<li>标签页一</li>
+				<li class="active0">标签页二</li>
+				<li>标签页三</li>
+			</ul>
+		</div>
 
-				<!-- 分页 -->
-				<div class="pagination">
-					<span class="disable">&larr;</span>
-					<a href="">1</a>
-					<span>...</span>
-					<a href="">4</a>
-					<a href="">5</a>
-					<a class="active" href="">6</a>
-					<a href="">7</a>
-					<a href="">8</a>
-					<span>...</span>
-					<a href="">99</a>
-					<a href="">&rarr;</a>
-				</div>
+		<div class="tabs">
+			<ul class="tabs-indexs justified">
+				<li>标签页一</li>
+				<li>标签页二</li>
+				<li>标签页三</li>
+				<li>标签页四</li>
+				<li>标签页五</li>
+			</ul>
+			<div class="tabs-body">
 
-				<!-- 图标 -->
-				<div class="panel">
-					<i class="icon i-left   "></i>
-					<i class="icon i-right  "></i>
-					<i class="icon i-up     "></i>
-					<i class="icon i-down   "></i>
-					<i class="icon i-min    "></i>
-					<i class="icon i-plus   "></i>
-					<i class="icon i-ok     "></i>
-					<i class="icon i-x      "></i>
-					<i class="icon i-back   "></i>
-					<i class="icon i-forward"></i>
-					<i class="icon i-menu   "></i>
-					<i class="icon i-grid   "></i>
-					<i class="icon i-home   "></i>
-					<i class="icon i-search "></i>
-					<i class="icon i-person "></i>
-					<i class="icon i-pen    "></i>
-					<i class="icon i-setting"></i>
-				</div>
+				<div class="tab">1</div>
+				<div class="tab">2</div>
 
+			</div>
+		</div>
+
+
+
+		<h2 id="panel">panel</h2>
+		<div class="panel">
+			面板
+		</div>
+
+		<div class="panel">
+			<div class="panel-header">标题</div>
+			<div class="panel-body">
+				面板
+			</div>
+			<div class="panel-footer">
+				脚注
+			</div>
+		</div>
+
+
+
+		<h2 id="list">list</h2>
+		<ul class="list">
+			<li class="list-item">列表项一</li>
+			<li class="list-item">列表项一</li>
+			<a class="list-item" href="">列表项二</a>
+		</ul>
+
+
+
+		<h2 id="table">table</h2>
+		<div class="data">
+			<table>
+				<tr>
+					<th>一</th>
+					<th>二</th>
+					<th>三</th>
+				</tr>
+				<tr>
+					<td>11111111111</td>
+					<td>22222222222</td>
+					<td>33333333333</td>
+				</tr>
+				<tr>
+					<td>11111111111</td>
+					<td>
+						<input />
+					</td>
+					<td>33333333333</td>
+				</tr>
+				<tr>
+					<td>11111111111</td>
+					<td>22222222222</td>
+					<td>33333333333</td>
+				</tr>
+			</table>
+		</div>
+
+
+
+		<h2 id="pagination">pagination</h2>
+		<div class="pagination">
+			<span class="disable">&larr;</span>
+			<a href="">1</a>
+			<span>...</span>
+			<a href="">4</a>
+			<a href="">5</a>
+			<a class="active" href="">6</a>
+			<a href="">7</a>
+			<a href="">8</a>
+			<span>...</span>
+			<a href="">99</a>
+			<a href="">&rarr;</a>
+		</div>
+
+
+
+		<h2 id="form">form</h2>
+		表单
+
+
+
+		<h2 id="progress">progress</h2>
+		<div class="progress">
+			<div class="progress-completed" style="width:60%">60%</div>
+		</div>
+
+
+
+
+		<h2 id="icon">icon</h2>
+		<div class="panel">
+			<i class="icon i-left   "></i>
+			<i class="icon i-right  "></i>
+			<i class="icon i-up     "></i>
+			<i class="icon i-down   "></i>
+			<i class="icon i-min    "></i>
+			<i class="icon i-plus   "></i>
+			<i class="icon i-ok     "></i>
+			<i class="icon i-x      "></i>
+			<i class="icon i-back   "></i>
+			<i class="icon i-forward"></i>
+			<i class="icon i-menu   "></i>
+			<i class="icon i-grid   "></i>
+			<i class="icon i-home   "></i>
+			<i class="icon i-search "></i>
+			<i class="icon i-person "></i>
+			<i class="icon i-pen    "></i>
+			<i class="icon i-setting"></i>
+		</div>
+
+
+
+
+		<h2 id="dialog">dialog</h2>
+		<a class="button" data-dialog="{content:'content', title:'ok'}">点击弹出对话框</a>
 
 
 	</div>
@@ -206,6 +253,8 @@
 		$('.sidebar-toggle').click(function(){
 			$('.layout').toggleClass('active');
 		});
+
+		$('html,body').animate({scrollTop: $('#icon').offset().top})
 </script>
 </body>
 </html>
