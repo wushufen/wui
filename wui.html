@@ -240,7 +240,7 @@
 
 
 		<h2 id="dialog">dialog</h2>
-		<a class="button" data-dialog="{content:'content', title:'ok'}">点击弹出对话框</a>
+		<a class="button" data-dialog="{content: ' content ', title:'ok'}">点击弹出对话框</a>
 
 
 	</div>
@@ -254,7 +254,40 @@
 			$('.layout').toggleClass('active');
 		});
 
-		$('html,body').animate({scrollTop: $('#icon').offset().top})
+
+		// hash锚点滚动
+		$htmlBody = $('html,body');
+		var href;
+		$('a[href*=#]').click(function(){
+			href = $(this).attr('href');
+			$htmlBody.stop().animate({scrollTop: $(href).offset().top}, 500, function(){
+				// location.hash = href;
+			});
+				location.hash = href;
+			return false;
+		});
+
+
+
+</script>
+<script type="text/JavaScript">
+
+// $(document).ready(function() {
+//      $('a[href*=#]').click(function() {
+//          if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+//       	      var $target = $(this.hash);
+//      		 $('body').prepend(this.hash)
+//               $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+//               if ($target.length) {
+//                   var targetOffset = $target.offset().top;
+//                   $('html,body').animate({
+//                        scrollTop: targetOffset
+//                   });
+//           		  return false;
+//                }
+//          }
+//      });
+// });
 </script>
 </body>
 </html>

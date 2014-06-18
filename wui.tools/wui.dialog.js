@@ -32,14 +32,17 @@ $(function() {
 		var dialog = $('<div></div>');
 		dialog.css({
 			'position': 'fixed',
-			'border': 'solid 1px #ddd',
+			'top': '40%',
+			'left': '50%',
 			'min-width': '200px',
 			'max-width': '600px',
+			'max-height': '100%',
 			'_width': '400px',
+			'overflow': 'auto',
 			'z-index': '9999',
-			'border-radius': '3px',
+			'border-radius': '0.6em 0',
 			'box-shadow': '0 3px 10px #333',
-			'margin': '1em',
+			'margin': '0 1em',
 			'text-align': 'left',
 			'background': '#fff',
 		});
@@ -126,11 +129,18 @@ $(function() {
 
 		//对话框定位
 		// $(window).height(); ie6 无效
+		/*
 		var top = $(window).height() / 2 - dialog.height() / 2;
 		var left = $(document).width() / 2 - dialog.width() / 2;
 		dialog.css({
 			left: left,
 			top: top
+		});
+		*/
+
+		dialog.css({
+			marginLeft: -dialog.outerWidth()/2,
+			marginTop: -dialog.outerHeight()/2
 		});
 
 		//body不滚动, ie7 下恢复有问题
