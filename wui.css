@@ -116,40 +116,32 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 \************************************************/
 /*
 .path{
-	[span{当前位置：}]
 	a{}
 	span{}
 }
 */
 .path{
 	overflow: hidden;
+
+	background: #f1f1f1;
+	border-radius: 4px;
+	margin-bottom: 1em;
 }/*clearfix*/
 .path a,
 .path span{
 	position: relative;
 	float: left;
 	padding: .25em .75em;
-
-	border-bottom: solid 1px #e6e6e6;
-	margin-bottom: -1px;
-	/*分隔*/
-	border-left: solid 1px #e6e6e6;
-	margin-left: -1px;
+	color: #aaa;
 }
-
-/*如果支持 “+” 选择器，则覆盖上面的border-left分隔，用新的分隔符*/
-.path a + a,
-.path a + span{
-	border-left: 0;
-}
+.path a{color: #3D4F5D}
 .path a + a:before,
 .path a + span:before{
 	content: "/";/*分隔符*/
 	position: absolute;
 	left: -.15em;
-	color: #e6e6e6;
+	color: #bbb;
 }
-.path .disable{cursor: not-allowed; background: #e6e6e6;}
 
 
 
@@ -159,7 +151,6 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 /*
 .panel{
 	.panel-header{
-		//panel-title{}
 	}
 	.panel-body{}
 	.panel-footer{}
@@ -174,23 +165,16 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .panel-header{
 	margin:-.5em -.75em .5em;
 	padding:.5em .75em;
-	border-bottom:solid 1px #ddd
-}
-.panel-title{
-	border-bottom:solid 1px #0af;
-	float:left;
-	position:relative;
-	bottom:-1px;
-	color:#111
+	border-bottom:solid 1px #ddd;
 }
 .panel-body{
 	margin:-.5em -.75em;
-	padding:.5em .75em
+	padding:.5em .75em;
 }
 .panel-footer{
 	border-top:solid 1px #e6e6e6;
 	margin:.5em -.75em -.5em;
-	padding:.5em .75em
+	padding:.5em .75em;
 }
 
 
@@ -215,7 +199,9 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
   }
 }
 */
-.tabs{}/*clearfix*/
+.tabs{
+	margin-bottom: 1em;
+}/*clearfix*/
 
 .tabs-indexs{
 	list-style:none;

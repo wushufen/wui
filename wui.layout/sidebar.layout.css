@@ -18,6 +18,7 @@
 	position: fixed;
 	width: 2.5em;
 	height: 2.5em;
+	z-index: 10;
 	background: rgba(99,99,99, .8);
 }
 
