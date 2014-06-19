@@ -67,6 +67,10 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	width: 960px;/*非响应时宽度*/
 	max-width: 100%;/*被嵌套时，比如在一个iframe里*/
 	margin: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 0 1em;
 }
@@ -89,6 +93,10 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 */
 .col{
 	float:left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 0 .5em;
 }
@@ -144,6 +152,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	border-radius: 4px;
 	margin-bottom: 1em;
 }/*clearfix*/
+
 .path a,
 .path span{
 	position: relative;
@@ -152,6 +161,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	color: #aaa;
 }
 .path a{color: #3D4F5D}
+
 .path a + a:before,
 .path a + span:before{
 	content: "/";/*分隔符*/
@@ -174,24 +184,24 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 */
 .panel{
-	border:solid 1px #e6e6e6;
-	padding:.5em .75em;
+	padding: .5em 1em;
+	border: solid 1px #e6e6e6;
 	border-radius: 4px;
 	margin-bottom: 1em;
 }
 .panel-header{
-	margin:-.5em -.75em .5em;
-	padding:.5em .75em;
-	border-bottom:solid 1px #ddd;
+	margin: -.5em -1em .5em;
+	padding: .5em 1em;
+	border-bottom: solid 1px #ddd;
 }
 .panel-body{
-	margin:-.5em -.75em;
-	padding:.5em .75em;
+	margin: -.5em -1em;
+	padding: .5em 1em;
 }
 .panel-footer{
-	border-top:solid 1px #e6e6e6;
-	margin:.5em -.75em -.5em;
-	padding:.5em .75em;
+	border-top: solid 1px #e6e6e6;
+	margin: .5em -1em -.5em;
+	padding: .5em 1em;
 }
 
 
@@ -287,7 +297,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 
 
 /************************************************\
-	列表视图
+	列表
 \************************************************/
 /*
 .list{
@@ -321,13 +331,17 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 /************************************************\
 	表单
 \************************************************/
+.input{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
 .button{
 	display:inline-block;
-
-	/*border:1px solid #e6e6e6;*/
-	border: 0;
-
-	/*border-radius: 4px;*/
+	border:1px solid #bbb;
+	border-radius: 4px;
 	padding:.25em 1em;
 	box-shadow:0px 2px 3px #aaa;
 	vertical-align: top;
@@ -336,26 +350,91 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	color:#333;
 	cursor:pointer;
 	white-space: nowrap;/*2014.05.30 + 不换行*/
+
+	margin-top: .25em;
 }
 .button:hover{box-shadow:0px 1px 3px #333}
 .button:active{box-shadow:0px 1px 5px #333 inset}
 
 .input{
-	position: relative;
+	display: block;
+	width: 100%;
+	padding: .2em 0;
+	border: solid 1px #bbb;
+	border-radius: 4px;
+	background: transparent;
+	color: #aaa;
+	box-shadow: #ddd 0 1px 9px -2px inset;
+}
+.input-line{
 	display: block;
 	border: solid 1px #5da8ca;
 	border-width: 0 0 1px 0;
 	width: 100%;
-	height: 1.5em;
-	line-height: 1.25em;
 	background: transparent;
 	color: #aaa;
-	/*text-indent: .25em;*/
 }
-.input:focus{border-color: #0af}
+.input:focus{border-color: #0af; box-shadow: 0 0 5px 1px #a9eaff}
 
 /*大小*/
 .button.small{padding: .05em .5em}
+
+
+
+/***************组****************/
+/*
+.group[.horizontal]{
+	.group-item{}
+	label.group{
+		:checkbox|:radio
+		text
+	}
+	.input.group{}
+	.button.group{}
+}
+*/
+.group{
+	margin-bottom: 1em;
+	box-shadow: 0px 1px 1px #DCE3EB;
+	border-radius: 4px;
+}
+.group:after{content: ""; display: block; clear: both}
+
+.group-item{
+	position: relative;
+	display: block;
+	border: solid 1px #bbb;
+	padding: .375em 1em;
+	margin-top: -1px;
+
+	border-radius: 0;
+}
+label.group-item{cursor: pointer}
+button.group-item{width: 100%; box-shadow: none;}
+
+.group-item:hover{z-index: 1}
+.group-item:focus{z-index: 2}
+
+.group :first-child{border-radius: 4px 4px 0 0}
+.group :last-child{border-radius: 0 0 4px 4px}
+
+
+/*水平*/
+.group.horizontal{
+	display: inline-block;
+}
+.group.horizontal .group-item{
+	float: left;
+	width: auto;
+	margin-left: -1px;
+}
+
+.group.horizontal :first-child{
+	border-radius: 4px 0 0 4px;
+}
+.group.horizontal :last-child{
+	border-radius: 0 4px 4px 0;
+}
 
 
 
@@ -421,11 +500,7 @@ table.data{overflow: hidden; width: auto}
 */
 .pagination{
 }/*clearfix*/
-.pagination:after{
-	content: "";
-	display: block;
-	clear: both;
-}
+.pagination:after{content: ""; display: block; clear: both;}
 
 .pagination a,
 .pagination span{
@@ -436,14 +511,11 @@ table.data{overflow: hidden; width: auto}
 	margin-top: .25em;
 }
 .pagination a{color: #456}
+
 .pagination .active{background: #abc; color: #fff}
 
-.pagination :nth-child(1){
-	border-radius: 4px 0 0 4px;
-}
-.pagination :nth-last-child(1){
-	border-radius: 0 4px 4px 0;
-}
+.pagination :first-child{border-radius: 4px 0 0 4px}
+.pagination :last-child{border-radius: 0 4px 4px 0}
 
 
 
@@ -473,7 +545,7 @@ table.data{overflow: hidden; width: auto}
 .badge{
 	display: inline-block;
 	padding: 0.25em;
-	line-height: .85;
+	line-height: 1;
 	font-size: .5em;
 
 	border-radius: 9em;
@@ -586,7 +658,7 @@ table.data{overflow: hidden; width: auto}
 .btn-primary {background-color:#0af; border-color:#3783CF; color:#fff}
 .btn-success {background-color:#21D100; border-color:#40A52D; color:#fff}
 .btn-warning {background-color:#CEB500; border-color:#A2932D; color:#fff}
-.btn-danger  {background-color:#FF8181; border-color:#A56B6B; color:#fff}
+.btn-danger  {background-color:#FF6767; border-color:#FF6767; color:#fff}
 .btn-error   {background-color:#ff0000; border-color:#B94242; color:#fff}
 .btn-info    {background-color:#5AC0F0; border-color:#759BAD; color:#fff}
 
@@ -608,13 +680,13 @@ table.data{overflow: hidden; width: auto}
 .height-auto{width:auto}
 
 /*浮动*/
-.float-none{float: left}
+.float-none{float: none}
 .float-left{float: left}
 .float-right{float: right}
 
 /*撑开*/
-.clearfix:after{content: ""; display: block; clear: both;}
 .clearfix{*zoom:1}
+.clearfix:after{content: ""; display: block; clear: both;}
 
 /*文本*/
 .text-center{text-align: center}
