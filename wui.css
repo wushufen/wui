@@ -47,11 +47,13 @@ a{text-decoration: none; color: #0af}
 a:hover{text-decoration: underline}
 a:active{text-decoration: overline}
 
-
+/*2014.06.20 - 见表单部分*/
+/*
 input:focus,
 select:focus,
 textarea:focus,
 button:focus{outline:0}
+*/
 
 
 input[type="radio"],
@@ -118,6 +120,12 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 /************************************************\
 	菜单
 \************************************************/
+/*
+.menu[.horizontal]{
+	.menu-item{}
+	.menu-item{}
+}
+*/
 .menu{}
 .menu-item{
 	display: block;
@@ -150,7 +158,8 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 
 	background: rgba(75, 117, 155, 0.06);
 	border-radius: 4px;
-	margin-bottom: 1em;
+
+	margin: .5em 0;
 }/*clearfix*/
 
 .path a,
@@ -158,6 +167,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	position: relative;
 	float: left;
 	padding: .25em .75em;
+
 	color: #aaa;
 }
 .path a{color: #3D4F5D}
@@ -167,6 +177,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	content: "/";/*分隔符*/
 	position: absolute;
 	left: -.15em;
+
 	color: #bbb;
 }
 
@@ -187,6 +198,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	padding: .5em 1em;
 	border: solid 1px #e6e6e6;
 	border-radius: 4px;
+
 	margin-bottom: 1em;
 }
 .panel-header{
@@ -338,24 +350,6 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	-o-box-sizing: border-box;
 	box-sizing: border-box;
 }
-.button{
-	display:inline-block;
-	border:1px solid #bbb;
-	border-radius: 4px;
-	padding:.25em 1em;
-	box-shadow:0px 2px 3px #aaa;
-	vertical-align: top;
-	text-align:center;
-	background:#F8F8F8;
-	color:#333;
-	cursor:pointer;
-	white-space: nowrap;/*2014.05.30 + 不换行*/
-
-	margin-top: .25em;
-}
-.button:hover{box-shadow:0px 1px 3px #333}
-.button:active{box-shadow:0px 1px 5px #333 inset}
-
 .input{
 	display: block;
 	width: 100%;
@@ -374,7 +368,31 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	background: transparent;
 	color: #aaa;
 }
-.input:focus{border-color: #0af; box-shadow: 0 0 5px 1px #a9eaff}
+
+.button{
+	display: inline-block;
+	border: 1px solid #bbb;
+	border-radius: 4px;
+	padding: .25em 1em;
+	box-shadow: 0px 1px 3px -1px #aaa;
+	vertical-align: top;
+	text-align: center;
+	background: #F8F8F8;
+	color: #333;
+	cursor: pointer;
+	white-space: nowrap;/*2014.05.30 + 不换行*/
+
+	margin-top: .25em;
+}
+
+.button:focus,/*2014.06.20 +*/
+.input:focus{
+	outline: 0;
+	border-color: #0af;
+	box-shadow: 0 0 5px 1px #a9eaff;
+}
+.button:hover{box-shadow:0px 1px 3px #333}/*:hover 要在 :focus 后，不然没效果*/
+.button:active{box-shadow:0px 1px 5px #333 inset}/*:active 要在 :hover 后*/
 
 /*大小*/
 .button.small{padding: .05em .5em}
@@ -394,20 +412,20 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 */
 .group{
-	margin-bottom: 1em;
-	box-shadow: 0px 1px 1px #DCE3EB;
 	border-radius: 4px;
+	box-shadow: 0px 1px 1px #DCE3EB;
+
+	margin-bottom: 1em;
 }
 .group:after{content: ""; display: block; clear: both}
 
 .group-item{
 	position: relative;
 	display: block;
-	border: solid 1px #bbb;
 	padding: .375em 1em;
-	margin-top: -1px;
-
+	border: solid 1px #bbb;
 	border-radius: 0;
+	margin-top: -1px;
 }
 label.group-item{cursor: pointer}
 button.group-item{width: 100%; box-shadow: none;}
@@ -429,12 +447,8 @@ button.group-item{width: 100%; box-shadow: none;}
 	margin-left: -1px;
 }
 
-.group.horizontal :first-child{
-	border-radius: 4px 0 0 4px;
-}
-.group.horizontal :last-child{
-	border-radius: 0 4px 4px 0;
-}
+.group.horizontal :first-child{border-radius: 4px 0 0 4px}
+.group.horizontal :last-child{border-radius: 0 4px 4px 0}
 
 
 
@@ -498,8 +512,7 @@ table.data{overflow: hidden; width: auto}
 	a{}
 }
 */
-.pagination{
-}/*clearfix*/
+.pagination{}/*clearfix*/
 .pagination:after{content: ""; display: block; clear: both;}
 
 .pagination a,
@@ -508,6 +521,7 @@ table.data{overflow: hidden; width: auto}
 	padding: .25em .75em;
 	border: solid 1px #ddd;
 	margin-left: -1px;
+
 	margin-top: .25em;
 }
 .pagination a{color: #456}
@@ -593,12 +607,12 @@ table.data{overflow: hidden; width: auto}
 	图标
 \************************************************/
 .icon{
-	display:inline-block; /**display: inline; *zoom:1; 看看ie7要不要*/
-	width:1em;
-	height:1.4em;
-	vertical-align:middle;
-	background-image:url(wui.img/wui-icons.png);
-	background-repeat:no-repeat;
+	display: inline-block; /**display: inline; *zoom:1; 看看ie7要不要*/
+	width: 1em;
+	height: 1.4em;
+	vertical-align: middle;
+	background-image: url(wui.img/wui-icons.png);
+	background-repeat: no-repeat;
 }
 .i-left         {background-position: 0}
 .i-right        {background-position: -30px}
@@ -655,12 +669,12 @@ table.data{overflow: hidden; width: auto}
 
 
 /*按钮*/
-.btn-primary {background-color:#0af; border-color:#3783CF; color:#fff}
-.btn-success {background-color:#21D100; border-color:#40A52D; color:#fff}
-.btn-warning {background-color:#CEB500; border-color:#A2932D; color:#fff}
+.btn-primary {background-color:#00AAFF; border-color:#00AAFF; color:#fff}
+.btn-success {background-color:#21D100; border-color:#21D100; color:#fff}
+.btn-warning {background-color:#FFD013; border-color:#FFD013; color:#fff}
 .btn-danger  {background-color:#FF6767; border-color:#FF6767; color:#fff}
-.btn-error   {background-color:#ff0000; border-color:#B94242; color:#fff}
-.btn-info    {background-color:#5AC0F0; border-color:#759BAD; color:#fff}
+.btn-error   {background-color:#FF0000; border-color:#FF0000; color:#fff}
+.btn-info    {background-color:#5AC0F0; border-color:#5AC0F0; color:#fff}
 
 
 
