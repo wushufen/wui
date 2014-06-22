@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="wui.tools/wui.dialog.js"></script>
 
 	<style type="text/css">
-		h2{border-bottom: solid 1px #ddd; margin: 2em 0 1em;}
+	h2{border-bottom: solid 1px #ddd; margin: 2em 0 1em;}
 	</style>
 
 </head>
@@ -29,9 +29,9 @@
 			<h1 class="sidebar-header">WUI</h1>
 
 			<div class="menu">
-				<a class="menu-item" href="#header">header</a>
 				<a class="menu-item" href="#container">container</a>
 				<a class="menu-item" href="#grid">grid</a>
+				<a class="menu-item" href="#header">header</a>
 				<a class="menu-item" href="#path">path</a>
 				<a class="menu-item" href="#menu">menu</a>
 				<a class="menu-item" href="#tabs">tabs</a>
@@ -48,10 +48,6 @@
 		</div>
 
 		<div class="container">
-
-
-
-			<h2 id="header">header</h2>
 
 
 
@@ -96,6 +92,10 @@
 
 
 
+			<h2 id="header">header</h2>
+
+
+
 			<h2 id="path">path</h2>
 			<div class="path">
 				<a href="">首页</a>
@@ -106,43 +106,51 @@
 
 
 			<h2 id="menu">menu</h2>
-			<div class="menu">
-				<a class="menu-item" href="">菜单</a>
-				<a class="menu-item" href="">菜单</a>
-				<a class="menu-item" href="">菜单</a>
-			</div>
-			<div class="menu horizontal">
-				<a class="menu-item" href="">菜单</a>
-				<a class="menu-item" href="">菜单</a>
-				<a class="menu-item" href="">菜单</a>
+			<div class="row">
+				<div class="col span-4">
+					<div class="menu">
+						<a class="menu-item" href="">菜单</a>
+						<a class="menu-item" href="">菜单</a>
+						<a class="menu-item" href="">菜单</a>
+					</div>
+				</div>
+				<div class="col span-8">
+					<div class="menu horizontal">
+						<a class="menu-item" href="">菜单</a>
+						<a class="menu-item" href="">菜单</a>
+						<a class="menu-item" href="">菜单</a>
+					</div>
+				</div>
 			</div>
 
 
 
 			<h2 id="tabs">tabs</h2>
-			<div class="tabs">
-				<ul class="tabs-indexs">
-					<li>标签页一</li>
-					<li class="active0">标签页二</li>
-					<li>标签页三</li>
-				</ul>
-			</div>
-
-			<div class="tabs">
-				<ul class="tabs-indexs justified">
-					<li>标签页一</li>
-					<li>标签页二</li>
-					<li>标签页三</li>
-					<li>标签页四</li>
-					<li>标签页五</li>
-				</ul>
-				<div class="tabs-body">
-
-					<div class="tab">1</div>
-					<div class="tab">2</div>
-
+			<div class="row">
+				<div class="col span-6 sm-full">
+					<div class="tabs">
+						<ul class="tabs-indexs">
+							<li>首页</li>
+							<li class="active0">案例</li>
+							<li>联系</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col span-6 sm-full">
+					<div class="tabs">
+						<ul class="tabs-indexs justified">
+							<li>一</li>
+							<li>二</li>
+							<li>三</li>
+							<li>四</li>
+							<li>五</li>
+						</ul>
+						<div class="tabs-body">
+						</div>
+					</div>
 				</div>
 			</div>
+
 
 
 
@@ -156,8 +164,15 @@
 				<div class="panel-body">
 					面板
 				</div>
+			</div>
+
+			<div class="panel">
+				<div class="panel-header">标题</div>
+				<div class="panel-body">
+					面板
+				</div>
 				<div class="panel-footer">
-					脚注
+					底部
 				</div>
 			</div>
 
@@ -167,7 +182,6 @@
 			<ul class="list">
 				<li class="list-item">列表项一</li>
 				<li class="list-item">列表项一</li>
-				<a class="list-item" href="">列表项二</a>
 			</ul>
 
 
@@ -247,21 +261,15 @@
 
 			<div class="panel">
 				<input class="input" type="text" name="" />
+				<input class="input-line" type="text" name="" />
 			</div>
 
 			<div class="row">
 				<div class="col span-4 xs-full">
 					<div class="group">
 						<input class="group-item input" type="text" name="" placeholder="用户名" />
-						<input class="group-item input" type="text" name="" placeholder="密码" />
-						<label class="group-item">
-							<input type="checkbox" name="" />
-							记住我
-						</label>
+						<input class="group-item input" type="password" name="" placeholder="密码" />
 						<button class="group-item button btn-primary">登录</button>
-					</div>
-					<div class="group">
-						<a class="group-item" href="">忘记密码</a>
 					</div>
 				</div>
 				<div class="col span-4 xs-full">
@@ -291,25 +299,35 @@
 
 
 			<div class="group horizontal">
-				<label class="group-item">
+				<label class="group-item button">
 					<input type="radio" name="r" />
-					选择
+					男
 				</label>
-				<label class="group-item">
+				<label class="group-item button">
 					<input type="radio" name="r" />
-					选择
-				</label>
-				<label class="group-item">
-					<input type="radio" name="r" />
-					选择
+					女
 				</label>
 			</div>
 
 
 			<div class="group horizontal">
-				<button class="button group-item">-</button>
-				<input class="input group-item" style="width:4em" type="text" name="" />
-				<button class="button group-item">+</button>
+				<button class="group-item button">-</button>
+				<input class="group-item input text-center" style="width:4em" type="text" name="" value="1" />
+				<button class="group-item button">+</button>
+			</div>
+
+
+			<div class="group horizontal">
+				<span class="group-item">￥</span>
+				<input class="group-item input text-center" style="width:4em" type="text" name="" value="99" />
+				<span class="group-item">.00</span>
+			</div>
+
+			<div class="group horizontal">
+				<label class="group-item">
+					<input type="checkbox" name="r" />
+				</label>
+				<input class="input group-item text-center" style="width:4em" type="text" name="" value="10" />
 			</div>
 
 
@@ -349,6 +367,22 @@
 
 
 
+			<h2 id="dropdown">dropdown</h2>
+
+			<div class="dropdown">
+				<i class="dropdown-toggle button">下拉</i>
+				<div class="dropdown-menu">
+					<div class="group">
+						<input class="group-item input" type="text" name="" placeholder="用户名" />
+						<input class="group-item input" type="text" name="" placeholder="密码" />
+						<button class="group-item button btn-primary">登录</button>
+					</div>
+				</div>
+			</div>
+
+
+
+
 			<h2 id="dialog">dialog</h2>
 			<a class="button" data-dialog="{content: ' content ', title:'ok'}">点击弹出对话框</a>
 
@@ -379,25 +413,6 @@
 
 
 
-	</script>
-	<script type="text/JavaScript">
-
-// $(document).ready(function() {
-//      $('a[href*=#]').click(function() {
-//          if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-//       	      var $target = $(this.hash);
-//      		 $('body').prepend(this.hash)
-//               $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
-//               if ($target.length) {
-//                   var targetOffset = $target.offset().top;
-//                   $('html,body').animate({
-//                        scrollTop: targetOffset
-//                   });
-//           		  return false;
-//                }
-//          }
-//      });
-// });
-</script>
+		</script>
 </body>
 </html>
