@@ -13,7 +13,27 @@
 	<script type="text/javascript" src="wui.tools/wui.dialog.js"></script>
 
 	<style type="text/css">
-	h2{border-bottom: solid 1px #ddd; margin: 2em 0 1em;}
+		h2{border-bottom: solid 1px #ddd; margin: 2em 0 1em;}
+		.example{
+			position: relative;
+			border: solid 1px #eee;
+			border-radius: 3px;
+			padding: 2em 1em 1em;
+			margin: 1em 0;
+		}
+		.example:before{
+			content: "example";
+			position: absolute;
+			left: -1px;
+			top: -.75em;
+			padding: 0 .5em;
+			border: solid #f1f1f1;
+			border-width: 1px;
+			border-radius: 8px 0;
+			background: #F8F8F8;
+			color: #bbb;
+		}
+
 	</style>
 
 </head>
@@ -52,42 +72,58 @@
 
 
 			<h2 id="container">container</h2>
-			<div class="container t">container</div>
+
+			<div class="example">
+				<div class="container t">container</div>
+			</div>
 
 
 
 			<h2 id="grid">grid</h2>
-			<div class="row" style="margin:1em 0">
-				<div class="col span-1 t">col span-1</div>
-			</div>
-			<div class="row" style="margin:1em 0">
-				<div class="col span-12 t">col span-12</div>
-			</div>
-			<div class="row" style="margin:1em 0">
-				<div class="col span-8 t">
-					col span-8
-					<div class="row">
-						<div class="col span-5 t">col span-5</div>
-						<div class="col span-7 t">col span-7</div>
-					</div>
-					嵌套
+
+			<div class="example">
+				<div class="row">
+					<div class="col span-1 t">1</div>
 				</div>
-				<div class="col span-4 t">col span-4</div>
+				<div class="row">
+					<div class="col span-12 t">12</div>
+				</div>
 			</div>
-			<div class="row" style="margin:1em 0">
-				<div class="col span-3 md-full t">col span-3 md-full</div>
-				<div class="col span-4 md-full t">col span-4 md-full</div>
-				<div class="col span-5 md-full t">col span-5 md-full</div>
+
+			<div class="example">
+				<div class="row">
+					<div class="col span-8 t">
+						col span-8
+						<div class="row">
+							<div class="col span-5 t">col span-5</div>
+							<div class="col span-7 t">col span-7</div>
+						</div>
+						嵌套
+					</div>
+					<div class="col span-4 t">col span-4</div>
+				</div>
 			</div>
-			<div class="row" style="margin:1em 0">
-				<div class="col span-3 sm-full t">col span-3 sm-full</div>
-				<div class="col span-4 sm-full t">col span-4 sm-full</div>
-				<div class="col span-5 sm-full t">col span-5 sm-full</div>
+
+			
+			<div class="example">
+				<div class="row">
+					<div class="col span-6 md-full t">col span-6 md-full</div>
+					<div class="col span-6 md-full t">col span-6 md-full</div>
+				</div>
 			</div>
-			<div class="row" style="margin:1em 0">
-				<div class="col span-3 xs-full t">col span-3 xs-full</div>
-				<div class="col span-4 xs-full t">col span-4 xs-full</div>
-				<div class="col span-5 xs-full t">col span-5 xs-full</div>
+			
+			<div class="example">
+				<div class="row">
+					<div class="col span-6 sm-full t">col span-6 sm-full</div>
+					<div class="col span-6 sm-full t">col span-6 sm-full</div>
+				</div>
+			</div>
+			
+			<div class="example">
+				<div class="row">
+					<div class="col span-6 xs-full t">col span-6 xs-full</div>
+					<div class="col span-6 xs-full t">col span-6 xs-full</div>
+				</div>
 			</div>
 
 
@@ -97,237 +133,304 @@
 
 
 			<h2 id="path">path</h2>
-			<div class="path">
-				<a href="">首页</a>
-				<a href="">父页</a>
-				<span>当前页</span>
+
+			<div class="example">
+				
+				<div class="path">
+					<a href="">首页</a>
+					<a href="">父页</a>
+					<span>当前页</span>
+				</div>
 			</div>
 
 
 
 			<h2 id="menu">menu</h2>
-			<div class="row">
-				<div class="col span-4">
-					<div class="menu">
-						<a class="menu-item" href="">菜单</a>
-						<a class="menu-item" href="">菜单</a>
-						<a class="menu-item" href="">菜单</a>
-					</div>
+
+			<div class="example">
+				<div class="menu">
+					<a class="menu-item" href="">菜单</a>
+					<a class="menu-item" href="">菜单</a>
+					<a class="menu-item" href="">菜单</a>
 				</div>
-				<div class="col span-8">
-					<div class="menu horizontal">
-						<a class="menu-item" href="">菜单</a>
-						<a class="menu-item" href="">菜单</a>
-						<a class="menu-item" href="">菜单</a>
-					</div>
+			</div>
+
+			<div class="example">
+				<div class="menu horizontal">
+					<a class="menu-item" href="">菜单</a>
+					<a class="menu-item" href="">菜单</a>
+					<a class="menu-item" href="">菜单</a>
 				</div>
 			</div>
 
 
 
 			<h2 id="tabs">tabs</h2>
-			<div class="row">
-				<div class="col span-6 sm-full">
-					<div class="tabs">
-						<ul class="tabs-indexs">
-							<li>首页</li>
-							<li class="active0">案例</li>
-							<li>联系</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col span-6 sm-full">
-					<div class="tabs">
-						<ul class="tabs-indexs justified">
-							<li>一</li>
-							<li>二</li>
-							<li>三</li>
-							<li>四</li>
-							<li>五</li>
-						</ul>
-						<div class="tabs-body">
-						</div>
-					</div>
+
+			<div class="example">
+				<div class="tabs">
+					<ul class="tabs-indexs">
+						<li>首页</li>
+						<li class="active0">案例</li>
+						<li>联系</li>
+					</ul>
 				</div>
 			</div>
 
+			<h3>justified</h3>
+			<div class="example">
+				<div class="tabs">
+					<ul class="tabs-indexs justified">
+						<li>一</li>
+						<li>二</li>
+						<li>三</li>
+						<li>四</li>
+						<li>五</li>
+					</ul>
+					<div class="tabs-body">
+					</div>
+				</div>
+			</div>
 
 
 
 			<h2 id="panel">panel</h2>
-			<div class="panel">
-				面板
-			</div>
-
-			<div class="panel">
-				<div class="panel-header">标题</div>
-				<div class="panel-body">
+			
+			<div class="example">
+				<div class="panel">
 					面板
 				</div>
 			</div>
 
-			<div class="panel">
-				<div class="panel-header">标题</div>
-				<div class="panel-body">
-					面板
+			
+			<div class="example">
+				<div class="panel">
+					<div class="panel-header">标题</div>
+					<div class="panel-body">
+						面板
+					</div>
 				</div>
-				<div class="panel-footer">
-					底部
+			</div>
+
+			
+			<div class="example">
+				<div class="panel">
+					<div class="panel-header">标题</div>
+					<div class="panel-body">
+						面板
+					</div>
+					<div class="panel-footer">
+						底部
+					</div>
 				</div>
 			</div>
 
 
 
 			<h2 id="list">list</h2>
-			<ul class="list">
-				<li class="list-item">列表项一</li>
-				<li class="list-item">列表项一</li>
-			</ul>
+
+			<div class="example">
+				<ul class="list">
+					<li class="list-item">1</li>
+					<li class="list-item">2</li>
+					<li class="list-item">3</li>
+				</ul>
+			</div>
 
 
 
 			<h2 id="table">table</h2>
-			<div class="data">
-				<table>
-					<col style="width:1em"></col>
 
-					<tr>
-						<th><input type="checkbox" name="" /></th>
-						<th>#</th>
-						<th>title</th>
-						<th>content</th>
-						<th></th>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="" /></td>
-						<td>1</td>
-						<td>标题</td>
-						<td>内容</td>
-						<td>
-							<a class="button btn-danger small">删除</a>
-						</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="" /></td>
-						<td>2</td>
-						<td>标题</td>
-						<td>内容</td>
-						<td>
-							<a class="button btn-danger small">删除</a>
-						</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="" /></td>
-						<td>3</td>
-						<td>标题</td>
-						<td>内容</td>
-						<td>
-							<a class="button btn-danger small">删除</a>
-						</td>
-					</tr>
-				</table>
+			<div class="example">
+				<div class="data">
+					<table>
+						<col style="width:1em"></col>
+
+						<tr>
+							<th><input type="checkbox" name="" /></th>
+							<th>#</th>
+							<th>title</th>
+							<th>content</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="" /></td>
+							<td>1</td>
+							<td>标题</td>
+							<td>内容</td>
+							<td>
+								<a class="button btn-danger small">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="" /></td>
+							<td>2</td>
+							<td>标题</td>
+							<td>内容</td>
+							<td>
+								<a class="button btn-danger small">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="" /></td>
+							<td>3</td>
+							<td>标题</td>
+							<td>内容</td>
+							<td>
+								<a class="button btn-danger small">删除</a>
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 
 
 
 			<h2 id="pagination">pagination</h2>
-			<div class="pagination">
-				<span class="disable">&larr;</span>
-				<a href="">1</a>
-				<span>...</span>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a class="active" href="">6</a>
-				<a href="">7</a>
-				<a href="">8</a>
-				<span>...</span>
-				<a href="">99</a>
-				<a href="">&rarr;</a>
+
+			<div class="example">
+				<div class="pagination">
+					<span class="disable">&larr;</span>
+					<a href="">1</a>
+					<span>...</span>
+					<a href="">4</a>
+					<a href="">5</a>
+					<a class="active" href="">6</a>
+					<a href="">7</a>
+					<a href="">8</a>
+					<span>...</span>
+					<a href="">99</a>
+					<a href="">&rarr;</a>
+				</div>
 			</div>
 
 
 
 			<h2 id="form">form</h2>
-			<div class="panel">
+			<div class="example">
+				<button class="button">按钮</button>
 				<button class="button btn-primary">主要</button>
 				<button class="button btn-success">成功</button>
 				<button class="button btn-warning">警告</button>
 				<button class="button btn-danger">危险</button>
 				<button class="button btn-error">错误</button>
 				<button class="button btn-info">信息</button>
-				<button class="button">按钮</button>
 				<a class="button" href="">链接按钮</a>
 			</div>
 
-			<div class="panel">
+			<div class="example">
 				<input class="input" type="text" name="" />
+			</div>
+
+			<div class="example">
 				<input class="input-line" type="text" name="" />
 			</div>
 
-			<div class="row">
-				<div class="col span-4 xs-full">
-					<div class="group">
-						<input class="group-item input" type="text" name="" placeholder="用户名" />
-						<input class="group-item input" type="password" name="" placeholder="密码" />
-						<button class="group-item button btn-primary">登录</button>
-					</div>
-				</div>
-				<div class="col span-4 xs-full">
-					<div class="group">
-						<label class="group-item">
-							<input type="checkbox" name="" />
-							选择
-						</label>
-						<label class="group-item">
-							<input type="checkbox" name="" />
-							选择
-						</label>
-						<label class="group-item">
-							<input type="checkbox" name="" />
-							选择
-						</label>
-					</div>
-				</div>
-				<div class="col span-4 xs-full">
-					<div class="group">
-						<button class="button group-item">按钮</button>
-						<button class="button group-item">按钮</button>
-						<button class="button btn-primary group-item">按钮</button>
-					</div>
+			<h3>group</h3>
+			<div class="example">
+				<div class="group">
+					<input class="group-item input" type="text" name="" placeholder="用户名" />
+					<input class="group-item input" type="password" name="" placeholder="密码" />
+					<button class="group-item button btn-primary">登录</button>
 				</div>
 			</div>
 
-
-			<div class="group horizontal">
-				<label class="group-item button">
-					<input type="radio" name="r" />
-					男
-				</label>
-				<label class="group-item button">
-					<input type="radio" name="r" />
-					女
-				</label>
+			<div class="example">
+				<div class="group">
+					<label class="group-item">
+						<input type="checkbox" name="" />
+						选择
+					</label>
+					<label class="group-item">
+						<input type="checkbox" name="" />
+						选择
+					</label>
+					<label class="group-item">
+						<input type="checkbox" name="" />
+						选择
+					</label>
+				</div>
 			</div>
 
-
-			<div class="group horizontal">
-				<button class="group-item button">-</button>
-				<input class="group-item input text-center" style="width:4em" type="text" name="" value="1" />
-				<button class="group-item button">+</button>
+			<div class="example">
+				<div class="group">
+					<button class="group-item button">按钮</button>
+					<button class="group-item button">按钮</button>
+					<button class="group-item button btn-primary">按钮</button>
+				</div>
 			</div>
 
+			<h3>group horizontal</h3>
+			<div class="example">
+				<div class="group horizontal">
+					<label class="group-item button">
+						<input type="radio" name="r" />
+						男
+					</label>
+					<label class="group-item button">
+						<input type="radio" name="r" />
+						女
+					</label>
+				</div>
 
-			<div class="group horizontal">
-				<span class="group-item">￥</span>
-				<input class="group-item input text-center" style="width:4em" type="text" name="" value="99" />
-				<span class="group-item">.00</span>
+				<div class="group horizontal">
+					<button class="group-item button">-</button>
+					<input class="group-item input text-center" style="width:4em" type="text" name="" value="1" />
+					<button class="group-item button">+</button>
+				</div>
+
+				<div class="group horizontal">
+					<span class="group-item">￥</span>
+					<input class="group-item input text-center" style="width:4em" type="text" name="" value="99" />
+					<span class="group-item">.00</span>
+				</div>
+
+				<div class="group horizontal">
+					<label class="group-item">
+						<input type="checkbox" name="r" />
+					</label>
+					<input class="group-item input text-center" style="width:4em" type="text" name="" value="10" />
+				</div>
+
+				<div class="group horizontal">
+					<input class="group-item input" style="width:10em" type="text" name="" placeholder="搜索" />
+					<button class="group-item button btn-primary">Q</button>
+				</div>
 			</div>
 
-			<div class="group horizontal">
-				<label class="group-item">
-					<input type="checkbox" name="r" />
-				</label>
-				<input class="input group-item text-center" style="width:4em" type="text" name="" value="10" />
+			<div class="example">
+				<form>
+					<label>用户名</label>
+					<input class="input" type="text" name="" />
+					<label>密码</label>
+					<input class="input" type="password" name="" />
+					<label class="block">
+						<input type="checkbox" name="" />
+						记住我
+					</label>
+					<button class="button btn-primary">登录</button>
+				</form>
+			</div>
+
+			<div class="example">
+				<form>
+					<div class="group">
+						<label class="label">用户名</label>
+						<input class="input" type="text" name="" />
+					</div>
+
+					<div class="group">
+						<label class="label">密码</label>
+						<input class="input" type="password" name="" />
+					</div>
+
+					<label class="label">
+						<input type="checkbox" name="" />
+						记住我
+					</label>
+
+					<button class="button btn-primary">登录</button>
+				</form>
 			</div>
 
 
@@ -336,15 +439,18 @@
 
 
 			<h2 id="progress">progress</h2>
-			<div class="progress">
-				<div class="progress-completed" style="width:60%">60%</div>
+
+			<div class="example">
+				<div class="progress">
+					<div class="progress-completed" style="width:60%">60%</div>
+				</div>
 			</div>
 
 
 
 
 			<h2 id="icon">icon</h2>
-			<div class="panel">
+			<div class="example">
 				<i class="icon i-left   "></i>
 				<i class="icon i-right  "></i>
 				<i class="icon i-up     "></i>
@@ -369,13 +475,15 @@
 
 			<h2 id="dropdown">dropdown</h2>
 
-			<div class="dropdown">
-				<i class="dropdown-toggle button">下拉</i>
-				<div class="dropdown-menu">
-					<div class="group">
-						<input class="group-item input" type="text" name="" placeholder="用户名" />
-						<input class="group-item input" type="text" name="" placeholder="密码" />
-						<button class="group-item button btn-primary">登录</button>
+			<div class="example">
+				<div class="dropdown">
+					<i class="dropdown-toggle button">下拉</i>
+					<div class="dropdown-menu">
+						<div class="group">
+							<input class="group-item input" type="text" name="" placeholder="用户名" />
+							<input class="group-item input" type="text" name="" placeholder="密码" />
+							<button class="group-item button btn-primary">登录</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -384,7 +492,10 @@
 
 
 			<h2 id="dialog">dialog</h2>
-			<a class="button" data-dialog="{content: ' content ', title:'ok'}">点击弹出对话框</a>
+
+			<div class="example">
+				<a class="button" data-dialog="{content: ' content ', title:'ok'}">点击弹出对话框</a>
+			</div>
 
 
 		</div>
@@ -413,6 +524,6 @@
 
 
 
-		</script>
+	</script>
 </body>
 </html>

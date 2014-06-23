@@ -374,11 +374,11 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .input{
 	display: block;
 	width: 100%;
-	padding: .2em 0;
+	padding: .25em;
 	border: solid 1px #bbb;
 	border-radius: 4px;
 	background: transparent;
-	color: #aaa;
+	color: #888;
 	box-shadow: #ddd 0 1px 9px -2px inset;
 }
 .input-line{
@@ -387,27 +387,28 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	border-width: 0 0 1px 0;
 	width: 100%;
 	background: transparent;
-	color: #aaa;
+	color: #888;
 }
 
 .button{
 	display: inline-block;
-	border: 1px solid #bbb;
-	border-radius: 4px;
 	padding: .25em 1em;
-	box-shadow: 0px 1px 3px -1px #aaa;
 	vertical-align: top;
 	text-align: center;
-	background: #F8F8F8;
-	color: #333;
-	cursor: pointer;
 	white-space: nowrap;/*2014.05.30 + 不换行*/
+	cursor: pointer;
+	border: 1px solid #bbb;
+	border-radius: 4px;
+	box-shadow: 0px 1px 3px -1px #aaa;
+	color: #333;
+	background: #F8F8F8;
 
 	margin-top: .25em;
 }
 
 .button:focus,/*2014.06.20 +*/
-.input:focus{
+.input:focus,
+.input-line:focus{
 	outline: 0;
 	border-color: #0af;
 	box-shadow: 0 0 5px 1px #a9eaff;
@@ -417,6 +418,13 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 
 /*大小*/
 .button.small{padding: .05em .5em}
+
+
+
+.label{
+	display: block;
+	padding: .25em 0;
+}
 
 
 
@@ -434,9 +442,9 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 */
 .group{
 	border-radius: 4px;
-	box-shadow: 0px 1px 1px #DCE3EB;
+	/*box-shadow: 0px 1px 1px #DCE3EB;*/
 
-	margin-bottom: 1em;
+	/*margin-bottom: 1em;*/
 }
 .group:after{content: ""; display: block; clear: both}
 
