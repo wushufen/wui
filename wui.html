@@ -148,7 +148,7 @@
 			<h2 id="menu">menu</h2>
 
 			<div class="example">
-				<div class="menu">
+				<div class="menu" style="max-width:25em">
 					<a class="menu-item" href="">菜单</a>
 					<a class="menu-item" href="">菜单</a>
 					<a class="menu-item" href="">菜单</a>
@@ -215,7 +215,7 @@
 			
 			<div class="example">
 				<div class="panel">
-					<div class="panel-header">标题</div>
+					<!-- <div class="panel-header">标题</div> -->
 					<div class="panel-body">
 						面板
 					</div>
@@ -230,11 +230,50 @@
 			<h2 id="list">list</h2>
 
 			<div class="example">
-				<ul class="list">
-					<li class="list-item">1</li>
-					<li class="list-item">2</li>
-					<li class="list-item">3</li>
+				<ul class="list" style="max-width:25em">
+					<li class="list-item">
+						1
+					</li>
+					<li class="list-item">
+						2
+					</li>
+					<li class="list-item">
+						3
+					</li>
 				</ul>
+			</div>
+
+
+
+			<h2 id="badge">badge</h2>
+
+			<div class="example">
+				<div>
+					<span class="badge">badge</span>
+				</div>
+				<div class="button">
+					no no. <span class="badge"></span>
+				</div>
+				<a class="button">
+					count <span class="badge">99+</span>
+				</a>
+			</div>
+
+			<div class="example">
+				<div class="list" style="max-width:25em">
+					<a class="list-item" href="">
+						<span class="badge float-right"></span>
+						badge float-right
+					</a>
+					<a class="list-item" href="">
+						<span class="badge float-right">25</span>
+						2
+					</a>
+					<a class="list-item" href="">
+						<span class="badge float-right">1</span>
+						3
+					</a>
+				</div>
 			</div>
 
 
@@ -319,16 +358,16 @@
 			</div>
 
 			<div class="example">
-				<input class="input" type="text" name="" />
+				<input class="input" style="max-width:25em" type="text" name="" />
 			</div>
 
 			<div class="example">
-				<input class="input-line" type="text" name="" />
+				<input class="input-line" style="max-width:25em" type="text" name="" />
 			</div>
 
 			<h3>group</h3>
 			<div class="example">
-				<div class="group">
+				<div class="group" style="max-width:25em">
 					<input class="group-item input" type="text" name="" placeholder="用户名" />
 					<input class="group-item input" type="password" name="" placeholder="密码" />
 					<button class="group-item button btn-primary">登录</button>
@@ -336,7 +375,7 @@
 			</div>
 
 			<div class="example">
-				<div class="group">
+				<div class="group" style="max-width:25em">
 					<label class="group-item">
 						<input type="checkbox" name="" />
 						选择
@@ -353,14 +392,22 @@
 			</div>
 
 			<div class="example">
-				<div class="group">
+				<div class="group inline-block" style="max-width:25em">
 					<button class="group-item button">按钮</button>
 					<button class="group-item button">按钮</button>
-					<button class="group-item button btn-primary">按钮</button>
+					<button class="group-item button">按钮</button>
 				</div>
 			</div>
 
 			<h3>group horizontal</h3>
+			<div class="example">
+				<div class="group horizontal">
+					<button class="group-item button">按钮</button>
+					<button class="group-item button">按钮</button>
+					<button class="group-item button">按钮</button>
+				</div>
+			</div>
+
 			<div class="example">
 				<div class="group horizontal">
 					<label class="group-item button">
@@ -394,26 +441,12 @@
 
 				<div class="group horizontal">
 					<input class="group-item input" style="width:10em" type="text" name="" placeholder="搜索" />
-					<button class="group-item button btn-primary">Q</button>
+					<button class="group-item button">Q</button>
 				</div>
 			</div>
 
 			<div class="example">
-				<form>
-					<label>用户名</label>
-					<input class="input" type="text" name="" />
-					<label>密码</label>
-					<input class="input" type="password" name="" />
-					<label class="block">
-						<input type="checkbox" name="" />
-						记住我
-					</label>
-					<button class="button btn-primary">登录</button>
-				</form>
-			</div>
-
-			<div class="example">
-				<form>
+				<form style="max-width:25em">
 					<div class="group">
 						<label class="label">用户名</label>
 						<input class="input" type="text" name="" />
