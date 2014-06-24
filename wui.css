@@ -4,6 +4,9 @@ by wushufen
 2014.06.13
 */
 
+/*
+input firefox 无法改变 line-height
+*/
 
 
 /************************************************\
@@ -158,6 +161,60 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .menu.horizontal .menu-item{
 	display: inline-block;
 }
+
+
+
+/************************************************\
+	header
+\************************************************/
+/*
+.header{
+	[.container]{
+
+		.navbar{
+			.navbar-header{ appName }
+			.nav-toggle{}
+			.nav{
+				.menu{
+					.menu-item{}
+					.menu-item{}
+				}
+				.menu.float-right{
+					.menu-item{}
+				}
+			}
+		}
+		
+	}
+}
+*/
+.header{
+	background:rgba(255,255,255,.8);
+	color:#333;
+	box-shadow:0 0 10px #888
+}
+
+
+/* navbar */
+.navbar{}
+.navbar:after{content:""; display:block; clear:both}
+.navbar-header{
+	float: left;
+	line-height: 40px;
+	font-size: 1.2em;
+	padding: 0 .75em
+}
+/*nav menu*/
+.nav{}
+.nav .menu-item{
+	float: left
+}
+@media (max-width:700px){
+.nav{
+	display: none;
+}
+}
+
 
 
 
@@ -446,7 +503,6 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 
 	/*margin-bottom: 1em;*/
 }
-.group:after{content: ""; display: block; clear: both}
 
 .group-item{
 	position: relative;
@@ -470,16 +526,39 @@ button.group-item{width: 100%; box-shadow: none;}
 .group.horizontal{
 	display: inline-block;
 }
+.group.horizontal:after{content: ""; display: block; clear: both}
+
 .group.horizontal .group-item{
 	float: left;
 	width: auto;
 	margin-left: -1px;
 }
 
-.group.horizontal :last-child{border-radius: 0}
-.group.horizontal :first-child{border-radius: 4px 0 0 4px}
-.group.horizontal :last-child{border-top-right-radius: 4px; border-bottom-right-radius: 4px}
+.group.justified :last-child,.group.horizontal :last-child{border-radius: 0}
+.group.justified :first-child,.group.horizontal :first-child{border-radius: 4px 0 0 4px}
+.group.justified :last-child,.group.horizontal :last-child{border-top-right-radius: 4px; border-bottom-right-radius: 4px}
 
+
+/*自动调整*/
+.group.justified{
+	display:table;
+	width:100%;
+	/*table-layout:fixed;*/
+	box-sizing:border-box;
+}
+.group.justified .group-item{
+	float:none;
+	display:inline-block;
+	display:table-cell;
+	*display: inline; *zoom:1;
+	width: 1%;
+	margin-left: -1px;
+	text-align:center;
+}
+.group.justified .group-item.input{/*文本框最长*/
+	width: 100%;
+	text-align: left;
+}
 
 
 
@@ -607,11 +686,11 @@ table.data{overflow: hidden; width: auto}
 /*
 .dropdown{
 	.dropdown-toggle{}
-	.dropdown-menu{}
+	.dropdown-content{}
 }
 */
 .dropdown{position: relative}
-.dropdown-menu{
+.dropdown-content{
 	position: absolute;
 	display: none;
 	top: 100%;
@@ -626,7 +705,7 @@ table.data{overflow: hidden; width: auto}
 .dropdown.open .dropdown-toggle{
 	box-shadow:0px 1px 5px #333 inset;
 }
-.dropdown.open .dropdown-menu{
+.dropdown.open .dropdown-content{
 	display: block;
 	box-shadow: 1px 3px 5px #888;
 }

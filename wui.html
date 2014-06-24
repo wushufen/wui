@@ -57,15 +57,42 @@
 				<a class="menu-item" href="#tabs">tabs</a>
 				<a class="menu-item" href="#panel">panel</a>
 				<a class="menu-item" href="#list">list</a>
+				<a class="menu-item" href="#badge">badge</a>
 				<a class="menu-item" href="#table">table</a>
 				<a class="menu-item" href="#pagination">pagination</a>
 				<a class="menu-item" href="#form">form</a>
 				<a class="menu-item" href="#progress">progress</a>
 				<a class="menu-item" href="#icon">icon</a>
 				<a class="menu-item" href="#dialog">dialog</a>
+				<a class="menu-item" href="#dialog">排版</a>
+				<hr />
+				<a class="menu-item" href="#dialog">layout</a>
 			</div>
 
 		</div>
+				
+				<div class="header">
+
+					<div class="container">
+
+						<div class="navbar">
+							<div class="navbar-header">WUI</div>
+							<div class="nav">
+								<div class="menu">
+									<a class="menu-item" href="">首页</a>
+									<a class="menu-item" href="">案例</a>
+									<a class="menu-item" href="">联系</a>
+								</div>
+								<div class="menu float-right">
+									<a class="menu-item" href="">注册</a>
+									<a class="menu-item" href="">登录</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
 
 		<div class="container">
 
@@ -129,6 +156,33 @@
 
 
 			<h2 id="header">header</h2>
+
+			<div class="example">
+				
+				<div class="header">
+
+					<div class="container">
+
+						<div class="navbar">
+							<div class="navbar-header">WUI</div>
+							<div class="nav">
+								<div class="menu">
+									<a class="menu-item" href="">首页</a>
+									<a class="menu-item" href="">案例</a>
+									<a class="menu-item" href="">联系</a>
+								</div>
+								<div class="menu float-right">
+									<a class="menu-item" href="">注册</a>
+									<a class="menu-item" href="">登录</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				
+			</div>
 
 
 
@@ -399,6 +453,7 @@
 				</div>
 			</div>
 
+
 			<h3>group horizontal</h3>
 			<div class="example">
 				<div class="group horizontal">
@@ -445,6 +500,26 @@
 				</div>
 			</div>
 
+
+			<h3>group justified</h3>
+				button 标签无效
+			<div class="example">
+				<div class="group justified" style="max-width:25em">
+					<div class="group-item">...</div>
+					<div class="group-item">...</div>
+					<div class="group-item">...</div>
+				</div>
+			</div>
+
+			<div class="example">
+				<div class="group justified" style="max-width:25em">
+					<span class="group-item">username</span>
+					<input class="group-item input"  type="text" name="" />
+				</div>
+			</div>
+
+
+			<h3>form group</h3>
 			<div class="example">
 				<form style="max-width:25em">
 					<div class="group">
@@ -511,12 +586,8 @@
 			<div class="example">
 				<div class="dropdown">
 					<i class="dropdown-toggle button">下拉</i>
-					<div class="dropdown-menu">
-						<div class="group">
-							<input class="group-item input" type="text" name="" placeholder="用户名" />
-							<input class="group-item input" type="text" name="" placeholder="密码" />
-							<button class="group-item button btn-primary">登录</button>
-						</div>
+					<div class="dropdown-content">
+						xx
 					</div>
 				</div>
 			</div>
@@ -545,13 +616,12 @@
 
 		// hash锚点滚动
 		$htmlBody = $('html,body');
-		var href;
 		$('a[href*=#]').click(function(){
-			href = $(this).attr('href');
-			$htmlBody.stop().animate({scrollTop: $(href).offset().top}, 500, function(){
+			var href = $(this).attr('href');
+			$htmlBody.stop().animate({scrollTop: $(href).offset().top}, 1000, function(){
 				// location.hash = href; //按返回时，锚点位置不太对
 			});
-			location.hash = href;
+			// location.hash = href;
 			return false;
 		});
 
