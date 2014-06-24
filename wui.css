@@ -189,15 +189,18 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 */
 .header{
-	background:rgba(255,255,255,.8);
-	color:#333;
-	box-shadow:0 0 5px #888
+	background: rgba(255,255,255,.8);
+	color: #333;
+	box-shadow: 0 0 5px #888;
 }
 .header .container{padding: 0}
 
 
 /* navbar */
-.navbar{}
+.navbar{
+	position: relative;
+	z-index: 10;
+}
 .navbar:after{content:""; display:block; clear:both}
 .navbar-header{
 	float: left;
@@ -208,11 +211,21 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 /*nav menu*/
 .nav{}
 .nav .menu-item{
-	float: left
+	float: left;
 }
 @media (max-width:700px){
 .nav{
-	display: none;
+	/*display: none;*/
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.91);
+	box-shadow: 0 5px 10px -5px #888;
+}
+.nav .menu,
+.nav .menu-item{
+	float: none;
 }
 }
 

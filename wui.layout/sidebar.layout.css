@@ -1,9 +1,15 @@
 /*
 .layout{
+
+	.sidebar-toggle{}
 	.sidebar{
 		.sidebar-header{}
-		.menu{}
+
+		.menu{
+			...
+		}
 	}
+
 	.container{}
 }
 */
@@ -15,7 +21,7 @@
 	bottom: 0;
 	width: 12em;
 	overflow: auto;
-	z-index: 10;
+	z-index: 100;
 	background: #456;
 }
 .sidebar-header{
@@ -32,23 +38,24 @@
 	top: 0;
 	width: 2.5em;
 	height: 2.5em;
-	z-index: 10;
+	z-index: 100;
 	background: rgba(200,200,200, .8);
 }
 
 
 .layout,
 .sidebar{
-	transition: .5s;
+	transition: .5s;/*过渡动画*/
 }
 @media (max-width: 700px){
 .layout{padding-left: 0}
-.sidebar{left: -12em}
-.sidebar-toggle{display: block}
-.header{padding-left:2.5em}/*给 .sidebar-toggle 留位置*/
+.sidebar{left: -12em}/* .sidebar 往左隐藏*/
+.sidebar-toggle{display: block}/*显示 .sidebar-toggle按钮*/
+.header .navbar{padding-left:2.5em}/*如果头部有.navbar导航条，左侧要给 .sidebar-toggle按钮 留位置*/
 
-.layout.active{padding-left: 12em; margin-right: -12em}
-.layout.active .sidebar{left: 0}
+/*active*/
+.layout.active{padding-left: 12em; margin-right: -12em}/*留位给 .sidebar ; 往右扩展*/
+.layout.active .sidebar{left: 0}/*让 .sidebar 出来*/
 }
 
 
