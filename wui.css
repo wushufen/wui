@@ -193,6 +193,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	color:#333;
 	box-shadow:0 0 5px #888
 }
+.header .container{padding: 0}
 
 
 /* navbar */
