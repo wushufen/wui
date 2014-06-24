@@ -33,7 +33,7 @@
 	width: 2.5em;
 	height: 2.5em;
 	z-index: 10;
-	background: rgba(99,99,99, .8);
+	background: rgba(200,200,200, .8);
 }
 
 
@@ -42,12 +42,13 @@
 	transition: .5s;
 }
 @media (max-width: 700px){
-	.layout{padding-left: 0}
-	.sidebar{left: -12em}
-	.sidebar-toggle{display: block;}
+.layout{padding-left: 0}
+.sidebar{left: -12em}
+.sidebar-toggle{display: block}
+.header{padding-left:2.5em}/*给 .sidebar-toggle 留位置*/
 
-	.layout.active{padding-left: 12em; margin-right: -12em}
-	.layout.active .sidebar{left: 0}
+.layout.active{padding-left: 12em; margin-right: -12em}
+.layout.active .sidebar{left: 0}
 }
 
 
@@ -58,13 +59,13 @@
 
 
 
+/*滚动条，移动设备不要*/
 @media (min-width: 700px){
-	/*滚动条，移动设备不要*/
-	::-webkit-scrollbar{width: 11px; height: 11px}
-	::-webkit-scrollbar-track{border: solid 5px #fff; background: #ddd}
-	::-webkit-scrollbar-thumb{background: #fff; border-radius: 9px; border: solid 1px #999}
-	::-webkit-scrollbar-thumb:hover{background: #fff}
-	::-webkit-scrollbar-thumb:active{background: #eff}
+::-webkit-scrollbar{width: 11px; height: 11px}
+::-webkit-scrollbar-track{border: solid 5px #fff; background: #ddd}
+::-webkit-scrollbar-thumb{background: #fff; border-radius: 9px; border: solid 1px #999}
+::-webkit-scrollbar-thumb:hover{background: #fff}
+::-webkit-scrollbar-thumb:active{background: #eff}
 }
 
 /*选择文本*/

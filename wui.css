@@ -191,7 +191,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .header{
 	background:rgba(255,255,255,.8);
 	color:#333;
-	box-shadow:0 0 10px #888
+	box-shadow:0 0 5px #888
 }
 
 
