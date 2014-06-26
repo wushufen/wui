@@ -493,7 +493,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 
 
 .label{
-	display: block;
+	display: inline-block;
 	padding: .25em 0;
 }
 
