@@ -109,14 +109,14 @@ $(function() {
 
 
 	// 下拉框
-	$('.dropdown-toggle').click(function(){
-		$(this).closest('.dropdown').toggleClass('open');
+	$('.dropdown').click(function(){
+		$(this).toggleClass('open');
 		return false;
 	});
 	$('body').click(function(){
 		$('.dropdown').removeClass('open');
 	});
-	$('.dropdown-menu').click(function(e){
+	$('.dropdown-body').click(function(e){
 		e.stopPropagation();
 	})
 
