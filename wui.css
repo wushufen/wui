@@ -158,6 +158,15 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 
 
+/*分割线*/
+.menu-divider{
+	height: 1px;
+	background: #bbb;
+	margin: .25em 0;
+}
+
+
+
 .menu.horizontal .menu-item{
 	display: inline-block;
 }
@@ -485,7 +494,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	box-shadow: 0 0 5px 1px #a9eaff;
 }
 .button:hover{box-shadow:0px 1px 3px #aaa}/*:hover 要在 :focus 后，不然没效果*/
-.button:active{box-shadow:0px 1px 5px #333 inset}/*:active 要在 :hover 后*/
+.button:active{box-shadow:0px 1px 5px #aaa inset}/*:active 要在 :hover 后*/
 
 /*大小*/
 .button.small{padding: .05em .5em}
@@ -495,6 +504,12 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .label{
 	display: inline-block;
 	padding: .25em 0;
+}
+
+
+/* form group */
+.form-group{
+	margin: .5em 0;
 }
 
 
@@ -700,28 +715,37 @@ table.data{overflow: hidden; width: auto}
 /*
 .dropdown{
 	.dropdown-toggle{}
-	.dropdown-content{}
+	.dropdown-body{}
 }
 */
 .dropdown{position: relative}
-.dropdown-content{
+.dropdown-body{
 	position: absolute;
 	display: none;
 	top: 100%;
 	left: 0;
 	z-index: 1;
-	margin-top: .125em;
 	border-radius: 4px;
 	background: #fff;
+	box-shadow: 1px 3px 10px #aaa;
+	margin-top: .5em;
+}
+.dropdown-body:before,
+.dropdown-body:after{
+	content: "";
+	position: absolute;
+	left: 1em;
+	bottom: 100%;
+	border: solid .5em transparent;
+	border-bottom-color: #fff;
+}
+.dropdown-body:before{
+	border-bottom-color: #aaa;
 }
 
 /*open*/
-.dropdown.open .dropdown-toggle{
-	box-shadow:0px 1px 5px #333 inset;
-}
-.dropdown.open .dropdown-content{
+.dropdown.open .dropdown-body{
 	display: block;
-	box-shadow: 1px 3px 5px #888;
 }
 
 
@@ -762,42 +786,24 @@ table.data{overflow: hidden; width: auto}
     颜色
 \************************************************/
 
-/*文本颜色*/
-.c-primary {color:#0af}
-.c-success {color:#0d0}
-.c-warning {color:#fa0}
-.c-danger  {color:#e00}
-.c-error   {color:#e00}
-.c-info    {color:#759BAD}
+/*文本与文本框*/
+.primary {border-color:#00AAFF; color:#00AAFF}
+.success {border-color:#21D100; color:#21D100}
+.warning {border-color:#FFD013; color:#FFD013}
+.danger  {border-color:#FF6767; color:#FF6767}
+.error   {border-color:#FF0000; color:#FF0000}
+.info    {border-color:#5AC0F0; color:#5AC0F0}
 
-.c-money   {color:#f80}
-
-
-/*文本框、边框*/
-.b-primary {border-color:#3783CF}
-.b-success {border-color:#40A52D}
-.b-warning {border-color:#A2932D}
-.b-danger  {border-color:#A56B6B}
-.b-error   {border-color:#B94242}
-.b-info    {border-color:#759BAD}
-
-
-/*背景*/
-.bg-primary {background-color:#3783CF}
-.bg-success {background-color:#40A52D}
-.bg-warning {background-color:#A2932D}
-.bg-danger  {background-color:#A56B6B}
-.bg-error   {background-color:#B94242}
-.bg-info    {background-color:#759BAD}
+.money   {color: #f80}
 
 
 /*按钮*/
-.btn-primary {background-color:#00AAFF; border-color:#00AAFF; color:#fff}
-.btn-success {background-color:#21D100; border-color:#21D100; color:#fff}
-.btn-warning {background-color:#FFD013; border-color:#FFD013; color:#fff}
-.btn-danger  {background-color:#FF6767; border-color:#FF6767; color:#fff}
-.btn-error   {background-color:#FF0000; border-color:#FF0000; color:#fff}
-.btn-info    {background-color:#5AC0F0; border-color:#5AC0F0; color:#fff}
+.button.primary {background-color:#00AAFF; color:#fff}
+.button.success {background-color:#21D100; color:#fff}
+.button.warning {background-color:#FFD013; color:#fff}
+.button.danger  {background-color:#FF6767; color:#fff}
+.button.error   {background-color:#FF0000; color:#fff}
+.button.info    {background-color:#5AC0F0; color:#fff}
 
 
 

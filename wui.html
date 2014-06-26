@@ -63,9 +63,11 @@
 				<a class="menu-item" href="#form">form</a>
 				<a class="menu-item" href="#progress">progress</a>
 				<a class="menu-item" href="#icon">icon</a>
+				<a class="menu-item" href="#dropdown">dropdown</a>
+				<a class="menu-item" href="#collapse">collapse</a>
 				<a class="menu-item" href="#dialog">dialog</a>
 				<a class="menu-item" href="#dialog">排版</a>
-				<hr />
+				<p class="menu-divider"></p>
 				<a class="menu-item" href="#dialog">layout</a>
 			</div>
 
@@ -357,7 +359,7 @@
 							<td>标题</td>
 							<td>内容</td>
 							<td>
-								<a class="button btn-danger small">删除</a>
+								<a class="button danger small">删除</a>
 							</td>
 						</tr>
 						<tr>
@@ -366,7 +368,7 @@
 							<td>标题</td>
 							<td>内容</td>
 							<td>
-								<a class="button btn-danger small">删除</a>
+								<a class="button danger small">删除</a>
 							</td>
 						</tr>
 						<tr>
@@ -375,7 +377,7 @@
 							<td>标题</td>
 							<td>内容</td>
 							<td>
-								<a class="button btn-danger small">删除</a>
+								<a class="button danger small">删除</a>
 							</td>
 						</tr>
 					</table>
@@ -407,12 +409,12 @@
 			<h2 id="form">form</h2>
 			<div class="example">
 				<button class="button">按钮</button>
-				<button class="button btn-primary">主要</button>
-				<button class="button btn-success">成功</button>
-				<button class="button btn-warning">警告</button>
-				<button class="button btn-danger">危险</button>
-				<button class="button btn-error">错误</button>
-				<button class="button btn-info">信息</button>
+				<button class="button primary">主要</button>
+				<button class="button success">成功</button>
+				<button class="button warning">警告</button>
+				<button class="button danger">危险</button>
+				<button class="button error">错误</button>
+				<button class="button info">信息</button>
 				<a class="button" href="">链接按钮</a>
 			</div>
 
@@ -429,7 +431,7 @@
 				<div class="group" style="max-width:25em">
 					<input class="group-item input" type="text" name="" placeholder="用户名" />
 					<input class="group-item input" type="password" name="" placeholder="密码" />
-					<button class="group-item button btn-primary">登录</button>
+					<button class="group-item button primary">登录</button>
 				</div>
 			</div>
 
@@ -540,13 +542,13 @@
 					</div>
 
 					<div class="form-group">
-						<label class="input">
+						<label>
 							<input type="checkbox" name="" />
 							记住我
 						</label>
 					</div>
 
-					<button class="button btn-primary">登录</button>
+					<button class="button primary">登录</button>
 				</form>
 			</div>
 
@@ -594,10 +596,27 @@
 
 			<div class="example">
 				<div class="dropdown">
-					<i class="dropdown-toggle button">下拉</i>
-					<div class="dropdown-content">
-						xx
+					<span class="dropdown-toggle button">下拉 <i class="icon i-down"></i></span>
+					<div class="dropdown-body">
+						<div class="menu" style="min-width:4em">
+							<a class="menu-item" href="#icon">首页</a>
+							<p class="menu-divider"></p>
+							<a class="menu-item" href="#dropdown">案例</a>
+							<a class="menu-item" href="#collapse">联系</a>
+						</div>
 					</div>
+				</div>
+			</div>
+
+
+
+
+			<h2 id="collapse">collapse</h2>
+
+			<div class="example">
+				<div class="panel">
+					<div class="panel-header collapse-toggle">折叠</div>
+					<div class="panel-body collapse-body">内容</div>
 				</div>
 			</div>
 
