@@ -484,7 +484,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	border-color: #0af;
 	box-shadow: 0 0 5px 1px #a9eaff;
 }
-.button:hover{box-shadow:0px 1px 3px #333}/*:hover 要在 :focus 后，不然没效果*/
+.button:hover{box-shadow:0px 1px 3px #aaa}/*:hover 要在 :focus 后，不然没效果*/
 .button:active{box-shadow:0px 1px 5px #333 inset}/*:active 要在 :hover 后*/
 
 /*大小*/
