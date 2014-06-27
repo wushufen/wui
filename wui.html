@@ -81,26 +81,32 @@
 
 				<div class="navbar">
 					<div class="navbar-header">WUI</div>
-					<div class="nav">
-						<div class="menu">
-							<a class="menu-item" href="">首页</a>
-							<a class="menu-item" href="">案例</a>
-							<a class="menu-item" href="">联系</a>
-							<div class="menu-item dropdown">
-								<span class="dropdown-toggle">下拉 <i class="icon i-down"></i></span>
+					<div class="navbar-body">
+						<div class="nav">
+							<a class="nav-item" href="">导航</a>
+							<a class="nav-item" href="">导航</a>
+
+							<div class="nav-item dropdown">
+								下拉 <i class="icon i-down"></i>
 								<div class="dropdown-body">
 									<div class="menu">
 										<a class="menu-item" href="#icon">首页</a>
-										<p class="menu-divider"></p>
-										<a class="menu-item" href="#dropdown">案例</a>
-										<a class="menu-item" href="#collapse">联系</a>
+										<a class="menu-item" href="#icon">首页</a>
 									</div>
 								</div>
 							</div>
+
+							<span class="nav-item">文本</span>
+
+							<form>
+								<input class="input inline-block width-auto" placeholder="表单" />
+								<button class="button primary">搜索</button>
+							</form>
+
 						</div>
-						<div class="menu float-right">
-							<a class="menu-item" href="">注册</a>
-							<a class="menu-item" href="">登录</a>
+						<div class="nav float-right">
+							<a class="nav-item" href="">注册</a>
+							<a class="nav-item" href="">登录</a>
 						</div>
 					</div>
 				</div>
@@ -216,15 +222,18 @@
 
 						<div class="navbar">
 							<div class="navbar-header">WUI</div>
-							<div class="nav">
-								<div class="menu">
-									<a class="menu-item" href="">首页</a>
-									<a class="menu-item" href="">案例</a>
-									<a class="menu-item" href="">联系</a>
+							<div class="navbar-body">
+								<div class="nav">
+									<a class="nav-item" href="">首页</a>
+									<a class="nav-item" href="">案例</a>
+									<a class="nav-item" href="">联系</a>
 								</div>
-								<div class="menu float-right">
-									<a class="menu-item" href="">注册</a>
-									<a class="menu-item" href="">登录</a>
+								<form>
+									<input class="input" placeholder="搜索"></input>
+								</form>
+								<div class="nav float-right">
+									<a class="nav-item" href="">注册</a>
+									<a class="nav-item" href="">登录</a>
 								</div>
 							</div>
 						</div>
@@ -420,17 +429,20 @@
 			<h2 id="form">form</h2>
 			<div class="example">
 				<button class="button">按钮</button>
+				<a class="button" href="">链接按钮</a>
+				<button class="button small">小按钮</button>
+			</div>
+			<div class="example">
 				<button class="button primary">主要</button>
 				<button class="button success">成功</button>
 				<button class="button warning">警告</button>
 				<button class="button danger">危险</button>
 				<button class="button error">错误</button>
 				<button class="button info">信息</button>
-				<a class="button" href="">链接按钮</a>
 			</div>
 
 			<div class="example">
-				<input class="input" style="max-width:25em" type="text" name="" />
+				<input class="input" style="max-width:25em" type="text" placeholder="文本框" />
 			</div>
 
 			<div class="example">
@@ -530,10 +542,36 @@
 			</div>
 
 			<div class="example">
-				<div class="group justified" style="max-width:25em">
-					<span class="group-item">username</span>
-					<input class="group-item input"  type="text" name="" />
-				</div>
+
+				<form style="max-width:25em">
+
+					<div class="form-group">
+						<div class="group justified">
+							<span class="group-item">用户名</span>
+							<input class="group-item input"  type="text" name="" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="group justified">
+							<span class="group-item">密码</span>
+							<input class="group-item input"  type="password" name="" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<a class="float-right">忘记密码？</a>
+						<label>
+							<input type="checkbox" name="" />
+							记住我
+						</label>
+					</div>
+
+					<button class="button primary block">登录</button>
+
+				</form>
+
+
 			</div>
 
 
@@ -557,6 +595,7 @@
 							<input type="checkbox" name="" />
 							记住我
 						</label>
+						<a class="float-right" href="">忘记密码?</a>
 					</div>
 
 					<button class="button primary">登录</button>
@@ -606,6 +645,34 @@
 			<h2 id="dropdown">dropdown</h2>
 
 			<div class="example">
+				<div class="dropdown">
+					<span class="dropdown-toggle button">下拉 <i class="icon i-down"></i></span>
+					<div class="dropdown-body">
+						<div class="menu">
+							<a class="menu-item" href="#icon">首页</a>
+							<p class="menu-divider"></p>
+							<a class="menu-item" href="#dropdown">案例</a>
+							<a class="menu-item" href="#collapse">联系</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="example">
+
+				<div class="group horizontal">
+					<div class="group-item button">下拉</div>
+					<div class="group-item button dropdown">^</i>
+					<div class="dropdown-body">
+						<div class="menu">
+							<a class="menu-item" href="#icon">首页</a>
+							<p class="menu-divider"></p>
+							<a class="menu-item" href="#dropdown">案例</a>
+							<a class="menu-item" href="#collapse">联系</a>
+						</div>
+					</div>
+					</div>
+				</div>
 				<div class="dropdown">
 					<span class="dropdown-toggle button">下拉 <i class="icon i-down"></i></span>
 					<div class="dropdown-body">
