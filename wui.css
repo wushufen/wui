@@ -613,6 +613,7 @@ form.horizontal .controls{
 	content: "";
 	position: absolute;
 	right: 100%;
+	top: .25em;
 	border: solid .375em;
 	border-width: 0 .375em .375em 0;
 	border-bottom-color: transparent;
