@@ -222,10 +222,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 
 
-.navbar-body{
-	max-height: 400px;
-	overflow: auto;
-}
+.navbar-body{}
 .nav{}
 .nav-item{
 	float: left;
@@ -253,6 +250,9 @@ a.nav-item:hover{
 	left: 0;
 	top: 100%;
 	width: 100%;
+	max-height: 400px;
+	overflow: auto;
+
 	background: rgba(255, 255, 255, 0.91);
 	box-shadow: 0 5px 10px -5px #888;
 }
@@ -758,7 +758,13 @@ table.data{overflow: hidden; width: auto}
 }
 .pagination a{color: #456}
 
-.pagination .active{background: #0af; color: #fff}
+.pagination .active{
+	position: relative;
+	z-index: 1;
+	border-color: #0af;
+	background: #0af;
+	color: #fff;
+}
 
 .pagination :first-child{border-radius: 4px 0 0 4px}
 .pagination :last-child{border-radius: 0 4px 4px 0}
