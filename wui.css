@@ -222,7 +222,10 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 
 
-.navbar-body{}
+.navbar-body{
+	max-height: 400px;
+	overflow: auto;
+}
 .nav{}
 .nav-item{
 	float: left;
