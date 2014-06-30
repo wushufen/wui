@@ -596,13 +596,34 @@ form.horizontal .controls{
 	float: left;
 	width: 16em;
 	max-width: 100%;/*窗口窄时不伸出右边*/
-	margin-right: .5em;
+	margin-right: .75em;
 }
 
 .tip{
 	float: left;
+	position: relative;
 	line-height: 1;
-	padding-top: .5em;
+	padding: .25em;
+	margin-top: .25em;
+	border: solid 1px #bbb;
+	border-radius: 4px;
+}
+.tip:before,
+.tip:after{
+	content: "";
+	position: absolute;
+	right: 100%;
+	border: solid .375em;
+	border-width: 0 .375em .375em 0;
+	border-bottom-color: transparent;
+}
+.tip:before{
+	margin-right: 1px;
+	margin-top: -1px;
+}
+.tip:after{
+	border-right-color: #fff;
+	margin-right: -1px;
 }
 
 /***************组****************/
@@ -899,7 +920,7 @@ table.data{overflow: hidden; width: auto}
 .warning {border-color:#FFD013; color:#FFD013}
 .danger  {border-color:#FF6767; color:#FF6767}
 .error   {border-color:#FF0000; color:#FF0000}
-.info    {border-color:#5AC0F0; color:#45758B}
+.info    {border-color:#5AC0F0; color:#83C3E0}
 
 .money   {color: #f80}
 
