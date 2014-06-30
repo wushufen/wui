@@ -290,7 +290,7 @@ a.nav-item:hover{
 
 	color: #aaa;
 }
-.path a{color: #3D4F5D}
+.path a{color: #0569B8}
 
 .path a + a:before,
 .path a + span:before{
@@ -437,10 +437,8 @@ a.nav-item:hover{
 \************************************************/
 /*
 .list{
-	.list-item{
-	}
-	a.list-item{
-	}
+	.list-item{}
+	a.list-item{}
 }
 */
 .list{
@@ -544,21 +542,30 @@ a.nav-item:hover{
 /*水平表单*/
 /*
 form.horizontal{
-			.form-group{
-.label{}	.input{}
-			}
-			.form-group{
-.label{}	.input{}	.tip{}
-			}
-			.form-group{
+	.form-group{
+		.label{}	.input{}	[.tip{}]
+	}
+	.form-group{
+		:radio{}
+		:radio{}
+	}
+	.form-group{
+		.controls{
 			:checkbox{}
 			:checkbox{}
-			}
-			.form-group{
-			.button{}
-			}
-
-			...
+		}
+	}
+	.form-group{
+		.controls{
+			.float-right{放于.controls里，右浮右与文本框右边对齐}
+			:checkbox{}
+		}
+	}
+	.form-group{
+		.button{}
+	}
+	.button
+	...
 }
 */
 form.horizontal{
@@ -583,12 +590,14 @@ form.horizontal .input,
 form.horizontal .controls{
 	float: left;
 	width: 16em;
+	max-width: 100%;/*窗口窄时不伸出右边*/
 	margin-right: .5em;
 }
 
 .tip{
 	float: left;
-	padding-top: .25em;
+	line-height: 1;
+	padding-top: .5em;
 }
 
 /***************组****************/
@@ -879,7 +888,7 @@ table.data{overflow: hidden; width: auto}
 .warning {border-color:#FFD013; color:#FFD013}
 .danger  {border-color:#FF6767; color:#FF6767}
 .error   {border-color:#FF0000; color:#FF0000}
-.info    {border-color:#5AC0F0; color:#5AC0F0}
+.info    {border-color:#5AC0F0; color:#45758B}
 
 .money   {color: #f80}
 
