@@ -6,6 +6,7 @@ by wushufen
 
 /*
 input firefox 无法改变 line-height
+火狐 文档顶部 出现空白 2014.06.30
 */
 
 
@@ -252,10 +253,10 @@ a.nav-item:hover{
 	background: rgba(255, 255, 255, 0.91);
 	box-shadow: 0 5px 10px -5px #888;
 }
-.nav,
+.navbar form,
+.nav.float-right,
 .nav-item{
 	float: none;
-	width: 100%;
 }
 
 }
@@ -537,8 +538,58 @@ a.nav-item:hover{
 .form-group{
 	margin: .5em 0;
 }
+.form-group:after{content: ""; display: block; clear: both;}
 
 
+/*水平表单*/
+/*
+form.horizontal{
+			.form-group{
+.label{}	.input{}
+			}
+			.form-group{
+.label{}	.input{}	.tip{}
+			}
+			.form-group{
+			:checkbox{}
+			:checkbox{}
+			}
+			.form-group{
+			.button{}
+			}
+
+			...
+}
+*/
+form.horizontal{
+	padding-left: 9em;/*留位置给 .label, .label 以 absolute 放于左边*/
+}
+
+form.horizontal .form-group{
+	position: relative;
+}
+
+form.horizontal .label{
+	position: absolute;
+	right: 100%;
+	width: 8em;
+	margin-right: 1em;
+	text-align: right;
+	line-height: 1;/*换行时紧凑点*/
+	padding-top: .5em;
+}
+
+form.horizontal .input,
+form.horizontal .controls{
+	float: left;
+	width: 16em;
+	margin-right: .5em;
+}
+
+.tip{
+	float: left;
+	padding-top: .25em;
+}
 
 /***************组****************/
 /*

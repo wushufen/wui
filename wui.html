@@ -98,12 +98,12 @@
 
 							<span class="nav-item">文本</span>
 
+						</div>
+
 							<form>
 								<input class="input inline-block width-auto" placeholder="表单" />
 								<button class="button primary">搜索</button>
 							</form>
-
-						</div>
 						<div class="nav float-right">
 							<a class="nav-item" href="">注册</a>
 							<a class="nav-item" href="">登录</a>
@@ -578,7 +578,7 @@
 			<h3>form group</h3>
 			<div class="example">
 
-				<form style="max-width:25em">
+				<form class="" style="max-width:25em">
 
 					<div class="form-group">
 						<label class="label">用户名</label>
@@ -599,6 +599,50 @@
 					</div>
 
 					<button class="button primary">登录</button>
+				</form>
+			</div>
+
+
+			<h3>horizontal</h3>
+			<div class="example">
+
+				<form class="horizontal" style="max-width:50em">
+
+					<div class="form-group">
+						<label class="label">用户名</label>
+						<input class="input error" type="text" name="" />
+						<p class="tip error">请输入用户名</p>
+					</div>
+
+					<div class="form-group">
+						<label class="label">密码密码密码密码密码</label>
+						<input class="input" type="password" name="" />
+						<p class="tip info">请输入用户名密码密码密码密码密码</p>
+					</div>
+
+					<div class="form-group">
+						<label class="label">重复密码</label>
+						<input class="input" type="password" name="" />
+					</div>
+
+					<div class="form-group">
+						<label><input type="radio" name="sex" />男</label>
+						<label><input type="radio" name="sex" />女</label>
+					</div>
+
+					<div class="form-group">
+						<div class="controls">
+							<a class="float-right" href="">忘记密码?</a>
+							<label>
+								<input type="checkbox" name="" />
+								记住我
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<button class="button primary">登录</button>
+					</div>
 				</form>
 			</div>
 
@@ -717,6 +761,9 @@
 		// 侧边栏
 		$('.sidebar-toggle').click(function(){
 			$('.layout').toggleClass('active');
+		});
+		$('body').click(function(){
+			$('.layout').removeClass('active');
 		});
 
 
