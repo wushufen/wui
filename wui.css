@@ -90,6 +90,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	width: 960px;/*非响应时宽度*/
 	max-width: 100%;/*被嵌套时，比如在一个iframe里*/
 	margin: auto;
+
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
@@ -118,6 +119,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 */
 .col{
 	float:left;
+
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
@@ -169,7 +171,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 
 
-
+/*水平的*/
 .menu.horizontal .menu-item{
 	display: inline-block;
 }
@@ -208,12 +210,13 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .header .container{padding: 0}
 
 
-/* navbar */
+/*导航条*/
 .navbar{
 	position: relative;
 	z-index: 10;
 }
 .navbar:after{content:""; display:block; clear:both}
+/*导航条标题*/
 .navbar-header{
 	float: left;
 	padding: 0 .75em;
@@ -221,9 +224,11 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	line-height: 40px; line-height: 2.5rem;
 }
 
-
+/*导航条折叠部分*/
 .navbar-body{}
+/*导航菜单*/
 .nav{}
+/*导航菜单项*/
 .nav-item{
 	float: left;
 	display: block;
@@ -236,31 +241,34 @@ a.nav-item:hover{
 }
 
 
-
+/*导航条中的表单*/
 .navbar form{
 	float: left;
 	margin: .1875em;
 }
 
 
+/*导航条折叠部分折叠*/
 @media (max-width:700px){
-.navbar-body{
-	/*display: none;*/
-	position: absolute;
-	left: 0;
-	top: 100%;
-	width: 100%;
-	max-height: 400px;
-	overflow: auto;
+	.navbar-body{
+		/*display: none;*/
+		position: absolute;
+		left: 0;
+		top: 100%;
+		width: 100%;
+		max-height: 400px;
+		overflow: auto;
 
-	background: rgba(255, 255, 255, 0.91);
-	box-shadow: 0 5px 10px -5px #888;
-}
-.navbar form,
-.nav.float-right,
-.nav-item{
-	float: none;
-}
+		background: rgba(255, 255, 255, 0.91);
+		box-shadow: 0 5px 10px -5px #888;
+	}
+
+	/*折叠之后不浮动占满一行*/
+	.navbar form,
+	.nav.float-right,
+	.nav-item{
+		float: none;
+	}
 
 }
 
@@ -454,12 +462,10 @@ a.nav-item:hover{
 	padding: .5em 1em;
 	margin-top: -1px;
 }
-.list-item:nth-child(1){
-	border-radius: 4px 4px 0 0;
-}
-.list-item:nth-last-child(1){
-	border-radius: 0 0 4px 4px;
-}
+
+/*圆角效果*/
+.list-item:first-child{border-radius: 4px 4px 0 0}
+.list-item:last-child{border-radius: 0 0 4px 4px}
 
 
 
@@ -468,6 +474,7 @@ a.nav-item:hover{
 /************************************************\
 	表单
 \************************************************/
+/*文本框、文本域、下拉选择*/
 .input{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -486,6 +493,7 @@ a.nav-item:hover{
 	color: #888;
 	box-shadow: #ddd 0 1px 9px -2px inset;
 }
+/*横线文本框*/
 .input-line{
 	display: block;
 	border: solid 1px #5da8ca;
@@ -496,6 +504,8 @@ a.nav-item:hover{
 	margin: .25em 0;/*2014.06.30 + .label 换行时与下一个 .label 太紧了*/
 }
 
+
+/*按钮*/
 .button{
 	display: inline-block;
 	padding: .25em 1em;
@@ -510,6 +520,8 @@ a.nav-item:hover{
 	background: #F9F9F9;
 }
 
+
+/*按钮和文本框焦点效果*/
 .button:focus,/*2014.06.20 +*/
 .input:focus,
 .input-line:focus{
@@ -520,7 +532,8 @@ a.nav-item:hover{
 .button:hover{box-shadow:0px 1px 3px #aaa}/*:hover 要在 :focus 后，不然没效果*/
 .button:active{box-shadow:0px 1px 5px #aaa inset}/*:active 要在 :hover 后*/
 
-/*大小*/
+
+/*按钮大小*/
 .button.small{padding: .05em .5em}
 
 
@@ -530,13 +543,14 @@ a.nav-item:hover{
 }
 
 
+/*表单标签*/
 .label{
 	display: inline-block;
 	padding: .25em 0;
 }
 
 
-/* form group */
+/*表单组*/
 .form-group{
 	margin: .5em 0;
 }
@@ -599,6 +613,8 @@ form.horizontal .controls{
 	margin-right: .75em;
 }
 
+
+/*表单提示*/
 .tip{
 	float: left;
 	position: relative;
@@ -606,7 +622,7 @@ form.horizontal .controls{
 	padding: .25em;
 	margin-top: .25em;
 	border: solid 1px #bbb;
-	border-radius: 4px;
+	border-radius: 2px;
 }
 .tip:before,
 .tip:after{
@@ -618,16 +634,14 @@ form.horizontal .controls{
 	border-width: 0 .375em .375em 0;
 	border-bottom-color: transparent;
 }
-.tip:before{
-	margin-right: 1px;
-	margin-top: -1px;
-}
 .tip:after{
 	border-right-color: #fff;
-	margin-right: -1px;
+	margin-right: -2px;
+	margin-top: 1px;
 }
 
-/***************组****************/
+
+/*控件组*/
 /*
 .group[.horizontal]{
 	.group-item{}
@@ -665,7 +679,7 @@ button.group-item{width: 100%; box-shadow: none;}
 .group-item:last-child{border-bottom-left-radius: 4px; border-bottom-right-radius: 4px}/*如果只有一个，既为第一也为最后，不要直接border-radius覆盖了*/
 
 
-/*水平*/
+/*水平控件组*/
 .group.horizontal{
 	display: inline-block;
 }
@@ -682,7 +696,7 @@ button.group-item{width: 100%; box-shadow: none;}
 .group.justified :last-child,.group.horizontal :last-child{border-top-right-radius: 4px; border-bottom-right-radius: 4px}
 
 
-/*自动调整*/
+/*控件组自动调整*/
 .group.justified{
 	display:table;
 	width:100%;
@@ -724,8 +738,9 @@ table.data{}
 	border-spacing:0;
 	width:100%;
 }
-.data tr:nth-child(2n){background: rgba(75, 117, 155, 0.03)}
-.data tr:hover td{background: rgba(75, 117, 155, 0.06)}
+
+.data{overflow:auto}
+table.data{overflow: hidden; width: auto}
 
 .data th,
 .data td{
@@ -740,19 +755,17 @@ table.data{}
 }
 .data th{
 	text-align:left;
-	border-bottom:solid 1px #aaa;
 	color: #111;
 
 	/*2014.05.30 +*/
 	white-space: nowrap;
 }
+.data tr:first-child th{background: rgba(75, 117, 155, 0.03); border-bottom:solid 1px #aaa;}
+
 .data td{
 	border-top:solid 1px #e6e6e6;
 }
-
-
-.data{overflow:auto}
-table.data{overflow: hidden; width: auto}
+.data tr:hover td{background: rgba(75, 117, 155, 0.06)}
 
 
 
@@ -788,6 +801,7 @@ table.data{overflow: hidden; width: auto}
 	color: #fff;
 }
 
+/*圆角效果*/
 .pagination :first-child{border-radius: 4px 0 0 4px}
 .pagination :last-child{border-radius: 0 4px 4px 0}
 
@@ -957,8 +971,7 @@ table.data{overflow: hidden; width: auto}
 .float-right{float: right}
 
 /*撑开*/
-.clearfix{*zoom:1}
-.clearfix:after{content: ""; display: block; clear: both;}
+.clearfix{*zoom:1}.clearfix:after{content: ""; display: block; clear: both;}
 
 /*文本*/
 .text-center{text-align: center}
@@ -978,7 +991,7 @@ table.data{overflow: hidden; width: auto}
 .shadow{box-shadow:0px 2px 3px 0px #333}
 .shadow-inset{box-shadow:0px 2px 3px 0px #333 inset}
 
-/*禁选择*/
+/*禁止选择文本*/
 .select-none{
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -1077,4 +1090,3 @@ table.data{overflow: hidden; width: auto}
 .t2{border:1px solid #f00; box-sizing: border-box}
 .b{background:#f00}
 .b2{background:#0f0}
-
