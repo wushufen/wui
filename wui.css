@@ -228,7 +228,6 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 /*导航菜单项*/
 .nav-item{
 	float: left;
-	/*display: block;*//*有 float 就不必要了*/
 	padding: .5em 1em;
 	color: #345;
 	text-decoration: none;
@@ -265,6 +264,7 @@ a.nav-item:hover{
 	.nav.float-right,
 	.nav-item{
 		float: none;
+		display: block;
 	}
 
 }
