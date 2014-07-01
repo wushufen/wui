@@ -89,14 +89,14 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .container{
 	width: 960px;/*非响应时宽度*/
 	max-width: 100%;/*被嵌套时，比如在一个iframe里*/
-	margin: auto;
+	margin: auto;/*居中*/
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 0 1em;
+	padding: 0 1em;/*左右留白*/
 }
 
 
@@ -109,23 +109,23 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 */
 .row{
-	margin: 0 -.5em;
+	margin: 0 -.5em;/*抵消 .container 一半的留白*/
 }
-.row:after{content: ""; display: block; clear: both;}
+.row:after{content: ""; display: block; clear: both;}/*clearfix*/
 
 /*栅格*/
 /*
 .col.span-*{}
 */
 .col{
-	float:left;
+	float:left;/*横向排列*/
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 0 .5em;
+	padding: 0 .5em;/*与.row抵消.container的一半相加为1，相邻的.col相加也为1*/
 }
 .span-1  {width:8.3333%}
 .span-2  {width:16.6667%}
@@ -162,7 +162,6 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	background: rgba(200,200,200, .2)
 }
 
-
 /*分割线*/
 .menu-divider{
 	height: 1px;
@@ -182,46 +181,44 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	header
 \************************************************/
 /*
-.header{
-	[.container]{
+.header{ [.container]{
 
-		.navbar{
-			.navbar-header{ appName }
-			.navbar-toggle{}
-			.navbar-body{
-				.nav{
-					.nav-item{}
-					.nav-item{}
-				}
-				.nav.float-right{
-					.nav-item{}
-				}
+	.navbar{
+		.navbar-header{ appName }
+		.navbar-toggle{}
+		.navbar-body{
+			.nav{
+				.nav-item{}
+				.nav-item{}
+			}
+			.nav.float-right{
+				.nav-item{}
 			}
 		}
-		
 	}
-}
+	
+} }
 */
 .header{
 	background: rgba(255,255,255,.8);
 	color: #333;
 	box-shadow: 0 0 5px #888;
 }
-.header .container{padding: 0}
+.header .container{padding: 0}/*头部左右不要留白*/
 
 
 /*导航条*/
 .navbar{
-	position: relative;
-	z-index: 10;
+	position: relative;/*1*/
+	z-index: 10;/*1 提高显示层次*/
 }
-.navbar:after{content:""; display:block; clear:both}
+.navbar:after{content:""; display:block; clear:both}/*clearfix*/
 /*导航条标题*/
 .navbar-header{
 	float: left;
 	padding: 0 .75em;
 	font-size: 1.2em;
-	line-height: 40px; line-height: 2.5rem;
+	line-height: 40px; line-height: 2.5rem;/*在改变字体大小时也能保持固定的高度*/
 }
 
 /*导航条折叠部分*/
@@ -231,7 +228,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 /*导航菜单项*/
 .nav-item{
 	float: left;
-	display: block;
+	/*display: block;*//*有 float 就不必要了*/
 	padding: .5em 1em;
 	color: #345;
 	text-decoration: none;
@@ -244,14 +241,14 @@ a.nav-item:hover{
 /*导航条中的表单*/
 .navbar form{
 	float: left;
-	margin: .1875em;
+	margin: .1875em;/***/
 }
 
 
 /*导航条折叠部分折叠*/
 @media (max-width:700px){
 	.navbar-body{
-		/*display: none;*/
+		/*display: none;*//*todo*/
 		position: absolute;
 		left: 0;
 		top: 100%;
@@ -285,13 +282,13 @@ a.nav-item:hover{
 }
 */
 .path{
-	overflow: hidden;
+	overflow: hidden;/*clearfix*/
 
 	background: rgba(75, 117, 155, 0.06);
 	border-radius: 4px;
 
 	margin: .5em 0;
-}/*clearfix*/
+}
 
 .path a,
 .path span{
@@ -319,8 +316,7 @@ a.nav-item:hover{
 \************************************************/
 /*
 .panel{
-	.panel-header{
-	}
+	.panel-header{}
 	.panel-body{}
 	.panel-footer{}
 }
