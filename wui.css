@@ -247,7 +247,7 @@ a.nav-item:hover{
 /*导航条折叠部分折叠*/
 @media (max-width:700px){
 	.navbar-body{
-		/*display: none;*//*todo*/
+		display: none;/*todo*/
 		position: absolute;
 		left: 0;
 		top: 100%;
@@ -298,7 +298,7 @@ a.nav-item:hover{
 
 	color: #aaa;
 }
-.path a{color: #0569B8}
+.path a{color: #008CBA}
 
 .path a + a:before,
 .path a + span:before{
@@ -306,7 +306,7 @@ a.nav-item:hover{
 	position: absolute;
 	left: -.15em;
 
-	color: #bbb;
+	color: #ddd;
 }
 
 
@@ -324,13 +324,12 @@ a.nav-item:hover{
 .panel{
 	padding: .5em 1em;
 	border: solid 1px #e6e6e6;
-	border-radius: 4px;
 
 	margin-bottom: 1em;
 }
 .panel-header{
 	margin: -.5em -1em .5em;
-	padding: .5em 1em;
+	padding: .375em 1em;
 	border-bottom: solid 1px #ddd;
 
 	background: rgba(75, 117, 155, 0.06);
@@ -342,10 +341,15 @@ a.nav-item:hover{
 .panel-footer{
 	border-top: solid 1px #e6e6e6;
 	margin: .5em -1em -.5em;
-	padding: .5em 1em;
+	padding: .375em 1em;
 
 	background: rgba(75, 117, 155, 0.06);
 }
+
+/*圆角效果*/
+.panel{border-radius: 4px}
+.panel-header{border-radius: 4px 4px 0 0}
+.panel-footer{border-radius: 0 0 4px 4px}
 
 
 
@@ -355,86 +359,90 @@ a.nav-item:hover{
 \************************************************/
 /*
 .tabs{
-  ul.tabs-indexs{[.justified]
-    li{}
-    li{}
-    ...
-    li.right{右标签}
-  }
-  .tabs-body{
-    .tab{}
-    .tab{}
-    .tab{}
-    ...
-  }
+	[.tabs-hader{}]
+	.tab{}
+	.tab{}
+}
+.tabs-body{
+	.tab-content{}
+	.tab-content{}
+}
+*/
+/*
+.panel{
+	.panel-hader.tabs{
+		.tab{}
+		.tab{}
+	}
+	.panel-body.tabs-body{
+		.tab-content{}
+		.tab-content{}
+	}
 }
 */
 .tabs{
-	margin-bottom: 1em;
-}/*clearfix*/
-
-.tabs-indexs{
-	list-style:none;
-
-	border-bottom:solid 1px #bbb
-}/*clearifx*/
-.tabs-indexs:after {
-	content: "";
-	display: block;
-	clear: both;
+	border-bottom: solid 1px #bbb;/*下横线*/
+	padding: 0;/*for panel-hader.tabs*/
 }
-.tabs-indexs li{
-	float:left;
-	padding:.5em 1em;
+.tabs:after{content: ""; display: block; clear: both;}
 
-	margin-bottom:-1px;
-	border:solid 1px transparent;
+/*标签控件标题*/
+
+/*标签*/
+.tabs-header,
+.tab{
+	float: left;/*横向排列*/
+	padding: .375em .75em;
+}
+.tabs-header{color: #000}
+.tab{cursor: pointer}
+
+/*当前标签*/
+.tab.active{
+	border: solid 1px #bbb;
 	border-radius: 4px 4px 0 0;
-	cursor:pointer
-}
-.tabs-indexs li.right{
-	float:right
-}
-.tabs-indexs li a{
-	display:block;
-	margin:-.5em -.75em;
-	padding:.5em .75em
+	margin: -1px;/*抵消 border 的空间、盖住下横线*/
+	border-bottom-color: #fff;/*盖住下横线*/
+	background: #fff;
 }
 
-.tabs-body{
-	margin-top: -1px;
-	/*border-radius: 0 0 4px 4px;*/
-	/*padding:.5em .75em*/
-	padding-top: 1em;
+/*标签内容*/
+.tab-content{
+	display: none;
 }
 
-.tab{/*display: none;*/}
 
-/*active*/
-.tabs-indexs li.active{
-	background:#fff;
-	border-color:#bbb;
-	border-bottom-color: #fff;
-	position:relative;
+/*justified*/
+.justified .tab.active{
+	position: relative;
+	bottom: -1px;
 }
-.tab.active{display:block}
 
 
-/*justified, 低版本浏览器不支持 display:table*/
-.tabs-indexs.justified{
-	display:table;
-	width:100%;
-	table-layout:fixed;
-	box-sizing:border-box;
+
+/************************************************\
+	justified
+	使组件表现为表格实现一行两端对齐
+	低版本浏览器不支持
+\************************************************/
+/*
+.menu.justified{...}
+.tabs.justified{...}
+.group.justified{...}
+*/
+.justified{
+	display: table !important;
+	/*table-layout:fixed;*/
+	width: 100%;
+	box-sizing: border-box;
 }
-.tabs-indexs.justified:after{display:none}/*:after也当成了一格*/
-.tabs-indexs.justified li{
-	float:none;
-	display:inline-block;
-	display:table-cell;
-	*display: inline; *zoom:1;
-	text-align:center;
-	bottom: -1px;/*margin-bottom:-1px;无效*/
+.justified:after{display: none !important}/*:after也当成了一格*/
+.justified > *{
+	display:inline-block;display:table-cell !important;
+	*display:inline;*zoom:1;
+
+	float: none !important;
+	text-align: center;
 }
 
 
@@ -693,20 +701,10 @@ button.group-item{width: 100%; box-shadow: none;}
 
 
 /*控件组自动调整*/
-.group.justified{
-	display:table;
-	width:100%;
-	/*table-layout:fixed;*/
-	box-sizing:border-box;
-}
+.group.justified{/**/}
 .group.justified .group-item{
-	float:none;
-	display:inline-block;
-	display:table-cell;
-	*display: inline; *zoom:1;
 	width: 1%;
 	margin-left: -1px;
-	text-align:center;
 	white-space: nowrap;/*不能换行*/
 }
 .group.justified .group-item.input{/*文本框最长*/

@@ -73,40 +73,6 @@ $(function() {
 
 
 
-	// 标签页
-	$('.tabs').each(function() {
-		//显示第一个
-		$(this).find('.tabs-indexs').children().first().addClass('active');
-		$(this).find('.tab').first().show();
-	});
-
-	var beforeTabIndex = 0;
-	$('.tabs-indexs').children().click(function() {
-		$(this).siblings().removeClass('active');
-		$(this).addClass('active');
-
-		//显示对应的div
-		var tabsBody = $(this).closest('.tabs').find('.tabs-body');
-		var index = $(this).index();
-
-		tabsBody.find('.tab').hide();
-		var curTab = tabsBody.children('.tab').eq(index);
-
-		// var curTabHeight = curTab.outerHeight();
-
-		// var beforeTab = tabsBody.children('.tab').eq(beforeTabIndex);
-		// var beforeTabHeight = beforeTab.outerHeight();
-		// // 效果
-		// tabsBody.height(beforeTabHeight);
-		// tabsBody.stop().animate({height: curTabHeight}, 500, function(){
-		// 	tabsBody.height('auto');
-		// });
-		// beforeTabIndex = index;
-
-		curTab.fadeIn();
-	});
-
-
 
 	// 下拉框
 	$('.dropdown').click(function(){

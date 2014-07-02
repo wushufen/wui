@@ -54,8 +54,8 @@
 				<a class="menu-item" href="#path">path</a>
 				<a class="menu-item" href="#menu">menu</a>
 				<a class="menu-item" href="#header">header</a>
-				<a class="menu-item" href="#tabs">tabs</a>
 				<a class="menu-item" href="#panel">panel</a>
+				<a class="menu-item" href="#tabs">tabs</a>
 				<a class="menu-item" href="#list">list</a>
 				<a class="menu-item" href="#badge">badge</a>
 				<a class="menu-item" href="#table">table</a>
@@ -246,35 +246,6 @@
 
 
 
-			<h2 id="tabs">tabs</h2>
-
-			<div class="example">
-				<div class="tabs">
-					<ul class="tabs-indexs">
-						<li>首页</li>
-						<li class="active0">案例</li>
-						<li>联系</li>
-					</ul>
-				</div>
-			</div>
-
-			<h3>justified</h3>
-			<div class="example">
-				<div class="tabs">
-					<ul class="tabs-indexs justified">
-						<li>一</li>
-						<li>二</li>
-						<li>三</li>
-						<li>四</li>
-						<li>五</li>
-					</ul>
-					<div class="tabs-body">
-					</div>
-				</div>
-			</div>
-
-
-
 			<h2 id="panel">panel</h2>
 			
 			<div class="example">
@@ -305,6 +276,89 @@
 					</div>
 				</div>
 			</div>
+
+
+
+			<h2 id="tabs">tabs</h2>
+
+			<div class="example">
+				<div class="tabs">
+					<span class="tab" href="">首页</span>
+					<span class="tab active" href="">案例</span>
+					<span class="tab" href="">联系</span>
+				</div>
+			</div>
+			<div class="example">
+				<div class="tabs">
+					<p class="tabs-header">标题</p>
+					<span class="tab" href="">首页</span>
+					<span class="tab active" href="">案例</span>
+					<span class="tab" href="">联系</span>
+				</div>
+				<div class="tabs-body">
+					<div class="tab-content">1</div>
+					<div class="tab-content">2</div>
+					<div class="tab-content">3</div>
+				</div>
+			</div>
+
+			<h3>panel tabs</h3>
+			<div class="example">
+				<div class="panel">
+					<div class="panel-header tabs">
+						<p class="tabs-header">标题</p>
+						<span class="tab" href="">首页</span>
+						<span class="tab" href="">案例</span>
+						<span class="tab" href="">联系</span>
+					</div>
+					<div class="panel-body tabs-body">
+						<div class="tab-content">1</div>
+						<div class="tab-content">2</div>
+						<div class="tab-content">3</div>
+					</div>
+				</div>
+			</div>
+
+			<h3>justified</h3>
+			<div class="example">
+				<div class="tabs justified">
+					<a class="tab" href="">导航</a>
+					<a class="tab active" href="">导航</a>
+					<a class="tab" href="">导航</a>
+					<a class="tab" href="">导航</a>
+					<a class="tab" href="">导航</a>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				// 标签页
+				$('.tabs').each(function() {
+					// 显示
+					var $active = $(this).find('.active');
+					var index = $(this).find('.tab').index($active);
+					// 如果没有 .active 则显示第一个
+					if ($active.length == 0) {
+						$(this).find('.tab').first().addClass('active');
+						$(this).next('.tabs-body').find('.tab-content').eq(0).fadeIn();
+					}else{
+						$(this).next('.tabs-body').find('.tab-content').eq(index).fadeIn();
+					}
+				});
+
+				// 点击
+				$('.tab').click(function() {
+					$(this).siblings().removeClass('active');
+					$(this).addClass('active');
+
+					//显示对应的 .tab-content
+					var index = $(this).closest('.tabs').find('.tab').index($(this));
+					$(this).closest('.tabs').next('.tabs-body').find('.tab-content')
+						.hide()
+						.eq(index).fadeIn();
+				});
+			</script>
+
+
 
 
 
@@ -787,13 +841,12 @@
 			var el = $('.js-scrollFixTop');
 			var elOffsetTop = el.offset().top;
 			var elOffsetLeft = el.offset().left;
-			var elWidth = el.width();
 			if (scrollTop > elOffsetTop) {
 				el.css({
 					position: 'fixed',
 					top: 0,
 					left: elOffsetLeft,
-					width: elWidth,
+					right: 0,
 					zIndex: '999'
 				});
 			};
