@@ -67,8 +67,9 @@ $(function() {
 
 
 	// 折叠
-	$('.collapse').click(function() {
+	$('.js-collapse').click(function() {
 		$(this).next().slideToggle();
+		return false;
 	});
 
 

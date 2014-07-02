@@ -322,25 +322,25 @@ a.nav-item:hover{
 }
 */
 .panel{
-	padding: .5em 1em;
+	/*padding: .5em 1em;*/
 	border: solid 1px #e6e6e6;
 
 	margin-bottom: 1em;
 }
 .panel-header{
-	margin: -.5em -1em .5em;
+	/*margin: -.5em -1em .5em;*/
 	padding: .375em 1em;
 	border-bottom: solid 1px #ddd;
 
 	background: rgba(75, 117, 155, 0.06);
 }
 .panel-body{
-	margin: -.5em -1em;
+	/*margin: -.5em -1em;*/
 	padding: .5em 1em;
 }
 .panel-footer{
+	/*margin: .5em -1em -.5em;*/
 	border-top: solid 1px #e6e6e6;
-	margin: .5em -1em -.5em;
 	padding: .375em 1em;
 
 	background: rgba(75, 117, 155, 0.06);
