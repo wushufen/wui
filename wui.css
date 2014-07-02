@@ -65,8 +65,8 @@ th{
 
 /* 链接 */
 a{text-decoration: none; color: #0af}
-a:hover{text-decoration: underline}
-a:active{text-decoration: overline}
+/*a:hover{text-decoration: underline}*/
+/*a:active{text-decoration: overline}*/
 
 /*2014.06.20 - 见表单部分*/
 /*
