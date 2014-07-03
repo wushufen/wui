@@ -1,0 +1,85 @@
+/*
+by wushufen
+2014.07.03
+base wui
+*/
+
+.loading{}
+
+.header{}
+	.navbar{}
+		.navbar-header{}
+		.navbar-body{}
+			.nav{}
+				.nav-item{}
+
+.container{}
+	.row{}
+		.col{}
+
+.path{background: rgba(201, 205, 209, 0.06)}
+	.path a,.path span{}
+
+.menu{}
+	.menu-deivder{}
+	.menu-item{}
+		.menu-toggle{}
+		.menu-item .menu{}
+			.menu-item .menu-item{}
+
+.panel{}
+	.panel-header{}
+	.panel-body{}
+	.panel-footer{}
+
+.tabs{}
+	.tabs-header{}
+	.tab{}
+.tabs-body{}
+	.tabs-content{}
+
+.list{}
+	.list-item{}
+
+.badge{}
+
+.data{}
+
+.pagination{}
+	.pagination a,.pagination span{}
+
+.form{}
+	.form-group{}
+		.label{}
+		.input{}
+		.input-line{}
+		.button{}
+		.tip{}
+.group{}
+
+.progress{}
+	.progress-completed{}
+
+.icon{}
+
+.dropdown{}
+
+.collapse{}
+
+/*.dialog{x}*/
+
+/*.status{...}*/
+.primary {}
+.success {}
+.warning {}
+.danger  {}
+.error   {}
+.info    {}
+.money   {}
+.button.primary{background: #00BD00}
+.button.success {}
+.button.warning {}
+.button.danger  {}
+.button.error   {}
+.button.info    {}
+

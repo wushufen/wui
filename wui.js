@@ -52,6 +52,41 @@ $(function() {
 
 
 
+
+// 标签页
+$(function(){
+	$('.tabs').each(function() {
+		// 显示
+		var $active = $(this).find('.active');
+		var index = $(this).find('.tab').index($active);
+		// 如果没有 .active 则显示第一个
+		if ($active.length == 0) {
+			$(this).find('.tab').first().addClass('active');
+			$(this).next('.tabs-body').find('.tab-content').eq(0).fadeIn();
+		}else{
+			$(this).next('.tabs-body').find('.tab-content').eq(index).fadeIn();
+		}
+	});
+
+	// 点击
+	$('.tab').click(function() {
+		$(this).siblings().removeClass('active');
+		$(this).addClass('active');
+
+		//显示对应的 .tab-content
+		var index = $(this).closest('.tabs').find('.tab').index($(this));
+		$(this).closest('.tabs').next('.tabs-body').find('.tab-content')
+			.hide()
+			.eq(index).fadeIn();
+	});
+});
+
+
+
+
+
+
+
 $(function() {
 
 	// 关闭
