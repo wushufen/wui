@@ -7,7 +7,6 @@
 
 	<link rel="stylesheet" type="text/css" href="../wui.css">
 	<link rel="stylesheet" type="text/css" href="../wui.theme/yx.theme.wui.css">
-	<link rel="stylesheet" type="text/css" href="../wui.layout/sidebar.layout.css">
 
 	<script type="text/javascript" src="../jquery.js"></script>
 	<script type="text/javascript" src="../wui.js"></script>
@@ -55,57 +54,11 @@
 		<div class="row">
 		
 			<!-- col{ -->
-			<div class="col span-3 sm-full">
-		
-				<!-- menu{ -->
-				<div class="menu">
-
-					<div class="menu-item">
-						<span class="menu-toggle">商品管理</span>
-						<div class="menu">
-							<a class="menu-item" href="#">上传新的商品</a>
-							<a class="menu-item" href="#">供货中的商品</a>
-							<a class="menu-item" href="#">下架中的商品</a>
-							<a class="menu-item" href="#">推荐的商品</a>
-						</div>
-					</div>
-
-					<div class="menu-item">
-						<span class="menu-toggle">订单管理</span>
-						<div class="menu">
-							<a class="menu-item" href="#">已卖出的订单</a>
-							<a class="menu-item" href="#">评价管理</a>
-						</div>
-					</div>
-					
-					<div class="menu-item">
-						<span class="menu-toggle">分类管理</span>
-						<div class="menu">
-							<a class="menu-item" href="#">设置分类</a>
-							<a class="menu-item" href="#">设置品牌分类</a>
-						</div>
-					</div>
-					
-					<div class="menu-item">
-						<span class="menu-toggle">批量导入商品</span>
-						<div class="menu">
-							<a class="menu-item" href="#">批量导入商品</a>
-							<a class="menu-item" href="#">导入记录</a>
-						</div>
-					</div>
-
-				</div>
-				<!-- }menu -->
-		
-			</div>
-			<!-- }col -->
-		
-			<!-- col{ -->
-			<div class="col span-9 sm-full">
+			<div class="col span-9 xs-full float-right">
 		
 				<!-- path{ -->
 				<div class="path">
-					<a href=""><i class="icon i-back js-back"></i></a>
+					<a class="wuijs-back" title="返回"><i class="icon i-back"></i></a>
 					<a href="">首页</a>
 					<a href="">父页</a>
 					<span>当前页</span>
@@ -120,6 +73,52 @@
 					</div>
 				</div>
 				<!-- }panel -->
+		
+			</div>
+			<!-- }col -->
+		
+			<!-- col{ -->
+			<div class="col span-3 xs-full select-none">
+		
+				<!-- menu{ -->
+				<div class="menu">
+
+					<div class="menu-item">
+						<span class="menu-toggle">商品管理</span>
+						<div class="menu open">
+							<a class="menu-item active" href="#">上传新的商品</a>
+							<a class="menu-item" href="#">供货中的商品</a>
+							<a class="menu-item" href="#">下架中的商品</a>
+							<a class="menu-item" href="#">推荐的商品</a>
+						</div>
+					</div>
+
+					<div class="menu-item">
+						<span class="menu-toggle">订单管理</span>
+						<div class="menu open">
+							<a class="menu-item" href="#">已卖出的订单</a>
+							<a class="menu-item" href="#">评价管理</a>
+						</div>
+					</div>
+					
+					<div class="menu-item">
+						<span class="menu-toggle">分类管理</span>
+						<div class="menu open">
+							<a class="menu-item" href="#">设置分类</a>
+							<a class="menu-item" href="#">设置品牌分类</a>
+						</div>
+					</div>
+					
+					<div class="menu-item">
+						<span class="menu-toggle">批量导入商品</span>
+						<div class="menu open">
+							<a class="menu-item" href="#">批量导入商品</a>
+							<a class="menu-item" href="#">导入记录</a>
+						</div>
+					</div>
+
+				</div>
+				<!-- }menu -->
 		
 			</div>
 			<!-- }col -->

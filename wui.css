@@ -226,49 +226,67 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	}
 }
 */
+/*菜单，默认是垂直的*/
 .menu{
-	overflow: hidden;
+	/*overflow: hidden;*/
 	border: solid 1px #ddd;
 	border-radius: 4px;
 }
+/*菜单项*/
 .menu-item{
 	display: block;
 	padding: .5em 1em;
 	color: #345;
 	text-decoration: none;
 
-	border-bottom: #ddd solid 1px;
+	border-top: #ddd solid 1px;
 }
+.menu-item:first-child{border-top: 0}
+/*菜单项为链接，为区分包裹二级菜单的.menu-item*/
 a.menu-item:hover{
 	background: rgba(200,200,200, .2)
+}
+/*active*/
+.menu-item.active{
+	background: #F0F8FA;
+	border-right: solid 2px #0af;
 }
 
 /*分割线*/
 .menu-divider{
 	padding: .25em 0;
-	margin-top: .5em;
-	/*background: rgba(75, 117, 155, 0.06);*/
+	border-top: #ddd solid 1px;
+	background: rgba(75, 117, 155, 0.06);
 }
 
-/*二级*/
+
+/*二级菜单开关*/
 .menu-toggle{
 	display: block;
 	margin: -.5em -1em 0;/*抵消 .menu-item 的左上右 padding*/
 	padding: .5em 1em;
 	border-bottom: #ddd solid 1px;
+	cursor: pointer;
 }
+/*二级菜单*/
 .menu-item .menu{
+	display: none;/*二级菜单默认不显示*/
 	margin: 0 -1em -.5em;/*抵消 .menu-item 的左右 padding*/
 	border: 0;
 	border-radius: 0;
+	padding-bottom: .5em;
 }
+/*使二级菜单显示*/
+.menu-item .menu.open{display: block}
+
+/*二级菜单项*/
 .menu-item .menu-item{
-	border: 0;
+	border-top: 0;
 	padding-left: 2em;/*二级菜单项缩进*/
 }
 
 
-/*水平的*/
+/*水平的菜单*/
 .menu.horizontal .menu-item{
 	display: inline-block;
 }

@@ -13,16 +13,16 @@
 	.container{}
 }
 */
-.layout{padding-left: 12em}
+.layout{padding-left: 14em}
 .sidebar{
 	position: fixed;
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 12em;
+	width: 14em;
 	overflow: auto;
 	z-index: 100;
-	background: #456;
+	/*background: #456;*/
 }
 .sidebar-header{
 	display: block;
@@ -30,7 +30,7 @@
 	padding: .0625em;
 	font-size: 1.5em;
 	text-align: center;
-	color: #fff;
+	/*color: #fff;*/
 }
 .sidebar-toggle{
 	display: none;
@@ -49,21 +49,25 @@
 }
 @media (max-width: 700px){
 .layout{padding-left: 0}
-.sidebar{left: -12em}/* .sidebar 往左隐藏*/
+.sidebar{left: -14em}/* .sidebar 往左隐藏*/
 .sidebar-toggle{display: block}/*显示 .sidebar-toggle按钮*/
 .header .navbar{padding-left:2.5em}/*如果头部有.navbar导航条，左侧要给 .sidebar-toggle按钮 留位置*/
 
 /*active*/
-.layout.active{padding-left: 12em; margin-right: -12em}/*留位给 .sidebar ; 往右扩展*/
+.layout.active{padding-left: 14em; margin-right: -14em}/*留位给 .sidebar ; 往右扩展*/
 .layout.active .sidebar{left: 0}/*让 .sidebar 出来*/
 }
 
 
-
+/*
+.sidebar .menu{
+	border: 0;
+}
 .sidebar .menu-item{
 	color: #eee;
+	border: 0;
 }
-
+*/
 
 
 /*滚动条，移动设备不要*/
