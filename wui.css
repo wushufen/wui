@@ -261,6 +261,7 @@ a.menu-item:hover{
 	margin: 0 -1em -.5em;/*抵消 .menu-item 的左右 padding*/
 	border: 0;
 	border-radius: 0;
+	margin-bottom: .5em;
 }
 .menu-item .menu-item{
 	border: 0;
