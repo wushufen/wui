@@ -60,7 +60,14 @@
 				<a class="menu-item" href="#badge">badge</a>
 				<a class="menu-item" href="#table">table</a>
 				<a class="menu-item" href="#pagination">pagination</a>
-				<a class="menu-item" href="#form">form</a>
+				<div class="menu-item">
+					<span class="menu-toggle">form</span>
+					<div class="menu">
+						<a class="menu-item" href="#">menu</a>
+						<a class="menu-item" href="#">menu</a>
+						<a class="menu-item" href="#">menu</a>
+					</div>
+				</div>
 				<a class="menu-item" href="#progress">progress</a>
 				<a class="menu-item" href="#icon">icon</a>
 				<a class="menu-item" href="#dropdown">dropdown</a>
@@ -69,17 +76,6 @@
 				<a class="menu-item" href="#dialog">排版</a>
 				<p class="menu-divider"></p>
 				<a class="menu-item" href="#dialog">layout</a>
-
-				<p class="menu-divider"></p>
-
-				<div class="menu-item">
-					<span class="menu-toggle">二级菜单</span>
-					<div class="menu">
-						<a class="menu-item" href="#">menu</a>
-						<a class="menu-item" href="#">menu</a>
-						<a class="menu-item" href="#">menu</a>
-					</div>
-				</div>
 			</div>
 
 		</div>
@@ -195,7 +191,7 @@
 			<div class="example">
 				
 				<div class="path">
-					<a href=""><i class="icon i-back js-back"></i></a>
+					<a href=""><i class="icon i-back wuijs-back"></i></a>
 					<a href="">首页</a>
 					<a href="">父页</a>
 					<span>当前页</span>
@@ -342,36 +338,6 @@
 					<a class="tab" href="">导航</a>
 				</div>
 			</div>
-
-			<script type="text/javascript">
-				// 标签页
-				$('.tabs').each(function() {
-					// 显示
-					var $active = $(this).find('.active');
-					var index = $(this).find('.tab').index($active);
-					// 如果没有 .active 则显示第一个
-					if ($active.length == 0) {
-						$(this).find('.tab').first().addClass('active');
-						$(this).next('.tabs-body').find('.tab-content').eq(0).fadeIn();
-					}else{
-						$(this).next('.tabs-body').find('.tab-content').eq(index).fadeIn();
-					}
-				});
-
-				// 点击
-				$('.tab').click(function() {
-					$(this).siblings().removeClass('active');
-					$(this).addClass('active');
-
-					//显示对应的 .tab-content
-					var index = $(this).closest('.tabs').find('.tab').index($(this));
-					$(this).closest('.tabs').next('.tabs-body').find('.tab-content')
-						.hide()
-						.eq(index).fadeIn();
-				});
-			</script>
-
-
 
 
 
@@ -839,11 +805,16 @@
 		// hash锚点滚动
 		$htmlBody = $('html,body');
 		$('a[href*=#]').click(function(){
+			var mt = 50;//顶部距离
 			var href = $(this).attr('href');
-			$htmlBody.stop().animate({scrollTop: $(href).offset().top}, 1000, function(){
+			$htmlBody.stop().animate({scrollTop: $(href).offset().top-mt}, 1000, function(){
 				// location.hash = href; //按返回时，锚点位置不太对
 			});
 			// location.hash = href;
+
+			// 状态
+			$(this).parents('.menu').find('.menu-item').removeClass('active');
+			$(this).addClass('active');
 			return false;
 		});
 

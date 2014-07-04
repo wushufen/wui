@@ -14,7 +14,8 @@
 	<style type="text/css">
 	.xheader{padding: 3em 0}
 	.ad{background: #eee; height: 300px;}
-	.third-party-login{background: #eee; margin: 2em 0; padding: 1em 0;}
+	.third-party-login{background: #eee; margin-top: 2em; padding: 1em 0;}
+	.identifying-code{height:2em; background:#eee; vertical-align: middle}
 	</style>
 </head>
 <body>
@@ -66,7 +67,10 @@
 				<!-- form{ -->
 				<form method="POST" action="supplier_home.html">
 
-					<p>已有账号，请登录</p>
+					<p>
+						<span class="float-right">已有账号？ <a href="login.html">登录</a></span>
+						注册账号
+					</p>
 				
 					<div class="form-group">
 						<label class="label none">用户名</label>
@@ -79,31 +83,31 @@
 					</div>
 				
 					<div class="form-group">
-						<button class="button block primary" type="submit">登录</button>
+						<label class="label none">确认密码</label>
+						<input class="input" type="password" placeholder="确认密码" name="" />
 					</div>
 				
 					<div class="form-group">
-						<div class="controls">
-							<label class="float-left nowrap">
-								<input type="checkbox" name="" />
-								记住我
-							</label>
-							<div class="float-right">
-								<a href="">忘记密码?</a>
-								|
-								<a href="register.html">免费注册</a>
-							</div>
+						<label class="label none">验证码</label>
+						<input class="input float-left" style="width:6em; margin-right:.5em" type="text" placeholder="验证码" name="" />
+						<div class="float-left">
+							<img class="identifying-code" style="width:5em;" src="">
+							<a href="">换一张</a>
 						</div>
+					</div>
+				
+					<div class="form-group">
+						<label><input type="checkbox" />我已阅读</label>
+						<a class="nowrap" href="">《云信网平台协议》</a>
+					</div>
+				
+					<div class="form-group">
+						<button class="button block primary" type="submit">注册</button>
 					</div>
 				
 				</form>
 				<!-- }form -->
 
-				<!-- 其它方式登录 -->
-				<div class="third-party-login">
-					其它方式登录 todo
-				</div>
-		
 			</div>
 			<!-- }col -->
 		

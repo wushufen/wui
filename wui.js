@@ -1,13 +1,3 @@
-// 侧边栏
-$(function(){
-	$('.sidebar-toggle').click(function() {
-		$('.layout-sidebar').toggleClass('active');
-		return false;
-	});
-})
-
-
-
 /*****************************************************
  * wui.js
  * by wushufen
@@ -26,7 +16,7 @@ $(function(){
 	//2014.05.23 + 设置超时
 	setTimeout(function(){
 		$('.loading').fadeOut();
-	}, 10000);
+	}, 8000);
 
 	// 2014.05.26 + 点击隐藏
 	$('.loading').click(function(){
@@ -84,13 +74,22 @@ $(function(){
 
 
 
+// 菜单
+$(function(){
+	$('.menu-toggle').click(function(){
+		$(this).next().slideToggle('fast');
+		return false;
+	});
+});
 
 
 
+
+
+// 关闭
 $(function() {
 
-	// 关闭
-	$('.wui-close').click(function() {
+	$('.wuijs-close').click(function() {
 		$(this).parent().fadeTo('normal', 0, function() {
 			$(this).slideUp(function() {
 				$(this).remove();
@@ -99,18 +98,28 @@ $(function() {
 		return false;
 	});
 
+});
 
 
-	// 折叠
-	$('.js-collapse').click(function() {
+
+
+// 折叠
+$(function() {
+
+	$('.wuijs-collapse').click(function() {
 		$(this).next().slideToggle();
 		return false;
 	});
 
+});
 
 
 
-	// 下拉框
+
+
+// 下拉框
+$(function() {
+
 	$('.dropdown').click(function(){
 		$(this).toggleClass('open');
 		return false;
@@ -121,8 +130,5 @@ $(function() {
 	$('.dropdown-body').click(function(e){
 		e.stopPropagation();
 	})
-
-
-
 
 });

@@ -12,17 +12,6 @@
 	<script type="text/javascript" src="../wui.js"></script>
 	<script type="text/javascript" src="../wui.tools/wui.dialog.js"></script>
 
-	<style type="text/css">
-	.tile{
-		font-size: 1.25em;
-		padding: 1.5em;
-		border-radius: 4px;
-		text-align: center;
-		background: #66AC59;
-		color: #fff;
-		margin-bottom: 1em;
-	}
-	</style>
 </head>
 <body>
 
@@ -77,40 +66,19 @@
 				</div>
 				<!-- }path -->
 
-				<!-- panel{ -->
+				<!-- paneltabs{ -->
 				<div class="panel">
-					<div class="panel-header">首页</div>
-					<div class="panel-body">
-
-						<!-- row{ -->
-						<div class="row">
-						
-							<!-- col{ -->
-							<div class="col span-6 xs-full">
-						
-								<div class="tile">
-									今日分销商上架商品数 235
-								</div>
-						
-							</div>
-							<!-- }col -->
-						
-							<!-- col{ -->
-							<div class="col span-6 xs-full">
-						
-								<div class="tile" style="background:#6F92B5">
-									今日订单数 215
-								</div>
-						
-							</div>
-							<!-- }col -->
-						
-						</div>
-						<!-- }row -->
-
+					<div class="panel-header tabs">
+						<p class="tabs-header">发布新商品 〉</p>
+						<span class="tab" href="">选择商品分类</span>
+						<span class="tab" href="">填写商品信息</span>
+					</div>
+					<div class="panel-body tabs-body">
+						<div class="tab-content">1</div>
+						<div class="tab-content">2</div>
 					</div>
 				</div>
-				<!-- }panel -->
+				<!-- }paneltabs -->
 		
 			</div>
 			<!-- }col -->

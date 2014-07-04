@@ -11,6 +11,7 @@ base wui
 		.navbar-header{}
 		.navbar-body{}
 			.nav{}
+			.nav.float-right{}
 				.nav-item{}
 
 .container{}
@@ -19,21 +20,23 @@ base wui
 
 .path{background: rgba(201, 205, 209, 0.06)}
 	.path a,.path span{}
+	.path a{color: #66AC59;}
 
-.menu{}
+.menu{border-color: #C9C9C9}
 	.menu-deivder{}
 	.menu-item{}
+	.menu-item.active{background: #66AC59; color: #fff; border-right: solid 4px #fff;}
 		.menu-toggle{}
-		.menu-item .menu{}
+		.menu-item .menu{background: #efefef;}
 			.menu-item .menu-item{}
 
-.panel{}
-	.panel-header{}
+.panel{border-color: #C9C9C9}
+	.panel-header{background: #F2F2F2}
 	.panel-body{}
 	.panel-footer{}
 
 .tabs{}
-	.tabs-header{}
+	.tabs-header{color: #66AC59;font-weight: 600;}
 	.tab{}
 .tabs-body{}
 	.tabs-content{}
@@ -49,7 +52,7 @@ base wui
 	.pagination a,.pagination span{}
 
 .form{}
-	.form-group{}
+	.form-group{margin-bottom: 1em;}
 		.label{}
 		.input{}
 		.input-line{}
@@ -76,10 +79,9 @@ base wui
 .error   {}
 .info    {}
 .money   {}
-.button.primary{background: #00BD00}
+.button.primary {background: #66AC59; border-color: #5BA552;}
 .button.success {}
 .button.warning {}
 .button.danger  {}
 .button.error   {}
 .button.info    {}
-
