@@ -671,7 +671,7 @@ a.nav-item:hover{
 
 /*表单组*/
 .form-group{
-	margin-bottom: .75em;
+	margin: .5em 0;
 }
 .form-group:after{content: ""; display: block; clear: both;}
 
@@ -1177,9 +1177,9 @@ table.data{overflow: hidden; width: auto}
 .col,
 .input,
 .progress-completed{
-	-webkit-transition: .2s;
-	   -moz-transition: .2s;
-	        transition: .2s;
+	-webkit-transition: .8s;
+	   -moz-transition: .8s;
+	        transition: .8s;
 }
 
 
