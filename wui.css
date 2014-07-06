@@ -75,7 +75,12 @@ by wushufen
 
 /*
 input firefox 无法改变 line-height
-火狐 文档顶部 出现空白 2014.06.30
+2014.06.30 火狐 文档顶部 出现空白
+	2014.07.07 原因 .navbar 里所有元素都是浮动，
+	且 .navbar:after 的 display 为 block
+	.header 设置 margin-bottom 时，会出现顶部有同等的距离
+	将 .navbar:after 的 display 改为 table 即可
+	所以以后 clearfix 的 display 都应用 table
 */
 
 
