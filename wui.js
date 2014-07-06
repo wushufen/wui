@@ -8,11 +8,9 @@
 /**
  * loading...
  */
-$(window).load(function() {
-	$('.loading').fadeOut();
-});
-
 $(function(){
+	$('.loading').fadeOut();
+
 	//2014.05.23 + 设置超时
 	setTimeout(function(){
 		$('.loading').fadeOut();
@@ -30,13 +28,20 @@ $(function(){
  * .wuijs-back
  */
 $(function() {
-	$('.wuijs-back').click(function() {
+	var $back = $('.wuijs-back');
+
+	$back.click(function() {
 		history.go(-1);
 		return false;
 	});
 	// 2014.05.22 + 没有历史则隐藏返回按钮
 	if (history.length<2) {
-		$('.wuijs-back').hide();
+		$back.hide();
+	}
+	// 2014.07.06 + 没有上一页则隐藏返回按钮
+	// 本地文件的referrer永远是空的
+	if (document.referrer == '' && location.protocol != 'file:') {
+		$back.hide();
 	}
 });
 
