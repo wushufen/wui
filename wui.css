@@ -8,75 +8,6 @@ create: 2014.04.16
 */
 
 /*
-
-.loading{}
-
-.header{}
-	.navbar{}
-		.navbar-header{}
-		.navbar-body{}
-			.nav{}
-				.nav-item{}
-
-.container{}
-	.row{}
-		.col{}
-
-.path{}
-	.path a,.path span{}
-
-.menu{}
-	.menu-deivder{}
-	.menu-item{}
-
-.panel{}
-	.panel-header{background: #fff}
-	.panel-body{background: #f1f1f1}
-	.panel-footer{}
-
-.tabs{}
-	.tabs-header{}
-	.tab{}
-.tabs-body{}
-	.tabs-content{}
-
-.list{}
-	.list-item{}
-
-.badge{}
-
-.data{}
-
-.pagination{}
-	.pagination a,.pagination span{}
-
-.form{}
-	.form-group{}
-		.label{}
-		.input{}
-		.input-line{}
-		.button{}
-		.tip{}
-.group{}
-
-.progress{}
-	.progress-completed{}
-
-.icon{}
-
-.dropdown{}
-
-.collapse{}
-
-.dialog{x}
-
-.status{...}
-	.button.primary{background: #00BD00}
-
-
-*/
-
-/*
 input firefox 无法改变 line-height
 2014.06.30 火狐 文档顶部 出现空白
 	2014.07.07 原因 .navbar 里所有元素都是浮动，
@@ -351,6 +282,7 @@ a.menu-item:hover{
 
 /*导航条折叠部分*/
 .navbar-body{}
+.navbar-collapse{}
 /*导航菜单*/
 .nav{}
 /*导航菜单项*/
@@ -374,7 +306,7 @@ a.nav-item:hover{
 
 /*导航条折叠部分折叠*/
 @media (max-width:700px){
-	.responsive .navbar-body{
+	.navbar-collapse{
 		display: none;/*todo*/
 		position: absolute;
 		left: 0;
@@ -388,9 +320,9 @@ a.nav-item:hover{
 	}
 
 	/*折叠之后不浮动占满一行*/
-	.responsive .navbar form,
-	.responsive .nav.float-right,
-	.responsive .nav-item{
+	.navbar-collapse form,
+	.navbar-collapse .nav.float-right,
+	.navbar-collapse .nav-item{
 		float: none;
 		display: block;
 	}

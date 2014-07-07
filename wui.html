@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="responsive">
 <head>
 	<title>wui.20140613</title>
 	<meta charset="UTF-8">
@@ -88,7 +88,8 @@
 
 				<div class="container">
 					<div class="navbar-header">WUI</div>
-					<div class="navbar-body">
+					<div class="navbar-body navbar-collapse">
+
 						<div class="nav">
 							<a class="nav-item" href="">导航</a>
 							<a class="nav-item" href="">导航</a>
@@ -786,11 +787,14 @@
 	<script type="text/javascript">
 
 		// 侧边栏
-		$('.sidebar-toggle').click(function(){
-			$('.layout').toggleClass('active');
-		});
-		$('body').click(function(){
-			$('.layout').removeClass('active');
+		$(function(){
+			$('.sidebar-toggle').click(function(e){
+				e.stopPropagation();
+				$('.layout').toggleClass('active');
+			});
+			$('body').click(function(){
+				$('.layout').removeClass('active');
+			});
 		});
 
 
