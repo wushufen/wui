@@ -185,7 +185,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .row{
 	margin: 0 -.5em;/*抵消 .container 一半的留白*/
 }
-.row:after{content: ""; display: block; clear: both;}/*clearfix*/
+.row:after{content: ""; display: table; clear: both;}/*clearfix*/
 
 /*栅格*/
 /*
@@ -334,7 +334,7 @@ a.menu-item:hover{
 	position: relative;/*1*/
 	z-index: 10;/*1 提高显示层次*/
 }
-.navbar:after{content:""; display:block; clear:both}/*clearfix*/
+.navbar:after{content:""; display:table; clear:both}/*clearfix*/
 /*导航条标题*/
 .navbar-header{
 	float: left;
@@ -506,7 +506,7 @@ a.nav-item:hover{
 	border-bottom: solid 1px #bbb;/*下横线*/
 	padding: 0;/*for panel-hader.tabs*/
 }
-.tabs:after{content: ""; display: block; clear: both;}
+.tabs:after{content: ""; display: table; clear: both;}
 
 /*标签控件标题*/
 
@@ -678,7 +678,7 @@ a.nav-item:hover{
 .form-group{
 	margin-bottom: .75em;
 }
-.form-group:after{content: ""; display: block; clear: both;}
+.form-group:after{content: ""; display: table; clear: both;}
 
 
 /*水平表单*/
@@ -807,7 +807,7 @@ button.group-item{width: 100%; box-shadow: none;}
 .group.horizontal{
 	display: inline-block;
 }
-.group.horizontal:after{content: ""; display: block; clear: both}
+.group.horizontal:after{content: ""; display: table; clear: both}
 
 .group.horizontal .group-item{
 	float: left;
@@ -894,7 +894,7 @@ table.data{overflow: hidden; width: auto}
 }
 */
 .pagination{}/*clearfix*/
-.pagination:after{content: ""; display: block; clear: both;}
+.pagination:after{content: ""; display: table; clear: both;}
 
 .pagination a,
 .pagination span{
@@ -1085,7 +1085,7 @@ table.data{overflow: hidden; width: auto}
 .float-right{float: right}
 
 /*撑开*/
-.clearfix{*zoom:1}.clearfix:after{content: ""; display: block; clear: both;}
+.clearfix{*zoom:1}.clearfix:after{content: ""; display: table; clear: both;}
 
 /*文本*/
 .text-center{text-align: center}
