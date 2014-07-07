@@ -301,6 +301,14 @@ a.menu-item:hover{
 
 
 /************************************************\
+	.header
+\************************************************/
+.header{}
+.header:after{content: ""; display: table; clear: both;}
+
+
+
+/************************************************\
 	.navbar
 \************************************************/
 /*
@@ -327,11 +335,11 @@ a.menu-item:hover{
 	z-index: 10;/*1 提高显示层次*/
 	background: rgba(255,255,255,.8);
 	color: #333;
-	box-shadow: 0 0 5px #888;
+	box-shadow: 0 0 3px #888;
 
 	margin-bottom: 1em;/*2014.07.03 +*/
 }
-.container .navbar{margin: 0 -1em}
+.navbar .container{padding: 0}
 .navbar:after{content: ""; display: table; clear: both}/*clearfix*/
 /*导航条标题*/
 .navbar-header{
@@ -456,7 +464,7 @@ a.nav-item:hover{
 }
 .panel-body{
 	/*margin: -.5em -1em;*/
-	padding: .5em 1em;
+	padding: .75em 1em;
 }
 .panel-footer{
 	/*margin: .5em -1em -.5em;*/
