@@ -5,4 +5,6 @@ by wushufen
 
 .topbar{background: #f8f8f8}
 .topbar .container{padding: 0 .5em}
-.topbar .nav-item{padding: .125em .5em}
+.topbar .nav-item{padding: .125em .5em; font-size: .85em}
+
+.header{padding: 1em 0}
