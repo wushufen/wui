@@ -3,7 +3,12 @@ by wushufen
 2014.07.07
 base wui
 */
-html{font-size: 15px}
+html,
+input,
+select,
+textarea,
+button,
+th{font-size: 14px;}
 
 .loading{}
 
@@ -26,7 +31,7 @@ html{font-size: 15px}
 .menu{border-color: #CFCFCF;border-radius: 0;box-shadow: 0 0 3px #E7E7E7;}
 	.menu-deivder{}
 	.menu-item{}
-	.menu-item.active{background: #66AC59; color: #fff; border-right: solid 4px #fff;}
+	.menu-item.active{background: #FFFFFF; color: #D30000; border-right: solid 4px #FF5252;}
 		.menu-toggle{
     background: #CC0000;
     color: #fff;
@@ -83,9 +88,9 @@ html{font-size: 15px}
 .error   {}
 .info    {}
 .money   {}
-.button.primary {background: #66AC59; border-color: #5BA552;}
+.button.primary {background: #0af; border-color: #0af;}
 .button.success {}
 .button.warning {}
-.button.danger  {}
+.button.danger  {background: #CC0000; border-color: #CC0000}
 .button.error   {}
 .button.info    {}

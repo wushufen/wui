@@ -600,7 +600,7 @@ a.nav-item:hover{
 
 
 /*整行按钮*/
-.button.block{
+button.block{
 	width: 100%;
 }
 
@@ -812,7 +812,7 @@ table.data{overflow: hidden; width: auto}
 	/*2014.05.30 +*/
 	white-space: nowrap;
 }
-.data tr:first-child th{background: rgba(75, 117, 155, 0.03); border-bottom:solid 1px #aaa;}
+/*.data tr:first-child th{background: rgba(75, 117, 155, 0.03); border-bottom:solid 1px #aaa;}*/
 
 .data td{
 	border-top:solid 1px #e6e6e6;
