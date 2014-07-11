@@ -1,10 +1,8 @@
 /*
-wui
-by wushufen
+wui by wushufen
 email: wusfun@foxmail.com
+2014.03.21
 update: 2014.07.07
-new: 2014.06.13
-create: 2014.04.16
 */
 
 /*
@@ -597,6 +595,7 @@ a.nav-item:hover{
 
 /*按钮大小*/
 .button.small{padding: .05em .5em}
+.button.large{font-size: 1.25em}
 
 
 /*整行按钮*/
