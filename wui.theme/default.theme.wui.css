@@ -1,0 +1,119 @@
+/*
+by wushufen
+2014.07.03
+base wui
+*/
+html{background: #fff}
+
+html,
+input,/*2014.05.19 这些元素有默认值，比继承优先*/
+select,
+textarea,
+button,
+th{
+	/*font: 16px/1.5 "Microsoft YaHei",Helvetica,"Helvetica Neue","Trebuchet MS",Arial,sans-serif;*/
+	font: 16px/1.5 "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+	color: #333;
+}
+
+a{text-decoration: none; color: #0af}
+
+.loading{}
+
+.navbar{background: rgba(255,255,255,.8); color: #333; border-bottom: solid 1px #aaa; box-shadow: 0 0 3px #888;}
+	.navbar-header{}
+	.navbar-body{}
+		.nav{}
+		.nav.float-right{}
+			.nav-item{}
+
+.container{}
+	.row{}
+		.col{}
+
+.path{
+background: rgba(75, 117, 155, 0.06);
+border-radius: 4px;}
+	.path a,.path span{color: #aaa}
+	.path a{color: #008CBA}
+
+.menu{border: solid 1px #ddd; border-radius: 4px}
+	.menu-deivder{}
+	.menu-item{}
+	.menu-item.active{background: #66AC59; color: #fff; border-right: solid 4px #fff;}
+		.menu-toggle{}
+		.menu-item .menu{background: #efefef;}
+			.menu-item .menu-item{}
+
+.panel{border-radius: 4px}
+	.panel-header{
+	background: rgba(75, 117, 155, 0.06);
+	border-radius: 4px 4px 0 0}
+	.panel-body{}
+	.panel-footer{
+	background: rgba(75, 117, 155, 0.06);
+	border-radius: 0 0 4px 4px}
+
+.tabs{}
+	.tabs-header{}
+	.tab{}
+	.tab.active{}
+.tabs-body{}
+	.tabs-content{}
+
+.list{}
+	.list-item{}
+	.list-item:first-child{border-radius: 4px 4px 0 0}
+	.list-item:last-child{border-radius: 0 0 4px 4px}
+
+.badge{}
+
+.data{}
+	.data tr:first-child th{background: #eee}
+	.data tr:hover td{background: rgba(75, 117, 155, 0.06)}
+
+.pagination{}
+	.pagination a,.pagination span{}
+	.pagination :first-child{border-radius: 4px 0 0 4px}
+	.pagination :last-child{border-radius: 0 4px 4px 0}
+
+.form{}
+	.form-group{}
+		.label{}
+		.input{}
+		.input-line{}
+		.button{}
+		.tip{}
+
+.group{}
+	.group-item:first-child{border-radius: 4px 4px 0 0}
+	.group-item:last-child{border-bottom-left-radius: 4px; border-bottom-right-radius: 4px}/*如果只有一个，既为第一也为最后，不要直接border-radius覆盖了*/
+
+	.group.justified :last-child,.group.horizontal :last-child{border-radius: 0}
+	.group.justified :first-child,.group.horizontal :first-child{border-radius: 4px 0 0 4px}
+	.group.justified :last-child,.group.horizontal :last-child{border-top-right-radius: 4px; border-bottom-right-radius: 4px}
+
+.progress{}
+	.progress-completed{}
+
+.icon{}
+
+.dropdown{}
+
+.collapse{}
+
+.primary {}
+.success {}
+.warning {}
+.danger  {}
+.error   {}
+.info    {}
+.money   {}
+.button.primary {}
+.button.success {}
+.button.warning {}
+.button.danger  {}
+.button.error   {}
+.button.info    {}
+
+/*.dialog{x}*/

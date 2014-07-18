@@ -2,7 +2,7 @@
 wui by wushufen
 email: wusfun@foxmail.com
 2014.03.21
-update: 2014.07.07
+update: 2014.07.16
 */
 
 /*
@@ -162,11 +162,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 }
 */
 /*菜单，默认是垂直的*/
-.menu{
-	/*overflow: hidden;*/
-	border: solid 1px #ddd;
-	border-radius: 4px;
-}
+.menu{}
 /*菜单项*/
 .menu-item{
 	display: block;
@@ -213,7 +209,7 @@ a.menu-item:hover{
 	padding-bottom: .5em;
 }
 /*使二级菜单显示*/
-.menu-item .menu.open{display: block}
+/*.menu-item */.menu.open{display: block}
 
 /*二级菜单项*/
 .menu-item .menu-item{
@@ -230,9 +226,9 @@ a.menu-item:hover{
 
 
 /************************************************\
-	.header
+	.header 不是组件
 \************************************************/
-.header{}
+/*.header{}*/
 .header:after{content: ""; display: table; clear: both;}
 
 
@@ -262,14 +258,14 @@ a.menu-item:hover{
 .navbar{
 	position: relative;/*1*/
 	z-index: 10;/*1 提高显示层次*/
-	background: rgba(255,255,255,.8);
-	color: #333;
-	box-shadow: 0 0 3px #888;
+
+	border-bottom: solid 1px;
 
 	margin-bottom: 1em;/*2014.07.03 +*/
 }
 .navbar .container{padding: 0}
 .navbar:after{content: ""; display: table; clear: both}/*clearfix*/
+
 /*导航条标题*/
 .navbar-header{
 	float: left;
@@ -342,9 +338,6 @@ a.nav-item:hover{
 .path{
 	overflow: hidden;/*clearfix*/
 
-	background: rgba(75, 117, 155, 0.06);
-	border-radius: 4px;
-
 	margin: 0 0 .5em;
 }
 
@@ -354,9 +347,7 @@ a.nav-item:hover{
 	float: left;
 	padding: .25em .75em;
 
-	color: #aaa;
 }
-.path a{color: #008CBA}
 
 .path a + a:before,
 .path a + span:before{
@@ -390,7 +381,6 @@ a.nav-item:hover{
 	padding: .375em 1em;
 	border-bottom: solid 1px #ddd;
 
-	background: rgba(75, 117, 155, 0.06);
 }
 .panel-body{
 	/*margin: -.5em -1em;*/
@@ -401,13 +391,7 @@ a.nav-item:hover{
 	border-top: solid 1px #e6e6e6;
 	padding: .375em 1em;
 
-	background: rgba(75, 117, 155, 0.06);
 }
-
-/*圆角效果*/
-.panel{border-radius: 4px}
-.panel-header{border-radius: 4px 4px 0 0}
-.panel-footer{border-radius: 0 0 4px 4px}
 
 
 
@@ -526,8 +510,6 @@ a.nav-item:hover{
 }
 
 /*圆角效果*/
-.list-item:first-child{border-radius: 4px 4px 0 0}
-.list-item:last-child{border-radius: 0 0 4px 4px}
 
 
 
@@ -675,6 +657,24 @@ form.horizontal .controls{
 }
 
 
+
+/*行内表单*/
+form.inline,
+form.inline .form-group,
+form.inline .label,
+form.inline .input,
+form.inline .input-line{
+	display: inline-block; *display:inline;*zoom:1;
+	vertical-align: middle;
+}
+form.inline .form-group{margin-right: .5em; margin-bottom: .25em}
+form.inline .input,
+form.inline .input-line{
+	width: 8em;
+}
+
+
+
 /*表单提示*/
 .tip{
 	float: left;
@@ -736,9 +736,6 @@ button.group-item{width: 100%; box-shadow: none;}
 .group-item:hover{z-index: 1}
 .group-item:focus{z-index: 2}
 
-.group-item:first-child{border-radius: 4px 4px 0 0}
-.group-item:last-child{border-bottom-left-radius: 4px; border-bottom-right-radius: 4px}/*如果只有一个，既为第一也为最后，不要直接border-radius覆盖了*/
-
 
 /*水平控件组*/
 .group.horizontal{
@@ -751,11 +748,6 @@ button.group-item{width: 100%; box-shadow: none;}
 	width: auto;
 	margin-left: -1px;
 }
-
-.group.justified :last-child,.group.horizontal :last-child{border-radius: 0}
-.group.justified :first-child,.group.horizontal :first-child{border-radius: 4px 0 0 4px}
-.group.justified :last-child,.group.horizontal :last-child{border-top-right-radius: 4px; border-bottom-right-radius: 4px}
-
 
 /*控件组自动调整*/
 .group.justified{/**/}
@@ -795,7 +787,7 @@ table.data{overflow: hidden; width: auto}
 
 .data th,
 .data td{
-	padding:.25em 0 .25em .75em;
+	padding:.25em 2px .25em .75em;
 	max-width:10em;
 
 	/*2014.5.27 - 隐藏的内容看不到，如按钮*/
@@ -816,7 +808,6 @@ table.data{overflow: hidden; width: auto}
 .data td{
 	border-top:solid 1px #e6e6e6;
 }
-.data tr:hover td{background: rgba(75, 117, 155, 0.06)}
 
 
 
@@ -852,10 +843,6 @@ table.data{overflow: hidden; width: auto}
 	color: #fff;
 }
 
-/*圆角效果*/
-.pagination :first-child{border-radius: 4px 0 0 4px}
-.pagination :last-child{border-radius: 0 4px 4px 0}
-
 
 
 /************************************************\
@@ -868,6 +855,7 @@ table.data{overflow: hidden; width: auto}
 */
 .progress{
 	background: #eee;
+	white-space: nowrap;
 }
 .progress-completed{
 	background: #0af;
@@ -1045,10 +1033,10 @@ table.data{overflow: hidden; width: auto}
 /*禁止选择文本*/
 .select-none{
 	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+	 -khtml-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 }
 
 
