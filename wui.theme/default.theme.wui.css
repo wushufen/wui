@@ -40,7 +40,7 @@ border-radius: 4px;}
 .menu{border: solid 1px #ddd; border-radius: 4px}
 	.menu-deivder{}
 	.menu-item{}
-	.menu-item.active{background: #66AC59; color: #fff; border-right: solid 4px #fff;}
+	.menu-item.active{}
 		.menu-toggle{}
 		.menu-item .menu{background: #efefef;}
 			.menu-item .menu-item{}

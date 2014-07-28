@@ -640,7 +640,7 @@ form.horizontal .form-group{
 form.horizontal .label{
 	position: absolute;
 	right: 100%;
-	width: 8em;
+	width: 9em;
 	margin-right: 1em;
 	text-align: right;
 	line-height: 1;/*换行时紧凑点*/
@@ -715,7 +715,9 @@ form.inline .input-line{
 }
 */
 .group{
+	/*display: inline-block; *display:inline;*zoom:1;*/
 	vertical-align: middle;
+
 	border-radius: 4px;
 	/*box-shadow: 0px 1px 1px #DCE3EB;*/
 
