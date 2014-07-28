@@ -22,7 +22,7 @@
 	width: 14em;
 	overflow: auto;
 	z-index: 100;
-	/*background: #456;*/
+	background: #fff;
 }
 .sidebar-header{
 	display: block;
