@@ -2,7 +2,7 @@
 wui by wushufen
 email: wusfun@foxmail.com
 2014.03.21
-update: 2014.07.16
+update: 2014.07.28
 */
 
 /*
@@ -91,7 +91,9 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 /************************************************\
 	容器
 \************************************************/
-/*container*/
+/*
+.container[.padding-0]
+*/
 .container{
 	width: 960px;/*非响应时宽度*/
 	margin: auto;/*居中*/
@@ -104,6 +106,7 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .responsive .container{
 	max-width: 100%;/*被嵌套时，比如在一个iframe里*/
 }
+.padding-0{padding: 0}/*2014.07.28 +*/
 
 
 /*
