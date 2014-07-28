@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" type="text/css" href="wui.css">
+	<link rel="stylesheet" type="text/css" href="wui.theme/default.theme.wui.css">
 	<link rel="stylesheet" type="text/css" href="wui.layout/sidebar.layout.css">
 
 	<script type="text/javascript" src="jquery.js"></script>
@@ -53,7 +54,7 @@
 				<a class="menu-item" href="#grid">grid</a>
 				<a class="menu-item" href="#path">path</a>
 				<a class="menu-item" href="#menu">menu</a>
-				<a class="menu-item" href="#header">header</a>
+				<a class="menu-item" href="#navbar">navbar</a>
 				<a class="menu-item" href="#panel">panel</a>
 				<a class="menu-item" href="#tabs">tabs</a>
 				<a class="menu-item" href="#list">list</a>
@@ -409,7 +410,9 @@
 						<tr>
 							<td><input type="checkbox" name="" /></td>
 							<td>2</td>
-							<td>标题</td>
+							<td>
+								<a class="text-ellipsis">商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名</a>
+							</td>
 							<td>内容</td>
 							<td>
 								<a class="button danger small">删除</a>
@@ -454,7 +457,10 @@
 			<div class="example">
 				<button class="button">按钮</button>
 				<a class="button" href="">链接按钮</a>
+				
 				<button class="button small">小按钮</button>
+				<button class="button">默认按钮</button>
+				<button class="button large">大按钮</button>
 			</div>
 			<div class="example">
 				<button class="button primary">主要</button>
@@ -615,14 +621,18 @@
 					</div>
 
 					<div class="form-group">
-						<label>
-							<input type="checkbox" name="" />
-							记住我
-						</label>
-						<a class="float-right" href="">忘记密码?</a>
+						<div class="controls">
+							<a class="float-right" href="">忘记密码?</a>
+							<label>
+								<input type="checkbox" name="" />
+								记住我
+							</label>
+						</div>
 					</div>
 
-					<button class="button primary">登录</button>
+					<div class="form-group">
+						<button class="button primary">登录</button>
+					</div>
 				</form>
 			</div>
 
@@ -642,6 +652,50 @@
 						<label class="label">密码密码密码密码密码</label>
 						<input class="input" type="password" name="" />
 						<p class="tip success">请输入用户名密码密码密码密码密码</p>
+					</div>
+
+					<div class="form-group">
+						<label class="label">重复密码</label>
+						<input class="input" type="password" name="" />
+					</div>
+
+					<div class="form-group">
+						<div class="controls group horizontal">
+							<label class="group-item"><input type="radio" name="sex" />男</label>
+							<label class="group-item"><input type="radio" name="sex" />女</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="controls">
+							<a class="float-right" href="">忘记密码?</a>
+							<label>
+								<input type="checkbox" name="" />
+								记住我
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<button class="button primary">登录</button>
+					</div>
+				</form>
+			</div>
+
+
+			<h3>inline</h3>
+			<div class="example">
+
+				<form class="inline">
+
+					<div class="form-group">
+						<label class="label">用户名</label>
+						<input class="input" type="text" name="" />
+					</div>
+
+					<div class="form-group">
+						<label class="label">密码密码密码密码密码</label>
+						<input class="input" type="password" name="" />
 					</div>
 
 					<div class="form-group">

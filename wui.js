@@ -2,7 +2,21 @@
  * wui.js
  * by wushufen
  * 2014.05.13
+ * update: 2014.07.18
  *****************************************************/
+
+
+
+/**
+ * hack
+ */
+$(function(){
+	if (! 'box-sizing' in $('<div>')[0].style) {
+		var $col = $('.col');
+		$col.css('padding',0).wrapInner($('<div>').css('padding','0 '+$col.css('padding-left')));
+	}
+});
+
 
 
 /**
