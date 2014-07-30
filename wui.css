@@ -7,6 +7,7 @@ update: 2014.07.28
 
 /*
 input firefox 无法改变 line-height
+
 2014.06.30 火狐 文档顶部 出现空白
 	2014.07.07 原因 .navbar 里所有元素都是浮动，
 	且 .navbar:after 的 display 为 block
@@ -92,7 +93,10 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	容器
 \************************************************/
 /*
-.container[.padding-0]
+.container[.padding-0]{不要边距}
+.container{
+	.no-inset{抵消父边距}
+}
 */
 .container{
 	width: 960px;/*非响应时宽度*/
@@ -103,10 +107,11 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	box-sizing: border-box;
 	padding: 0 1em;/*左右留白*/
 }
-.responsive .container{
+.container{
 	max-width: 100%;/*被嵌套时，比如在一个iframe里*/
 }
 .padding-0{padding: 0}/*2014.07.28 +*/
+.no-inset{margin: 0 -1em}/*2014.07.30 +*/
 
 
 /*
@@ -504,6 +509,7 @@ a.nav-item:hover{
 .list{
 	list-style: none;
 	margin-bottom: 1em;
+	margin-top: 1px;/*抵消第一个的margin-top:-1px*/;
 }
 .list-item{
 	display: block;
@@ -528,7 +534,7 @@ a.nav-item:hover{
 	box-sizing: border-box;
 }
 .input{
-	display: block;
+	display: inline-block; *display: inline; *zoom: 1;/*2014.07.30 ^ block>inline-block，width-auto 不用再加 inline-block*/
 	width: 100%;
 	padding: .25em 1em;
 	vertical-align: middle;
@@ -540,7 +546,7 @@ a.nav-item:hover{
 }
 /*横线文本框*/
 .input-line{
-	display: block;
+	display: inline-block; *display: inline; *zoom: 1;
 	border: solid 1px #5da8ca;
 	border-width: 0 0 1px 0;
 	width: 100%;
@@ -566,6 +572,12 @@ a.nav-item:hover{
 }
 
 
+/*整行按钮*/
+button.block{
+	width: 100%;
+}
+
+
 /*按钮和文本框焦点效果*/
 .button:focus,/*2014.06.20 +*/
 .input:focus,
@@ -578,15 +590,12 @@ a.nav-item:hover{
 .button:active{box-shadow:0px 1px 5px #aaa inset}/*:active 要在 :hover 后*/
 
 
-/*按钮大小*/
+/*大小*/
 .button.small{padding: .05em .5em}
 .button.large{font-size: 1.25em}
 
-
-/*整行按钮*/
-button.block{
-	width: 100%;
-}
+.input.small{padding: .05em .5em}
+.input.large{font-size: 1.25em}
 
 
 /*表单标签*/
@@ -981,6 +990,9 @@ table.data{overflow: hidden; width: auto}
 .error   {border-color:#FF0000; color:#FF0000}
 .info    {border-color:#5AC0F0; color:#83C3E0}
 
+.showy   {border-color:#FF6767; color:#FF6767}
+.muted   {border-color:#8d8d8d; color:#8d8d8d}
+
 .money   {color: #f80}
 
 
@@ -992,6 +1004,7 @@ table.data{overflow: hidden; width: auto}
 .button.error   {background:#FF0000; color:#fff}
 .button.info    {background:#5AC0F0; color:#fff}
 
+.button.showy   {background:#EB3359; color:#fff}
 
 
 /************************************************\
@@ -1051,49 +1064,49 @@ table.data{overflow: hidden; width: auto}
     要考虑桌面浏览器的滚动条宽度
 \************************************************/
 
-/*--------->>>>往大设备都生效*/
+/*大于等于*/
 
 @media (min-width: 1px){/*手机 [ , 768)*/
 
-.responsive .container{width: 100%}/*为了过渡效果好给宽度*/
+.container{width: 100%}/*为了过渡效果好给宽度*/
 
 }
 
 @media (min-width: 768px){/*平板 [768, 992)*/
 
-.responsive .container{width: 100%}
+.container{width: 100%}
 
 }
 
 @media (min-width: 992px){/*中等桌面 [992, 1200)*/
 
-.responsive .container{width: 980px}
+.container{width: 980px}
 
 }
 
 @media (min-width: 1200px){/*大桌面 [1200, ]*/
 
-.responsive .container{width: 1140px}
+.container{width: 1140px}
 
 }
 
-/*<<<<--------往小设备都生效*/
+/*小于等于*/
 
 @media (max-width: 768px){/*手机 [ , 768)*/
 
-.responsive .xs-full{width: 100%}
+.xs-full{width: 100%}
 
 }
 
 @media (max-width: 992px){/*平板 [768, 992)*/
 
-.responsive .sm-full{width: 100%}
+.sm-full{width: 100%}
 
 }
 
 @media (max-width: 1200px){/*中等桌面 [992, 1200)*/
 
-.responsive .md-full{width: 100%}
+.md-full{width: 100%}
 
 }
 
