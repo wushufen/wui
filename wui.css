@@ -991,7 +991,7 @@ table.data{overflow: hidden; width: auto}
 .info    {border-color:#5AC0F0; color:#83C3E0}
 
 .showy   {border-color:#FF6767; color:#FF6767}
-.muted   {border-color:#8d8d8d; color:#8d8d8d}
+.muted   {border-color:#8d8d8d; color: #A3A3A3;}
 
 .money   {color: #f80}
 
