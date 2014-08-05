@@ -764,16 +764,16 @@ button.group-item{width: 100%; box-shadow: none;}
 }
 
 /*控件组自动调整*/
-.group.justified{/**/}
+.group.justified{}
 .group.justified .group-item{
 	width: 1%;
-	margin-left: -1px;
 	white-space: nowrap;/*不能换行*/
+	vertical-align: baseline;/*top, middle 等都有点影响.input的高度？*/
 }
+.group.justified .group-item:not(:last-child){border-right-width: 0}
 .group.justified .group-item.input{/*文本框最长*/
 	width: 100%;
 	text-align: left;
-	vertical-align: baseline;/*top, middle 等都有点影响它的高度？*/
 }
 
 

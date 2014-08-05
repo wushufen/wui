@@ -5,258 +5,40 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" type="text/css" href="wui.css">
-	<link rel="stylesheet" type="text/css" href="wui.layout/sidebar.layout.css">
+	<link rel="stylesheet" type="text/css" href="./wui.css">
 
-	<script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="wui.js"></script>
-	<script type="text/javascript" src="wui.tools/wui.dialog.js"></script>
+	<script type="text/javascript" src="./jquery.js"></script>
+	<script type="text/javascript" src="./wui.js"></script>
 </head>
 <body>
 
-	<!-- layout{ -->
-	<div class="layout">
+	<!-- navbar{ -->
+	<div class="navbar">
 	
-		<!-- sidebar{ -->
-		<span class="sidebar-toggle"></span>
-		<div class="sidebar">
-	
-			<h1 class="sidebar-header">WUI</h1>
-	
-			<!-- menu{ -->
-			<div class="menu">
-				<a class="menu-item" href="#">menu</a>
-				<a class="menu-item" href="#">menu</a>
-				<p class="menu-divider"></p>
-				<a class="menu-item" href="#">menu</a>
-			</div>
-			<!-- }menu -->
-	
-		</div>
-		<!-- }sidebar -->
-	
-		<!-- header{ -->
-		<div class="header">
-		
-			<!-- container{ -->
-			<div class="container">
-		
-				<!-- navbar{ -->
-				<div class="navbar">
-		
-					<div class="navbar-header">WUI</div>
-					<div class="navbar-body">
-		
-						<div class="nav">
-							<a class="nav-item" href="">导航</a>
-							<a class="nav-item" href="">导航</a>
-							<span class="nav-item">文本</span>
-						</div>
-		
-						<div class="nav float-right">
-							<a class="nav-item" href="">注册</a>
-							<a class="nav-item" href="">登录</a>
-						</div>
-		
-					</div>
-		
-				</div>
-				<!-- }navbar -->
-		
-			</div>
-			<!-- }container -->
-		
-		</div>
-		<!-- }header -->
-
 		<!-- container{ -->
 		<div class="container">
-		
-			<!-- path{ -->
-			<div class="path">
-				<a href=""><i class="icon i-back js-back"></i></a>
-				<a href="">首页</a>
-				<a href="">父页</a>
-				<span>当前页</span>
-			</div>
-			<!-- }path -->
-
-			<!-- panel{ -->
-			<div class="panel">
-				<div class="panel-header">标题</div>
-				<div class="panel-body">
-					面板
+	
+			<div class="navbar-header">WUI</div>
+			<div class="navbar-body">
+	
+				<div class="nav">
+					<a class="nav-item" href="">导航</a>
+					<a class="nav-item" href="">导航</a>
+					<span class="nav-item">文本</span>
 				</div>
-			</div>
-			<!-- }panel -->
-
-			<!-- tabs{ -->
-			<div class="tabs">
-				<p class="tabs-header">标题</p>
-				<span class="tab" href="">首页</span>
-				<span class="tab active" href="">案例</span>
-				<span class="tab" href="">联系</span>
-			</div>
-			<div class="tabs-body">
-				<div class="tab-content">1</div>
-				<div class="tab-content">2</div>
-				<div class="tab-content">3</div>
-			</div>
-			<!-- }tabs -->
-
-			<!-- paneltabs{ -->
-			<div class="panel">
-				<div class="panel-header tabs">
-					<p class="tabs-header">标题</p>
-					<span class="tab" href="">首页</span>
-					<span class="tab" href="">案例</span>
-					<span class="tab" href="">联系</span>
+	
+				<div class="nav float-right">
+					<a class="nav-item" href="">注册</a>
+					<a class="nav-item" href="">登录</a>
 				</div>
-				<div class="panel-body tabs-body">
-					<div class="tab-content">1</div>
-					<div class="tab-content">2</div>
-					<div class="tab-content">3</div>
-				</div>
+	
 			</div>
-			<!-- }paneltabs -->
-
-			<!-- list{ -->
-			<div class="list">
-				<a class="list-item" href="">
-					<span class="badge float-right"></span>
-					badge float-right
-				</a>
-				<a class="list-item" href="">
-					<span class="badge float-right">25</span>
-					2
-				</a>
-				<a class="list-item" href="">
-					<span class="badge float-right">1</span>
-					3
-				</a>
-			</div>
-			<!-- }list -->
-
-			<!-- data{ -->
-			<div class="data">
-				<table>
-					<col style="width:1em"></col>
-			
-					<tr>
-						<th><input type="checkbox" name="" /></th>
-						<th>#</th>
-						<th>title</th>
-						<th>content</th>
-						<th></th>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="" /></td>
-						<td>1</td>
-						<td>标题</td>
-						<td>内容</td>
-						<td>
-							<a class="button danger small">删除</a>
-						</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="" /></td>
-						<td>2</td>
-						<td>标题</td>
-						<td>内容</td>
-						<td>
-							<a class="button danger small">删除</a>
-						</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name="" /></td>
-						<td>3</td>
-						<td>标题</td>
-						<td>内容</td>
-						<td>
-							<a class="button danger small">删除</a>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<!-- }data -->
-
-			<!-- pagination{ -->
-			<div class="pagination">
-				<span class="disable">&larr;</span>
-				<a href="">1</a>
-				<span>...</span>
-				<a href="">4</a>
-				<a href="">5</a>
-				<a class="active" href="">6</a>
-				<a href="">7</a>
-				<a href="">8</a>
-				<span>...</span>
-				<a href="">99</a>
-				<a href="">&rarr;</a>
-			</div>
-			<!-- }pagination -->
-
-			<!-- form{ -->
-			<form class="horizontal" method="POST" action="">
-
-				<!-- form-group{ -->
-				<div class="form-group">
-					<label class="label">label</label>
-					<input class="input" type="text" name="" placeholder="请输入..." />
-				</div>
-				<!-- }form-group -->
-
-				<!-- form-group{ -->
-				<div class="form-group">
-					<label class="label">label</label>
-					<input class="input" type="text" name="" placeholder="请输入..." />
-				</div>
-				<!-- }form-group -->
-			
-				<div class="form-group">
-					<label class="label">用户名</label>
-					<input class="input" type="text" name="" />
-					<p class="tip">请输入用户名</p>
-				</div>
-			
-				<div class="form-group">
-					<label class="label">密码</label>
-					<input class="input" type="password" name="" />
-					<p class="tip">请输入密码</p>
-				</div>
-			
-				<div class="form-group">
-					<div class="controls">
-						<a class="float-right" href="">忘记密码?</a>
-						<label>
-							<input type="checkbox" name="" />
-							记住我
-						</label>
-					</div>
-				</div>
-			
-				<div class="form-group">
-					<button class="button primary">登录</button>
-				</div>
-			
-			</form>
-			<!-- }form -->
-
-			<!-- progress{ -->
-			<div class="progress">
-				<div class="progress-completed" style="width:60%">60%</div>
-			</div>
-			<!-- }progress -->
-
-			<i class="icon i-menu"></i>
-
-			<button class="button primary" type="button">主要</button>
-		
+	
 		</div>
 		<!-- }container -->
 	
 	</div>
-	<!-- }layout -->
+	<!-- }navbar -->
 
 </body>
 </html>
