@@ -2,19 +2,9 @@
 wui by wushufen
 email: wusfun@foxmail.com
 2014.03.21
-update: 2014.07.28
+update: 2015.03.23
 */
 
-/*
-input firefox 无法改变 line-height
-
-2014.06.30 火狐 文档顶部 出现空白
-	2014.07.07 原因 .navbar 里所有元素都是浮动，
-	且 .navbar:after 的 display 为 block
-	.header 设置 margin-bottom 时，会出现顶部有同等的距离
-	将 .navbar:after 的 display 改为 table 即可
-	所以以后 clearfix 的 display 都应用 table
-*/
 
 
 /************************************************\
@@ -101,17 +91,12 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .container{
 	width: 960px;/*非响应时宽度*/
 	margin: auto;/*居中*/
-
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	padding: 0 1em;/*左右留白*/
 }
 .container{
 	max-width: 100%;/*被嵌套时，比如在一个iframe里*/
 }
-.padding-0{padding: 0}/*2014.07.28 +*/
-.no-inset{margin: 0 -1em}/*2014.07.30 +*/
+/*.padding-0{padding: 0}*//*2014.07.28 + 2014.09.04 -*/
+/*.no-inset{margin: 0 -1em}*//*2014.07.30 + 2014.09.04 -*/
 
 
 /*
@@ -122,23 +107,14 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 	}	
 }
 */
-.row{
-	margin: 0 -.5em;/*抵消 .container 一半的留白*/
-}
 .row:after{content: ""; display: table; clear: both;}/*clearfix*/
 
 /*栅格*/
 /*
 .col.span-*{}
 */
-.col{
-	float:left;/*横向排列*/
+.col{float:left;/*横向排列*/}
 
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	padding: 0 .5em;/*与.row抵消.container的一半相加为1，相邻的.col相加也为1*/
-}
 .span-1  {width:8.3333%}
 .span-2  {width:16.6667%}
 .span-3  {width:25%}
@@ -151,6 +127,16 @@ input[type="checkbox"]{width: 1em; cursor: pointer}
 .span-10 {width:83.3333%}
 .span-11 {width:91.6667%}
 .span-12 {width:100%}
+
+/*留白 >2014.09.04*/
+.container,.col{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.container{padding: 0 1em}
+.row{margin: 0 -1em}/*抵消 .container 的 padding*/
+.row,.col{padding: 0 .5em}
 
 
 
@@ -544,7 +530,7 @@ a.nav-item:hover{
 	color: #888;
 	box-shadow: #ddd 0 1px 9px -2px inset;
 }
-/*横线文本框*/
+/*横线文本框*/ /*2014.09.04 = 考虑去掉*/
 .input-line{
 	display: inline-block; *display: inline; *zoom: 1;
 	border: solid 1px #5da8ca;
@@ -558,7 +544,7 @@ a.nav-item:hover{
 
 /*按钮*/
 .button{
-	display: inline-block;
+	display: inline-block; *display: inline; *zoom: 1;
 	padding: .25em 1em;
 	vertical-align: middle;
 	text-align: center;
@@ -600,7 +586,7 @@ button.block{
 
 /*表单标签*/
 .label{
-	display: inline-block;
+	display: inline-block; *display: inline; *zoom: 1;
 	padding: .25em 0;
 }
 
@@ -687,7 +673,7 @@ form.inline .input-line{
 
 
 
-/*表单提示*/
+/*表单提示*/ /*2014.09.04 = 考虑去掉*/
 .tip{
 	float: left;
 	position: relative;
@@ -718,12 +704,12 @@ form.inline .input-line{
 /*
 .group[.horizontal]{
 	.group-item{}
-	label.group{
+	label.group-item{
 		:checkbox|:radio
 		text
 	}
-	.input.group{}
-	.button.group{}
+	.input.group-item{}
+	.button.group-item{}
 }
 */
 .group{
@@ -802,7 +788,7 @@ table.data{overflow: hidden; width: auto}
 .data th,
 .data td{
 	padding:.25em 2px .25em .75em;
-	max-width:10em;
+	max-width:10em; /* 用width无法控制宽度 */
 
 	/*2014.5.27 - 隐藏的内容看不到，如按钮*/
 	/*{
@@ -1027,7 +1013,7 @@ table.data{overflow: hidden; width: auto}
 .float-left{float: left}
 .float-right{float: right}
 
-/*撑开*/
+.clear{clear: both}
 .clearfix{*zoom:1}.clearfix:after{content: ""; display: table; clear: both;}
 
 /*文本*/
@@ -1035,9 +1021,28 @@ table.data{overflow: hidden; width: auto}
 .text-left{text-align: left}
 .text-right{text-align: right}
 
+.bold{font-weight: bold}
+.del{text-decoration: line-through; color: #aaa}
+
 .nowrap{white-space:nowrap}/*不换行*/
 .text-ellipsis /*超长自动在后加省略号*/
 {display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+/*对齐*/
+.v-align:after{content: ""; display: inline-block; height: 100%; vertical-align: middle}
+	.v-top,.v-middle,.v-bottom{display: inline-block}
+	.v-top{vertical-align: top}
+	.v-middle{vertical-align: middle}
+	.v-bottom{vertical-align: bottom}
+
+html.page-middle{display: table; width: 100%; height: 100%}
+	.page-middle>body{display: table-cell; vertical-align: middle; padding-top: 5%; padding-bottom: 10%}
+
+/*固定*/
+.fixed-top,
+.fixed-bottom{position: fixed; left: 0; right: 0; z-index: 100}
+.fixed-top{top: 0}
+.fixed-bottom{bottom: 0}
 
 /*圆角*/
 .radius{border-radius: 4px}

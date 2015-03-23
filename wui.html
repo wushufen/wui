@@ -35,6 +35,8 @@
 			color: #bbb;
 		}
 
+		.col p{border: solid 1px #0af; border-radius: 9em}
+
 	</style>
 
 </head>
@@ -141,46 +143,88 @@
 
 			<div class="example">
 				<div class="row">
-					<div class="col span-1 t">1</div>
+					<div class="col span-1"><p>1</p></div>
 				</div>
 				<div class="row">
-					<div class="col span-12 t">12</div>
+					<div class="col span-12"><p>12</p></div>
 				</div>
 			</div>
 
 			<div class="example">
-				<div class="row">
-					<div class="col span-8 t">
-						col span-8
+				<div class="row padding-m">
+					<div class="col span-8">
+						<p>col span-8</p>
 						<div class="row">
-							<div class="col span-5 t">col span-5</div>
-							<div class="col span-7 t">col span-7</div>
+							<div class="col span-5"><p>col span-5</p></div>
+							<div class="col span-7"><p>col span-7</p></div>
 						</div>
-						嵌套
+						row padding-m
 					</div>
-					<div class="col span-4 t">col span-4</div>
+					<div class="col span-4"><p>col span-4</p></div>
+				</div>
+			</div>
+
+			<div class="example">
+				<div class="row padding-s">
+					<div class="col span-8">
+						<p>col span-8</p>
+						<div class="row">
+							<div class="col span-5"><p>col span-5</p></div>
+							<div class="col span-7"><p>col span-7</p></div>
+						</div>
+						row padding-s
+					</div>
+					<div class="col span-4"><p>col span-4</p></div>
+				</div>
+			</div>
+
+			<div class="example">
+				<div class="row padding-x">
+					<div class="col span-8">
+						<p>col span-8</p>
+						<div class="row">
+							<div class="col span-5"><p>col span-5</p></div>
+							<div class="col span-7"><p>col span-7</p></div>
+						</div>
+						row padding-x
+					</div>
+					<div class="col span-4"><p>col span-4</p></div>
+				</div>
+			</div>
+
+			<div class="example">
+				<div class="row padding-0">
+					<div class="col span-8">
+						<p>col span-8</p>
+						<div class="row">
+							<div class="col span-5"><p>col span-5</p></div>
+							<div class="col span-7"><p>col span-7</p></div>
+						</div>
+						row padding-0
+					</div>
+					<div class="col span-4"><p>col span-4</p></div>
 				</div>
 			</div>
 
 			
 			<div class="example">
 				<div class="row">
-					<div class="col span-6 md-full t">col span-6 md-full</div>
-					<div class="col span-6 md-full t">col span-6 md-full</div>
+					<div class="col span-6 md-full"><p>col span-6 md-full</p></div>
+					<div class="col span-6 md-full"><p>col span-6 md-full</p></div>
 				</div>
 			</div>
 			
 			<div class="example">
 				<div class="row">
-					<div class="col span-6 sm-full t">col span-6 sm-full</div>
-					<div class="col span-6 sm-full t">col span-6 sm-full</div>
+					<div class="col span-6 sm-full"><p>col span-6 sm-full</p></div>
+					<div class="col span-6 sm-full"><p>col span-6 sm-full</p></div>
 				</div>
 			</div>
 			
 			<div class="example">
 				<div class="row">
-					<div class="col span-6 xs-full t">col span-6 xs-full</div>
-					<div class="col span-6 xs-full t">col span-6 xs-full</div>
+					<div class="col span-6 xs-full"><p>col span-6 xs-full</p></div>
+					<div class="col span-6 xs-full"><p>col span-6 xs-full</p></div>
 				</div>
 			</div>
 
@@ -859,6 +903,7 @@
 				<a class="button" data-dialog="{content: ' content ', title:'ok'}">点击弹出对话框</a>
 			</div>
 
+<a href="#">xxx</a>
 
 		</div>
 
