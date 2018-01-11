@@ -1,963 +1,1294 @@
 <!DOCTYPE html>
-<html class="responsive">
+<html lang="zh-cn" class="bgf7">
+
 <head>
-	<title>wui.20140613</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>WUI</title>
+    <link rel="stylesheet" type="text/css" href="wui.css">
+    <style type="text/css">
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: normal;
+        margin: 16px 0;
+        color: #000;
+    }
 
-	<link rel="stylesheet" type="text/css" href="wui.css">
-	<!-- <link rel="stylesheet" type="text/css" href="wui.theme/default.theme.wui.css"> -->
-	<link rel="stylesheet" type="text/css" href="wui.layout/sidebar.layout.css">
+    h2 {
+        margin-top: 4em;
+    }
 
-	<script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="wui.js"></script>
-	<script type="text/javascript" src="wui.tools/wui.dialog.js"></script>
+    h3 {
+        border-left: solid 3px #0af;
+        line-height: 1;
+        padding-left: .5em;
+        margin-top: 2em;
+    }
 
-	<style type="text/css">
-		h2{border-bottom: solid 1px #ddd; margin: 2em 0 1em;}
-		.example{
-			position: relative;
-			border: solid 1px #eee;
-			border-radius: 3px;
-			padding: 2em 1em 1em;
-			margin: 1em 0;
-		}
-		.example:before{
-			content: "example";
-			position: absolute;
-			left: -1px;
-			top: -.75em;
-			padding: 0 .5em;
-			border: solid #f1f1f1;
-			border-width: 1px;
-			border-radius: 8px 0;
-			background: #F8F8F8;
-			color: #bbb;
-		}
+    p {
+        margin: 1em 0;
+        color: #555;
+    }
 
-		.col p{border: solid 1px #0af; border-radius: 9em}
-
-	</style>
-
+    #ui {
+        background: #fff;
+    }
+    </style>
 </head>
+
 <body>
-
-	<div class="loading"><i class="loading-icon"></i></div>
-
-	<div class="layout">
-
-		<div class="sidebar-toggle"></div>
-		<div class="sidebar">
-
-			<h1 class="sidebar-header">WUI</h1>
-
-			<div class="menu">
-				<a class="menu-item" href="#container">container</a>
-				<a class="menu-item" href="#grid">grid</a>
-				<a class="menu-item" href="#path">path</a>
-				<a class="menu-item" href="#menu">menu</a>
-				<a class="menu-item" href="#navbar">navbar</a>
-				<a class="menu-item" href="#panel">panel</a>
-				<a class="menu-item" href="#tabs">tabs</a>
-				<a class="menu-item" href="#list">list</a>
-				<a class="menu-item" href="#badge">badge</a>
-				<a class="menu-item" href="#table">table</a>
-				<a class="menu-item" href="#pagination">pagination</a>
-				<div class="menu-item">
-					<span class="menu-toggle">form</span>
-					<div class="menu">
-						<a class="menu-item" href="#">menu</a>
-						<a class="menu-item" href="#">menu</a>
-						<a class="menu-item" href="#">menu</a>
-					</div>
-				</div>
-				<a class="menu-item" href="#progress">progress</a>
-				<a class="menu-item" href="#icon">icon</a>
-				<a class="menu-item" href="#dropdown">dropdown</a>
-				<a class="menu-item" href="#collapse">collapse</a>
-				<a class="menu-item" href="#dialog">dialog</a>
-				<a class="menu-item" href="#dialog">排版</a>
-				<p class="menu-divider"></p>
-				<a class="menu-item" href="#dialog">layout</a>
-			</div>
-
-		</div>
-
-
-
-		
-
-		<div class="navbar js-scrollFixTop">
-
-			<div class="container">
-				<div class="navbar-header">WUI</div>
-				<div class="navbar-body navbar-collapse">
-
-					<div class="nav">
-						<a class="nav-item" href="">导航</a>
-						<a class="nav-item" href="">导航</a>
-
-						<div class="nav-item dropdown">
-							下拉 <i class="icon i-down"></i>
-							<div class="dropdown-body">
-								<div class="menu">
-									<a class="menu-item" href="#icon">首页</a>
-									<a class="menu-item" href="#icon">首页</a>
-								</div>
-							</div>
-						</div>
-
-						<span class="nav-item">文本</span>
-
-					</div>
-
-					<form>
-						<input class="input inline-block width-auto" placeholder="表单" />
-						<button class="button primary">搜索</button>
-					</form>
-
-					<div class="nav float-right">
-						<a class="nav-item" href="">注册</a>
-						<a class="nav-item" href="">登录</a>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-
-
-		<div class="container">
-
-
-
-			<h2 id="container">container</h2>
-
-			<div class="example">
-				<div class="container t">container</div>
-			</div>
-
-
-
-			<h2 id="grid">grid</h2>
-
-			<div class="example">
-				<div class="row">
-					<div class="col span-1"><p>1</p></div>
-				</div>
-				<div class="row">
-					<div class="col span-12"><p>12</p></div>
-				</div>
-			</div>
-
-			<div class="example">
-				<div class="row padding-m">
-					<div class="col span-8">
-						<p>col span-8</p>
-						<div class="row">
-							<div class="col span-5"><p>col span-5</p></div>
-							<div class="col span-7"><p>col span-7</p></div>
-						</div>
-						row padding-m
-					</div>
-					<div class="col span-4"><p>col span-4</p></div>
-				</div>
-			</div>
-
-			<div class="example">
-				<div class="row padding-s">
-					<div class="col span-8">
-						<p>col span-8</p>
-						<div class="row">
-							<div class="col span-5"><p>col span-5</p></div>
-							<div class="col span-7"><p>col span-7</p></div>
-						</div>
-						row padding-s
-					</div>
-					<div class="col span-4"><p>col span-4</p></div>
-				</div>
-			</div>
-
-			<div class="example">
-				<div class="row padding-x">
-					<div class="col span-8">
-						<p>col span-8</p>
-						<div class="row">
-							<div class="col span-5"><p>col span-5</p></div>
-							<div class="col span-7"><p>col span-7</p></div>
-						</div>
-						row padding-x
-					</div>
-					<div class="col span-4"><p>col span-4</p></div>
-				</div>
-			</div>
-
-			<div class="example">
-				<div class="row padding-0">
-					<div class="col span-8">
-						<p>col span-8</p>
-						<div class="row">
-							<div class="col span-5"><p>col span-5</p></div>
-							<div class="col span-7"><p>col span-7</p></div>
-						</div>
-						row padding-0
-					</div>
-					<div class="col span-4"><p>col span-4</p></div>
-				</div>
-			</div>
-
-			
-			<div class="example">
-				<div class="row">
-					<div class="col span-6 md-full"><p>col span-6 md-full</p></div>
-					<div class="col span-6 md-full"><p>col span-6 md-full</p></div>
-				</div>
-			</div>
-			
-			<div class="example">
-				<div class="row">
-					<div class="col span-6 sm-full"><p>col span-6 sm-full</p></div>
-					<div class="col span-6 sm-full"><p>col span-6 sm-full</p></div>
-				</div>
-			</div>
-			
-			<div class="example">
-				<div class="row">
-					<div class="col span-6 xs-full"><p>col span-6 xs-full</p></div>
-					<div class="col span-6 xs-full"><p>col span-6 xs-full</p></div>
-				</div>
-			</div>
-
-
-
-			<h2 id="path">path</h2>
-
-			<div class="example">
-				
-				<div class="path">
-					<a href=""><i class="icon i-back wuijs-back"></i></a>
-					<a href="">首页</a>
-					<a href="">父页</a>
-					<span>当前页</span>
-				</div>
-			</div>
-
-
-
-			<h2 id="menu">menu</h2>
-
-			<div class="example">
-				<div class="menu" style="max-width:25em">
-					<a class="menu-item" href="">菜单</a>
-					<a class="menu-item" href="">菜单</a>
-					<a class="menu-item" href="">菜单</a>
-				</div>
-			</div>
-
-			<div class="example">
-				<div class="menu horizontal">
-					<a class="menu-item" href="">菜单</a>
-					<a class="menu-item" href="">菜单</a>
-					<a class="menu-item" href="">菜单</a>
-				</div>
-			</div>
-
-
-
-			<h2 id="navbar">navbar</h2>
-
-			<div class="example">
-				
-				<div class="navbar">
-					<div class="navbar-header">WUI</div>
-					<div class="navbar-body">
-						<div class="nav">
-							<a class="nav-item" href="">首页</a>
-							<a class="nav-item" href="">案例</a>
-							<a class="nav-item" href="">联系</a>
-						</div>
-						<form>
-							<input class="input" placeholder="搜索"></input>
-						</form>
-						<div class="nav float-right">
-							<a class="nav-item" href="">注册</a>
-							<a class="nav-item" href="">登录</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-
-
-			<h2 id="panel">panel</h2>
-			
-			<div class="example">
-				<div class="panel">
-					面板
-					取消直接使用 2014.07.03
-				</div>
-			</div>
-
-			
-			<div class="example">
-				<div class="panel">
-					<div class="panel-header">标题</div>
-					<div class="panel-body">
-						面板
-					</div>
-				</div>
-			</div>
-
-			
-			<div class="example">
-				<div class="panel">
-					<!-- <div class="panel-header">标题</div> -->
-					<div class="panel-body">
-						面板
-					</div>
-					<div class="panel-footer">
-						底部
-					</div>
-				</div>
-			</div>
-
-
-
-			<h2 id="tabs">tabs</h2>
-
-			<div class="example">
-				<div class="tabs">
-					<span class="tab" href="">首页</span>
-					<span class="tab active" href="">案例</span>
-					<span class="tab" href="">联系</span>
-				</div>
-			</div>
-			<div class="example">
-				<div class="tabs">
-					<p class="tabs-header">标题</p>
-					<span class="tab" href="">首页</span>
-					<span class="tab active" href="">案例</span>
-					<span class="tab" href="">联系</span>
-				</div>
-				<div class="tabs-body">
-					<div class="tab-content">1</div>
-					<div class="tab-content">2</div>
-					<div class="tab-content">3</div>
-				</div>
-			</div>
-
-			<h3>panel tabs</h3>
-			<div class="example">
-				<div class="panel">
-					<div class="panel-header tabs">
-						<p class="tabs-header">标题</p>
-						<span class="tab" href="">首页</span>
-						<span class="tab" href="">案例</span>
-						<span class="tab" href="">联系</span>
-					</div>
-					<div class="panel-body tabs-body">
-						<div class="tab-content">1</div>
-						<div class="tab-content">2</div>
-						<div class="tab-content">3</div>
-					</div>
-				</div>
-			</div>
-
-			<h3>justified</h3>
-			<div class="example">
-				<div class="tabs justified">
-					<a class="tab" href="">导航</a>
-					<a class="tab active" href="">导航</a>
-					<a class="tab" href="">导航</a>
-					<a class="tab" href="">导航</a>
-					<a class="tab" href="">导航</a>
-				</div>
-			</div>
-
-
-
-			<h2 id="list">list</h2>
-
-			<div class="example">
-				<ul class="list" style="max-width:25em">
-					<li class="list-item">
-						1
-					</li>
-					<li class="list-item">
-						2
-					</li>
-					<li class="list-item">
-						3
-					</li>
-				</ul>
-			</div>
-
-
-
-			<h2 id="badge">badge</h2>
-
-			<div class="example">
-				<div>
-					<span class="badge">badge</span>
-				</div>
-				<div class="button">
-					no no. <span class="badge"></span>
-				</div>
-				<a class="button">
-					count <span class="badge">99+</span>
-				</a>
-			</div>
-
-			<div class="example">
-				<div class="list" style="max-width:25em">
-					<a class="list-item" href="">
-						<span class="badge float-right"></span>
-						badge float-right
-					</a>
-					<a class="list-item" href="">
-						<span class="badge float-right">25</span>
-						2
-					</a>
-					<a class="list-item" href="">
-						<span class="badge float-right">1</span>
-						3
-					</a>
-				</div>
-			</div>
-
-
-
-			<h2 id="table">table</h2>
-
-			<div class="example">
-				<div class="data">
-					<table>
-						<col style="width:1em"></col>
-
-						<tr>
-							<th><input type="checkbox" name="" /></th>
-							<th>#</th>
-							<th>title</th>
-							<th>content</th>
-							<th></th>
-						</tr>
-						<tr>
-							<td><input type="checkbox" name="" /></td>
-							<td>1</td>
-							<td>标题</td>
-							<td>内容</td>
-							<td>
-								<a class="button danger small">删除</a>
-							</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" name="" /></td>
-							<td>2</td>
-							<td>
-								<a class="text-ellipsis">商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名</a>
-							</td>
-							<td>内容</td>
-							<td>
-								<a class="button danger small">删除</a>
-							</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" name="" /></td>
-							<td>3</td>
-							<td>标题</td>
-							<td>内容</td>
-							<td>
-								<a class="button danger small">删除</a>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-
-
-
-			<h2 id="pagination">pagination</h2>
-
-			<div class="example">
-				<div class="pagination">
-					<span class="disable">&larr;</span>
-					<a href="">1</a>
-					<span>...</span>
-					<a href="">4</a>
-					<a href="">5</a>
-					<a class="active" href="">6</a>
-					<a href="">7</a>
-					<a href="">8</a>
-					<span>...</span>
-					<a href="">99</a>
-					<a href="">&rarr;</a>
-				</div>
-			</div>
-
-
-
-			<h2 id="form">form</h2>
-			<div class="example">
-				<button class="button">按钮</button>
-				<a class="button" href="">链接按钮</a>
-				
-				<button class="button small">小按钮</button>
-				<button class="button">默认按钮</button>
-				<button class="button large">大按钮</button>
-			</div>
-			<div class="example">
-				<button class="button primary">主要</button>
-				<button class="button success">成功</button>
-				<button class="button warning">警告</button>
-				<button class="button danger">危险</button>
-				<button class="button error">错误</button>
-				<button class="button info">信息</button>
-			</div>
-
-			<div class="example">
-				<input class="input" style="max-width:25em" type="text" placeholder="文本框" />
-			</div>
-
-			<div class="example">
-				<input class="input-line" style="max-width:25em" type="text" name="" />
-			</div>
-
-			<h3>group</h3>
-			<div class="example">
-				<div class="group" style="max-width:25em">
-					<input class="group-item input" type="text" name="" placeholder="用户名" />
-					<input class="group-item input" type="password" name="" placeholder="密码" />
-					<button class="group-item button primary">登录</button>
-				</div>
-			</div>
-
-			<div class="example">
-				<div class="group" style="max-width:25em">
-					<label class="group-item">
-						<input type="checkbox" name="" />
-						选择
-					</label>
-					<label class="group-item">
-						<input type="checkbox" name="" />
-						选择
-					</label>
-					<label class="group-item">
-						<input type="checkbox" name="" />
-						选择
-					</label>
-				</div>
-			</div>
-
-			<div class="example">
-				<div class="group inline-block" style="max-width:25em">
-					<button class="group-item button">按钮</button>
-					<button class="group-item button">按钮</button>
-					<button class="group-item button">按钮</button>
-				</div>
-			</div>
-
-
-			<h3>group horizontal</h3>
-			<div class="example">
-				<div class="group horizontal">
-					<button class="group-item button">按钮</button>
-					<button class="group-item button">按钮</button>
-					<button class="group-item button">按钮</button>
-				</div>
-			</div>
-
-			<div class="example">
-				<div class="group horizontal">
-					<label class="group-item button">
-						<input type="radio" name="r" />
-						男
-					</label>
-					<label class="group-item button">
-						<input type="radio" name="r" />
-						女
-					</label>
-				</div>
-
-				<div class="group horizontal">
-					<button class="group-item button">-</button>
-					<input class="group-item input text-center" style="width:4em" type="text" name="" value="1" />
-					<button class="group-item button">+</button>
-				</div>
-
-				<div class="group horizontal">
-					<span class="group-item">￥</span>
-					<input class="group-item input text-center" style="width:4em" type="text" name="" value="99" />
-					<span class="group-item">.00</span>
-				</div>
-
-				<div class="group horizontal">
-					<label class="group-item">
-						<input type="checkbox" name="r" />
-					</label>
-					<input class="group-item input text-center" style="width:4em" type="text" name="" value="10" />
-				</div>
-
-				<div class="group horizontal">
-					<input class="group-item input" style="width:10em" type="text" name="" placeholder="搜索" />
-					<button class="group-item button">Q</button>
-				</div>
-			</div>
-
-
-			<h3>group justified</h3>
-			button 标签无效
-			<div class="example">
-				<div class="group justified" style="max-width:25em">
-					<div class="group-item">...</div>
-					<div class="group-item">...</div>
-					<div class="group-item">...</div>
-				</div>
-			</div>
-
-			<div class="example">
-
-				<form style="max-width:25em">
-
-					<div class="form-group">
-						<div class="group justified">
-							<span class="group-item button">button</span>
-							<span class="group-item button">button</span>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="group justified">
-							<input class="group-item input"  type="text" name="" />
-							<input class="group-item input"  type="text" name="" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="group justified">
-							<span class="group-item button">button</span>
-							<input class="group-item input"  type="text" name="" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="group justified">
-							<input class="group-item input"  type="text" name="" />
-							<span class="group-item button">button</span>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="group justified">
-							<span class="group-item">用户名</span>
-							<input class="group-item input"  type="text" name="" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="group justified">
-							<span class="group-item">密码</span>
-							<input class="group-item input"  type="password" name="" />
-						</div>
-					</div>
-
-					<div class="form-group">
-						<a class="float-right">忘记密码？</a>
-						<label>
-							<input type="checkbox" name="" />
-							记住我
-						</label>
-					</div>
-
-					<button class="button primary block">登录</button>
-
-				</form>
-
-
-			</div>
-
-
-			<h3>form group</h3>
-			<div class="example">
-
-				<form class="" style="max-width:25em">
-
-					<div class="form-group">
-						<label class="label">用户名</label>
-						<input class="input" type="text" name="" />
-					</div>
-
-					<div class="form-group">
-						<label class="label">密码</label>
-						<input class="input" type="password" name="" />
-					</div>
-
-					<div class="form-group">
-						<div class="controls">
-							<a class="float-right" href="">忘记密码?</a>
-							<label>
-								<input type="checkbox" name="" />
-								记住我
-							</label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<button class="button primary">登录</button>
-					</div>
-				</form>
-			</div>
-
-
-			<h3>horizontal</h3>
-			<div class="example">
-
-				<form class="horizontal">
-
-					<div class="form-group">
-						<label class="label">用户名</label>
-						<input class="input" type="text" name="" />
-						<p class="tip error">请输入用户名</p>
-					</div>
-
-					<div class="form-group">
-						<label class="label">密码密码密码密码密码</label>
-						<input class="input" type="password" name="" />
-						<p class="tip success">请输入用户名密码密码密码密码密码</p>
-					</div>
-
-					<div class="form-group">
-						<label class="label">重复密码</label>
-						<input class="input" type="password" name="" />
-					</div>
-
-					<div class="form-group">
-						<div class="controls group horizontal">
-							<label class="group-item"><input type="radio" name="sex" />男</label>
-							<label class="group-item"><input type="radio" name="sex" />女</label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="controls">
-							<a class="float-right" href="">忘记密码?</a>
-							<label>
-								<input type="checkbox" name="" />
-								记住我
-							</label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<button class="button primary">登录</button>
-					</div>
-				</form>
-			</div>
-
-
-			<h3>inline</h3>
-			<div class="example">
-
-				<form class="inline">
-
-					<div class="form-group">
-						<label class="label">用户名</label>
-						<input class="input" type="text" name="" />
-					</div>
-
-					<div class="form-group">
-						<label class="label">密码密码密码密码密码</label>
-						<input class="input" type="password" name="" />
-					</div>
-
-					<div class="form-group">
-						<label class="label">重复密码</label>
-						<input class="input" type="password" name="" />
-					</div>
-
-					<div class="form-group">
-						<div class="controls group horizontal">
-							<label class="group-item"><input type="radio" name="sex" />男</label>
-							<label class="group-item"><input type="radio" name="sex" />女</label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="controls">
-							<a class="float-right" href="">忘记密码?</a>
-							<label>
-								<input type="checkbox" name="" />
-								记住我
-							</label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<button class="button primary">登录</button>
-					</div>
-				</form>
-			</div>
-
-
-
-
-
-
-			<h2 id="progress">progress</h2>
-
-			<div class="example">
-				<div class="progress">
-					<div class="progress-completed" style="width:60%">60%</div>
-				</div>
-			</div>
-
-
-
-
-			<h2 id="icon">icon</h2>
-			<div class="example">
-				<i class="icon i-left   "></i>
-				<i class="icon i-right  "></i>
-				<i class="icon i-up     "></i>
-				<i class="icon i-down   "></i>
-				<i class="icon i-min    "></i>
-				<i class="icon i-plus   "></i>
-				<i class="icon i-ok     "></i>
-				<i class="icon i-x      "></i>
-				<i class="icon i-back   "></i>
-				<i class="icon i-forward"></i>
-				<i class="icon i-menu   "></i>
-				<i class="icon i-grid   "></i>
-				<i class="icon i-home   "></i>
-				<i class="icon i-search "></i>
-				<i class="icon i-person "></i>
-				<i class="icon i-pen    "></i>
-				<i class="icon i-setting"></i>
-			</div>
-
-
-
-
-			<h2 id="dropdown">dropdown</h2>
-
-			<div class="example">
-				<div class="dropdown">
-					<span class="dropdown-toggle button">下拉 <i class="icon i-down"></i></span>
-					<div class="dropdown-body">
-						<div class="menu">
-							<a class="menu-item" href="#icon">首页</a>
-							<p class="menu-divider"></p>
-							<a class="menu-item" href="#dropdown">案例</a>
-							<a class="menu-item" href="#collapse">联系</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="example">
-
-				<div class="group horizontal">
-					<div class="group-item button">下拉</div>
-					<div class="group-item button dropdown">^</i>
-						<div class="dropdown-body">
-							<div class="menu">
-								<a class="menu-item" href="#icon">首页</a>
-								<p class="menu-divider"></p>
-								<a class="menu-item" href="#dropdown">案例</a>
-								<a class="menu-item" href="#collapse">联系</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="dropdown">
-					<span class="dropdown-toggle button">下拉 <i class="icon i-down"></i></span>
-					<div class="dropdown-body">
-						<div class="menu">
-							<a class="menu-item" href="#icon">首页</a>
-							<p class="menu-divider"></p>
-							<a class="menu-item" href="#dropdown">案例</a>
-							<a class="menu-item" href="#collapse">联系</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-
-			<h2 id="collapse">collapse</h2>
-
-			<div class="example">
-				<div class="panel">
-					<div class="panel-header js-collapse">折叠</div>
-					<div class="panel-body">内容</div>
-				</div>
-			</div>
-
-
-
-
-			<h2 id="dialog">dialog</h2>
-
-			<div class="example">
-				<a class="button" data-dialog="{content: ' content ', title:'ok'}">点击弹出对话框</a>
-			</div>
-
-<a href="#">xxx</a>
-
-		</div>
-
-	</div>
-
-	<script type="text/javascript">
-
-		// 侧边栏
-		$(function(){
-			$('.sidebar-toggle').click(function(e){
-				e.stopPropagation();
-				$('.layout').toggleClass('active');
-			});
-			$('body').click(function(){
-				$('.layout').removeClass('active');
-			});
-		});
-
-
-		// hash锚点滚动
-		$htmlBody = $('html,body');
-		$('a[href*=#]').click(function(){
-			var mt = 50;//顶部距离
-			var href = $(this).attr('href');
-			$htmlBody.stop().animate({scrollTop: $(href).offset().top-mt}, 1000, function(){
-				// location.hash = href; //按返回时，锚点位置不太对
-			});
-			// location.hash = href;
-
-			// 状态
-			$(this).parents('.menu').find('.menu-item').removeClass('active');
-			$(this).addClass('active');
-			return false;
-		});
-
-
-		// 滚动固定顶部 todo
-		$(window).scroll(function(){
-			var scrollTop = $(window).scrollTop();
-			var el = $('.js-scrollFixTop');
-			var elOffsetTop = el.offset().top;
-			var elOffsetLeft = el.offset().left;
-			if (scrollTop > elOffsetTop) {
-				el.css({
-					position: 'fixed',
-					top: 0,
-					left: elOffsetLeft,
-					right: 0,
-					zIndex: '999'
-				});
-			};
-		});
-
-
-	</script>
+    <div id="ui" class="container pd bg sh">
+        <h1>UI</h1>
+        <p>css doc</p>
+        <!-- ## -->
+        <h2>布局</h2>
+        <!-- ### -->
+        <h3>栅格系统</h3>
+        <code>.container>.row>.col[.w1.md2.sm3.xs4]</code>
+        <div class="section">
+            <div class="row pdbox">
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>1</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>2</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>3</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>4</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>5</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>6</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>7</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>8</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>9</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>10</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>11</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>12</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>13</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>14</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>15</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>16</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>17</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>18</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>19</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>20</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>21</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>22</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>23</div>
+                </div>
+                <div class="col w1 md2 sm3 xs4  pdbox">
+                    <div>24</div>
+                </div>
+            </div>
+        </div>
+        <code>.container</code>
+        <p>大容器，一般一个页面用一个。宽960px，最宽100%。居中。</p>
+        <div class="section">
+            <div class="container pdbox">
+                <div>.container</div>
+            </div>
+        </div>
+        <div class="section mgbox">
+            <div class="container w768 pdbox">
+                <div>.container.w768</div>
+            </div>
+        </div>
+        <code>.section</code>
+        <p>内容区块。上下有间距，相邻间距合并。</p>
+        <div class="section mgbox">
+            <div class="section">.section</div>
+            <div class="section">.section</div>
+        </div>
+        <code>.row</code>
+        <p>一行，须与<code>.col</code>结合用。抵消了父左右填充。</p>
+        <div class="section">
+            <div class="mgbox">
+                <div class="row pdbox">
+                    <div>.row</div>
+                </div>
+                <div class="row pdbox">
+                    <div>.row</div>
+                </div>
+            </div>
+        </div>
+        <code>.col</code>
+        <p>一格，放于<code>.row</code>内。加<code>.fr</code>可拉到右边。<code>.row</code><code>.col</code>左右各带一半填充。加起来刚好每个格子内容间的距离都是一样的。</p>
+        <div class="section">
+            <div class="row pdbox">
+                <div class="col pdbox">
+                    <div>.col</div>
+                </div>
+                <div class="col fr pdbox">
+                    <div>.col.fr</div>
+                </div>
+                <div class="col pdbox">
+                    <div>.col</div>
+                </div>
+                <div class="ovh mgbox">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row pdbox">
+                <div class="col w12 pdbox">
+                    <div>.col.w12</div>
+                </div>
+                <div class="col w12 pdbox">
+                    <div>.col.w12</div>
+                </div>
+            </div>
+        </div>
+        <code>.w(0-24)</code>
+        <p>用于控制<code>.col</code>的宽度，没有则按内容宽度靠左排。</p>
+        <p>一行分24格。</p>
+        <div class="section">
+            <div class="row pdbox">
+                <div class="col w4 pdbox">
+                    <div>.col.w4</div>
+                </div>
+                <div class="col w20 pdbox">
+                    <div>.col.w20</div>
+                </div>
+            </div>
+        </div>
+        <code>.md(0-24)</code>
+        <p>控制<code>.col</code>在中等设备（中等桌面）及以下的宽度。</p>
+        <p>改变浏览器宽度可以看到效果。</p>
+        <div class="section">
+            <div class="row pdbox">
+                <div class="col w12 md24 pdbox">
+                    <div>.col.w12.md24</div>
+                </div>
+                <div class="col w12 md24 pdbox">
+                    <div>.col.w12.md24</div>
+                </div>
+            </div>
+        </div>
+        <code>.sm(0-24)</code>
+        <p>控制<code>.col</code>在小设备（平板）及以下的宽度。</p>
+        <div class="section">
+            <div class="row pdbox">
+                <div class="col w12 sm24 pdbox">
+                    <div>.col.w12.sm24</div>
+                </div>
+                <div class="col w12 sm24 pdbox">
+                    <div>.col.w12.sm24</div>
+                </div>
+            </div>
+        </div>
+        <code>.xs(0-24)</code>
+        <p>控制<code>.col</code>在极小设备（手机）及以下的宽度。<code>.xs0</code>则表示在手机上不显示，以上类推。</p>
+        <div class="section">
+            <div class="row pdbox">
+                <div class="col w12 xs24 pdbox">
+                    <div>.col.w12.xs24</div>
+                </div>
+                <div class="col w12 xs24 pdbox">
+                    <div>.col.w12.xs24</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row pdbox">
+                <div class="col w6 md0 pdbox">
+                    <div>.col.w6.md0</div>
+                </div>
+                <div class="col w6 sm0 pdbox">
+                    <div>.col.w6.sm0</div>
+                </div>
+                <div class="col w6 xs0 pdbox">
+                    <div>.col.w6.xs0</div>
+                </div>
+                <div class="col w6 xs24 pdbox">
+                    <div>.col.w6.xs24</div>
+                </div>
+            </div>
+        </div>
+        <!-- ### -->
+        <code>.row.n(0-12)>.col</code>
+        <div class="section">
+            <div class="row pdbox n2">
+                <div class="col pdbox">
+                    <div>.row.n2>.col</div>
+                </div>
+                <div class="col pdbox">
+                    <div>.row.n2>.col</div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row pdbox n3">
+                <div class="col pdbox">
+                    <div>.row.n3>.col</div>
+                </div>
+                <div class="col pdbox">
+                    <div>.row.n3>.col</div>
+                </div>
+                <div class="col pdbox">
+                    <div>.row.n3>.col</div>
+                </div>
+            </div>
+        </div>
+        <code>.row.n4.mdn3.smn2.xsn1>.col</code>
+        <div class="section">
+            <div class="row pdbox n4 mdn3 smn2 xsn1">
+                <div class="col pdbox">
+                    <div>.row.n4.mdn3.smn2.xsn1>.col</div>
+                </div>
+                <div class="col pdbox">
+                    <div>.row.n4.mdn3.smn2.xsn1>.col</div>
+                </div>
+                <div class="col pdbox">
+                    <div>.row.n4.mdn3.smn2.xsn1>.col</div>
+                </div>
+                <div class="col pdbox">
+                    <div>.row.n4.mdn3.smn2.xsn1>.col</div>
+                </div>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>间距</h3>
+        <code>.mg[tblr][01234a]</code>
+        <p>与其它元素的距离。tblr 表示上下左右，01234 表示大小，a 表示 auto。如<code>.mgtb</code>表示与上下的元素保持一点距离。<code>.mga</code>让有宽度的块级元素居中。</p>
+        <div class="section">
+            <div class="row">
+                <div class="col">
+                    <div class="mgbox">
+                        <div class="mg">.mg</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mgbox">
+                        <div class="mgt">.mgt</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mgbox">
+                        <div class="mgb">.mgb</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mgbox">
+                        <div class="mgl">.mgl</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mgbox">
+                        <div class="mgr">.mgr</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mgbox">
+                        <div class="mgtb">.mgtb</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mgbox">
+                        <div class="mglr">.mglr</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section mgbox">
+            <div class="mga w320">.w320.mga</div>
+        </div>
+        <code>.pd[tblr][01234]</code>
+        <p>填充给元素的内容留白。</p>
+        <div class="row mgtb">
+            <div class="col">
+                <div class="pdbox pd">
+                    <div>.pd</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="pdbox pdt">
+                    <div>.pdt</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="pdbox pdb">
+                    <div>.pdb</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="pdbox pdl">
+                    <div>.pdl</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="pdbox pdr">
+                    <div>.pdr</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="pdbox pdtb">
+                    <div>.pdtb</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="pdbox pdlr">
+                    <div>.pdlr</div>
+                </div>
+            </div>
+        </div>
+        <!-- 已改为默认 -->
+        <!-- <code>.row.pd</code>
+        <p>所有格子四周围填充。</p>
+        <div class="section">
+            <div class="row pd pdbox">
+                <div class="col w12 pdbox">
+                    <div>.col</div>
+                </div>
+                <div class="col w12 pdbox">
+                    <div>.col</div>
+                </div>
+                <div class="col w12 pdbox">
+                    <div>.col</div>
+                </div>
+                <div class="col w12 pdbox">
+                    <div>.col</div>
+                </div>
+            </div>
+        </div> -->
+        <code>.row.pd0</code>
+        <p>取消所有格子的填充。</p>
+        <div class="section">
+            <div class="row pd0 pdbox">
+                <div class="col w6 pdbox">
+                    <div>.col</div>
+                </div>
+                <div class="col w6 pdbox">
+                    <div>.col</div>
+                </div>
+                <div class="col w6 pdbox">
+                    <div>.col</div>
+                </div>
+                <div class="col w6 pdbox">
+                    <div>.col</div>
+                </div>
+            </div>
+        </div>
+        <code>.row.pdtb0</code>
+        <p>取消所有格子的上下填充。</p>
+        <div class="section">
+            <div class="row pdbox n2 pdtb0">
+                <div class="col pdbox">
+                    <div>.row.pdtb0>.col</div>
+                </div>
+                <div class="col pdbox">
+                    <div>.row.pdtb0>.col</div>
+                </div>
+            </div>
+        </div>
+        <code>.row.pdlr0</code>
+        <p>取消所有格子的左右填充。</p>
+        <div class="section">
+            <div class="row pdbox n2 pdlr0">
+                <div class="col pdbox">
+                    <div>.row.pdlr0>.col</div>
+                </div>
+                <div class="col pdbox">
+                    <div>.row.pdlr0>.col</div>
+                </div>
+            </div>
+        </div>
+        <code>.mg-lr</code>
+        <p>抵消父元素的左右填充。</p>
+        <div class="section mg-lr">
+            <div class="container pdbox">
+                <div class="mgbox">
+                    <div class="section mg-lr">.section.mg-lr</div>
+                </div>
+            </div>
+        </div>
+        <!-- ## -->
+        <h2>表单</h2>
+        <!-- ### -->
+        <h3>输入</h3>
+        <code>.input</code>
+        <p>控制输入框的样式，用于<code>&lt;input&gt;</code> <code>&lt;textarea&gt;</code> <code>&lt;select&gt;</code>。可与颜色类结合使用。</p>
+        <div class="section row pd">
+            <div class="col">
+                <input class="input" placeholder="input.input">
+            </div>
+            <div class="col">
+                <textarea class="input" placeholder="textarea.input"></textarea>
+            </div>
+            <div class="col">
+                <select class="input">
+                    <option>select.input</option>
+                    <option>select.input</option>
+                    <option>select.input</option>
+                    <option>select.input</option>
+                    <option>select.input</option>
+                </select>
+            </div>
+            <div class="col">
+                <select class="input" multiple="">
+                    <option>select[multiple].input</option>
+                    <option>option</option>
+                    <option>option</option>
+                    <option>option</option>
+                    <option>option</option>
+                    <option>option</option>
+                </select>
+            </div>
+            <div class="col">
+                <div class="input">
+                    <label class="block">
+                        <input type="checkbox" name=""> div.input>label.block>input[type="checkbox"]
+                    </label>
+                    <label class="block">
+                        <input type="checkbox" name=""> div.input>label.block>input[type="checkbox"]
+                    </label>
+                    <label class="block">
+                        <input type="checkbox" name=""> div.input>label.block>input[type="checkbox"]
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="select">
+                    <input class="input" placeholder=".select>.input">
+                    <ul>
+                        <li>.select>ul>li</li>
+                        <li>abc</li>
+                        <li>abc</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <h3>单选复选</h3>
+        <div class="section">
+            webkit浏览器支持更改默认外观
+            <div class="form">
+                <div class="row">
+                    <div class="col">
+                        <input type="checkbox">
+                        <input type="checkbox" checked="">
+                    </div>
+                    <div class="col">input[type="checkbox"]</div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="checkbox" switch>
+                        <input type="checkbox" switch checked="">
+                    </div>
+                    <div class="col">input[type="checkbox"][switch]</div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="radio" name="537">
+                        <input type="radio" name="537" checked="">
+                    </div>
+                    <div class="col">input[type="radio"]</div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            <span>label.checkbox>input[type="checkbox"]+span</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <label class="radio">
+                            <input type="radio">
+                            <span>label.checkbox>input[type="radio"]+span</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span>label.switch>input[type="checkbox"]+span</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>按钮</h3>
+        <code>.button</code>
+        <p>控制按钮的样式，一般用于<code>&lt;button&gt;</code> <code>&lt;a&gt;</code>，也可以让其它任何元素表现像按钮一样。可与颜色类结合使用。</p>
+        <div class="section row">
+            <div class="col">
+                <button class="button">button.button</button>
+            </div>
+            <div class="col">
+                <a class="button">a.button</a>
+            </div>
+            <div class="col">
+                <span class="button">span.button</span>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>大小</h3>
+        <code>.sz(1-9)</code>
+        <div class="section">
+            <input class="input vab  sz" style="width:5em" placeholder=".input">
+            <input class="input vab  sz1" style="width:3em" placeholder=".sz1">
+            <input class="input vab  sz2" style="width:3em" placeholder=".sz2">
+            <input class="input vab  sz3" style="width:3em" placeholder=".sz3">
+            <input class="input vab  sz4" style="width:4em" placeholder=".sz4">
+            <input class="input vab  sz5" style="width:4em" placeholder=".sz5">
+            <input class="input vab  sz6" style="width:4em" placeholder=".sz6">
+            <input class="input vab  sz7" style="width:5em" placeholder=".sz7">
+            <input class="input vab  sz8" style="width:5em" placeholder=".sz8">
+            <input class="input vab  sz9" style="width:5em" placeholder=".sz9">
+        </div>
+        <div class="section">
+            <button class="button vab  sz">button</button>
+            <button class="button vab  sz1">.sz1</button>
+            <button class="button vab  sz2">.sz2</button>
+            <button class="button vab  sz3">.sz3</button>
+            <button class="button vab  sz4">.sz4</button>
+            <button class="button vab  sz5">.sz5</button>
+            <button class="button vab  sz6">.sz6</button>
+            <button class="button vab  sz7">.sz7</button>
+            <button class="button vab  sz8">.sz8</button>
+            <button class="button vab  sz9">.sz9</button>
+        </div>
+        <!-- ### -->
+        <h3>布局</h3>
+        <code>.form>.row>.col + .col</code>
+        <p>一般情况下为左右布局，在手机上自动变为上下布局。</p>
+        <p>可结合<code>.w*</code> <code>.xs*</code>等控制宽度。</p>
+        <p>左边宽度自动根据文字长度变化。</p>
+        <!-- <p>给第一个<code>.col</code>加上<code>.tar</code>让 label 靠右对齐，加上<code>.pdb*</code>让其在手机上时与下边控件留点距离。</p> -->
+        <!-- <p>给第二个<code>.col</code>加上<code>.pdb*</code>控制上下间距。</p> -->
+        <div class="form mgtb w12 sm24">
+            <div class="row">
+                <div class="col">.col</div>
+                <div class="col">.col</div>
+            </div>
+            <div class="row">
+                <div class="col required">.required</div>
+                <div class="col">
+                    <input class="input" placeholder=".input">
+                    <div class="muted">helper text</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">looooooong label</div>
+                <div class="col">
+                    <textarea class="input" placeholder="textarea.input"></textarea>
+                    <div class="muted">helper text</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">select.input</div>
+                <div class="col">
+                    <select class="input" name="province">
+                        <option>省</option>
+                    </select>
+                    <select class="input" name="city">
+                        <option>市</option>
+                    </select>
+                    <select class="input" name="district">
+                        <option>区</option>
+                    </select>
+                    <textarea class="input" placeholder="详细地址"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">checkbox</div>
+                <div class="col">
+                    <div class="gaps">
+                        <label>
+                            <input type="checkbox">
+                            <span>checkbox</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" checked="">
+                            <span>checkbox</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">radio</div>
+                <div class="col">
+                    <div class="gaps">
+                        <label>
+                            <input type="radio" name="654">
+                            <span>radio</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="654" checked="">
+                            <span>radio</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">[switch]</div>
+                <div class="col">
+                    <div class="gaps">
+                        <label>
+                            <input type="checkbox" switch>
+                        </label>
+                        <label>
+                            <input type="checkbox" switch checked="">
+                        </label>
+                        <label>
+                            <input type="radio" switch name="673">
+                        </label>
+                        <label>
+                            <input type="radio" switch name="673" checked="">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <button class="button">.button</button>
+                </div>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>控件组</h3>
+        <code>.group</code>
+        <p>将<code>.button</code><code>.input</code><code>&lt;span&gt;</code>包含可将其合并成一组。只保留两端的圆角。</p>
+        <div class="cwn">*注意：为了更好的兼容性，此时最好不用<code>button.button</code>，不能保证其宽度正常。可用<code>span.button</code>代替，或用其包含起来<code>span.button>button</code>。</div>
+        <p>可给<code>.button</code>加上<code>.active</code>表示选中的状态。</p>
+        <p>可结合<code>.w*</code> <code>.xs*</code>等控制宽度。</p>
+        <p>可结合<code>.sz*</code>控制大小。</p>
+        <div class="section">
+            <div class="group w24">
+                <input class="input xs0" placeholder="input.input">
+                <span>span</span>
+                <input class="input" placeholder="input.input">
+                <span class="button">
+                    <button>span.button</button>
+                </span>
+            </div>
+        </div>
+        <div class="section">
+            <div class="group">
+                <span class="button ra9">.button.ra9</span>
+                <span class="button ra9 active">.button.ra9.active</span>
+                <span class="button ra9">.button.ra9</span>
+            </div>
+        </div>
+        <div class="section">
+            <div class="group ra9">
+                <span class="button">parent.group.ra9</span>
+                <span class="button">.button</span>
+                <span class="button">.button</span>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>with 图标</h3>
+        <div class="section">
+            <div class="row">
+                <div class="col w8">
+                    <div class="with-icon t-icon">
+                        <input type="text" class="input" placeholder="with-icon.t-icon>.input">
+                    </div>
+                </div>
+                <div class="col w8">
+                    <div class="with-icon-right t-icon">
+                        <input type="text" class="input" placeholder="with-icon-right.t-icon>.input">
+                    </div>
+                </div>
+                <div class="col w8">
+                    <div class="with-icon">
+                        <i class="icon t-icon"></i>
+                        <input type="text" class="input" placeholder="with-icon>.icon.t-icon + .input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ## -->
+        <h2>组件</h2>
+        <!-- ### -->
+        <h3>表格</h3>
+        <code>table.table</code>
+        <p>可用<code>.ova</code>将其包含起来，在手机上超长可让其左右滑动。</p>
+        <div class="section ova mg-lr">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>员工姓名</th>
+                        <th>性别</th>
+                        <th>联系方式</th>
+                        <th class="tac">角色</th>
+                        <th class="tac">入职时间</th>
+                        <th class="tac">订单量</th>
+                        <th class="tac">项目量</th>
+                        <th>登录账号</th>
+                        <th class="tac">操作</th>
+                    </tr>
+                    <tr>
+                        <td>xxx</td>
+                        <td>x</td>
+                        <td>xxxxxxxxxxx</td>
+                        <td class="tac">xxx</td>
+                        <td class="tac">xxxx.xx.xx</td>
+                        <td class="tac">
+                            <span class="x-tag bg-green">xx</span>
+                        </td>
+                        <td class="tac">
+                            <span class="x-tag bg-blue">xx</span>
+                        </td>
+                        <td>xxxxxxx</td>
+                        <td class="tac">
+                            <a class="x-edit" href="">
+                                <i class="fa fa-edit fa-fw"></i>
+                            </a>
+                            <a class="x-del" href="">
+                                <i class="fa fa-remove fa-fw"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>xxx</td>
+                        <td>x</td>
+                        <td>xxxxxxxxxxx</td>
+                        <td class="tac">xxx</td>
+                        <td class="tac">xxxx.xx.xx</td>
+                        <td class="tac">
+                            <span class="x-tag bg-green">xx</span>
+                        </td>
+                        <td class="tac">
+                            <span class="x-tag bg-blue">xx</span>
+                        </td>
+                        <td>xxxxxxx</td>
+                        <td class="tac">
+                            <a class="x-edit" href="">
+                                <i class="fa fa-edit fa-fw"></i>
+                            </a>
+                            <a class="x-del" href="">
+                                <i class="fa fa-remove fa-fw"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>xxx</td>
+                        <td>x</td>
+                        <td>xxxxxxxxxxx</td>
+                        <td class="tac">xxx</td>
+                        <td class="tac">xxxx.xx.xx</td>
+                        <td class="tac">
+                            <span class="x-tag bg-green">xx</span>
+                        </td>
+                        <td class="tac">
+                            <span class="x-tag bg-blue">xx</span>
+                        </td>
+                        <td>xxxxxxx</td>
+                        <td class="tac">
+                            <a class="x-edit" href="">
+                                <i class="fa fa-edit fa-fw"></i>
+                            </a>
+                            <a class="x-del" href="">
+                                <i class="fa fa-remove fa-fw"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- ### -->
+        <h3>分页</h3>
+        <code>.pagination>a</code>
+        <p><code>.active</code>表示当前页</p>
+        <div class="section">
+            <div class="pagination">
+                <a href="javascript:">←</a>
+                <a href="javascript:">1</a>
+                <input value="5">
+                <a href="javascript:">99</a>
+                <a href="javascript:">→</a>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>路径</h3>
+        <code>.path>a + span</code>
+        <p>自动加上分隔符</p>
+        <div class="section">
+            <div class="path">
+                <a href="">首页</a>
+                <a href="">父页</a>
+                <span>当前页</span>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>标签页</h3>
+        <code>.tabs>a</code>
+        <p><code>.active</code>表示当前页</p>
+        <div class="section">
+            <div class="tabs">
+                <a class="active" href="javascript:">视频</a>
+                <a href="javascript:">影院</a>
+                <a href="javascript:">直播</a>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>小气泡</h3>
+        <code>.badge</code>
+        <p>可与颜色类结合使用</p>
+        <div class="section">
+            <span class="badge"></span>
+            <span class="badge">9</span>
+            <a class="button">
+                .button
+                <span class="badge">99+</span>
+            </a>
+        </div>
+        <!-- ### -->
+        <h3>进度条</h3>
+        <code>.progress>div[style="width:n%"]</code>
+        <div class="section">
+            <div class="progress">
+                <div style="width:20%">n%</div>
+                <div class="bgwn" style="width:20%">n%</div>
+                <div class="bgsc" style="width:20%">n%</div>
+                <div class="bger" style="width:20%">n%</div>
+                <div class="bgif" style="width:20%">n%</div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="progress">
+                <div style="width:20%"></div>
+            </div>
+        </div>
+        <!-- ## -->
+        <h2>修饰类</h2>
+        <!-- ### -->
+        <h3>字体大小</h3>
+        <p><code>fs(n)</code> = n/4 em</p>
+        <div class="x">
+            <span class="vab mgr  fs">.fs</span>
+            <span class="vab mgr  fs1">.fs1</span>
+            <span class="vab mgr  fs2">.fs2</span>
+            <span class="vab mgr  fs3">.fs3</span>
+            <span class="vab mgr  fs4">.fs4</span>
+            <span class="vab mgr  fs5">.fs5</span>
+            <span class="vab mgr  fs6">.fs6</span>
+            <span class="vab mgr  fs7">.fs7</span>
+            <span class="vab mgr  fs8">.fs8</span>
+            <span class="vab mgr  fs9">.fs9</span>
+            <span class="vab mgr  fs10">.fs10</span>
+            <span class="vab mgr  fs11">.fs11</span>
+            <span class="vab mgr  fs12">.fs12</span>
+        </div>
+        <!-- ### -->
+        <h3>颜色</h3>
+        <div class="mgtb">
+            wh(white) da(disable) if(info) pm(primary) sc(success) wn(warning) er(error) bl(black)
+        </div>
+        <div class="mg-lr pd" style="background:#eee">
+            <div class="gaps">
+                <span class="c">.c</span>
+                <span class="cwh">.cwh</span>
+                <span class="cda">.cda</span>
+                <span class="cif">.cif</span>
+                <span class="cpm">.cpm</span>
+                <span class="csc">.csc</span>
+                <span class="cwn">.cwn</span>
+                <span class="cer">.cer</span>
+                <span class="cbl">.cbl</span>
+            </div>
+            <div class="gaps">
+                <span class="bg">.bg</span>
+                <span class="bgwh">.bgwh</span>
+                <span class="bgda">.bgda</span>
+                <span class="bgif">.bgif</span>
+                <span class="bgpm">.bgpm</span>
+                <span class="bgsc">.bgsc</span>
+                <span class="bgwn">.bgwn</span>
+                <span class="bger">.bger</span>
+                <span class="bgbl">.bgbl</span>
+            </div>
+            <div class="gaps">
+                <span class="bd bd">.bd</span>
+                <span class="bd bdwh">.bdwh</span>
+                <span class="bd bdda">.bdda</span>
+                <span class="bd bdif">.bdif</span>
+                <span class="bd bdpm">.bdpm</span>
+                <span class="bd bdsc">.bdsc</span>
+                <span class="bd bdwn">.bdwn</span>
+                <span class="bd bder">.bder</span>
+                <span class="bd bdbl">.bdbl</span>
+            </div>
+            <div class="gaps">
+                <span class="button bdc">.bdc</span>
+                <span class="button bdcwh">.bdcwh</span>
+                <span class="button bdcda">.bdcda</span>
+                <span class="button bdcif">.bdcif</span>
+                <span class="button bdcpm">.bdcpm</span>
+                <span class="button bdcsc">.bdcsc</span>
+                <span class="button bdcwn">.bdcwn</span>
+                <span class="button bdcer">.bdcer</span>
+                <span class="button bdcbl">.bdcbl</span>
+            </div>
+            <div class="gaps">
+                <span class="button bdbg">.bdbg</span>
+                <span class="button bdbgwh">.bdbgwh</span>
+                <span class="button bdbgda">.bdbgda</span>
+                <span class="button bdbgif">.bdbgif</span>
+                <span class="button bdbgpm">.bdbgpm</span>
+                <span class="button bdbgsc">.bdbgsc</span>
+                <span class="button bdbgwn">.bdbgwn</span>
+                <span class="button bdbger">.bdbger</span>
+                <span class="button bdbgbl">.bdbgbl</span>
+            </div>
+            <div class="gaps">
+                <span class="button bt">.bt</span>
+                <span class="button btwh">.btwh</span>
+                <span class="button btda">.btda</span>
+                <span class="button btif">.btif</span>
+                <span class="button btpm">.btpm</span>
+                <span class="button btsc">.btsc</span>
+                <span class="button btwn">.btwn</span>
+                <span class="button bter">.bter</span>
+                <span class="button btbl">.btbl</span>
+            </div>
+            <div class="gaps">
+                <span class="button bdc bgn">.bdc.bgn</span>
+                <span class="button bdcwh bgn">.bdcwh.bgn</span>
+                <span class="button bdcda bgn">.bdcda.bgn</span>
+                <span class="button bdcif bgn">.bdcif.bgn</span>
+                <span class="button bdcpm bgn">.bdcpm.bgn</span>
+                <span class="button bdcsc bgn">.bdcsc.bgn</span>
+                <span class="button bdcwn bgn">.bdcwn.bgn</span>
+                <span class="button bdcer bgn">.bdcer.bgn</span>
+                <span class="button bdcbl bgn">.bdcbl.bgn</span>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>圆角</h3>
+        <code>.ra([tblr]|[1234569])</code>
+        <div class="gaps">
+            <button class="button  ra">.ra</button>
+            <button class="button  ra1">.ra1</button>
+            <button class="button  ra2">.ra2</button>
+            <button class="button  ra3">.ra3</button>
+            <button class="button  ra4">.ra4</button>
+            <button class="button  ra5">.ra5</button>
+            <button class="button  ra6">.ra6</button>
+            <button class="button  ra9">9</button>
+            <button class="button  ra9" style="width: 6em">.ra9</button>
+        </div>
+        <!-- ### -->
+        <h3>阴影</h3>
+        <code>.sh</code>
+        <div class="section bg pd sh mgtb">.sh</div>
+        <!-- ### -->
+        <h3>边框</h3>
+        <code>.bd[0tblr]</code>
+        <div class="section row">
+            <div class="col">
+                <div class="pd bd">.bd</div>
+            </div>
+            <div class="col">
+                <div class="pd bdt">.bdt</div>
+            </div>
+            <div class="col">
+                <div class="pd bdb">.bdb</div>
+            </div>
+            <div class="col">
+                <div class="pd bdl">.bdl</div>
+            </div>
+            <div class="col">
+                <div class="pd bdr">.bdr</div>
+            </div>
+        </div>
+        <!-- ### -->
+        <h3>定位</h3>
+        <div class="section">
+            <code>.rel</code>
+            <code>.abs</code>
+            <code>.l0</code>
+            <code>.r0</code>
+            <code>.t0</code>
+            <code>.b0</code>
+        </div>
+        <!-- ### -->
+        <h3>显示</h3>
+        <div class="section">
+            <code>.none</code>
+            <code>.inline</code>
+            <code>.block</code>
+            <code>.table</code>
+            <code>.inline.block</code>
+            <code>.inline.table</code>
+        </div>
+        <!-- ### -->
+        <h3>溢出</h3>
+        <div class="section">
+            <code>.ov[xy][ah]</code>
+        </div>
+        <!-- ### -->
+        <h3>对齐</h3>
+        <div class="section">
+            <code>.ta[lcr]</code>
+        </div>
+        <!-- ### -->
+        <h3>垂直对齐</h3>
+        <div class="section">
+            <code>.va[tmb(bl)]</code>
+        </div>
+        <!-- ### -->
+        <h3>不换行</h3>
+        <div class="section">
+            <code>.nowr</code>
+        </div>
+        <!-- ### -->
+        <h3>文字溢出省略号</h3>
+        <div class="section">
+            <code>.ellps</code>
+        </div>
+        <!-- ### -->
+        <h3>粗体</h3>
+        <div class="section">
+            <code>.bold</code>
+        </div>
+        <!-- ### -->
+        <h3>浮动</h3>
+        <div class="section">
+            <code>.f[lr]</code>
+            <code>.cl</code>
+            <code>.clf</code>
+        </div>
+        <!-- ### -->
+        <h3>宽</h3>
+        <div class="section">
+            <code>.w(0-24)</code>
+            <code>.wf</code>
+            <code>.wa</code>
+            <code>.w320</code>
+            <code>.w960</code>
+            <code>.mw</code>
+            <code>.mw320</code>
+            <code>.mw960</code>
+            <code>.fill</code>
+        </div>
+        <!-- ### -->
+        <h3>高</h3>
+        <code>.h[1234]</code>
+        <!-- ### -->
+        <h3>行高</h3>
+        <code>.lh[1234]</code>
+        <!-- ### -->
+        <h3>指针</h3>
+        <code>.curp</code>
+        <h3>占位文本</h3>
+        <div class="form">
+            <div class="row">
+                <div class="col"><code>.t-name</code></div>
+                <div class="col"><span class="t-name"></span></div>
+            </div>
+            <div class="row">
+                <div class="col"><code>.t-phone</code></div>
+                <div class="col"><span class="t-phone"></span></div>
+            </div>
+            <div class="row">
+                <div class="col"><code>.t-email</code></div>
+                <div class="col"><span class="t-email"></span></div>
+            </div>
+            <div class="row">
+                <div class="col"><code>.t-date</code></div>
+                <div class="col"><span class="t-date"></span></div>
+            </div>
+            <div class="row">
+                <div class="col"><code>.t-datetime</code></div>
+                <div class="col"><span class="t-datetime"></span></div>
+            </div>
+            <div class="row">
+                <div class="col"><code>.t-text</code></div>
+                <div class="col"><span class="t-text"></span></div>
+            </div>
+            <div class="row">
+                <div class="col"><code>.t-img</code></div>
+                <div class="col"><span class="t-img"></span></div>
+            </div>
+            <div class="row">
+                <div class="col"><code>.t-icon</code></div>
+                <div class="col"><span class="t-icon"></span></div>
+            </div>
+        </div>
+        <!-- ## -->
+        <h2>综合</h2>
+        <p>以上所有类都可以随意组合，以达到各种不同的效果。</p>
+        <div class="section bg bd ra sh">
+            <div class="pd bdb">标题</div>
+            <div class="section pdlr">
+                <div class="tabs">
+                    <a class="active" href="javascript:">标签</a>
+                    <a href="javascript:">标签</a>
+                    <a href="javascript:">标签</a>
+                </div>
+                <div class="section">
+                    <div class="group">
+                        <span class="button">全选</span>
+                        <span class="button">删除</span>
+                        <span class="button">添加</span>
+                    </div>
+                    <div class="group fr">
+                        <input class="input">
+                        <span class="button">搜索</span>
+                    </div>
+                </div>
+                <div class="section mg-lr ova">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>员工姓名</th>
+                                <th>性别</th>
+                                <th>联系方式</th>
+                                <th class="tac">角色</th>
+                                <th class="tac">入职时间</th>
+                                <th class="tac">订单量</th>
+                                <th class="tac">项目量</th>
+                                <th>登录账号</th>
+                                <th class="tac">操作</th>
+                            </tr>
+                            <tr>
+                                <td>xxx</td>
+                                <td>x</td>
+                                <td>xxxxxxxxxxx</td>
+                                <td class="tac">xxx</td>
+                                <td class="tac">xxxx.xx.xx</td>
+                                <td class="tac">
+                                    <span class="x-tag bg-green">xx</span>
+                                </td>
+                                <td class="tac">
+                                    <span class="x-tag bg-blue">xx</span>
+                                </td>
+                                <td>xxxxxxx</td>
+                                <td class="tac">
+                                    <a class="x-edit" href="">
+                                        <i class="fa fa-edit fa-fw"></i>
+                                    </a>
+                                    <a class="x-del" href="">
+                                        <i class="fa fa-remove fa-fw"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>xxx</td>
+                                <td>x</td>
+                                <td>xxxxxxxxxxx</td>
+                                <td class="tac">xxx</td>
+                                <td class="tac">xxxx.xx.xx</td>
+                                <td class="tac">
+                                    <span class="x-tag bg-green">xx</span>
+                                </td>
+                                <td class="tac">
+                                    <span class="x-tag bg-blue">xx</span>
+                                </td>
+                                <td>xxxxxxx</td>
+                                <td class="tac">
+                                    <a class="x-edit" href="">
+                                        <i class="fa fa-edit fa-fw"></i>
+                                    </a>
+                                    <a class="x-del" href="">
+                                        <i class="fa fa-remove fa-fw"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>xxx</td>
+                                <td>x</td>
+                                <td>xxxxxxxxxxx</td>
+                                <td class="tac">xxx</td>
+                                <td class="tac">xxxx.xx.xx</td>
+                                <td class="tac">
+                                    <span class="x-tag bg-green">xx</span>
+                                </td>
+                                <td class="tac">
+                                    <span class="x-tag bg-blue">xx</span>
+                                </td>
+                                <td>xxxxxxx</td>
+                                <td class="tac">
+                                    <a class="x-edit" href="">
+                                        <i class="fa fa-edit fa-fw"></i>
+                                    </a>
+                                    <a class="x-del" href="">
+                                        <i class="fa fa-remove fa-fw"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="section tac">
+                    <div class="pagination">
+                        <a href="javascript:">←</a>
+                        <a href="javascript:">1</a>
+                        <!-- <a class="active" href="javascript:">5</a> -->
+                        <input class="active" value="5">
+                        <a href="javascript:">99</a>
+                        <a href="javascript:">→</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

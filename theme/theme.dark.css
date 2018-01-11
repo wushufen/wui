@@ -1,0 +1,74 @@
+html {
+    background: #2F2F33;
+    background: #002135;
+    background: #22262B;
+    background: #2F2F2F;
+    background: #1f1f1f;
+    color: #fff;
+}
+
+.input,
+.button,
+.group>span {
+    background: #2F2F2F;
+    border-color: #101111;
+}
+
+.input:focus {
+    border-color: #101111;
+    box-shadow: 0 0 5px 0px #101111;
+}
+
+.button.active {
+    background: transparent;
+    background: #2F2F2F;
+    border-color: #FBAD0B;
+    border-color: #101111;
+}
+
+.sh {
+    box-shadow: 0px 0px 3px #1B1B1B;
+    box-shadow: 1px 1px 3px rgba(6, 28, 49, 0.77);
+    box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.31);
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.28);
+    box-shadow: 3px 5px 5px rgba(25, 25, 25, 0.4);
+}
+
+.tsh {
+    text-shadow: 2px 2px 2px rgba(34, 38, 43, 0.35);
+}
+
+
+/* color */
+
+.primary,
+.button.active {
+    color: #0BB9FB;
+}
+
+/* date */
+
+::-webkit-datetime-edit {}
+
+::-webkit-datetime-edit-fields-wrapper {}
+
+::-webkit-datetime-edit-text {color: transparent;}
+
+::-webkit-datetime-edit-year-field {}
+
+::-webkit-datetime-edit-month-field {}
+
+::-webkit-datetime-edit-day-field {
+    color: #0af;
+}
+
+::-webkit-inner-spin-button {
+    display: none
+}
+
+::-webkit-calendar-picker-indicator {
+    background: #2f2f2f;
+    color: #888;
+    margin-top: 2px;
+    margin-left: -24px;
+}

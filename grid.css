@@ -1,0 +1,71 @@
+html {
+    font: 14px/1.5;
+    font-family: "Microsoft Yahei"
+}
+
+.bgdoc {
+    background: #f7f7f7;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+html * {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: 960px;
+    max-width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: .5em;
+}
+
+.grid-cell,
+.grid>.cell,
+.grid>* {
+    flex: 1 0 auto;
+    padding: .5em;
+    max-width: 100%;
+}
+
+.container>.grid {
+    margin: 0 -1em;
+}
+
+.grid .grid {
+    margin: -1em;
+}
+
+.grid.pd0 {
+    padding: 0;
+    margin: 0;
+}
+
+.grid.pd0>* {
+    padding: 0;
+}
+
+.grid.pd0>*>.grid{
+	margin: 0;
+}
+
+.grid.jcsb{
+	justify-content: space-between;
+}
+.grid.jcsb>*{
+	flex: 0 0 auto
+}

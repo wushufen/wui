@@ -1,0 +1,163 @@
+/* reset */
+
+html {
+    background: #fff;
+    color: #2F3449;
+}
+
+
+/* global */
+
+.logo {
+    background-size: 80px 37.5px;
+    background-color: #E2E1E2;
+}
+
+
+/* navbar */
+
+.navbar {
+    background: #E2E1E2;
+    color: #2F3449;
+}
+
+
+/* sidebar */
+
+.sidebar {
+    background: #EBEBEB;
+    box-shadow: 0 49px 9px 0 rgba(179, 179, 179, 0.70);
+}
+
+@media (max-width: 957px) {
+    .sidebar {
+        box-shadow: none
+    }
+}
+
+.sidebar-menu {
+    /* box-shadow: 0 2px 9px 0 rgba(179, 179, 179, 0.70); */
+}
+
+.sidebar-menu li {
+    line-height: 3em;
+    padding-left: 3em
+}
+
+.sidebar-menu li a {
+    color: #2F3449;
+    margin-left: -3em;
+    padding-left: 3em;
+}
+
+.sidebar-menu li ul li a {
+    margin-left: -6em;
+    padding-left: 6em;
+}
+
+.sidebar-menu li a.active {
+    background: #CCCCCC;
+    color: #2F3449;
+}
+
+.sidebar-menu li ul li a.active {
+    background: #CCCCCC;
+    color: #2F3449;
+}
+
+.sidebar-menu li a:hover {
+    background: #ddd;
+}
+
+
+/* vue router-link active */
+
+.sidebar-menu li a.router-link-active {
+    background: #CCCCCC;
+    color: #2F3449;
+}
+
+
+/* color */
+
+.primary {
+    color: #FBAD0B;
+    border-color: #FBAD0B;
+}
+
+
+/* form */
+
+.input,
+.button,
+.group>span {
+    border-color: #ccc;
+}
+
+.button.primary {
+    background: #FBAD0B;
+    color: #fff;
+    border-color: #FBAD0B;
+}
+
+.button.active {
+    background: #FBAD0B;
+    color: #fff;
+    border-color: #FBAD0B;
+}
+
+
+/* checkbox */
+
+input[type="checkbox"],
+input[type="radio"] {}
+
+input[type="checkbox"]:before,
+input[type="radio"]:before {
+    border: solid 1px #888;
+    transtion: .3s
+}
+
+input[type="radio"]:before {}
+
+input[type="checkbox"]:checked:before,
+input[type="radio"]:checked:before {
+    border-color: #FBAD0B;
+}
+
+input[type="checkbox"]:checked:after {
+    border: solid 2px #FBAD0B;
+    border-width: 0 0 2px 2px;
+    transform: rotate(-45deg);
+}
+
+input[type="radio"]:checked:after {
+    border: solid 3px #FBAD0B;
+}
+
+
+/* table */
+
+.table td {
+    font-size: .95em;
+}
+
+
+/*  */
+
+.pagination input {
+    color: #FBAD0B;
+}
+
+
+.col-sm-2{
+	width:10%;
+}
+
+.col-sm-offset-2{
+	margin-left: 10%;
+}
+
+/* .form-horizontal .control-label {
+	text-align: left;
+} */

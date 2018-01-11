@@ -1,0 +1,120 @@
+/* 侧边栏 */
+
+
+/*
+.sidebar{
+    .sidebar-header{}
+    ul.sidebar-menu{
+        li{
+            a
+            ul{
+                li{
+                    a
+                }
+            }
+        }
+    }
+}
+*/
+
+.sidebar {
+    float: left;
+    overflow: auto;
+    width: 18em;
+    height: 100%;
+    color: #fff;
+    background: #1d2939;
+    background: #171613;
+}
+
+.sidebar-header {
+    border-bottom: solid 1px #272c36;
+}
+
+.sidebar-menu,
+.sidebar-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-menu li {
+    line-height: 2.75em;
+    position: relative;
+    padding-left: 1em;
+    color: #ccc;
+}
+
+.sidebar-menu li a {
+    display: block;
+    margin-left: -1em;
+    padding-left: 1em;
+    color: #ccc;
+}
+
+.sidebar-menu li a:hover {
+    background: rgba(60, 119, 121, .1);
+}
+
+.sidebar-menu li a.active {
+    color: #0af;
+}
+
+.sidebar-menu-arrow {
+    position: absolute;
+    top: .75em;
+    right: 1em;
+    transition: .3s;
+}
+
+.sidebar-menu li ul {
+    margin-left: -1em;
+}
+
+.sidebar-menu li ul li {
+    padding-left: 3em;
+}
+
+.sidebar-menu li ul li a {
+    margin-left: -3em;
+    padding-left: 3em;
+}
+
+.sidebar-menu li ul li a.active {
+    color: #0af;
+    background: none;
+}
+
+.sidebar-menu li.divider {
+    padding: .25em .5em;
+    color: #000;
+    background: #fff;
+}
+
+.sidebar-menu li.open {}
+
+.sidebar-menu li.open .sidebar-menu-arrow {
+    transform: rotate(90deg);
+}
+
+.sidebar-menu li.open ul {
+    display: block;
+}
+
+
+/* 弹性 */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sidebar>* {
+    flex: none;
+}
+
+.sidebar-menu {
+    overflow: auto;
+    flex: 1 1 auto;
+}

@@ -1,153 +1,79 @@
-/*****************************************************
- * wui.js
- * by wushufen
- * 2014.05.13
- * update: 2014.07.18
- *****************************************************/
-
-
-
-/**
- * hack
- */
-$(function(){
-	if (! 'box-sizing' in $('<div>')[0].style) {
-		var $col = $('.col');
-		$col.css('padding',0).wrapInner($('<div>').css('padding','0 '+$col.css('padding-left')));
-	}
-});
-
-
-
-/**
- * loading...
- */
-$(function(){
-	$('.loading').fadeOut();
-
-	//2014.05.23 + 设置超时
-	setTimeout(function(){
-		$('.loading').fadeOut();
-	}, 8000);
-
-	// 2014.05.26 + 点击隐藏
-	$('.loading').click(function(){
-		$(this).fadeOut();
-	});
-});
-
-
-/**
- * 返回历史上一页
- * .wuijs-back
- */
+// toggle="selecter: class"
+// toggle="<selecter: class"
 $(function() {
-	var $back = $('.wuijs-back');
-
-	$back.click(function() {
-		history.go(-1);
-		return false;
-	});
-	// 2014.05.22 + 没有历史则隐藏返回按钮
-	if (history.length<2) {
-		$back.hide();
-	}
-	// 2014.07.06 + 没有上一页则隐藏返回按钮
-	// 本地文件的referrer永远是空的
-	if (document.referrer == '' && location.protocol != 'file:') {
-		$back.hide();
-	}
+    $(document.body).on('click', '[addClass]', function() {
+        var value = $(this).attr('addClass');
+        if (value) {
+            var s_c = value.split(':');
+            var s = s_c[0];
+            if (s.match(/^\s*</)) {
+                $(this).closest(s.replace(/^\s*</, '')).addClass(s_c[1])
+            } else {
+                $(s).addClass(s_c[1]);
+            }
+        }
+    });
+    $(document.body).on('click', '[toggleClass]', function() {
+        var value = $(this).attr('toggleClass');
+        if (value) {
+            var s_c = value.split(':');
+            var s = s_c[0];
+            if (s.match(/^\s*</)) {
+                $(this).closest(s.replace(/^\s*</, '')).toggleClass(s_c[1])
+            } else {
+                $(s).toggleClass(s_c[1]);
+            }
+        }
+    });
+    $(document.body).on('click', '[removeClass]', function() {
+        var value = $(this).attr('removeClass');
+        if (value) {
+            var s_c = value.split(':');
+            var s = s_c[0];
+            if (s.match(/^\s*</)) {
+                $(this).closest(s.replace(/^\s*</, '')).removeClass(s_c[1])
+            } else {
+                $(s).removeClass(s_c[1]);
+            }
+        }
+    });
 });
 
-
-
-
-// 标签页
-$(function(){
-	$('.tabs').each(function() {
-		// 显示
-		var $active = $(this).find('.active');
-		var index = $(this).find('.tab').index($active);
-		// 如果没有 .active 则显示第一个
-		if ($active.length == 0) {
-			$(this).find('.tab').first().addClass('active');
-			$(this).next('.tabs-body').find('.tab-content').eq(0).fadeIn();
-		}else{
-			$(this).next('.tabs-body').find('.tab-content').eq(index).fadeIn();
-		}
-	});
-
-	// 点击
-	$('.tab').click(function() {
-		$(this).siblings().removeClass('active');
-		$(this).addClass('active');
-
-		//显示对应的 .tab-content
-		var index = $(this).closest('.tabs').find('.tab').index($(this));
-		$(this).closest('.tabs').next('.tabs-body').find('.tab-content')
-			.hide()
-			.eq(index).fadeIn();
-	});
-});
-
-
-
-
-// 菜单
-$(function(){
-	$('.menu-toggle').click(function(){
-		$(this).next().slideToggle('fast');
-		return false;
-	});
-});
-
-
-
-
-
-// 关闭
+// sidebar
 $(function() {
-
-	$('.wuijs-close').click(function() {
-		$(this).parent().fadeTo('normal', 0, function() {
-			$(this).slideUp(function() {
-				$(this).remove();
-			});
-		});
-		return false;
-	});
-
-});
-
-
-
-
-// 折叠
-$(function() {
-
-	$('.wuijs-collapse').click(function() {
-		$(this).next().slideToggle();
-		return false;
-	});
-
-});
-
-
-
-
-
-// 下拉框
-$(function() {
-
-	$('.dropdown').click(function(){
-		$(this).toggleClass('open');
-		return false;
-	});
-	$('body').click(function(){
-		$('.dropdown').removeClass('open');
-	});
-	$('.dropdown-body').click(function(e){
-		e.stopPropagation();
-	})
-
+    // toggle sidebar
+    var $sidebarToggle = $('.sidebar-toggle');
+    var $sidebarToggleClassEl = $('html');
+    var sClass = 'sidebar-open';
+    $sidebarToggle.click(function(e) {
+        $sidebarToggleClassEl.toggleClass(sClass);
+    });
+    // 点击非 .sidebar 时关闭
+    var $html = $('html');
+    var $sidebar = $('.sidebar');
+    $html.click(function(e) {
+        if ($(e.target).closest($sidebar).length) return;
+        $sidebarToggleClassEl.removeClass(sClass);
+    });
+    // menu
+    // active and open
+    $sidebar.find('a').each(function(i, el) {
+        if (el.href === location.href && $(el).attr('href') !== '') {
+            $(this).addClass('active');
+        }
+        if ($(this).hasClass('active')) {
+            $(this).closest('ul').closest('li').addClass('open');
+        }
+    });
+    // sidebar menu toggle
+    var mClass = 'open';
+    var $mToggle = $('ul.sidebar-menu ul').closest('li');
+    $mToggle.click(function(e) {
+        if ($(e.target).closest($('ul.sidebar-menu ul')).length) return;
+        e.preventDefault();
+        e.stopPropagation();
+        var $toggleClassEl = $(this).closest('li');
+        $toggleClassEl.children('ul').slideToggle('fast');
+        $toggleClassEl.toggleClass(mClass);
+    });
 });
