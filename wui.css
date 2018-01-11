@@ -448,12 +448,13 @@ th{text-align:left}
 input[type=date]{padding-right: 0}
 input,textarea,select,button{font:inherit;outline:0}
 button{cursor:pointer}
+/*提升.group下时的边框*/
 .input:focus,
 .button:focus{z-index:2}
 
 .input,
 .button,
-.group>span{vertical-align:middle;padding:.3755em .625em;border:solid 1px #ddd}
+.group>span{vertical-align:middle;padding:.375em .625em;border:solid 1px #ddd}
 
 .input,
 .button{display:inline-block;border-radius:.25em}
@@ -462,28 +463,64 @@ button{cursor:pointer}
 .button{cursor:pointer;text-align:center;background:#fff;background-image:linear-gradient(-180deg, rgba(255, 255, 255, 0.26) 0%, rgba(243, 243, 243, 0.35) 90%);-webkit-user-select: none}
 .group>span{text-align:center}
 
-select.input{width:auto;padding-right:.5em}
-option{padding:.25em .75em;border-radius:.25em}
-option:checked{background-image:linear-gradient(#6cf, #6cf)}
+/*效果*/
+.input{transition-duration:.3s; transition-property:box-shadow,border,color,background}
+.input:focus{border-color:#bbb;box-shadow:0 0 5px 0px #DDD}
+.button:active{box-shadow:0px 1px 5px rgba(0, 0, 0, 0.15) inset}
+.button.active{background: #f5f5f5;z-index: 2}
 
+/*并排间距*/
+.button+.button,
+select.input+select.input{margin-left:1em}
+select.input+textarea.input{margin-top:1em}
+
+/*select*/
+select.input{
+    width:auto;
+    /*firefox 高度过大<*/
+    height: 2.25em;
+    /*>*/
+    /*firefox 下拉箭头太丑*/
+    -moz-appearance: none;
+}
+select[multiple],
+select[size]{
+    height: auto;
+}
+option{padding:.25em .75em;border-radius:.25em}
+option:checked{
+    /*通过背景图片可触发修改背景*/
+    background-image:linear-gradient(#6cf, #6cf)
+}
+
+/*模拟select*/
 .select{display: inline-block;position: relative}
 .select .input:focus+ul{display: block;}
 .select ul{ display: none; list-style:none;padding:.25em 0;box-shadow:0 1px 5px #E2E2E2;position: absolute;width: 100%;top: 100%;left: 0;margin-top: .125em;}
 .select ul li{padding:.25em .75em;cursor: default;}
 .select ul li:hover{background: #0af;color: #fff;}
 
-.input label{padding:.25em 0;cursor:pointer}
+/*.button>[file]*/
+.button{
+    position: relative;
+}
+.button input{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    text-indent: -99em; /*webkit firefox 有效*/
+    opacity: 0;
+}
 
-.input{transition-duration:.3s; transition-property:box-shadow,border,color,background}
-.input:focus{border-color:#bbb;box-shadow:0 0 5px 0px #DDD}
-.button:active{box-shadow:0px 1px 5px rgba(0, 0, 0, 0.15) inset}
-.button.active{background: #f5f5f5;z-index: 2}
-
-.button+.button,
-select.input+select.input{margin-left:1em}
-select.input+textarea.input{margin-top:1em}
-
+/*label*/
 label{cursor: pointer}
+/*.input 包含多行 label checkbox*/
+.input label{padding:.25em 0;cursor:pointer}
 
 /* placeholder */
 input::-webkit-input-placeholder {
@@ -517,6 +554,9 @@ input:-webkit-autofill:active {
 
 
 /* checkbox switch radio */
+/* 通过伪元素实现外观 */
+/* webkit <input> 支持伪元素，无须添加任何代码 */
+/* 其浏览器通过 <span> 伪元素实现 */
 /* webkit input[type="checkbox"]*/
 /* webkit input[type="checkbox"][switch]*/
 /* label.checkbox>input[type="checkbox"]+span */
@@ -555,7 +595,7 @@ input:-webkit-autofill:active {
 .switch>span{
     width: auto;
     height: auto;
-    padding-left: 1em;
+    padding-left: 1em; /*留出位置给伪元素*/
     text-indent: 1ex;
     vertical-align: middle;
 }
@@ -625,7 +665,7 @@ input:checked:after {
 }
 
 
-/*checkbox switch*/
+/*switch*/
 [switch]{
     -webkit-appearance: none;
     width: 2em;
@@ -844,9 +884,33 @@ code {
 .w9em{width:9em}
 .w10em{width:10em}
 
+/*max-width*/
 .mw{max-width:100%}
+.mw1em{max-width:1em}
+.mw2em{max-width:2em}
+.mw3em{max-width:3em}
+.mw4em{max-width:4em}
+.mw5em{max-width:5em}
+.mw6em{max-width:6em}
+.mw7em{max-width:7em}
+.mw8em{max-width:8em}
+.mw9em{max-width:9em}
+.mw10em{max-width:10em}
 .mw320{max-width:320px}
 .mw960{max-width:960px}
+
+/*min-width*/
+.miw{min-width:100%}
+.miw1em{min-width:1em}
+.miw2em{min-width:2em}
+.miw3em{min-width:3em}
+.miw4em{min-width:4em}
+.miw5em{min-width:5em}
+.miw6em{min-width:6em}
+.miw7em{min-width:7em}
+.miw8em{min-width:8em}
+.miw9em{min-width:9em}
+.miw10em{min-width:10em}
 
 /* height */
 .ha{height:auto}
