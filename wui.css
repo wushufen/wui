@@ -613,9 +613,6 @@ input:-webkit-autofill:active {
 /* webkit input[type="checkbox"][switch]*/
 /* label.checkbox>input[type="checkbox"]+span */
 /* label.switch>input[type="checkbox"]+span */
-.checkbox>span,
-.radio>span,
-.switch>span,
 [type="checkbox"],
 [type="radio"] {
     display: inline-block;
@@ -624,40 +621,15 @@ input:-webkit-autofill:active {
     height: 1em;
     vertical-align:-.3ex;
     cursor: pointer;
+    border-radius: .25em;
 }
-.checkbox,
-.radio,
-.switch{
+label{
     display: inline-block;
     position: relative;
 }
-.checkbox>input,
-.radio>input,
-.switch>input{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 2em;
-    z-index: 1;
-    opacity: 0;
-}
-.checkbox>span,
-.radio>span,
-.switch>span{
-    width: auto;
-    height: auto;
-    padding-left: 1em; /*留出位置给伪元素*/
-    text-indent: 1ex;
-    vertical-align: middle;
-}
-.switch>span{
-    padding-left: 2em;
-}
 /*口*/
-.checkbox>span:before,
-.radio>span:before,
-.switch>span:before,
+label>[type="checkbox"]+span:before,
+label>[type="radio"]+span:before,
 [type="checkbox"]:before,
 [type="radio"]:before {
     content:"";
@@ -669,19 +641,19 @@ input:-webkit-autofill:active {
     top: 0;
     bottom: 0;
     margin: auto;
-    background: #fff;
     border: solid 1px #888;
+    background: #fff;
+    box-shadow: 0 0 0px 3px #fff; /*遮挡*/
     border-radius: 3px;
     transition: .25s;
 }
-.radio>span:before,
+label>[type="radio"]+span:before,
 [type="radio"]:before{
     border-radius: 9em;
 }
 /*✔*/
-.checkbox>span:after,
-.radio>span:after,
-.switch>span:after,
+label>[type="checkbox"]+span:after,
+label>[type="radio"]+span:after,
 [type="radio"]:after,
 [type="checkbox"]:after {
     content:"";
@@ -697,21 +669,16 @@ input:-webkit-autofill:active {
     transform: rotate(-45deg);
     transition: .25s;
 }
-.switch>span:after,
 [switch]:after{
     border-width: 1px;
 }
 /*checked*/
-.checkbox>:checked+span:before,
-.radio>:checked+span:before,
-.switch>:checked+span:before,
+label>:checked+span:before,
 input:checked:before{
     background: #0af;
     border-color: #0af;
 }
-.checkbox>:checked+span:after,
-.radio>:checked+span:after,
-.switch>:checked+span:after,
+label>:checked+span:after,
 input:checked:after {
     border-color: #fff;
 }
@@ -719,11 +686,10 @@ input:checked:after {
 
 /*switch*/
 [switch]{
-    -webkit-appearance: none;
     width: 2em;
 }
 /* == */
-.switch>span:before,
+label>[switch]+span:before,
 [switch]:before{
     width: 2em;
     border-radius: 9em;
@@ -731,7 +697,7 @@ input:checked:after {
     border-color: #ddd;
 }
 /* o  */
-.switch>span:after,
+label>[switch]+span:after,
 [switch]:after{
     left: 0;
     width: 1em;
@@ -742,13 +708,12 @@ input:checked:after {
     box-shadow: 0px 0px 5px -1px #333;
 }
 /* =o */
-.switch>:checked+span:before,
+label>[switch]:checked+span:before,
 [switch]:checked:before{
-    border-radius: 9em;
     background: #0af;
     border-color: #0af;
 }
-.switch>:checked+span:after,
+label>[switch]:checked+span:after,
 [switch]:checked:after{
     left: 1em;
 }
@@ -1163,18 +1128,18 @@ html{line-height:1.5}
 .none,.dn{display:none}
 .inline,.di{display:inline}
 .block,.dib{display:block}
-.inline.block,.inbl,.dib{display:inline-block; *display:inline; *zoom:1}
-.inline.table,.inta,.intb,.ditb{display:inline-table}
+.inline-block,.inline.block,.inbl,.dib{display:inline-block; *display:inline; *zoom:1}
+.inline-table,.inline.table,.inta,.intb,.ditb{display:inline-table}
+
+/* hover */
+/* .hv>.hvs */
 .hvs{visibility: hidden}
 .hv:hover .hvs{visibility: visible}
 
 /* float */
-.fl{float:left}
-.fr{float:right}
-.fn{flat:none}
-.fll{float:left}
-.flr{float:right}
-.fln{float:none}
+.fl,.fll{float:left}
+.fr,.flr{float:right}
+.fn,.fln{flat:none}
 .cl,.clb{clear:both}
 .cll{clear:left}
 .clr{clear:right}
@@ -1184,15 +1149,14 @@ html{line-height:1.5}
 .tac{text-align:center}
 .tal{text-align:left}
 .tar{text-align:right}
-.nowr{white-space:nowrap} /*--*/
-.whsnw,.wsnw,.wsn{white-space: nowrap}
-.ellps, /*--*/
-.tove,.toe{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.whsnw,.wsnw,.wsn,.nowr{white-space: nowrap}
+.tove,.toe,.ellps{display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .bold,.fwb{font-weight:bold}
 .usn{user-select:none}
 
 .ti1{text-indent:1em}
 .ti2{text-indent:2em}
+.ti3{text-indent:3em}
 .ti4{text-indent:4em}
 
 /* 占位 */

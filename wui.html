@@ -516,56 +516,59 @@
         </div>
         <h3>单选复选</h3>
         <div class="section">
-            webkit浏览器支持更改默认外观
+            <p>webkit浏览器支持更改默认外观</p>
             <div class="form">
-                <div class="row">
+                <label class="row">
                     <div class="col">
                         <input type="checkbox">
-                        <input type="checkbox" checked="">
                     </div>
                     <div class="col">input[type="checkbox"]</div>
-                </div>
-                <div class="row">
+                </label>
+                <label class="row">
+                    <div class="col">
+                        <input type="checkbox" checked="">
+                    </div>
+                    <div class="col">input[type="checkbox"]:checked</div>
+                </label>
+                <label class="row">
                     <div class="col">
                         <input type="checkbox" switch>
-                        <input type="checkbox" switch checked="">
                     </div>
                     <div class="col">input[type="checkbox"][switch]</div>
-                </div>
-                <div class="row">
+                </label>
+                <label class="row">
                     <div class="col">
-                        <input type="radio" name="537">
-                        <input type="radio" name="537" checked="">
+                        <input type="checkbox" switch checked="">
+                    </div>
+                    <div class="col">input[type="checkbox"][switch]:checked</div>
+                </label>
+                <label class="row">
+                    <div class="col">
+                        <input type="radio" name="547">
                     </div>
                     <div class="col">input[type="radio"]</div>
-                </div>
-                <div class="row">
-                    <div class="col"></div>
+                </label>
+                <label class="row">
                     <div class="col">
-                        <label class="checkbox">
-                            <input type="checkbox">
-                            <span>label.checkbox>input[type="checkbox"]+span</span>
-                        </label>
+                        <input type="radio" name="547" checked="">
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col">
-                        <label class="radio">
-                            <input type="radio">
-                            <span>label.checkbox>input[type="radio"]+span</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col">
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span>label.switch>input[type="checkbox"]+span</span>
-                        </label>
-                    </div>
-                </div>
+                    <div class="col">input[type="radio"]:checked</div>
+                </label>
+            </div>
+            <p>label>input+span</p>
+            <div class="gaps">
+                <label class="block">
+                    <input type="checkbox">
+                    <span>label>input[type="checkbox"]+span</span>
+                </label>
+                <label class="block">
+                    <input type="radio">
+                    <span>label>input[type="radio"]+span</span>
+                </label>
+                <label class="block">
+                    <input type="checkbox" switch>
+                    <span>label>input[type="checkbox"]+span</span>
+                </label>
             </div>
         </div>
         <!-- ### -->
