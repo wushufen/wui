@@ -441,7 +441,7 @@ th{text-align:left}
     .form>.row>.col{display:block;padding-left:0;margin:0}
     .form>.row>.col:first-child{width:auto;text-align: left;padding-bottom:.25em}
 }
-
+/*红星*/
 .required:before{display:inline-block !important;margin:0 .5ex;content:'*';color:#f00}
 
 /* .input .button*/
@@ -452,12 +452,30 @@ button{cursor:pointer}
 .input:focus,
 .button:focus{z-index:2}
 
-.input,
-.button,
-.group>span{vertical-align:middle;padding:.375em .625em;border:solid 1px #ddd}
 
 .input,
-.button{display:inline-block;border-radius:.25em}
+.button,
+.group>span{
+    display:inline-block;
+    vertical-align:middle;
+    /*firefox <select>有默认高度*/
+    /*保证高度一致*/
+    height: 2.5em;
+    /*h= (pdtb) +lh+bdtb; font-size改变基本没影响*/
+    padding:.42857em .625em;
+    line-height: 1.5;
+    border:solid 1px #ddd;
+}
+div.input,
+label.input,
+textarea.input,
+select[multiple],
+select[size]{
+    height: auto;
+}
+
+.input,
+.button{border-radius:.25em}
 
 .input{width:100%;background: #fff;}
 .button{cursor:pointer;text-align:center;background:#fff;background-image:linear-gradient(-180deg, rgba(255, 255, 255, 0.26) 0%, rgba(243, 243, 243, 0.35) 90%);-webkit-user-select: none}
@@ -471,21 +489,17 @@ button{cursor:pointer}
 
 /*并排间距*/
 .button+.button,
-select.input+select.input{margin-left:1em}
-select.input+textarea.input{margin-top:1em}
+input.select+select{
+    margin-left:1em
+}
+.group+textarea,
+.input+textarea{margin-top:1em}
 
 /*select*/
 select.input{
     width:auto;
-    /*firefox 高度过大<*/
-    height: 2.25em;
-    /*>*/
     /*firefox 下拉箭头太丑*/
     -moz-appearance: none;
-}
-select[multiple],
-select[size]{
-    height: auto;
 }
 option{padding:.25em .75em;border-radius:.25em}
 option:checked{
@@ -539,9 +553,26 @@ input:-webkit-autofill:active {
 
 
 /* group */
-.group{display:inline-table;display:inline-flex;vertical-align:middle;padding: 0 !important}
-.group>*{display:table-cell;width:auto;vertical-align: middle}
-.group>.input{width:101%;flex:99;z-index:1}
+.group{
+    display:inline-table;
+    display:inline-flex;
+    vertical-align:middle;
+    padding: 0 !important
+}
+.group>*{
+    /*select button 效果不太好*/
+    display:table-cell !important;
+    flex: 1;
+    width:auto;
+    *width: 2em;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.group>.input{
+    width:101%;
+    flex:99;
+    z-index:1
+}
 .group>:not(:first-child){border-top-left-radius:0;border-bottom-left-radius:0}
 .group>:not(:last-child){border-top-right-radius:0;border-bottom-right-radius:0}
 .group>:not(:first-child){/* border-left:0 */margin-left:-1px}
@@ -731,15 +762,15 @@ input:checked:after {
 .with-icon,
 .with-icon-right{position: relative}
 
-.with-icon .input{padding-left: 2.25em }
-.with-icon-right .input{padding-right: 2.25em}
+.with-icon .input{padding-left: 2.5em }
+.with-icon-right .input{padding-right: 2.5em}
 
 .with-icon:before,
 .with-icon-right:before,
 .with-icon .icon,
 .with-icon-right .icon {
     position: absolute;
-    width: 2.25em;
+    width: 2.5em;
     height: 1em;
     line-height: 1;
     top: 0;
