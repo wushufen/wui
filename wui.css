@@ -17,7 +17,7 @@ z-index:
 600 toast
 */
 
-/* reset */
+/* # reset */
 *{margin:0; padding:0}
 html{font-family:"Microsoft Yahei"; background:#fff; color:#333}
 html{-webkit-tap-highlight-color:transparent}
@@ -30,11 +30,11 @@ textarea,
 button,
 th{font: inherit; color: inherit; }
 
-/* box-sizing */
+/* # box-sizing */
 html{box-sizing:border-box}
 *,*:before,*:after{box-sizing:inherit}
 
-/* font-size */
+/* # font-size */
 /*
 n/4
 1 -.25
@@ -82,7 +82,7 @@ html{font-size:14px}
 .fs20px{font-size:20px}
 
 
-/* grid */
+/* # grid */
 .container{
     width:960px;
     max-width:100%;
@@ -103,7 +103,6 @@ html{font-size:14px}
 .col:before,.col:after{content:"";display:block;clear:both}
 
 
-/* .row,.row>.col{padding-left:.5em;padding-right:.5em} */
 .row,
 .row>.col{padding:.5em}
 
@@ -112,7 +111,7 @@ html{font-size:14px}
 .row.pdlr0>.col{padding-left:0;padding-right:0}
 .row.pdtb0>.col{padding-top:0;padding-bottom:0}
 
-
+/* # .section */
 .section{
     margin-top:1em;
     margin-bottom:1em;
@@ -120,7 +119,7 @@ html{font-size:14px}
 .section{*zoom:1}
 .section:before,.section:after{content:"";display:table;clear:both}
 
-/* .gaps */
+/* # .gaps */
 .gaps{
     padding:.5em;
     margin:-1em;
@@ -131,7 +130,7 @@ html{font-size:14px}
 }
 
 
-/* row.n* > cell... */
+/* # row.n* > cell... */
 .row.n0>.col{display:none}
 .row.n1>.col{width:100%}
 .row.n2>.col{width:50%}
@@ -147,7 +146,7 @@ html{font-size:14px}
 .row.n12>.col{width:8.333333%}
 
 
-/* width */
+/* # width */
 .w0 {display:none}
 .w1 {width:4.166667%}
 .w2 {width:8.333333%}
@@ -303,7 +302,7 @@ html{font-size:14px}
 }
 
 
-/* flex */
+/* # flex */
 .flex{display:flex}
 .flex>.row{display:flex;flex:1}
 .flex>.row>.col,.flex>.col{flex:1 0 auto}
@@ -348,7 +347,7 @@ html{font-size:14px}
 .fxww{flex-wrap:wrap}
 
 
-/* grid */
+/* # grid */
 .grid {display: flex; flex-wrap: wrap; padding: .5em; }
 .grid-cell,
 .grid>.col,
@@ -362,14 +361,14 @@ html{font-size:14px}
 .grid.jcsb>*{flex: 0 0 auto }
 
 
-/* block */
+/* # block */
 .block,
 .block>.row,
 .block>.row>.col,
 .block>.col{display:block;float:none}
 
 
-/* table */
+/* # table */
 table,
 .table{border-collapse:collapse; border-spacing:0}
 th{text-align:left}
@@ -393,10 +392,11 @@ th{text-align:left}
 .table tr:hover td{background: #f7f7f7;color:#000}
 
 
-/* 分页 */
+/* # 分页 */
 .pagination{
     display: inline-block; *display:inline;*zoom:1;
-    margin-left: 1px; /* 抵消 a 的 margin-left: -1px;*/
+    /* 抵消 a 的 margin-left: -1px;*/
+    margin-left: 1px;
 }
 
 .pagination *{
@@ -426,7 +426,7 @@ th{text-align:left}
 
 
 
-/* form */
+/* # form */
 .form{display:table}
 .form>.row{display:table-row;padding:0}
 .form>.row:before,
@@ -441,10 +441,10 @@ th{text-align:left}
     .form>.row>.col{display:block;padding-left:0;margin:0}
     .form>.row>.col:first-child{width:auto;text-align: left;padding-bottom:.25em}
 }
-/*红星*/
+/* # 红星 */
 .required:before{display:inline-block !important;margin:0 .5ex;content:'*';color:#f00}
 
-/* .input .button*/
+/* # .input .button */
 input[type=date]{padding-right: 0}
 input,textarea,select,button{font:inherit;outline:0}
 
@@ -456,9 +456,10 @@ input,textarea,select,button{font:inherit;outline:0}
     /*firefox <select>有默认高度*/
     /*保证高度一致*/
     height: 2.5em;
-    /*h= (pdtb) +lh+bdtb; font-size改变基本没影响*/
-    padding:.42857em .625em;
-    line-height: 1.5;
+    padding:.5em .75em;
+    /*h= (lh) + pdtb + bdtb; font-size改变基本没影响*/
+    /* 2.5 - .5*2 - 1/14*2 */
+    line-height: 1.3571428571428572;
     border:solid 1px #ddd;
     background: #fff;
 }
@@ -471,7 +472,10 @@ select[size]{
 }
 
 .input{width:100%}
-.button{
+.button,
+span.button{
+    padding-left: 1em;
+    padding-right: 1em;
     cursor:pointer;
     text-align:center;
     background-image:linear-gradient(-180deg, rgba(255, 255, 255, 0.26) 0%, rgba(243, 243, 243, 0.35) 90%);
@@ -510,7 +514,8 @@ select[size]{
 
 /*并排间距*/
 .button+.button,
-input.select+select{
+/*选择器不能高于.group>* */
+select+select{
     margin-left:1em
 }
 .group+textarea,
@@ -573,7 +578,7 @@ input:-webkit-autofill:active {
 
 
 
-/* group */
+/* # group */
 .group{
     display:inline-table;
     display:inline-flex;
@@ -588,6 +593,7 @@ input:-webkit-autofill:active {
     *width: 2em;
     vertical-align: middle;
     white-space: nowrap;
+    margin: 0;
 }
 .group>.input{
     width:101%;
@@ -605,14 +611,14 @@ input:-webkit-autofill:active {
 
 
 
-/* checkbox switch radio */
+/* # checkbox switch radio */
 /* 通过伪元素实现外观 */
 /* webkit <input> 支持伪元素，无须添加任何代码 */
-/* 其浏览器通过 <span> 伪元素实现 */
+/* 其它浏览器通过 <span> 伪元素实现，并遮盖原生的 */
 /* webkit input[type="checkbox"]*/
 /* webkit input[type="checkbox"][switch]*/
-/* label.checkbox>input[type="checkbox"]+span */
-/* label.switch>input[type="checkbox"]+span */
+/* label>input[type="checkbox"]+span */
+/* label>input[type="checkbox"]+span */
 [type="checkbox"],
 [type="radio"] {
     display: inline-block;
@@ -719,7 +725,7 @@ label>[switch]:checked+span:after,
 }
 
 
-/* size */
+/* # size */
 .sz{font-size:14px}
 .sz1{font-size:.25em}
 .sz2{font-size:.5em}
@@ -735,7 +741,7 @@ label>[switch]:checked+span:after,
 .sz12{font-size:3em}
 
 
-/* icon */
+/* # icon */
 .icon{font-size: 1em}
 .icon:before{
     font-family: "icon" !important;
@@ -772,7 +778,7 @@ label>[switch]:checked+span:after,
 
 
 
-/* 路径 */
+/* # 路径 */
 .path{overflow:hidden;border-radius:4px}
 .path a,
 .path span{position:relative; float:left; padding:0 1em}
@@ -782,7 +788,7 @@ label>[switch]:checked+span:after,
 .path a + span:before{content:"/"; position:absolute; left:-.25em; color:#ddd}
 
 
-/* 进度条 */
+/* # 进度条 */
 .progress{
     background: #eee;
     white-space: nowrap;
@@ -802,7 +808,7 @@ label>[switch]:checked+span:after,
 }
 
 
-/* 标签页 */
+/* # 标签页 */
 .tabs{
     border-bottom: solid 1px #ddd; /*下横线*/
     margin: -1px;
@@ -826,7 +832,7 @@ label>[switch]:checked+span:after,
 }
 
 
-/* 小气泡 */
+/* # 小气泡 */
 .badge{
     display: inline-block; *display:inline;*zoom:1;
     padding: 0.375em;
@@ -858,7 +864,7 @@ label>[switch]:checked+span:after,
 }
 
 
-/* 代码 */
+/*code*/
 code {
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
     background: #64513b;
@@ -873,7 +879,7 @@ code {
 }
 
 
-/* width */
+/*width*/
 .wa{width:auto}
 .wf{width:100%}
 .w100{width:100%}
@@ -1214,65 +1220,33 @@ html{line-height:1.5}
 }
 
 /* animate */
-.animate {
-  -webkit-animation-duration:.75s;
+.am {
   animation-duration:.75s;
-  -webkit-animation-fill-mode:both;
   animation-fill-mode:both;
 }
-.fadeInUp-enter {
-    -webkit-animation-name:fadeInUp;
+.amin {
     animation-name:fadeInUp;
 }
-.fadeInUp-leave {
-    -webkit-animation-name:fadeOutUp;
+.amout {
     animation-name:fadeOutUp;
-}
-@-webkit-keyframes fadeInUp {
-    from {
-        opacity:0;
-        -webkit-transform:translate3d(0, 2em, 0);
-        transform:translate3d(0, 2em, 0);
-    }
-    to {
-        opacity:1;
-        -webkit-transform:none;
-        transform:none;
-    }
 }
 @keyframes fadeInUp {
     from {
         opacity:0;
-        -webkit-transform:translate3d(0, 2em, 0);
         transform:translate3d(0, 2em, 0);
     }
     to {
         opacity:1;
-        -webkit-transform:none;
         transform:none;
-    }
-}
-@-webkit-keyframes fadeOutUp {
-    from {
-        opacity:1;
-        -webkit-transform:none;
-        transform:none;
-    }
-    to {
-        opacity:0;
-        -webkit-transform:scale(.5);
-        transform:scale(.5);
     }
 }
 @keyframes fadeOutUp {
     from {
         opacity:1;
-        -webkit-transform:none;
         transform:none;
     }
     to {
         opacity:0;
-        -webkit-transform:translate3d(0, -2em, 0);
         transform:translate3d(0, -2em, 0);
     }
 }
