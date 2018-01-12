@@ -447,11 +447,6 @@ th{text-align:left}
 /* .input .button*/
 input[type=date]{padding-right: 0}
 input,textarea,select,button{font:inherit;outline:0}
-button{cursor:pointer}
-/*提升.group下时的边框*/
-.input:focus,
-.button:focus{z-index:2}
-
 
 .input,
 .button,
@@ -465,6 +460,7 @@ button{cursor:pointer}
     padding:.42857em .625em;
     line-height: 1.5;
     border:solid 1px #ddd;
+    background: #fff;
 }
 div.input,
 label.input,
@@ -474,12 +470,37 @@ select[size]{
     height: auto;
 }
 
+.input{width:100%}
+.button{
+    cursor:pointer;
+    text-align:center;
+    background-image:linear-gradient(-180deg, rgba(255, 255, 255, 0.26) 0%, rgba(243, 243, 243, 0.35) 90%);
+    -webkit-user-select: none
+}
+.group>span{text-align:center}
+
+/*圆角*/
+.group,
 .input,
 .button{border-radius:.25em}
-
-.input{width:100%;background: #fff;}
-.button{cursor:pointer;text-align:center;background:#fff;background-image:linear-gradient(-180deg, rgba(255, 255, 255, 0.26) 0%, rgba(243, 243, 243, 0.35) 90%);-webkit-user-select: none}
-.group>span{text-align:center}
+/*更优先选择器重置为0*/
+.group>.input,
+.group>.button,
+.group>span{border-radius:0}
+/*更优先选择器左右圆角*/
+.group>:first-child{
+    border-top-left-radius: .25em;
+    border-bottom-left-radius: .25em;
+    /*支持inherit则继承.group上的*/
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+.group>:last-child{
+    border-top-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
 
 /*效果*/
 .input{transition-duration:.3s; transition-property:box-shadow,border,color,background}
@@ -573,14 +594,14 @@ input:-webkit-autofill:active {
     flex:99;
     z-index:1
 }
-.group>:not(:first-child){border-top-left-radius:0;border-bottom-left-radius:0}
-.group>:not(:last-child){border-top-right-radius:0;border-bottom-right-radius:0}
 .group>:not(:first-child){/* border-left:0 */margin-left:-1px}
 
 .button>button{border:0;padding:0;height:auto;background:transparent;box-shadow:none !important}
 
-.group{border-radius:.25em}
-.group>*{border-radius:inherit}
+
+/*提升.group下时的边框*/
+.input:focus,
+.button:focus{z-index:2}
 
 
 
@@ -651,7 +672,7 @@ input:-webkit-autofill:active {
     background: #fff;
     border: solid 1px #888;
     border-radius: 3px;
-    transition: .3s;
+    transition: .25s;
 }
 .radio>span:before,
 [type="radio"]:before{
@@ -674,7 +695,7 @@ input:-webkit-autofill:active {
     border: solid .3ex transparent;
     border-width: 0 0 .3ex .3ex;
     transform: rotate(-45deg);
-    transition: .3s;
+    transition: .25s;
 }
 .switch>span:after,
 [switch]:after{
