@@ -349,6 +349,13 @@
         <div class="section mgbox">
             <div class="mga w320">.w320.mga</div>
         </div>
+        <p>.gaps</p>
+        <div class="section pdtb">
+            <div class="gaps mgbox">
+                <button>button</button>
+                <button>button</button>
+            </div>
+        </div>
         <code>.pd[tblr][0]</code>
         <p>填充给元素的内容留白。</p>
         <div class="row mgtb">
@@ -466,23 +473,19 @@
         <p>控制输入框的样式，用于<code>&lt;input&gt;</code> <code>&lt;textarea&gt;</code> <code>&lt;select&gt;</code>。可与颜色类结合使用。</p>
         <div class="section row pd">
             <div class="col">
-                <input class="input" placeholder="input.input">
+                <input type="text" placeholder="input[type=text]">
             </div>
             <div class="col">
-                <textarea class="input" placeholder="textarea.input"></textarea>
+                <textarea placeholder="textarea"></textarea>
             </div>
             <div class="col">
-                <select class="input">
-                    <option>select.input</option>
-                    <option>select.input</option>
-                    <option>select.input</option>
-                    <option>select.input</option>
-                    <option>select.input</option>
+                <select>
+                    <option>select</option>
                 </select>
             </div>
             <div class="col">
-                <select class="input" multiple="">
-                    <option>select[multiple].input</option>
+                <select multiple="">
+                    <option>select[multiple]</option>
                     <option>option</option>
                     <option>option</option>
                     <option>option</option>
@@ -577,7 +580,16 @@
         <p>控制按钮的样式，一般用于<code>&lt;button&gt;</code> <code>&lt;a&gt;</code>，也可以让其它任何元素表现像按钮一样。可与颜色类结合使用。</p>
         <div class="section row">
             <div class="col">
-                <button class="button">button.button</button>
+                <button>button</button>
+            </div>
+            <div class="col">
+                <input type="button" value="input[type=button]">
+            </div>
+            <div class="col">
+                <input type="submit" value="input[type=submit]">
+            </div>
+            <div class="col">
+                <input type="reset" value="input[type=reset]">
             </div>
             <div class="col">
                 <a class="button">a.button</a>
@@ -673,6 +685,21 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col">checkbox</div>
+                <div class="col">
+                    <div class="input">
+                        <label class="block">
+                            <input type="checkbox">
+                            <span>checkbox</span>
+                        </label>
+                        <label class="block">
+                            <input type="checkbox" checked="">
+                            <span>checkbox</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col">radio</div>
                 <div class="col">
                     <div class="gaps">
@@ -693,15 +720,11 @@
                     <div class="gaps">
                         <label>
                             <input type="checkbox" switch>
+                            <span></span>
                         </label>
                         <label>
                             <input type="checkbox" switch checked="">
-                        </label>
-                        <label>
-                            <input type="radio" switch name="673">
-                        </label>
-                        <label>
-                            <input type="radio" switch name="673" checked="">
+                            <span></span>
                         </label>
                     </div>
                 </div>
@@ -709,17 +732,16 @@
             <div class="row">
                 <div class="col">file</div>
                 <div class="col">
-                    <label>
-                        <span class="button">
-                            <input type="file"> 选择文件
-                        </span> file name
+                    <label class="button">
+                        <input type="file"> 选择文件
                     </label>
+                    file name
                 </div>
             </div>
             <div class="row">
                 <div class="col"></div>
                 <div class="col">
-                    <button class="button">.button</button>
+                    <button class="btpm">.button</button>
                 </div>
             </div>
         </div>

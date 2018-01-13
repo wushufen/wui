@@ -28,7 +28,7 @@ input,
 select,
 textarea,
 button,
-th{font: inherit; color: inherit; }
+th{font: inherit; color: inherit; outline: none}
 
 /* # box-sizing */
 html{box-sizing:border-box}
@@ -434,23 +434,27 @@ th{text-align:left}
 .form>.row>.col{display:table-cell;float:none;padding:0 0 1em 1em}
 .form>.row>.col:before,
 .form>.row>.col:after{display:none}
-.form>.row>.col:first-child{width:8%;white-space:nowrap;text-align:right}
+.form>.row>.col:first-child{width:8%;white-space:nowrap;text-align:right;color:#888}
 @media (max-width:600px){
     .form,
     .form>.row,
     .form>.row>.col{display:block;padding-left:0;margin:0}
     .form>.row>.col:first-child{width:auto;text-align: left;padding-bottom:.25em}
 }
-/* # 红星 */
+/* # 必填红星 */
 .required:before{display:inline-block !important;margin:0 .5ex;content:'*';color:#f00}
 
-/* # .input .button */
-input[type=date]{padding-right: 0}
-input,textarea,select,button{font:inherit;outline:0}
 
-.input,
-.button,
-.group>span{
+/* # input */
+/* 不用 input[type] 为了降低优先级，使修饰类可用 */
+[type=""],
+[type="text"],
+[type="date"],
+[type="number"],
+[type="file"],
+textarea,
+select,
+.input{
     display:inline-block;
     vertical-align:middle;
     /*firefox <select>有默认高度*/
@@ -462,83 +466,74 @@ input,textarea,select,button{font:inherit;outline:0}
     line-height: 1.3571428571428572;
     border:solid 1px #ddd;
     background: #fff;
+    border-radius: .25em;
+    width:100%;
+    transition-duration:.3s;
+    transition-property:box-shadow,border,color,background;
 }
-div.input,
-label.input,
+textarea,
 textarea.input,
 select[multiple],
-select[size]{
-    height: auto;
+select[size],
+label.input,
+div.input{height: auto}
+select{width:auto}
+input[type=date]{padding-right: 0}
+
+textarea:focus,
+select:focus,
+input:focus{border-color:#bbb;box-shadow:0 0 5px 0px #DDD}
+
+input::-webkit-input-placeholder {
+    color: #a9a9a9;
+    color: #aaa;
 }
 
-.input{width:100%}
-.button,
-span.button{
-    padding-left: 1em;
-    padding-right: 1em;
-    cursor:pointer;
-    text-align:center;
+/* auto-fill 去掉黄色 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition-delay: 99999s;
+    -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+}
+
+/* # .button */
+/* 不用 button[type] 为了降低优先级，使修饰类可用 */
+[type="button"],
+[type="submit"],
+[type="reset"],
+button,
+.button{
+    display:inline-block;
+    vertical-align:middle;
+    height: 2.5em;
+    padding:.5em .75em;
+    padding:.5em 1em;
+    line-height: 1.3571428571428572;
+    border:solid 1px #ddd;
+    background: #fff;
     background-image:linear-gradient(-180deg, rgba(255, 255, 255, 0.26) 0%, rgba(243, 243, 243, 0.35) 90%);
+    border-radius: .25em;
+    text-align:center;
+    cursor:pointer;
     -webkit-user-select: none
 }
-.group>span{text-align:center}
 
-/*圆角*/
-.group,
-.input,
-.button{border-radius:.25em}
-/*更优先选择器重置为0*/
-.group>.input,
-.group>.button,
-.group>span{border-radius:0}
-/*更优先选择器左右圆角*/
-.group>:first-child{
-    border-top-left-radius: .25em;
-    border-bottom-left-radius: .25em;
-    /*支持inherit则继承.group上的*/
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
-}
-.group>:last-child{
-    border-top-right-radius: .25em;
-    border-bottom-right-radius: .25em;
-    border-top-right-radius: inherit;
-    border-bottom-right-radius: inherit;
-}
+[type="button"]:focus,
+[type="submit"]:focus,
+[type="reset"]:focus,
+button:focus,
+.button:focus{box-shadow:0 0 5px -1px #888}
 
-/*效果*/
-.input{transition-duration:.3s; transition-property:box-shadow,border,color,background}
-.input:focus{border-color:#bbb;box-shadow:0 0 5px 0px #DDD}
+[type="button"]:active,
+[type="submit"]:active,
+[type="reset"]:active,
+button:active,
 .button:active{box-shadow:0px 1px 5px rgba(0, 0, 0, 0.15) inset}
+
+button.active,
 .button.active{background: #f5f5f5;z-index: 2}
-
-/*并排间距*/
-.button+.button,
-/*选择器不能高于.group>* */
-select+select{
-    margin-left:1em
-}
-.group+textarea,
-.input+textarea{margin-top:1em}
-
-/*select*/
-select.input{
-    width:auto;
-    /*firefox 下拉箭头太丑*/
-    -moz-appearance: none;
-}
-option{padding:.25em .75em;border-radius:.25em}
-option:checked{
-    /*通过背景图片可触发修改背景*/
-    background-image:linear-gradient(#6cf, #6cf)
-}
-
-/*模拟select*/
-.select{display: inline-block;position: relative}
-.select .input:focus+ul{display: block;}
-.select ul{ display: none; list-style:none;padding:.25em 0;box-shadow:0 1px 5px #E2E2E2;position: absolute;width: 100%;top: 100%;left: 0;margin-top: .125em;}
-.select ul li{padding:.25em .75em;cursor: default;}
-.select ul li:hover{background: #0af;color: #fff;}
 
 /*.button>[file]*/
 .button{
@@ -557,24 +552,38 @@ option:checked{
     opacity: 0;
 }
 
+/* # select*/
+select{
+    /*firefox 下拉箭头太丑*/
+    -moz-appearance: none;
+}
+option{padding:.25em .75em;border-radius:.25em}
+option:checked{
+    /*通过背景图片可触发修改背景*/
+    background-image:linear-gradient(#6cf, #6cf)
+}
+
+/*模拟select*/
+.select{display: inline-block;position: relative}
+.select .input:focus+ul{display: block;}
+.select ul{ display: none; list-style:none;padding:.25em 0;box-shadow:0 1px 5px #E2E2E2;position: absolute;width: 100%;top: 100%;left: 0;margin-top: .125em;}
+.select ul li{padding:.25em .75em;cursor: default;}
+.select ul li:hover{background: #0af;color: #fff;}
+
+
 /*label*/
 label{cursor: pointer}
 /*.input 包含多行 label checkbox*/
 .input label{padding:.25em 0;cursor:pointer}
 
-/* placeholder */
-input::-webkit-input-placeholder {
-    color: #a9a9a9;
-    color: #aaa;
+/*并排间距*/
+.button+.button,
+/*选择器不能高于.group>* */
+select+select{
+    margin-left:1em
 }
-/* auto-fill */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    -webkit-transition-delay: 99999s;
-    -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
-}
+.group+textarea,
+.input+textarea{margin-top:1em}
 
 
 
@@ -595,6 +604,13 @@ input:-webkit-autofill:active {
     white-space: nowrap;
     margin: 0;
 }
+.group>span{
+    height: 2.5em;
+    padding:.5em .75em;
+    line-height: 1.3571428571428572;
+    border:solid 1px #ddd;
+    text-align:center;
+}
 .group>.input{
     width:101%;
     flex:99;
@@ -602,8 +618,29 @@ input:-webkit-autofill:active {
 }
 .group>:not(:first-child){/* border-left:0 */margin-left:-1px}
 
-.button>button{border:0;padding:0;height:auto;background:transparent;box-shadow:none !important}
+/*.group>.button>button*/
+.button>button{border:0;padding:0;height:auto;line-height:1;background:transparent;box-shadow:none !important}
 
+/*圆角*/
+.group{border-radius:.25em}
+/*更优先选择器重置为0*/
+.group>.input,
+.group>.button,
+.group>span{border-radius:0}
+/*更更优先选择器左右圆角*/
+.group>:first-child{
+    border-top-left-radius: .25em;
+    border-bottom-left-radius: .25em;
+    /*支持inherit则继承.group上的*/
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+.group>:last-child{
+    border-top-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
 
 /*提升.group下时的边框*/
 .input:focus,
@@ -867,12 +904,8 @@ label>[switch]:checked+span:after,
 /*code*/
 code {
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-    background: #64513b;
-    background: #5b4a34;
     background: #272822;
     color: #fff;
-    color: #c0f9ff;
-    color: #dffcff;
     padding: .125em .5em;
     border-radius: .25em;
     margin: 1px;
