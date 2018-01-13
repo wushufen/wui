@@ -541,7 +541,7 @@ button.focus{
 [type="submit"]:active,
 [type="reset"]:active,
 button:active,
-.button:active{box-shadow:0px 1px 5px rgba(0, 0, 0, 0.15) inset}
+.button:active{box-shadow:0px 1px 5px rgba(0, 0, 0, 0.25) inset}
 
 button.active,
 .button.active{background: #f5f5f5;z-index: 2}
@@ -907,15 +907,14 @@ label>[disabled]+span{
     height: 1em;
     line-height: 1;
     top: 0;
-    left: 0;
+    left: 1px;
     bottom: 0;
     margin: auto;
     text-align: center;
     pointer-events: none;
-    text-indent: 1px;
 }
 .with-icon-right:before,
-.with-icon-right .icon{left: auto; right: 0; text-indent: -1px}
+.with-icon-right .icon{left: auto; right:1px}
 
 
 
@@ -1361,16 +1360,11 @@ html{line-height:1.5}
 }
 
 /* animate */
-.am {
-  animation-duration:.75s;
-  animation-fill-mode:both;
-}
-.amin {
-    animation-name:fadeInUp;
-}
-.amout {
-    animation-name:fadeOutUp;
-}
+.amin {animation:fadeInUp .75s; }
+.amout {animation:fadeOutUp .75s; }
+.amroll{animation:roll .75s linear infinite; }
+.amd1s{animation-duration: 1s; }
+.amci{animation-iteration-count: infinite; }
 @keyframes fadeInUp {
     from {
         opacity:0;
@@ -1389,5 +1383,13 @@ html{line-height:1.5}
     to {
         opacity:0;
         transform:translate3d(0, -2em, 0);
+    }
+}
+@keyframes roll {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
