@@ -54,6 +54,11 @@ n/4
 15---------------3.75
 16----------------4
 */
+input,
+select,
+textarea,
+button,
+th,
 html{font-size:14px}
 .fs{font-size:14px}
 .fs1{font-size:.25em}
@@ -428,30 +433,26 @@ th{text-align:left}
 
 /* # form */
 .form{display:table}
-.form>.row{display:table-row;padding:0}
-.form>.row:before,
-.form>.row:after{display:none}
-.form>.row>.col{display:table-cell;float:none;padding:0 0 1em 1em}
-.form>.row>.col:before,
-.form>.row>.col:after{display:none}
-.form>.row>.col:first-child{width:8%;white-space:nowrap;text-align:right;color:#888}
+.form>*{display:table-row;padding:0}
+.form>*:before,
+.form>*:after{display:none}
+.form>*>*{display:table-cell;float:none;padding:0 0 1em 1em !important}
+.form>*>*:before,
+.form>*>*:after{display:none}
+.form>*>*:first-child{width:8%;white-space:nowrap;text-align:right;color:#888}
 @media (max-width:600px){
     .form,
-    .form>.row,
-    .form>.row>.col{display:block;padding-left:0;margin:0}
-    .form>.row>.col:first-child{width:auto;text-align: left;padding-bottom:.25em}
+    .form>*,
+    .form>*>*{display:block;padding-left:0;margin:0}
+    .form>*>*:first-child{width:auto;text-align: left;padding-bottom:.25em}
 }
 /* # 必填红星 */
 .required:before{display:inline-block !important;margin:0 .5ex;content:'*';color:#f00}
 
 
 /* # input */
-/* 不用 input[type] 为了降低优先级，使修饰类可用 */
-[type=""],
-[type="text"],
-[type="date"],
-[type="number"],
-[type="file"],
+/* 不用 input[type=".."] 为了降低优先级，使修饰类可用 */
+[type],
 textarea,
 select,
 .input{
@@ -478,16 +479,22 @@ select[size],
 label.input,
 div.input{height: auto}
 select{width:auto}
+
 input[type=date]{padding-right: 0}
+/*ie*/
+select,
+textarea{
+    overflow: auto;
+}
 
 textarea:focus,
 select:focus,
-input:focus{border-color:#bbb;box-shadow:0 0 5px 0px #DDD}
+/*input[type="button"]也影响，但不重要*/
+input:focus,
+input.focus{border-color:#bbb;box-shadow:0 0 5px 0px #DDD}
 
-input::-webkit-input-placeholder {
-    color: #a9a9a9;
-    color: #aaa;
-}
+:-ms-input-placeholder{color:#aaa}
+::-webkit-input-placeholder{color}
 
 /* auto-fill 去掉黄色 */
 input:-webkit-autofill,
@@ -508,12 +515,14 @@ button,
     display:inline-block;
     vertical-align:middle;
     height: 2.5em;
+    width: auto;
     padding:.5em .75em;
     padding:.5em 1em;
     line-height: 1.3571428571428572;
     border:solid 1px #ddd;
     background: #fff;
     background-image:linear-gradient(-180deg, rgba(255, 255, 255, 0.26) 0%, rgba(243, 243, 243, 0.35) 90%);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0), rgba(130, 130, 130, 0.05) );
     border-radius: .25em;
     text-align:center;
     cursor:pointer;
@@ -524,7 +533,9 @@ button,
 [type="submit"]:focus,
 [type="reset"]:focus,
 button:focus,
-.button:focus{box-shadow:0 0 5px -1px #888}
+button.focus{
+    box-shadow:0 0 5px -1px #ddd
+}
 
 [type="button"]:active,
 [type="submit"]:active,
@@ -536,9 +547,11 @@ button.active,
 .button.active{background: #f5f5f5;z-index: 2}
 
 /*.button>[file]*/
+button,
 .button{
     position: relative;
 }
+button input,
 .button input{
     cursor: pointer;
     position: absolute;
@@ -557,22 +570,43 @@ select{
     /*firefox 下拉箭头太丑*/
     -moz-appearance: none;
 }
-option{padding:.25em .75em;border-radius:.25em}
+option{
+    padding:.25em .75em;
+    border-radius:.25em;
+}
 option:checked{
     /*通过背景图片可触发修改背景*/
-    background-image:linear-gradient(#6cf, #6cf)
+    background: #0af linear-gradient(#0af 100%, #000);
+    /*始终继承？*/
+    color: #fff;
+}
+option:hover{
+    background: #fff;
+    color: #0af;
 }
 
 /*模拟select*/
 .select{display: inline-block;position: relative}
 .select .input:focus+ul{display: block;}
-.select ul{ display: none; list-style:none;padding:.25em 0;box-shadow:0 1px 5px #E2E2E2;position: absolute;width: 100%;top: 100%;left: 0;margin-top: .125em;}
+.select ul{
+    display: none;
+    list-style:none;
+    padding:.25em 0;
+    background: #fff;
+    box-shadow:0 1px 5px #E2E2E2;
+    z-index: 200;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    margin-top: .125em;
+}
 .select ul li{padding:.25em .75em;cursor: default;}
 .select ul li:hover{background: #0af;color: #fff;}
 
 
 /*label*/
-label{cursor: pointer}
+label{}
 /*.input 包含多行 label checkbox*/
 .input label{padding:.25em 0;cursor:pointer}
 
@@ -623,11 +657,9 @@ select+select{
 
 /*圆角*/
 .group{border-radius:.25em}
-/*更优先选择器重置为0*/
-.group>.input,
-.group>.button,
-.group>span{border-radius:0}
-/*更更优先选择器左右圆角*/
+/*重置子为0*/
+.group>*{border-radius:0}
+/*更优先子选择器左右圆角*/
 .group>:first-child{
     border-top-left-radius: .25em;
     border-bottom-left-radius: .25em;
@@ -720,11 +752,15 @@ label>:checked+span:before,
 input:checked:before{
     background: #0af;
     border-color: #0af;
+    /*方便disable只处理bg*/
+    border-color: transparent;
 }
 label>:checked+span:after,
 input:checked:after {
     border-color: #fff;
 }
+/*click*/
+label>input+span{cursor: pointer}
 
 
 /*switch*/
@@ -737,7 +773,7 @@ label>[switch]+span:before,
     width: 2em;
     border-radius: 9em;
     background: #ddd;
-    border-color: #ddd;
+    border:none;
 }
 /* o  */
 label>[switch]+span:after,
@@ -759,6 +795,74 @@ label>[switch]:checked+span:before,
 label>[switch]:checked+span:after,
 [switch]:checked:after{
     left: 1em;
+}
+
+
+/*disabled*/
+.disabled input,
+.disabled button,
+[readonly],
+:disabled,
+[disabled],
+[disabled]:before,
+label>[disabled]+span:before,
+.disabled{
+    cursor: default !important;
+    box-shadow: none !important;
+    /*蒙层淡背景，但不影响原来的背景颜色*/
+    background-image:linear-gradient(rgba(245, 245, 245, 0.5) 100%, #000) !important;
+}
+[switch][disabled]:after,
+label>[switch][disabled]+span:after{
+    cursor: default !important;
+    box-shadow: 0px 0px 5px -1px #aaa;
+}
+button[disabled],
+button.disabled{
+    opacity: .8;
+}
+label>[disabled]+span{
+    cursor: default;
+}
+
+/*详情表单*/
+.detail [type],
+.detail textarea,
+.detail select,
+.detail .input{
+    -webkit-appearance: none;
+    appearance: none;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    resize: none;
+    cursor: default !important;
+    pointer-events: none;
+}
+.detail label{
+    cursor: default !important;
+    pointer-events: none;
+}
+.detail label>[type="checkbox"]+span:before,
+.detail label>[type="radio"]+span:before,
+.detail [type="checkbox"]:before,
+.detail [type="radio"]:before{
+    background-image:linear-gradient(rgba(245, 245, 245, 0.5) 100%, #000) !important;
+}
+.detail [switch]:after,
+.detail label>[switch]+span:after{
+    cursor: default !important;
+    box-shadow: 0px 0px 5px -1px #aaa;
+}
+.detail .required:before{
+    visibility: hidden;
+}
+.detail .detail-none{
+    display: none !important
+}
+.detail .detail-block{
+    display: block !important
 }
 
 
@@ -1043,12 +1147,12 @@ html{line-height:1.5}
 .pdtb0{padding-top:0; padding-bottom:0}
 
 /* mg pd box */
-.mgbox{background:#ffeeee !important}
+.mgbox{background:rgba(255, 170, 0, 0.1) !important}
 .mgbox{*zoom:1}
 .mgbox:before,.mgbox:after{content:"";display:table;clear:both}
 .mgbox>*{border:solid 1px #ddd;background:#fff}
 
-.pdbox{background:#eeffee !important}
+.pdbox{background:rgba(0, 170, 255, 0.1) !important}
 .pdbox{*zoom:1}
 .pdbox:before,.pdbox:after{content:"";display:table;clear:both}
 .pdbox{border:solid 1px #ddd}
@@ -1169,6 +1273,10 @@ html{line-height:1.5}
 .block,.dib{display:block}
 .inline-block,.inline.block,.inbl,.dib{display:inline-block; *display:inline; *zoom:1}
 .inline-table,.inline.table,.inta,.intb,.ditb{display:inline-table}
+
+/* visibility */
+.vv{visibility:visible}
+.vh{visibility:hidden}
 
 /* hover */
 /* .hv>.hvs */
