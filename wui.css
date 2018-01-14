@@ -782,6 +782,7 @@ label>[switch]+span:after,
     width: 1em;
     height: 1em;
     border-radius: 9em;
+    border: none;
     background: #fff;
     right: auto;
     box-shadow: 0px 0px 5px -1px #333;
@@ -799,28 +800,27 @@ label>[switch]:checked+span:after,
 
 
 /*disabled*/
-.disabled input,
-.disabled button,
-[readonly],
 :disabled,
+[readonly],
 [disabled],
 [disabled]:before,
+[switch][disabled]:after,
 label>[disabled]+span:before,
+label>[switch][disabled]+span:after,
+.disabled input,
+.disabled button,
 .disabled{
     cursor: default !important;
-    box-shadow: none !important;
+    /*label>[disabled]+span:before box-shadow有遮挡作用不能去掉*/
+    /*box-shadow: none !important;*/
     /*蒙层淡背景，但不影响原来的背景颜色*/
-    background-image:linear-gradient(rgba(245, 245, 245, 0.5) 100%, #000) !important;
-}
-[switch][disabled]:after,
-label>[switch][disabled]+span:after{
-    cursor: default !important;
-    box-shadow: 0px 0px 5px -1px #aaa;
+    background-image:linear-gradient(rgba(250, 250, 250, 0.6) 100%, #000) !important;
 }
 button[disabled],
 button.disabled{
     opacity: .8;
 }
+/*label>span*/
 label>[disabled]+span{
     cursor: default;
 }
@@ -1360,11 +1360,11 @@ html{line-height:1.5}
 }
 
 /* animate */
-.amin {animation:fadeInUp .75s; }
-.amout {animation:fadeOutUp .75s; }
+.amin{animation:fadeInUp .75s both; }
+.amout{animation:fadeOutUp .75s both; }
 .amroll{animation:roll .75s linear infinite; }
 .amd1s{animation-duration: 1s; }
-.amci{animation-iteration-count: infinite; }
+.amici{animation-iteration-count: infinite; }
 @keyframes fadeInUp {
     from {
         opacity:0;
