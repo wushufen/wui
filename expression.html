@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://www.w3.org/2005/10/profile">
+    <script>
+    window.x = 1;
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>论IE6设置一些属性后不再重新执行expression</title>
+    <style>
+    /*div.canhover:hover,*/
+    .h {
+        background: #0f0;
+    }
+
+    li {
+        display: block;
+        height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .testhover {
+        font-size: 100px;
+    }
+    .ie{
+    	color: #0f0;
+    }
+    /*
+ *.canhover添加后再利用.h类可使用鼠标经过的样式 
+ * 
+	e.style.unicodeBidi='normal';或者zoom的expression里设置zoom=1都可以阻止重新执行expression
+ * */
+
+    .canhover {
+        _unicode-bidi:expression(function(el) {
+        	document.title = Math.random();
+            el.style.unicodeBidi='normal';
+            setTimeout(function(){
+	            el.className = "ie"
+            }, 3000)
+        } (this));
+    }
+    </style>
+</head>
+
+<body>
+    <div style="color: red;">滚动鼠标滚轮或者改变窗口大小或者鼠标经过下面这个元素或者鼠标在此元素上移动时导致页面重绘时
+        <br />你会发现状态栏会不停变化</div>
+    <div class="testhover canhover">IE6下我是可以hover的元素</div>
+</body>
+
+</html>
