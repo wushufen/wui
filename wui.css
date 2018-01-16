@@ -17,6 +17,51 @@ z-index:
 600 toast
 */
 
+/*className: ie ie67 ie6 ie7*/
+html {
+    /* expression 只有 ie67 支持 */
+    /* zoom unicode-bidi letter-spacing 可使 expression 只触发一次，解决性能问题*/
+    /*http://lib.csdn.net/article/css3/51902*/
+    zoom:expression(function(el) {
+        el.style.zoom = 1;
+        /*document.title = Math.random();*/
+
+        var ua = navigator.userAgent;
+        if(ua.match('MSIE 6.0')&&!el.className.match('ie6')){
+            el.className += ' ie ie67 ie6';
+        }
+        if(ua.match('MSIE 7.0')&&!el.className.match('ie7')){
+            el.className += ' ie ie67 ie7';
+        }
+    }(this));
+}
+/*_checkbox, _radio, _button, ...*/
+input,
+button{
+    zoom: expression(function(el){
+        el.style.zoom = 1;
+        el.className += '_'+ el.type;
+        if(el.type=='button'||el.type=='submit'||el.type=='reset'){
+            el.className += ' _button';
+        }
+    }(this));
+}
+/*_select, _multiple, _size*/
+select{
+    zoom: expression(function(el){
+        el.style.zoom = 1;
+        if(el.multiple) el.className += ' _multiple';
+        if(el.size) el.className += ' _size';
+    }(this));
+}
+/*ie6: .row>* => .col */
+.row{
+    zoom: expression(function(el){
+        el.style.zoom = 1;
+        /*todo*/
+    }(this));
+}
+
 /* # reset */
 *{margin:0; padding:0}
 html{font-family:"Microsoft Yahei"; background:#fff; color:#333}
@@ -86,6 +131,13 @@ html{font-size:14px}
 .fs19px{font-size:19px}
 .fs20px{font-size:20px}
 
+/* # h*/
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 16px 0;
+    color: #333;
+}
+
 
 /* # grid */
 .container{
@@ -99,22 +151,33 @@ html{font-size:14px}
 .row{
     margin:0 -1em;
 }
+.row>*,
 .col{
     float:left;
 }
-.container,.row,.col{*zoom:1}
+.container,.row,.row>*,.col{*zoom:1}
 .container:before,.container:after,
 .row:before,.row:after,
-.col:before,.col:after{content:"";display:block;clear:both}
+.row>*:before,.row>*:after,
+.col:before,.col:after{
+    content:"";
+    /*display:table 可避免父子 margin 合并， block不行*/
+    display:table;
+    clear:both
+}
 
 
 .row,
-.row>.col{padding:.5em}
+.col,
+.row>*{padding:.5em}
+/*ie7- 不支持box-sizing*/
+.ie67 .col,
+.ie67 .row>*{padding: 0}
 
-.row.pd,.row.pd>.col{padding:.5em}
-.row.pd0>.col{padding:0}
-.row.pdlr0>.col{padding-left:0;padding-right:0}
-.row.pdtb0>.col{padding-top:0;padding-bottom:0}
+.row.pd,.row.pd>*{padding:.5em}
+.row.pd0>*{padding:0}
+.row.pdlr0>*{padding-left:0;padding-right:0}
+.row.pdtb0>*{padding-top:0;padding-bottom:0}
 
 /* # .section */
 .section{
@@ -177,6 +240,31 @@ html{font-size:14px}
 .w22{width:91.666667%}
 .w23{width:95.833333%}
 .w24{width:100%}
+
+.ie67 .w1 {width:4.159999%}
+.ie67 .w2 {width:8.333333%}
+.ie67 .w3 {width:12.5%}
+.ie67 .w4 {width:16.666667%}
+.ie67 .w5 {width:20.833333%}
+.ie67 .w6 {width:25%}
+.ie67 .w7 {width:29.166667%}
+.ie67 .w8 {width:33.333333%}
+.ie67 .w9 {width:37.5%}
+.ie67 .w10{width:41.666667%}
+.ie67 .w11{width:45.833333%}
+.ie67 .w12{width:50%}
+.ie67 .w13{width:54.166667%}
+.ie67 .w14{width:58.333333%}
+.ie67 .w15{width:62.5%}
+.ie67 .w16{width:66.666667%}
+.ie67 .w17{width:70.833333%}
+.ie67 .w18{width:75%}
+.ie67 .w19{width:79.166667%}
+.ie67 .w20{width:83.333333%}
+.ie67 .w21{width:87.5%}
+.ie67 .w22{width:91.666667%}
+.ie67 .w23{width:95.833333%}
+.ie67 .w24{width:100%}
 /* middle desktop */
 @media (max-width:1024px) {
 .md0 {display:none}
@@ -374,18 +462,24 @@ html{font-size:14px}
 
 
 /* # table */
-table,
-.table{border-collapse:collapse; border-spacing:0}
+table{border-collapse:collapse;border-spacing:0}
 th{text-align:left}
-.table{display:table}
-.table>.row{display:table-row}
-.table>.row:before,
-.table>.row:after{display:none}
+.table{
+    display:table;
+    width: 100%;
+}
+.table>div{
+    display:table-row
+}
+.table>div:before,
+.table>div:after{display:none}
 .table>.col,
-.table>.row>.col{display:table-cell;float:none}
-.tblf{table-layout:fixed}
+.table>div>*{
+    display:table-cell;
+    float:none;
+    padding: .25em .25em .25em 1em
+}
 
-.table {width: 100%}
 .table th {color: #111; white-space: nowrap}
 .table tr:first-child th {background: #FCFCFC; border-bottom: solid 1px #ddd; border-top: solid 1px #ddd;text-shadow: rgb(171, 171, 171) 0px 0px 0px}
 .table th,
@@ -396,12 +490,15 @@ th{text-align:left}
 
 .table tr:hover td{background: #f7f7f7;color:#000}
 
+.tblf{table-layout:fixed}
+
 
 /* # 分页 */
 .pagination{
     display: inline-block; *display:inline;*zoom:1;
     /* 抵消 a 的 margin-left: -1px;*/
     margin-left: 1px;
+    margin-top: 1em;
 }
 
 .pagination *{
@@ -433,26 +530,62 @@ th{text-align:left}
 
 /* # form */
 .form{display:table}
-.form>*{display:table-row;padding:0}
+.form>*{
+    display:table-row;
+    padding:0;
+    line-height: 2.5;
+}
 .form>*:before,
 .form>*:after{display:none}
-.form>*>*{display:table-cell;float:none;padding:0 0 1em 1em !important}
+.form>*>*{
+    display:table-cell;
+    float:none;
+    padding:0 0 1em 1em !important;
+}
 .form>*>*:before,
 .form>*>*:after{display:none}
-.form>*>*:first-child{width:8%;white-space:nowrap;text-align:right;color:#888}
+.form>*>*:first-child{
+    width:8%;
+    white-space:nowrap;
+    text-align:right;
+    color:#888;
+}
 @media (max-width:600px){
     .form,
     .form>*,
-    .form>*>*{display:block;padding-left:0;margin:0}
-    .form>*>*:first-child{width:auto;text-align: left;padding-bottom:.25em}
+    .form>*>*{
+        display:block;
+        padding-left:0 !important;
+        margin:0
+    }
+    .form>*>*:first-child{
+        width:auto;
+        text-align: left;
+        /*line-height: 2.5;不要pading-bottom了*/
+        /*padding-bottom:.5em !important;*/
+        padding-bottom: 0 !important;
+    }
 }
-/* # 必填红星 */
+/* .form>*>*:first-child.required 必填红星 */
 .required:before{display:inline-block !important;margin:0 .5ex;content:'*';color:#f00}
+/* (label>checkbox)+(label>checkbox) 并排间距*/
+.form>*>*>label+label{
+    margin-left: 1em;
+}
+/*多行文字*/
+.form>*>*>p{
+    line-height: 1.5;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
 
 
 /* # input */
 /* 不用 input[type=".."] 为了降低优先级，使修饰类可用 */
-[type],
+/*ie6不支持属性选择器*/
+/*ie7不支持直接[type]*/
+/*input影响了checkbox等，后面用属性区分*/
+input,
 textarea,
 select,
 .input{
@@ -462,30 +595,39 @@ select,
     /*保证高度一致*/
     height: 2.5em;
     padding:.5em .75em;
-    /*h= (lh) + pdtb + bdtb; font-size改变基本没影响*/
+    /* h= (lh) + pdtb + bdtb; font-size改变基本没影响 */
     /* 2.5 - .5*2 - 1/14*2 */
     line-height: 1.3571428571428572;
     border:solid 1px #ddd;
     background: #fff;
     border-radius: .25em;
+    /*box-shadow: inset 0px 1px 3px -2px #ddd;*/
+    /*box-shadow: inset 0px 1px 3px -1px rgba(121, 121, 121, 0.2);*/
     width:100%;
     transition-duration:.3s;
     transition-property:box-shadow,border,color,background;
 }
+
 textarea,
-textarea.input,
-select[multiple],
-select[size],
+[multiple],._multiple,
+[size],._size,
 label.input,
-div.input{height: auto}
+p.input,
+div.input{
+    height: auto;
+    /*div.input*/
+    /*ie select textarea scrollbar*/
+    /*overflow: auto;*/
+    /*空div*/
+    min-height: 2.5em;
+}
 select{width:auto}
+textarea{
+    /*禁止横向拉伸*/
+    width: 100% !important;
+}
 
 input[type=date]{padding-right: 0}
-/*ie*/
-select,
-textarea{
-    overflow: auto;
-}
 
 textarea:focus,
 select:focus,
@@ -524,6 +666,7 @@ button,
     background-image:linear-gradient(-180deg, rgba(255, 255, 255, 0.26) 0%, rgba(243, 243, 243, 0.35) 90%);
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0), rgba(130, 130, 130, 0.05) );
     border-radius: .25em;
+    box-shadow: none;
     text-align:center;
     cursor:pointer;
     -webkit-user-select: none
@@ -533,7 +676,9 @@ button,
 [type="submit"]:focus,
 [type="reset"]:focus,
 button:focus,
-button.focus{
+button.focus,
+.button:focus,
+.button.focus{
     box-shadow:0 0 5px -1px #ddd
 }
 
@@ -547,6 +692,7 @@ button.active,
 .button.active{background: #f5f5f5;z-index: 2}
 
 /*.button>[file]*/
+/*ie9-不支持button>input*/
 button,
 .button{
     position: relative;
@@ -608,7 +754,7 @@ option:hover{
 /*label*/
 label{}
 /*.input 包含多行 label checkbox*/
-.input label{padding:.25em 0;cursor:pointer}
+.input label{padding:.375em 0;cursor:pointer}
 
 /*并排间距*/
 .button+.button,
@@ -686,21 +832,30 @@ select+select{
 /* 其它浏览器通过 <span> 伪元素实现，并遮盖原生的 */
 /* webkit input[type="checkbox"]*/
 /* webkit input[type="checkbox"][switch]*/
+/* ie8不支持:checked*/
+/* todo： 可结合 :not 等 css3 选择器避免 ie8 只生效一部分 */
 /* label>input[type="checkbox"]+span */
 /* label>input[type="checkbox"]+span */
-[type="checkbox"],
-[type="radio"] {
+[type="checkbox"],._checkbox,
+[type="radio"],._radio {
     display: inline-block;
     position: relative;
     width: 1em;
     height: 1em;
+    /*ie9,10有padding会撑开*/
+    padding: 0;
     vertical-align:-.3ex;
     cursor: pointer;
     border-radius: .25em;
+    border: none;
 }
+.ie67 ._checkbox,
+.ie67 ._radio{vertical-align:.125ex}
 label{
     display: inline-block;
     position: relative;
+    /*换行span伪元素就遮不住原生的checkbox*/
+    white-space: nowrap;
 }
 /*口*/
 label>[type="checkbox"]+span:before,
@@ -751,17 +906,34 @@ label>[type="radio"]+span:after,
 label>:checked+span:before,
 input:checked:before{
     background: #0af;
-    border-color: #0af;
     /*方便disable只处理bg*/
-    border-color: transparent;
+    border-color: transparent !important;
 }
 label>:checked+span:after,
 input:checked:after {
     border-color: #fff;
 }
 /*click*/
-label>input+span{cursor: pointer}
+label>input+span{
+    display: inline-block;
+    cursor: pointer;
+}
 
+/*ie8- hack*/
+/*ie8不支持:checked*/
+@media \0screen\,screen\8 {
+    [type="checkbox"],
+    [type="radio"]{
+        border: none;
+    }
+    label>[switch]{
+        width: 1em;
+    }
+    label>[type]+span:before,
+    label>[type]+span:after{
+        display: none;
+    }
+}
 
 /*switch*/
 [switch]{
@@ -814,7 +986,12 @@ label>[switch][disabled]+span:after,
     /*label>[disabled]+span:before box-shadow有遮挡作用不能去掉*/
     /*box-shadow: none !important;*/
     /*蒙层淡背景，但不影响原来的背景颜色*/
-    background-image:linear-gradient(rgba(250, 250, 250, 0.6) 100%, #000) !important;
+    /*100%在firefox下边有1px的黑边*/
+    background-image:linear-gradient(rgba(250, 250, 250, 0.6) 150%, #000) !important;
+}
+label>[disabled]+span:before,
+[disable]:before{
+    border-color: #ddd;
 }
 button[disabled],
 button.disabled{
@@ -892,16 +1069,16 @@ label>[disabled]+span{
 }
 
 /* with icon */
-.with-icon,
-.with-icon-right{position: relative}
+.icon,
+.icon-right{position: relative}
 
-.with-icon .input{padding-left: 2.5em }
-.with-icon-right .input{padding-right: 2.5em}
+.icon input{padding-left: 2.5em }
+.icon-right input{padding-right: 2.5em}
 
-.with-icon:before,
-.with-icon-right:before,
-.with-icon .icon,
-.with-icon-right .icon {
+.icon:before,
+.icon-right:before,
+.icon .icon,
+.icon-right .icon {
     position: absolute;
     width: 2.5em;
     height: 1em;
@@ -913,8 +1090,8 @@ label>[disabled]+span{
     text-align: center;
     pointer-events: none;
 }
-.with-icon-right:before,
-.with-icon-right .icon{left: auto; right:1px}
+.icon-right:before,
+.icon-right .icon{left: auto; right:1px}
 
 
 
@@ -1019,18 +1196,18 @@ code {
 .wa{width:auto}
 .wf{width:100%}
 .w100{width:100%}
-.w320{width:320px}
-.w360{width:360px}
-.w375{width:375px}
-.w480{width:480px}
-.w600{width:600px}
-.w640{width:640px}
-.w720{width:720px}
-.w750{width:750px}
-.w768{width:768px}
-.w800{width:800px}
-.w960{width:960px}
-.w1024{width:1024px}
+.w320{width:320px;max-width:100%}
+.w360{width:360px;max-width:100%}
+.w375{width:375px;max-width:100%}
+.w480{width:480px;max-width:100%}
+.w600{width:600px;max-width:100%}
+.w640{width:640px;max-width:100%}
+.w720{width:720px;max-width:100%}
+.w750{width:750px;max-width:100%}
+.w768{width:768px;max-width:100%}
+.w800{width:800px;max-width:100%}
+.w960{width:960px;max-width:100%}
+.w1024{width:1024px;max-width:100%}
 
 .w1em{width:1em}
 .w2em{width:2em}
@@ -1149,13 +1326,13 @@ html{line-height:1.5}
 .mgbox{background:rgba(255, 170, 0, 0.1) !important}
 .mgbox{*zoom:1}
 .mgbox:before,.mgbox:after{content:"";display:table;clear:both}
-.mgbox>*{border:solid 1px #ddd;background:#fff}
+.mgbox>*{/* border:solid 1px #ddd; */background:#f7f7f7}
 
 .pdbox{background:rgba(0, 170, 255, 0.1) !important}
 .pdbox{*zoom:1}
 .pdbox:before,.pdbox:after{content:"";display:table;clear:both}
-.pdbox{border:solid 1px #ddd}
-.pdbox>*{background:#fff}
+/*.pdbox{border:solid 1px #ddd}*/
+.pdbox>*{background:#f7f7f7}
 
 .pdbox>.pdbox{margin-top:-1px;margin-bottom:-1px}
 
@@ -1189,6 +1366,26 @@ html{line-height:1.5}
 /* shadow */
 .sh{box-shadow:0 1px 5px #E2E2E2}
 
+/*.shr>.ova 右边白阴影提示横向滚动*/
+.shr{position: relative;}
+.shr:after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 1em;
+    right: 0;
+    bottom: 1em;
+    width: 1.25em;
+    background: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 1));
+    /*box-shadow: -0.25em 0px 1em 0.75em rgb(255, 255, 255);*/
+    pointer-events: none;
+    z-index: 30;
+    transition: 1s;
+}
+.shr:hover:after{
+    opacity: 0;
+}
 
 /* color */
 .c{color:#333}
@@ -1341,7 +1538,7 @@ html{line-height:1.5}
 
 
 /* scrollbar */
-@media screen {
+@media all and (min-width:700px){
     ::-webkit-scrollbar {
         width: 12px;
         height: 12px
