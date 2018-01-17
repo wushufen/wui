@@ -29,6 +29,7 @@
         _unicode-bidi:expression(function(e) {
         	document.title = Math.random();
             e.style.unicodeBidi='normal';
+            alert();
             e.attachEvent("onmouseenter", function() {
                 if(!/(\\s|^)h(\\s|$)/.test(e.className)) {
                     e.className+=" h";

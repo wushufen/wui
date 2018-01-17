@@ -17,12 +17,17 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <title></title>
+    <!-- <link rel="stylesheet" type="text/css" href="wui.css"> -->
     <script>
     document.write('<link rel="stylesheet" type="text/css" href="wui.css?' + new Date().getTime() + '">')
     </script>
     <style type="text/css">
         .bd{
             border: none !important;
+        }
+
+        body{
+            background: expression('#0af');
         }
     </style>
 </head>
@@ -122,9 +127,14 @@
                 </dd>
             </dl>
             <dl>
-                <dt>input[type="text"]</dt>
+                <dt>input</dt>
                 <dd>
                     <input placeholder="placeholder">
+                </dd>
+            </dl>
+            <dl>
+                <dt>input[type="text"]</dt>
+                <dd>
                     <input type="" placeholder="placeholder">
                 </dd>
             </dl>
@@ -310,7 +320,7 @@
             <dl>
                 <dt>label.button>input[type="file"]</dt>
                 <dd>
-                    <label class="input">
+                    <label class="button">
                     	<input type="file" onchange="fileName.innerHTML=this.value">
                     	上传文件
                     </label>
