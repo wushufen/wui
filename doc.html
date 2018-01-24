@@ -22,13 +22,13 @@
     document.write('<link rel="stylesheet" type="text/css" href="wui.css?' + new Date().getTime() + '">')
     </script>
     <style type="text/css">
-        .bd{
-            border: none !important;
-        }
+    .bd {
+        border: none !important;
+    }
 
-        body{
-            background: expression('#0af');
-        }
+    body {
+        background: expression('#0af');
+    }
     </style>
 </head>
 
@@ -111,15 +111,15 @@
             </div>
         </div>
         <h2>表单</h2>
-        <div class="form w720 pdtb">
+        <form class="form w720 pdtb" onsubmit="return false">
             <dl>
-                <dt>.form>*> *+*</dt>
+                <dt>.form>*> * + *</dt>
                 <dd>
                     text
                 </dd>
             </dl>
             <dl>
-                <dt>.form>*> *+*>p</dt>
+                <dt>.form>*> * + *>p</dt>
                 <dd>
                     <p>
                         paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph
@@ -127,9 +127,16 @@
                 </dd>
             </dl>
             <dl>
+                <dt class="required">.required</dt>
+                <dd>
+                    .form>*> *.required+*
+                </dd>
+            </dl>
+            <dl>
                 <dt>input</dt>
                 <dd>
                     <input placeholder="placeholder">
+                    <p>tip</p>
                 </dd>
             </dl>
             <dl>
@@ -139,21 +146,29 @@
                 </dd>
             </dl>
             <dl>
-                <dt>input[type="text"]:readonly</dt>
+                <dt>input:readonly</dt>
                 <dd>
                     <input type="" readonly placeholder=":readonly">
                 </dd>
             </dl>
             <dl>
-                <dt>input[type="text"]:disabled</dt>
+                <dt>input:disabled</dt>
                 <dd>
                     <input type="" disabled placeholder=":disabled">
                 </dd>
             </dl>
             <dl>
-                <dt>.icon>input</dt>
+                <dt>.input-icon.icon-name>input</dt>
                 <dd>
-                    <div class="icon t-icon">
+                    <div class="input-icon t-icon">
+                        <input type="" placeholder="placeholder">
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.input-icon-right>input</dt>
+                <dd>
+                    <div class="input-icon-right t-icon">
                         <input type="" placeholder="placeholder">
                     </div>
                 </dd>
@@ -161,7 +176,12 @@
             <dl>
                 <dt>.input</dt>
                 <dd>
-                    <div class="input">div.input</div>
+                    <pre class="input" contenteditable="">
+pre
+.input
+[contenteditable]
+                    </pre>
+                    <p>多行高度自动</p>
                 </dd>
             </dl>
             <dl>
@@ -280,148 +300,255 @@
                 </dd>
             </dl>
             <dl>
-                <dt>button</dt>
-                <dd>
-                    <button>button</button>
-                </dd>
-            </dl>
-            <dl>
                 <dt>input[type=button]</dt>
                 <dd>
                     <input type="button" value="input[type=button]">
-                </dd>
-            </dl>
-            <dl>
-                <dt>input[type=submit]</dt>
-                <dd>
-                    <input type="submit" value="input[type=submit]">
+                    <input type="button" value=":disabled" disabled="">
                 </dd>
             </dl>
             <dl>
                 <dt>input[type=reset]</dt>
                 <dd>
                     <input type="reset" value="input[type=reset]">
+                    <input type="reset" value=":disabled" disabled="">
+                </dd>
+            </dl>
+            <dl>
+                <dt>input[type=submit]</dt>
+                <dd>
+                    <input type="submit" value="input[type=submit]">
+                    <input type="submit" value=":disabled" disabled="">
+                </dd>
+            </dl>
+            <dl>
+                <dt>button</dt>
+                <dd>
+                    <button>button</button>
+                    <button disabled="">:disabled</button>
+                </dd>
+            </dl>
+            <dl>
+                <dt>button[type=button]</dt>
+                <dd>
+                    <button type="button">button[type=button]</button>
+                    <button type="button" disabled="">:disabled</button>
+                </dd>
+            </dl>
+            <dl>
+                <dt>button[type=reset]</dt>
+                <dd>
+                    <button type="reset">button[type=reset]</button>
+                    <button type="reset" disabled="">:disabled</button>
+                </dd>
+            </dl>
+            <dl>
+                <dt>button[type=submit]</dt>
+                <dd>
+                    <button type="submit">button[type=submit]</button>
+                    <button type="submit" disabled="">:disabled</button>
                 </dd>
             </dl>
             <dl>
                 <dt>a.button</dt>
-                <dd><a class="button">a.button</a></dd>
+                <dd>
+                    <a class="button">a.button</a>
+                    <a class="button disabled">.disabled</a>
+                </dd>
             </dl>
             <dl>
                 <dt>span.button</dt>
-                <dd><span class="button">span.button</span></dd>
+                <dd>
+                    <span class="button">span.button</span>
+                    <span class="button disabled">.disabled</span>
+                </dd>
             </dl>
             <dl>
-                <dt>:disabled</dt>
+                <dt>.button.submit</dt>
                 <dd>
-                    <button disabled="">:disabled</button>
+                    <span class="button submit">.button.submit</span>
+                    <span class="button disabled submit">.disabled</span>
                 </dd>
             </dl>
             <dl>
                 <dt>label.button>input[type="file"]</dt>
                 <dd>
                     <label class="button">
-                    	<input type="file" onchange="fileName.innerHTML=this.value">
-                    	上传文件
+                        <input type="file" onchange="fileName.innerHTML=this.value">
+                        <span>上传文件</span>
                     </label>
-                	<span id="fileName"></span>
+                    <p id="fileName">未选择文件</p>
                 </dd>
             </dl>
             <dl>
-                <dt>.group>button</dt>
+                <dt>label.button>[type="checkbox"]+span</dt>
+                <dd>
+                    <label class="button">
+                        <input type="checkbox">
+                        <span>checkbox</span>
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>label>[type="checkbox"][hidden]+.button</dt>
+                <dd>
+                    <label>
+                        <input type="checkbox" hidden="">
+                        <span class="button">toggle</span>
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group></dt>
                 <dd>
                     <div class="group">
-                        <button>.group>button</button>
-                        <button class="active">.active</button>
+                        <label>
+                            <input type="checkbox" hidden="" checked="">
+                            <span class="button">toggle</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" hidden="">
+                            <span class="button">toggle</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" hidden="" disabled="">
+                            <span class="button">:disabled</span>
+                        </label>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>label>[type="radio"][hidden]+.button</dt>
+                <dd>
+                    <label>
+                        <input type="radio" name="394" hidden="" checked="">
+                        <span class="button">toggle</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="394" hidden="">
+                        <span class="button">toggle</span>
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group></dt>
+                <dd>
+                    <div class="group">
+                        <label>
+                            <input type="radio" name="427" hidden="" checked="">
+                            <span class="button">toggle</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="427" hidden="">
+                            <span class="button">toggle</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="427" hidden="" disabled="">
+                            <span class="button">:disabled</span>
+                        </label>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group>button+</dt>
+                <dd>
+                    <div class="group">
+                        <button>button</button>
+                        <button class="checked">.checked</button>
+                        <button disabled="">:disabled</button>
+                    </div>
+                    <span class="mgl">结合mvvm使用</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group.wf>input+</dt>
+                <dd>
+                    <div class="group wf">
+                        <input type="" name="" placeholder="x">
+                        <input type="" name="" placeholder="y">
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    .group.wf>span+input</dt>
+                <dd>
+                    <div class="group wf">
+                        <span>￥</span>
+                        <input placeholder="placeholder">
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group.wf>input+button</dt>
+                <dd>
+                    <div class="group wf">
+                        <input type="text" placeholder="input">
                         <button>button</button>
                     </div>
                 </dd>
             </dl>
-        </div>
+            <dl>
+                <dt>.group.wf>label.button+input</dt>
+                <dd>
+                    <div class="group wf">
+                        <label class="button">
+                            <input type="checkbox" name="">
+                            <span></span>
+                        </label>
+                        <input type="number" placeholder="input">
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group>select+</dt>
+                <dd>
+                    <div class="group">
+                        <select>
+                            <option value="">省</option>
+                        </select>
+                        <select>
+                            <option value="">市</option>
+                        </select>
+                        <select>
+                            <option value="">区</option>
+                        </select>
+                    </div>
+                </dd>
+            </dl>
+        </form>
         <h2>表格</h2>
         <div class="section mg-lr">
             <div class="shr">
                 <div class="ova">
                     <table class="table">
-                        <tbody>
-                            <tr>
-                                <th>员工姓名</th>
-                                <th>性别</th>
-                                <th>联系方式</th>
-                                <th class="tac">角色</th>
-                                <th class="tac">入职时间</th>
-                                <th class="tac">订单量</th>
-                                <th class="tac">项目量</th>
-                                <th>登录账号</th>
-                                <th class="tac">操作</th>
-                            </tr>
-                            <tr>
-                                <td>xxx</td>
-                                <td>x</td>
-                                <td>xxxxxxxxxxx</td>
-                                <td class="tac">xxx</td>
-                                <td class="tac">xxxx.xx.xx</td>
-                                <td class="tac">
-                                    <span class="x-tag bg-green">xx</span>
-                                </td>
-                                <td class="tac">
-                                    <span class="x-tag bg-blue">xx</span>
-                                </td>
-                                <td>xxxxxxx</td>
-                                <td class="tac">
-                                    <a class="x-edit" href="">
-		                                <i class="fa fa-edit fa-fw"></i>
-		                            </a>
-									<a class="x-del" href="">
-		                                <i class="fa fa-remove fa-fw"></i>
-		                            </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>xxx</td>
-                                <td>x</td>
-                                <td>xxxxxxxxxxx</td>
-                                <td class="tac">xxx</td>
-                                <td class="tac">xxxx.xx.xx</td>
-                                <td class="tac">
-                                    <span class="x-tag bg-green">xx</span>
-                                </td>
-                                <td class="tac">
-                                    <span class="x-tag bg-blue">xx</span>
-                                </td>
-                                <td>xxxxxxx</td>
-                                <td class="tac">
-                                    <a class="x-edit" href="">
-                                <i class="fa fa-edit fa-fw"></i>
-                            </a>
-                                    <a class="x-del" href="">
-                                <i class="fa fa-remove fa-fw"></i>
-                            </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>xxx</td>
-                                <td>x</td>
-                                <td>xxxxxxxxxxx</td>
-                                <td class="tac">xxx</td>
-                                <td class="tac">xxxx.xx.xx</td>
-                                <td class="tac">
-                                    <span class="x-tag bg-green">xx</span>
-                                </td>
-                                <td class="tac">
-                                    <span class="x-tag bg-blue">xx</span>
-                                </td>
-                                <td>xxxxxxx</td>
-                                <td class="tac">
-                                    <a class="x-edit" href="">
-                                <i class="fa fa-edit fa-fw"></i>
-                            </a>
-                                    <a class="x-del" href="">
-                                <i class="fa fa-remove fa-fw"></i>
-                            </a>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tr>
+                            <th>table.table</th>
+                            <th>tr:first-child>th</th>
+                            <th>th</th>
+                            <th>th</th>
+                            <th>th</th>
+                        </tr>
+                        <tr>
+                            <td>.ova>table</td>
+                            <td>可使手机上过宽时可以横向滑动</td>
+                            <td>td</td>
+                            <td>td</td>
+                            <td>td</td>
+                        </tr>
+                        <tr>
+                            <td>.shr>.ova</td>
+                            <td>可在右边加上淡白阴影提示可以横向滑动</td>
+                            <td>td</td>
+                            <td>td</td>
+                            <td>td</td>
+                        </tr>
+                        <tr>
+                            <td>.pagination>*</td>
+                            <td>分页</td>
+                            <td>td</td>
+                            <td>td</td>
+                            <td>td</td>
+                        </tr>
                     </table>
                 </div>
             </div>
