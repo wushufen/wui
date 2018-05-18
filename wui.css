@@ -107,17 +107,23 @@ h1, h2, h3, h4, h5, h6 {
 .container{
     width:960px;
     max-width:100%;
-    margin-left:auto;
-    margin-right:auto;
     padding-left:1em;
     padding-right:1em;
+    margin-left:auto;
+    margin-right:auto;
+    transition: width .3s;
+}
+@media screen and (min-width:1080px) {
+    .container{
+        width: 1024px;
+    }
 }
 .row{
     margin:0 -1em;
 }
-.row>*,
-.col{
+.row>*,.col{
     float:left;
+    transition: width .3s;
 }
 .container,.row,.row>*,.col{*zoom:1}
 .container:before,.container:after,
@@ -132,11 +138,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .row,
-.col,
-.row>*{padding:.5em}
-/*ie7- 不支持box-sizing*/
-.ie67 .col,
-.ie67 .row>*{padding: 0}
+.col,.row>*{padding:.5em}
 
 .row.pd,.row.pd>*{padding:.5em}
 .row.pd0>*{padding:0}
@@ -443,33 +445,35 @@ th{text-align:left}
 .table>div>*{
     display:table-cell;
     float:none;
-    padding: .25em .25em .25em 1em
+    padding: .25em 1em;
 }
 
+
 .table th {
-    /*color: #111;*/
     white-space: nowrap;
 }
 .table tr:first-child th {
     background: #f0f4f8;
-    border-bottom: solid 1px #ddd;
     border-top: solid 1px #ddd;
-    /*text-shadow: rgb(171, 171, 171) 0px 0px 0px;*/
+    border-bottom: solid 1px #ddd;
 }
 .table th,
-.table td {height: 3em;padding: .25em .25em .25em 1em}
-.table th:last-child,
-.table td:last-child {padding-right: 1em}
-.table td {border-bottom: solid 1px #eee }
+.table td {
+    height: 3em;
+    padding: .25em 1em;
+}
+.table td {
+    border-bottom: solid 1px #eee;
+}
 
-.table tr:hover td{background: #f7f7f7;color:#000}
+.table tr:hover{background: #f7f7f7}
 
 .tblf{table-layout:fixed}
 
 
 /* # 分页 */
 .pagination{
-    display: inline-block; *display:inline;*zoom:1;
+    display: inline-block;
     /* 抵消 a 的 margin-left: -1px;*/
     margin-left: 1px;
     margin-top: 1em;
@@ -826,18 +830,15 @@ select+select{
 
 /* # group */
 .group{
-    display:inline-table;
     display:inline-flex;
     vertical-align:middle;
     padding: 0 !important;
     max-width: 100%;
 }
 .group>*{
-    /*select button 效果不太好*/
-    display:table-cell !important;
     flex: none;
     width:auto;
-    *width: 2em;
+    min-width: 2.75em;
     vertical-align: middle;
     white-space: nowrap;
     margin: 0;
@@ -848,16 +849,15 @@ select+select{
     padding:.5em .75em;
     line-height: 1.3571428571428572;
     border:solid 1px #ddd;
-    color: #888;
     text-align:center;
 }
 .group>select,
 .group>input{
-    width:101%;
-    flex:99;
+    flex:1 0 auto;
     z-index:1
 }
-.group>:not(:first-child){/* border-left:0 */margin-left:-1px}
+.group>*{margin-left:-1px}
+.group>*:first-child{margin-left:0}
 
 /*.group>.button>button*/
 .button>button{border:0;padding:0;height:auto;line-height:1;background:transparent;box-shadow:none !important}
@@ -1239,7 +1239,7 @@ button.disabled,
 
 /* # 小气泡 */
 .badge{
-    display: inline-block; *display:inline;*zoom:1;
+    display: inline-block;
     padding: 0.375em;
     line-height: .6;
     font-size: .9em;
@@ -1556,7 +1556,7 @@ html{line-height:1.5}
 .none,.dn{display:none}
 .inline,.di{display:inline}
 .block,.dib{display:block}
-.inline-block,.inline.block,.inbl,.dib{display:inline-block; *display:inline; *zoom:1}
+.inline-block,.inline.block,.inbl,.dib{display:inline-block;}
 .inline-table,.inline.table,.inta,.intb,.ditb{display:inline-table}
 
 /* visibility */
@@ -1607,6 +1607,26 @@ html{line-height:1.5}
 .vam{vertical-align:middle}
 .vat{vertical-align:top}
 .vab{vertical-align:bottom}
+
+.vamb:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    margin-right: -1ex;
+    vertical-align: middle;
+}
+.vama:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    margin-left: -1ex;
+    vertical-align: middle;
+}
+.vamb>*,
+.vama>* {
+    display: inline-block;
+    vertical-align: middle;
+}
 
 /* overflow */
 .ova{overflow:auto}

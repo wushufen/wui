@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <div class="container bg sh mgb">
+    <div class="container bg sh">
         <h1 class="tac">WUI</h1>
         <h2>栅格</h2>
         <div class="row pdbox">
@@ -111,77 +111,21 @@
             </div>
         </div>
         <h2>表单</h2>
-        <form class="form w720 pdtb" onsubmit="return false">
-            <dl>
-                <dt>.form>*> * + *</dt>
-                <dd>
-                    text
-                </dd>
-            </dl>
-            <dl>
-                <dt>.form>*> * + *>p</dt>
-                <dd>
-                    <p>
-                        paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph paragraph
-                    </p>
-                </dd>
-            </dl>
-            <dl>
-                <dt class="required">.required</dt>
-                <dd>
-                    .form>*> *.required+*
-                </dd>
-            </dl>
+        <form class="form w768 pdtb" onsubmit="return false">
             <dl>
                 <dt>input</dt>
                 <dd>
                     <input placeholder="placeholder">
-                    <p>tip</p>
                 </dd>
             </dl>
             <dl>
-                <dt>input[type="text"]</dt>
+                <dt>.group></dt>
                 <dd>
-                    <input type="" placeholder="placeholder">
-                </dd>
-            </dl>
-            <dl>
-                <dt>input:readonly</dt>
-                <dd>
-                    <input type="" readonly placeholder=":readonly">
-                </dd>
-            </dl>
-            <dl>
-                <dt>input:disabled</dt>
-                <dd>
-                    <input type="" disabled placeholder=":disabled">
-                </dd>
-            </dl>
-            <dl>
-                <dt>.input-icon.icon-name>input</dt>
-                <dd>
-                    <div class="input-icon t-icon">
-                        <input type="" placeholder="placeholder">
+                    <div class="group">
+                        <input placeholder="input">
+                        <input readonly placeholder=":readonly">
+                        <input disabled placeholder=":disabled">
                     </div>
-                </dd>
-            </dl>
-            <dl>
-                <dt>.input-icon-right>input</dt>
-                <dd>
-                    <div class="input-icon-right t-icon">
-                        <input type="" placeholder="placeholder">
-                    </div>
-                </dd>
-            </dl>
-            <dl>
-                <dt>.input</dt>
-                <dd>
-                    <pre class="input" contenteditable="">
-pre
-.input
-[contenteditable]
-                    </pre>
-                    <p>多行高度自动</p>
                 </dd>
             </dl>
             <dl>
@@ -191,38 +135,50 @@ pre
                 </dd>
             </dl>
             <dl>
+                <dt>.input</dt>
+                <dd>
+                    <pre class="input" contenteditable="">
+pre.input[contenteditable]
+                    </pre>
+                </dd>
+            </dl>
+            <dl>
                 <dt>select</dt>
                 <dd>
-                    <select>
-                        <option>option 1</option>
+                    <select class="vat" multiple="">
+                        <option>[multiple]</option>
                         <option>option 2</option>
                         <option>option 3</option>
                         <option>option 4</option>
                     </select>
-                </dd>
-            </dl>
-            <dl>
-                <dt>select[size="2"]</dt>
-                <dd>
-                    <select size="2">
-                        <option>option 1</option>
+                    <select class="vat" size="2">
+                        <option>[size="2"]</option>
+                        <option>option 2</option>
+                    </select>
+                    <select class="vat">
+                        <option>select</option>
                         <option>option 2</option>
                     </select>
                 </dd>
             </dl>
             <dl>
-                <dt>select[multiple]</dt>
+                <dt>.group></dt>
                 <dd>
-                    <select multiple="">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                    </select>
+                    <div class="group">
+                        <select>
+                            <option>select</option>
+                        </select>
+                        <select>
+                            <option>select</option>
+                        </select>
+                        <select disabled="">
+                            <option>:disabled</option>
+                        </select>
+                    </div>
                 </dd>
             </dl>
             <dl>
-                <dt>input[type="checkbox"]</dt>
+                <dt>input[type=checkbox]</dt>
                 <dd>
                     <label>
                         <input type="checkbox">
@@ -243,7 +199,7 @@ pre
                 </dd>
             </dl>
             <dl>
-                <dt>input[type="radio"]</dt>
+                <dt>input[type=radio]</dt>
                 <dd>
                     <label>
                         <input type="radio" name="117">
@@ -264,7 +220,7 @@ pre
                 </dd>
             </dl>
             <dl>
-                <dt>input[type="checkbox"][switch]</dt>
+                <dt>input[type=checkbox][switch]</dt>
                 <dd>
                     <label>
                         <input type="checkbox" switch>
@@ -285,16 +241,16 @@ pre
                 </dd>
             </dl>
             <dl>
-                <dt>input[type="checkbox"]</dt>
+                <dt>.input></dt>
                 <dd>
                     <div class="input">
                         <label class="block">
                             <input type="checkbox">
-                            <span>div.input>label.block>input[type="checkbox"]+span</span>
+                            <span>label.block>input[type=checkbox]+span</span>
                         </label>
                         <label class="block">
                             <input type="checkbox" checked="">
-                            <span>div.input>label.block>input[type="checkbox"]+span</span>
+                            <span>label.block>input[type=checkbox]+span</span>
                         </label>
                     </div>
                 </dd>
@@ -370,17 +326,17 @@ pre
                 </dd>
             </dl>
             <dl>
-                <dt>label.button>input[type="file"]</dt>
+                <dt>label.button>input[type=file]</dt>
                 <dd>
                     <label class="button">
                         <input type="file" onchange="fileName.innerHTML=this.value">
                         <span>上传文件</span>
                     </label>
-                    <p id="fileName">未选择文件</p>
+                    <div id="fileName" class="dib mgl">未选择文件</div>
                 </dd>
             </dl>
             <dl>
-                <dt>label.button>[type="checkbox"]+span</dt>
+                <dt>label.button>[type=checkbox]+span</dt>
                 <dd>
                     <label class="button">
                         <input type="checkbox">
@@ -389,11 +345,15 @@ pre
                 </dd>
             </dl>
             <dl>
-                <dt>label>[type="checkbox"][hidden]+.button</dt>
+                <dt>label>[type=checkbox][hidden]+.button</dt>
                 <dd>
                     <label>
                         <input type="checkbox" hidden="">
-                        <span class="button">toggle</span>
+                        <span class="button">checkbox+.button</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" hidden="" checked="">
+                        <span class="button">:checked</span>
                     </label>
                 </dd>
             </dl>
@@ -402,16 +362,20 @@ pre
                 <dd>
                     <div class="group">
                         <label>
-                            <input type="checkbox" hidden="" checked="">
-                            <span class="button">toggle</span>
+                            <input type="checkbox" hidden="">
+                            <span class="button">checkbox+.button</span>
                         </label>
                         <label>
-                            <input type="checkbox" hidden="">
-                            <span class="button">toggle</span>
+                            <input type="checkbox" hidden="" checked="">
+                            <span class="button">:checked</span>
                         </label>
                         <label>
                             <input type="checkbox" hidden="" disabled="">
                             <span class="button">:disabled</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" hidden="" disabled="" checked="">
+                            <span class="button">:checked:disabled</span>
                         </label>
                     </div>
                 </dd>
@@ -420,12 +384,12 @@ pre
                 <dt>label>[type="radio"][hidden]+.button</dt>
                 <dd>
                     <label>
-                        <input type="radio" name="394" hidden="" checked="">
-                        <span class="button">toggle</span>
+                        <input type="radio" name="394" hidden="">
+                        <span class="button">radio+.button</span>
                     </label>
                     <label>
-                        <input type="radio" name="394" hidden="">
-                        <span class="button">toggle</span>
+                        <input type="radio" name="394" hidden="" checked="">
+                        <span class="button">:checked</span>
                     </label>
                 </dd>
             </dl>
@@ -434,16 +398,20 @@ pre
                 <dd>
                     <div class="group">
                         <label>
-                            <input type="radio" name="427" hidden="" checked="">
-                            <span class="button">toggle</span>
-                        </label>
-                        <label>
                             <input type="radio" name="427" hidden="">
-                            <span class="button">toggle</span>
+                            <span class="button">radio+.button</span>
                         </label>
                         <label>
-                            <input type="radio" name="427" hidden="" disabled="">
+                            <input type="radio" name="427" hidden="" checked="">
+                            <span class="button">:checked</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="405" hidden="" disabled="">
                             <span class="button">:disabled</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="405" hidden="" disabled="" checked="">
+                            <span class="button">:checked:disabled</span>
                         </label>
                     </div>
                 </dd>
@@ -456,7 +424,16 @@ pre
                         <button class="checked">.checked</button>
                         <button disabled="">:disabled</button>
                     </div>
-                    <span class="mgl">结合mvvm使用</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group>button+input+button</dt>
+                <dd>
+                    <div class="group">
+                        <button>-</button>
+                        <input class="tac" style="width:4em" placeholder="4em">
+                        <button>+</button>
+                    </div>
                 </dd>
             </dl>
             <dl>
@@ -474,7 +451,7 @@ pre
                 <dd>
                     <div class="group wf">
                         <span>￥</span>
-                        <input placeholder="placeholder">
+                        <input placeholder="input">
                     </div>
                 </dd>
             </dl>
