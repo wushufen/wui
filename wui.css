@@ -1276,3 +1276,43 @@ html{line-height:1.5}
         transform:translate3d(0, -2em, 0);
     }
 }
+
+
+/* vue transition*/
+.v-enter{
+    opacity: 0;
+    transform: translateY(2em);
+}
+.v-enter-active{
+    transition: .75s;
+}
+.v-enter-to{
+}
+
+.v-leave{
+    max-height: 250px;
+}
+.v-leave-active{
+    transition: .75s;
+}
+.v-leave-to{
+    opacity: 0;
+    transform: translateY(-2em);
+    
+    /*垂直缩小*/
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    /*水平缩水*/
+    /* width: 0 !important; */
+    /* padding-left: 0 !important; */
+    /* padding-right: 0 !important; */
+    /* margin-left: 0 !important; */
+    /* margin-right: 0 !important; */
+}
+.v-move{
+    transition: .75s;
+}
