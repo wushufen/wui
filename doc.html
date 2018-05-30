@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-cn" class="bgf7">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title></title>
+    <!-- <link rel="stylesheet" type="text/css" href="wui.css"> -->
+    <script>
+    document.write('<link rel="stylesheet" type="text/css" href="wui.css?' + new Date().getTime() + '">')
+    </script>
+    <style type="text/css">
+    .bd {
+        border: none !important;
+    }
+
+    body {
+        background: expression('#0af');
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container bg sh">
+        <h1 class="tac">WUI</h1>
+        <h2>栅格</h2>
+        <div class="row pdbox">
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>1</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>2</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>3</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>4</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>5</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>6</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>7</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>8</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>9</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>10</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>11</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>12</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>13</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>14</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>15</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>16</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>17</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>18</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>19</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>20</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>21</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>22</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>23</div>
+            </div>
+            <div class="w1 md2 sm3 xs4  pdbox">
+                <div>24</div>
+            </div>
+        </div>
+        <h2>表单</h2>
+        <form class="form w768 pdtb" onsubmit="return false">
+            <dl>
+                <dt>input</dt>
+                <dd>
+                    <input placeholder="placeholder">
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group></dt>
+                <dd>
+                    <div class="group">
+                        <input placeholder="input">
+                        <input readonly placeholder=":readonly">
+                        <input disabled placeholder=":disabled">
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>textarea</dt>
+                <dd>
+                    <textarea placeholder="placeholder"></textarea>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.input</dt>
+                <dd>
+                    <pre class="input" contenteditable="">
+pre.input[contenteditable]
+                    </pre>
+                </dd>
+            </dl>
+            <dl>
+                <dt>select</dt>
+                <dd>
+                    <select class="vat" multiple="">
+                        <option>[multiple]</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                    </select>
+                    <select class="vat" size="2">
+                        <option>[size="2"]</option>
+                        <option>option 2</option>
+                    </select>
+                    <select class="vat">
+                        <option>select</option>
+                        <option>option 2</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group></dt>
+                <dd>
+                    <div class="group">
+                        <select>
+                            <option>select</option>
+                        </select>
+                        <select>
+                            <option>select</option>
+                        </select>
+                        <select disabled="">
+                            <option>:disabled</option>
+                        </select>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>input[type=checkbox]</dt>
+                <dd>
+                    <label>
+                        <input type="checkbox">
+                        <span>checkbox</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" checked="">
+                        <span>:checked</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" disabled="">
+                        <span>:disabled</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" checked="" disabled="">
+                        <span>:checked:disabled</span>
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>input[type=radio]</dt>
+                <dd>
+                    <label>
+                        <input type="radio" name="117">
+                        <span>radio</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="117" checked="">
+                        <span>:checked</span>
+                    </label>
+                    <label>
+                        <input type="radio" disabled="">
+                        <span>:disabled</span>
+                    </label>
+                    <label>
+                        <input type="radio" checked="" disabled="">
+                        <span>:checked:disabled</span>
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>input[type=checkbox][switch]</dt>
+                <dd>
+                    <label>
+                        <input type="checkbox" switch>
+                        <span>switch</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" switch checked="">
+                        <span>:checked</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" switch disabled="">
+                        <span>:disabled</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" switch checked="" disabled="">
+                        <span>:checked:disabled</span>
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.input></dt>
+                <dd>
+                    <div class="input">
+                        <label class="block">
+                            <input type="checkbox">
+                            <span>label.block>input[type=checkbox]+span</span>
+                        </label>
+                        <label class="block">
+                            <input type="checkbox" checked="">
+                            <span>label.block>input[type=checkbox]+span</span>
+                        </label>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>input[type=button]</dt>
+                <dd>
+                    <input type="button" value="input[type=button]">
+                    <input type="button" value=":disabled" disabled="">
+                </dd>
+            </dl>
+            <dl>
+                <dt>input[type=reset]</dt>
+                <dd>
+                    <input type="reset" value="input[type=reset]">
+                    <input type="reset" value=":disabled" disabled="">
+                </dd>
+            </dl>
+            <dl>
+                <dt>input[type=submit]</dt>
+                <dd>
+                    <input type="submit" value="input[type=submit]">
+                    <input type="submit" value=":disabled" disabled="">
+                </dd>
+            </dl>
+            <dl>
+                <dt>button</dt>
+                <dd>
+                    <button>button</button>
+                    <button disabled="">:disabled</button>
+                </dd>
+            </dl>
+            <dl>
+                <dt>button[type=button]</dt>
+                <dd>
+                    <button type="button">button[type=button]</button>
+                    <button type="button" disabled="">:disabled</button>
+                </dd>
+            </dl>
+            <dl>
+                <dt>button[type=reset]</dt>
+                <dd>
+                    <button type="reset">button[type=reset]</button>
+                    <button type="reset" disabled="">:disabled</button>
+                </dd>
+            </dl>
+            <dl>
+                <dt>button[type=submit]</dt>
+                <dd>
+                    <button type="submit">button[type=submit]</button>
+                    <button type="submit" disabled="">:disabled</button>
+                </dd>
+            </dl>
+            <dl>
+                <dt>a.button</dt>
+                <dd>
+                    <a class="button">a.button</a>
+                    <a class="button disabled">.disabled</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>span.button</dt>
+                <dd>
+                    <span class="button">span.button</span>
+                    <span class="button disabled">.disabled</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.button.submit</dt>
+                <dd>
+                    <span class="button submit">.button.submit</span>
+                    <span class="button disabled submit">.disabled</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>label.button>input[type=file]</dt>
+                <dd>
+                    <label class="button">
+                        <input type="file" onchange="fileName.innerHTML=this.value">
+                        <span>上传文件</span>
+                    </label>
+                    <div id="fileName" class="dib mgl">未选择文件</div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>label.button>[type=checkbox]+span</dt>
+                <dd>
+                    <label class="button">
+                        <input type="checkbox">
+                        <span>checkbox</span>
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>label>[type=checkbox][hidden]+.button</dt>
+                <dd>
+                    <label>
+                        <input type="checkbox" hidden="">
+                        <span class="button">checkbox+.button</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" hidden="" checked="">
+                        <span class="button">:checked</span>
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group></dt>
+                <dd>
+                    <div class="group">
+                        <label>
+                            <input type="checkbox" hidden="">
+                            <span class="button">checkbox+.button</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" hidden="" checked="">
+                            <span class="button">:checked</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" hidden="" disabled="">
+                            <span class="button">:disabled</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" hidden="" disabled="" checked="">
+                            <span class="button">:checked:disabled</span>
+                        </label>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>label>[type="radio"][hidden]+.button</dt>
+                <dd>
+                    <label>
+                        <input type="radio" name="394" hidden="">
+                        <span class="button">radio+.button</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="394" hidden="" checked="">
+                        <span class="button">:checked</span>
+                    </label>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group></dt>
+                <dd>
+                    <div class="group">
+                        <label>
+                            <input type="radio" name="427" hidden="">
+                            <span class="button">radio+.button</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="427" hidden="" checked="">
+                            <span class="button">:checked</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="405" hidden="" disabled="">
+                            <span class="button">:disabled</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="405" hidden="" disabled="" checked="">
+                            <span class="button">:checked:disabled</span>
+                        </label>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group>button+</dt>
+                <dd>
+                    <div class="group">
+                        <button>button</button>
+                        <button class="checked">.checked</button>
+                        <button disabled="">:disabled</button>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group>button+input+button</dt>
+                <dd>
+                    <div class="group">
+                        <button>-</button>
+                        <input class="tac" style="width:4em" placeholder="4em">
+                        <button>+</button>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group.wf>input+</dt>
+                <dd>
+                    <div class="group wf">
+                        <input type="" name="" placeholder="x">
+                        <input type="" name="" placeholder="y">
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    .group.wf>span+input</dt>
+                <dd>
+                    <div class="group wf">
+                        <span>￥</span>
+                        <input placeholder="input">
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group.wf>input+button</dt>
+                <dd>
+                    <div class="group wf">
+                        <input type="text" placeholder="input">
+                        <button>button</button>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group.wf>label.button+input</dt>
+                <dd>
+                    <div class="group wf">
+                        <label class="button">
+                            <input type="checkbox" name="">
+                            <span></span>
+                        </label>
+                        <input type="number" placeholder="input">
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>.group>select+</dt>
+                <dd>
+                    <div class="group">
+                        <select>
+                            <option value="">省</option>
+                        </select>
+                        <select>
+                            <option value="">市</option>
+                        </select>
+                        <select>
+                            <option value="">区</option>
+                        </select>
+                    </div>
+                </dd>
+            </dl>
+        </form>
+        <h2>表格</h2>
+        <div class="section mg-lr">
+            <div class="shr">
+                <div class="ova">
+                    <table class="table">
+                        <tr>
+                            <th>table.table</th>
+                            <th>tr:first-child>th</th>
+                            <th>th</th>
+                            <th>th</th>
+                            <th>th</th>
+                        </tr>
+                        <tr>
+                            <td>.ova>table</td>
+                            <td>可使手机上过宽时可以横向滑动</td>
+                            <td>td</td>
+                            <td>td</td>
+                            <td>td</td>
+                        </tr>
+                        <tr>
+                            <td>.shr>.ova</td>
+                            <td>可在右边加上淡白阴影提示可以横向滑动</td>
+                            <td>td</td>
+                            <td>td</td>
+                            <td>td</td>
+                        </tr>
+                        <tr>
+                            <td>.pagination>*</td>
+                            <td>分页</td>
+                            <td>td</td>
+                            <td>td</td>
+                            <td>td</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tac">
+                <div class="pagination">
+                    <a href="javascript:">←</a>
+                    <a href="javascript:">1</a>
+                    <input value="5">
+                    <a href="javascript:">99</a>
+                    <a href="javascript:">→</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
