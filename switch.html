@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_756018_b4xk91ucq9e.css">
+	<style type="text/css">
+
+		.checkbox,
+		.radio,
+		.switch{
+			display: inline-block;
+			cursor: pointer;
+		}
+
+		.checkbox input,
+		.radio input,
+		.switch input{
+			position: absolute;
+			filter:alpha(opacity=0);
+			opacity: 0;
+		}
+
+		.checkbox span,
+		.radio span,
+		.switch span{
+			vertical-align: middle;
+		}
+
+		.checkbox i,
+		.radio i,
+		.switch i{
+			display: inline-block;
+			font-family: "iconfont";
+			font-style: normal;
+			vertical-align: middle;
+		    border-radius: 9em;
+			transition: .5s;
+			color: #bbb;
+		}
+		.checkbox.checked i,
+		.radio.checked i,
+		.switch.checked i{
+			color: #0af;
+		}
+		.checkbox.focus i,
+		.radio.focus i,
+		.switch.focus i{
+			box-shadow: 0px 0px 0px 2px #fff, 0px 0px 3px 1.5px #0af;
+			box-shadow: 0 0 0 2px rgba(45,140,240,.2);
+		}
+		.checkbox.disabled,
+		.radio.disabled,
+		.switch.disabled{
+			cursor: default;
+		}
+		.checkbox.disabled i,
+		.radio.disabled i,
+		.switch.disabled i{
+			opacity: .2;
+		}
+
+		.checkbox i{
+			border-radius: 3px;
+		}
+
+		.switch i{
+			font-size: 3em;
+			line-height: .5;
+		}
+	</style>
+</head>
+<body>
+
+	<div>
+		<i class="iconfont icon-switch"></i>
+		<i class="iconfont icon-switch-on"></i>
+		<i class="iconfont icon-checkbox"></i>
+		<i class="iconfont icon-checkbox-checked"></i>
+		<i class="iconfont icon-radio"></i>
+		<i class="iconfont icon-radio-checked"></i>
+	</div>
+
+	<label class="checkbox focus">
+		<input type="checkbox"></input>
+		<i class="icon-checkbox"></i>
+		<span>English 中华人民共和国</span>
+	</label>
+
+	<label class="radio checked">
+		<input type="checkbox"></input>
+		<i class="icon-radio-checked"></i>
+		<span>English 中华人民共和国</span>
+	</label>
+
+	<label class="switch checked disabled">
+		<input type="checkbox"></input>
+		<i class="icon-switch-checked"></i>
+		<span>English 中华人民共和国</span>
+	</label>
+
+</body>
+</html>

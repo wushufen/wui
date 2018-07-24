@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_756018_b4xk91ucq9e.css">
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		input{
+			font-size: 1em;
+			width: 250px;
+			height: 34px;
+			padding: .25em 1em;
+			border: solid 1px #ddd;
+			border-radius: 3px;
+			outline: none;
+			vertical-align: middle;
+		}
+	</style>
+	<style type="text/css">
+		.select{
+			display: inline-block;
+			position: relative;
+			cursor: pointer;
+		}
+		.select>i{
+			position: absolute;
+			right: .5em;
+			top: 50%;
+			font-size: .75em;
+			margin-top: -.5em;
+			color: #ddd;
+		}
+		.select>ul{
+			display: none;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			min-width: 100%;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			margin-top: 2px;
+			background: #fff;
+			border: solid 1px #ddd;
+			border-radius: 3px;
+			box-shadow: 0px 1px 10px 1px #ddd;
+		}
+		.select>ul>li{
+			padding: .375em 1em;
+			white-space: nowrap;
+			transition: .25s;
+		}
+		.select>ul>li:first-child{
+			border-top-left-radius: inherit;
+			border-top-right-radius: inherit;
+		}
+		.select>ul>li:last-child{
+			border-bottom-left-radius: inherit;
+			border-bottom-right-radius: inherit;
+		}
+		.select>ul>li:hover{
+			background: #eee;
+		}
+		.select>ul>li>i{
+		}
+		.select.focus>ul{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+
+	<input type="range" name="">
+
+	<label class="select focus">
+		<input>
+		<i class="caret"></i>
+		<ul>
+			<li> 
+				中华
+			</li>
+			<li> 
+				中华人民
+			</li>
+			<li> 
+				<i class="iconfont icon-checkbox"></i>
+				中华人民共和国
+			</li>
+			<li>
+				<i class="iconfont icon-checkbox-checked" style="color:#0af"></i>
+				中华人民共和国
+			</li>
+		</ul>
+	</label>
+
+</body>
+</html>
