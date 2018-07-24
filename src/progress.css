@@ -1,0 +1,18 @@
+
+.progress{
+  background: #eee;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: .214em;
+  box-shadow: inset 0px 1px 1px rgba(0,0,0,.1)
+}
+.progress *{
+  float: left;
+  background: #0af;
+  color: #FFF;
+  text-align: right;
+  line-height: 1em;
+  min-height: .375em;
+  max-width: 100%;
+  transition: 0.1s;
+}

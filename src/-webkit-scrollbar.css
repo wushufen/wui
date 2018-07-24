@@ -1,0 +1,17 @@
+@media all and (min-width:700px){
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 12px
+    }
+    ::-webkit-scrollbar-corner {
+        background: transparent
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 9px;
+        border: 4px solid transparent;
+        box-shadow: 0 0 0 5px rgba(0, 0, 0, .05) inset
+    }
+    :hover::-webkit-scrollbar-thumb {
+        box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1) inset
+    }
+}

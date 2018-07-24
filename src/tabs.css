@@ -1,0 +1,22 @@
+
+.tabs{
+    border-bottom: solid 1px #ddd; /*下横线*/
+    margin: -1px;
+    margin-bottom: 0;
+}
+.tabs{*zoom:1}
+.tabs:after{content: ""; display: table; clear: both}
+
+.tabs>*{
+    float: left;
+    padding: .5em 1em;
+    border: solid 1px transparent;
+    border-radius: .25em .25em 0 0;
+    margin-bottom: -1px;
+}
+
+.tabs>*.active{
+    background: #fff;
+    border-color: #ddd;
+    border-bottom-color: #fff;
+}

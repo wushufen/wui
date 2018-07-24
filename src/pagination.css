@@ -1,0 +1,40 @@
+.pagination{
+  display: inline-block;
+  /* 抵消 a 的 margin-left: -1px;*/
+  margin-left: 1px;
+  margin-top: 1em;
+}
+
+.pagination *{
+  float: left;
+  padding: .375em .875em;
+  height: 2.375em;
+  border: solid 1px #ddd;
+  margin-left: -1px;
+  margin-top: 2px;
+  background: #fff;
+}
+.pagination a{color: #456; text-decoration: none}
+
+.pagination :active{box-shadow:0px 1px 5px rgba(0, 0, 0, 0.15) inset}
+.pagination .active,
+.pagination input{
+  position: relative;
+  z-index: 1;
+  border-radius: 0;
+  border-color: #aaa;
+}
+
+.pagination input{
+  width:2.375em;
+  padding-left:0;
+  padding-right:0;
+  text-align:center;
+}
+.pagination input:focus{
+  border-color:#bbb;
+  box-shadow:0 0 5px 0px #DDD;
+}
+
+.pagination>*:first-child{border-radius: 4px 0 0 4px}
+.pagination>*:last-child{border-radius: 0 4px 4px 0}

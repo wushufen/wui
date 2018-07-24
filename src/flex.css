@@ -1,0 +1,46 @@
+.flex,
+.df,
+.fx{display:flex}
+
+.flex-v,
+.dfv,
+.fxv{display:flex;flex-direction:column}
+
+.dfaj{display:flex;align-items:center;justify-content:center}
+
+.jcfs{justify-content:flex-start}
+.jcfe{justify-content:flex-end}
+.jcc{justify-content:center}
+.jcsb{justify-content:space-between}
+.jcsa{justify-content:space-around}
+
+.aifs{align-items:flex-start}
+.aife{align-items:flex-end}
+.aic{align-items:center}
+.aib{align-items:baseline}
+.ais{align-items:stretch}
+
+.asfs{align-self: flex-start;}
+.asfe{align-self: flex-end;}
+.asc{align-self: center;}
+.asb{align-self: baseline;}
+.ass{align-self: stretch;}
+
+.fxg{flex-grow:1}
+.fxsh{flex-shrink:1}
+
+.fx1{flex:1}
+.fx0{flex:0}
+.fx00a{flex:0 0 auto}
+.fx01a{flex:0 1 auto}
+.fx10a{flex:1 0 auto}
+.fx11a{flex:1 1 auto}
+.fxn{flex:none}
+
+.fxdr{flex-direction:row}
+.fxdrr{flex-direction:row-reverse}
+.fxdc{flex-direction:column}
+.fxdcr{flex-direction:column-reverse}
+.fxw{flex-wrap:wrap}
+.fxwn{flex-wrap:nowrap}
+.fxww{flex-wrap:wrap}
