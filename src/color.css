@@ -1,4 +1,4 @@
-.c{color:#333}
+.color{color:#333}
 .c-white{color:#ffffff}
 .c-disabled{color:#aaaaaa}
 .c-info{color:#5AC0F0}
@@ -9,7 +9,7 @@
 .c-black{color:#000000}
 .c-none{color:transparent}
 
-.bd{border-color:#ddd}
+.border{border-color:#ddd}
 .bd-white{border-color:#ffffff}
 .bd-disabled{border-color:#aaaaaa}
 .bd-info{border-color:#5AC0F0}

@@ -7,8 +7,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-
-/* 下三角 */
 .caret {
     display: inline-block;
     width: 0;
