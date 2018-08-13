@@ -29,7 +29,7 @@ th{
   white-space: nowrap;
 }
 .table tr:first-child th {
-  background: #f0f4f8;
+  background: #fefefe;
   border-top: solid 1px #ddd;
   border-bottom: solid 1px #ddd;
 }
