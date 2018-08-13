@@ -6,7 +6,9 @@
 .dfv,
 .fxv{display:flex;flex-direction:column}
 
-.dfaj{display:flex;align-items:center;justify-content:center}
+.dfaj,
+.fxcc,
+.fcc{display:flex;align-items:center;justify-content:center}
 
 .jcfs{justify-content:flex-start}
 .jcfe{justify-content:flex-end}
