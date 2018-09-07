@@ -1,4 +1,3 @@
-
 .progress{
   background: #eee;
   white-space: nowrap;
@@ -6,7 +5,7 @@
   border-radius: .214em;
   box-shadow: inset 0px 1px 1px rgba(0,0,0,.1)
 }
-.progress *{
+.progress>*{
   float: left;
   background: #0af;
   color: #FFF;
