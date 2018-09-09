@@ -1,28 +1,34 @@
-.layout,
-.layout-x{
+.layout{
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
 }
-.layout-x{
+.layout>*{
+	flex: none;
+}
+.layout-row{
+	flex: 1 1 100%;
+	display: flex;
 	flex-direction: row;
 }
-.layout>*,
-.layout-x>*{
-	width: 100%;
+.layout-row>*{
+	flex: none;
+	overflow: auto;
+	float: left;
 	height: 100%;
-	flex: 0 1 auto;
+}
+.layout-auto{
+	flex: 1 1 auto;
+	float: none;
+	overflow: auto;
 }
 
-
 body>.layout,
-body>.layout-x{
+body>.layout-row{
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom: 0;
-	height: auto;
 	min-height: 100%;
 }

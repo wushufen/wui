@@ -17,18 +17,19 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <title>WUI</title>
-    <link rel="stylesheet" type="text/css" href="src/layout.css">
+    <link rel="stylesheet" type="text/css" href="src/wui.css">
     <style>
+    	html{
+    		background: #f7f7f7;
+    	}
         .header{
             background: #fff;
-            height: 200px;
+            height: 50px;
+            box-shadow: 3px 3px 10px #ddd;
         }
         .sidebar{
-            width: 200px;
+            width: 250px;
             background: #333;
-        }
-        .content{
-            background: #f5f5f5;
         }
         .footer{
             background: #eee;
@@ -41,17 +42,19 @@
         <div class="header">
             header
         </div>
-        <div class="layout-x">
+        <div class="layout-row">
             <div class="sidebar">
-                sidebar
+                <ul class="menu">
+                	<li>layout</li>
+                </ul>
             </div>
-            <div class="content">
-                content
+            <div class="layout-auto">
+            	<div style="background:#eee" onclick="this.style.height=this.style.height==''?'1000px':''">
+            		content
+            	</div>
             </div>
         </div>
-        <div class="footer">
-            footer
-        </div>
+        <!-- <div class="footer"> footer </div> -->
     </div>
 </body>
 
