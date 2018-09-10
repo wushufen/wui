@@ -1,0 +1,43 @@
+.menu{
+}
+.menu,
+.menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li div {
+    line-height: 1.25em;
+    padding: 1em 0 1em 1em;
+    cursor: pointer;
+}
+.menu li ul li div {
+    padding-left: 3em;
+}
+.menu li ul li ul li div {
+    padding-left: 5em;
+}
+
+.menu li div:hover {
+    background: rgba(0, 0, 0, .1);
+}
+
+.menu li div.active {
+    color: #0af;
+}
+
+.menu li .menu-arrow {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    transition: .3s;
+}
+
+.menu ul{
+	background: #222;
+}

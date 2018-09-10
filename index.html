@@ -23,13 +23,16 @@
     		background: #f7f7f7;
     	}
         .header{
+        	position: relative;
+        	z-index: 1;
             background: #fff;
             height: 50px;
-            box-shadow: 3px 3px 10px #ddd;
+            box-shadow: 3px 3px 10px rgba(225, 225, 225, 0.4);
         }
         .sidebar{
             width: 250px;
             background: #333;
+            color: #fff;
         }
         .footer{
             background: #eee;
@@ -45,7 +48,21 @@
         <div class="layout-row">
             <div class="sidebar">
                 <ul class="menu">
-                	<li>layout</li>
+                	<li>
+                		<div> layout </div>
+                	</li>
+                	<li>
+                		<div>layout</div>
+            			<i class="menu-arrow icon-down"></i>
+                		<ul>
+                			<li>
+                				<div>sub-menu</div>
+                			</li>
+                			<li>
+                				<div>sub-menu</div>
+                			</li>
+                		</ul>
+                	</li>
                 </ul>
             </div>
             <div class="layout-auto">
