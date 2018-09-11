@@ -31,6 +31,9 @@
             width: 250px;
             background: #333;
         }
+        .content{
+            padding: 1em;
+        }
         .footer{
             background: #eee;
         }
@@ -48,10 +51,14 @@
                 	<li>layout</li>
                 </ul>
             </div>
-            <div class="layout-auto">
-            	<div style="background:#eee" onclick="this.style.height=this.style.height==''?'1000px':''">
-            		content
-            	</div>
+            <div class="layout-content content">
+            	<div class="pagination">
+                    <a class="icon-left" href=""></a>   
+                    <a href="">1</a>   
+                    <a class="active" href="">5</a>   
+                    <a href="">99</a>   
+                    <a class="icon-right" href=""></a>   
+                </div>
             </div>
         </div>
         <!-- <div class="footer"> footer </div> -->
