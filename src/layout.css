@@ -19,9 +19,11 @@
 	height: 100%;
 }
 .layout-content{
+	background: #f5f5f5;
 	flex: 1 1 auto;
 	float: none;
 	overflow: auto;
+	padding-bottom: 1em;
 }
 
 body>.layout,

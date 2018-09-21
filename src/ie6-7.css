@@ -5,7 +5,7 @@ html {
     /* ie11仿真ie5使用的是ie7 ua, 可手动切换 */
     /* zoom unicode-bidi letter-spacing 可使 expression 只触发一次，解决性能问题*/
     /*http://lib.csdn.net/article/css3/51902*/
-    zoom: expression(function(el) {
+    *zoom: expression(function(el) {
         el.style.zoom = 1;
         /*document.title = Math.random();*/
 

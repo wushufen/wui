@@ -1,8 +1,18 @@
-
-.path{overflow:hidden;border-radius:4px}
-.path a,
-.path span{position:relative; float:left; padding:0 1em}
-.path a{text-decoration:none}
-.path span{color:#888}
-.path a + a:before,
-.path a + span:before{content:"/"; position:absolute; left:-.25em; color:#ddd}
+.path{
+	overflow: hidden;
+	margin-top: 1em;
+}
+.path>*{
+	position:relative;
+	float:left;
+	padding:0 1em
+}
+.path>*:last-child{
+	color: #aaa;
+}
+.path>* + *:before{
+	content:"/";
+	position:absolute;
+	left:-.25em;
+	color: #ddd;
+}

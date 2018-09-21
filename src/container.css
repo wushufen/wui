@@ -16,12 +16,16 @@
 /* .row */
 .row{
     margin:0 -1em;
+    padding-left: .5em;
+    padding-right: .5em;
 }
 
 /* .col */
 .col,
 [class*="col-"]{
     float: left;
+    padding-left: .5em;
+    padding-right: .5em;
 }
 .col-0 {display:none}
 .col-1 {width:4.166667%}

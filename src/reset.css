@@ -2,23 +2,28 @@
 html{box-sizing:border-box}
 *,*:before,*:after{box-sizing:inherit}
 
-/*margin*/
-body,input{margin:0}
-
-/*border*/
-img,fieldset{border:none}
-
 /*font*/
-html{font-family:"Microsoft Yahei"; background:#fff; color:#333}
-html{-webkit-tap-highlight-color:transparent}
-a{text-decoration:none; color:inherit}
-
+html{
+	font-size: 14px;
+	font-family:"Microsoft Yahei";
+	background:#fff;
+	color:#333;
+}
 input,
 select,
 textarea,
 button,
 pre,
 th{font: inherit; color: inherit; outline: none}
+
+/*margin*/
+body,input{margin:0}
+
+/*border*/
+img,fieldset{border:none}
+
+html{-webkit-tap-highlight-color:transparent}
+a{text-decoration:none; color:inherit}
 
 /*hidden*/
 [hidden]{

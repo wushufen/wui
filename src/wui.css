@@ -2,10 +2,12 @@
 @import url("layout.css");
 @import url("menu.css");
 @import url("container.css");
+@import url("panel.css");
 @import url("margin-padding.css");
 @import url("tabs.css");
 @import url("path.css");
-@import url("table.dark.css");
+/*@import url("table.dark.css");*/
+@import url("table.css");
 @import url("pagination.css");
 @import url("icon.css");
 @import url("badge.css");

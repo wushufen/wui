@@ -3,24 +3,35 @@
   border: solid 1px #ddd;
   border-radius: 9em;
   background: #fff;
+  user-select: none;
+  margin-top: 1em;
 }
 .pagination>*:first-child{
   border-radius: 9em 0 0 9em;
+  min-width: 3em;
 }
 .pagination>*:last-child{
   border-radius: 0 9em 9em 0;
+  min-width: 3em;
 }
 
 .pagination>*{
   float: left;
-  line-height: 1.5;
-  padding: .375em .875em;
-  height: 2.375em;
+  height: 2em;
+  line-height: 2em;
+  min-width: 2em;
+  padding-left: .5ex;
+  padding-right: .5ex;
+  /*margin: -1px 0;*/
+  text-align: center;
+  cursor: pointer;
+}
+.pagination>*:hover{
+  background: rgba(100,100,100,.05);
 }
 .pagination>*:active{
   box-shadow:0px 1px 5px rgba(0, 0, 0, 0.15) inset;
 }
 .pagination>.active{
-  border: solid 1px #0af;
-  border-width: 1px 0px;
+  color: #0af;
 }
