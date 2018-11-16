@@ -1,10 +1,10 @@
 /* html[class="ie ie6-7 ie6 ie7"] */
 html {
+    /* zoom unicode-bidi letter-spacing 可使 expression 只触发一次，解决性能问题*/
     /* expression 只有 ie67 支持 */
+    /* http://lib.csdn.net/article/css3/51902 */
     /* ie11仿真ie5,7下通过ip访问页面时expression不会执行，file://或 localhost 可以 */
     /* ie11仿真ie5使用的是ie7 ua, 可手动切换 */
-    /* zoom unicode-bidi letter-spacing 可使 expression 只触发一次，解决性能问题*/
-    /*http://lib.csdn.net/article/css3/51902*/
     *zoom: expression(function(el) {
         el.style.zoom = 1;
         /*document.title = Math.random();*/

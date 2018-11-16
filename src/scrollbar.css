@@ -1,0 +1,35 @@
+@media all and(min-width:1280px) {
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    width: 100vw;
+  }
+}
+
+@media all and (min-width:768px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 9px;
+    border: 3px solid transparent;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, .05) inset;
+  }
+  :hover::-webkit-scrollbar-thumb {
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, .1) inset;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, .15) inset;
+  }
+}
+
+@media all and (max-width:768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}

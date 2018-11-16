@@ -1,9 +1,16 @@
-/* animate */
 .am-in{animation:fadeInUp .75s both; }
 .am-out{animation:fadeOutUp .75s both; }
 .am-roll{animation:roll .75s linear infinite; }
-.amd-1s{animation-duration: 1s; }
-.amic-infinite{animation-iteration-count: infinite; }
+
+.am-1s{animation-duration: 1s; }
+.am-2s{animation-duration: 2s; }
+.am-3s{animation-duration: 3s; }
+
+.amdl-1s{animation-delay: 1s; }
+.amdl-2s{animation-delay: 2s; }
+.amdl-3s{animation-delay: 3s; }
+
+.am-infinite{animation-iteration-count: infinite; }
 
 @keyframes fadeInUp {
     from {

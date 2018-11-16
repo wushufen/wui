@@ -1,8 +1,9 @@
 .panel{
 	background: #fff;
 	padding: 1em;
-	box-shadow: 3px 3px 10px rgba(225, 225, 225, 0.4);
+	box-shadow: 3px 3px 10px rgba(225, 225, 225, 0.25);
 	margin-top: 1em;
+	border-radius: 3px;
 }
 .panel-header{}
 .panel-body{}

@@ -92,7 +92,7 @@ select,
     display:inline-block;
     vertical-align:middle;
     width: 20em;
-    width: 100%;
+    /*width: 100%;*/
     /*firefox <select>有默认高度*/
     /*保证高度一致*/
     height: 2.5em;

@@ -26,8 +26,6 @@ th{
   /*white-space: nowrap;*/
 }
 .table tr:first-child th {
-  /*background: #fefefe;*/
-  /*border-top: solid 1px #ddd;*/
   border-bottom: solid 1px #ddd;
 }
 

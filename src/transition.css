@@ -1,0 +1,10 @@
+*,
+*:before,
+*:after {
+  transition: 1s;
+  transition-property: color, background, border-color, outline, box-shadow, opacity;
+}
+
+*:hover {
+  transition-duration: .1s;
+}

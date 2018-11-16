@@ -1,4 +1,7 @@
 .menu{
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 .menu,
 .menu ul {
@@ -11,15 +14,15 @@
     position: relative;
 }
 
-.menu li div {
+.menu li>div {
     line-height: 1.25em;
     padding: 1em 0 1em 1em;
     cursor: pointer;
 }
-.menu li ul li div {
+.menu li ul li>div {
     padding-left: 3em;
 }
-.menu li ul li ul li div {
+.menu li ul li ul li>div {
     padding-left: 5em;
 }
 

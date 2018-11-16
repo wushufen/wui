@@ -1,0 +1,16 @@
+@media
+	only screen 
+	and (device-width: 375px)
+	and (device-height: 812px)
+	and (-webkit-device-pixel-ratio: 3) {
+
+	.ipx-mgb{
+		margin-bottom: 34px;
+	}
+	.ipx-pdb{
+		padding-bottom: 34px;
+	}
+	.ipx-b{
+		bottom: 34px;
+	}
+}
