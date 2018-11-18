@@ -22,11 +22,11 @@
 .aib{align-items:baseline}
 .ais{align-items:stretch}
 
-.asfs{align-self: flex-start;}
-.asfe{align-self: flex-end;}
-.asc{align-self: center;}
-.asb{align-self: baseline;}
-.ass{align-self: stretch;}
+.asfs{align-self:flex-start}
+.asfe{align-self:flex-end}
+.asc{align-self:center}
+.asb{align-self:baseline}
+.ass{align-self:stretch}
 
 .fxg{flex-grow:1}
 .fxsh{flex-shrink:1}

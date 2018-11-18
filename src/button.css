@@ -1,0 +1,19 @@
+button{
+	height: 30px;
+	padding: 0 1em;
+	border: solid 1px #ddd;
+	border-radius: 3px;
+	background: #fff;
+	cursor: pointer;
+	transition: .3s border,box-shadow;
+}
+button:hover{
+	border: solid 1px #aaa;
+}
+button:focus{
+	border: solid 1px #aaa;
+	box-shadow: 0px 0px 5px #ddd;
+}
+button:active{
+	box-shadow: 0px 0px 5px #ddd inset;
+}
