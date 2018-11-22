@@ -1,7 +1,5 @@
-*,
-*:before,
-*:after {
-  transition: 1s;
+*{
+  transition: .75s;
   transition-property: color, background, border-color, outline, box-shadow, opacity;
 }
 
