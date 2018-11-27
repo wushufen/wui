@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 import app from './app.vue'
 
+import './styles/wui.css'
+
 
 Vue.use(VueRouter)
 new Vue({

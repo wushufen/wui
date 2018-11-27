@@ -216,7 +216,7 @@ module.exports = function (env, args) {
               ],
             },
             onEnd: {
-              archive: [{
+              __archive: [{
                 source: './dist',
                 destination: './dist.' + function () {
                   var date = new Date

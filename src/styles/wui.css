@@ -6,13 +6,10 @@
 @import url("margin-padding.css");
 @import url("tabs.css");
 @import url("path.css");
-/*@import url("table.dark.css");*/
-/*@import url("form.css");*/
 @import url("input.css");
-@import url("button.css");
+@import url("button.less");
 @import url("table.css");
 @import url("pagination.css");
-@import url("icon.css");
 @import url("badge.css");
 @import url("color.css");
 @import url("code.css");
@@ -20,5 +17,8 @@
 @import url("class.css");
 @import url("animate.css");
 @import url("scrollbar.css");
-@import url("ie6-7.css");
+/* @import url("icon.css"); */
+
+/* @import url("ie6-7.css"); */
+
 @import url("t.css");
