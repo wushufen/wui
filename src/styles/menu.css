@@ -17,7 +17,8 @@
 
 .menu li>div {
   line-height: 1.25em;
-  padding: .75em 1em;
+  padding: 1em 1em;
+  padding-left: 2em;
   padding-right: 0;
   cursor: pointer;
 }
@@ -27,7 +28,7 @@
 }
 
 .menu li li li>div {
-  padding-left: 5em;
+  padding-left: 4em;
 }
 
 .menu li div:hover {
@@ -45,6 +46,4 @@
   transition: .3s;
 }
 
-.menu ul {
-  background: #222;
-}
+.menu ul {}

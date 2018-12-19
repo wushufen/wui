@@ -150,8 +150,8 @@
 .row:after,
 [class*="col-"]:before,
 [class*="col-"]:after{
-        content:"";
-        /*display:table 可避免父子 margin 合并， block不行*/
-        display:table;
-        clear:both
+    content:"";
+    /*display:table 可避免父子 margin 合并， block不行*/
+    display:table;
+    clear:both
 }
