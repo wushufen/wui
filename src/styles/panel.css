@@ -1,9 +1,11 @@
-.panel{
-	background: #fff;
-	padding: 1em;
-	box-shadow: 3px 3px 10px rgba(225, 225, 225, 0.25);
-	margin-top: 1em;
-	border-radius: 3px;
+.panel {
+  background: #fff;
+  padding: 1em;
+  box-shadow: 3px 3px 10px rgba(225, 225, 225, 0.25);
+  border-radius: 3px;
+  margin-bottom: 1em;
 }
-.panel-header{}
-.panel-body{}
+
+.panel-header {}
+
+.panel-body {}

@@ -21,12 +21,25 @@ body>.layout-row {
 
 .layout,
 .layout-row {
+  height: 100%;
   flex: 1 1 100%;
   overflow: auto;
 }
 
-.sidebar {
+.layout-header {
+  height: 50px;
+}
+
+.layout-sidebar {
   width: 250px;
+  background: #fff;
+}
+
+.layout-content {
+  height: 100%;
+  flex: 1 1 100%;
+  overflow: auto;
+  padding: 0 1em;
 }
 
 /*  */
