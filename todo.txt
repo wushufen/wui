@@ -1,4 +1,7 @@
 wui
+	slider
+	[title]
+	[affix]
 	ajax()
 	store()
 	upload()
