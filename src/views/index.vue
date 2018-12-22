@@ -224,7 +224,7 @@ html {
                   <label>checkbox</label>
                   <div>
                     <div class="checkbox-group">
-                      <label><input type="checkbox">checkbox</label>
+                      <label><input type="checkbox" checked>checkbox</label>
                       <label><input type="checkbox">checkbox</label>
                       <label><input type="checkbox">checkbox</label>
                     </div>
@@ -234,7 +234,7 @@ html {
                   <label>radio</label>
                   <div>
                     <div class="radio-group">
-                      <label><input type="radio" name="radio">radio</label>
+                      <label><input type="radio" name="radio" checked>radio</label>
                       <label><input type="radio" name="radio">radio</label>
                       <label><input type="radio" name="radio">radio</label>
                     </div>
@@ -244,7 +244,10 @@ html {
                   <label>switch</label>
                   <div>
                     <div class="checkbox-group">
-                      <label><input type="checkbox" switch>switch</label>
+                      <label><input type="checkbox" switch checked>checkbox</label>
+                      <label><input type="checkbox" switch>checkbox</label>
+                      <label><input type="radio" name="radio switch" switch checked>radio</label>
+                      <label><input type="radio" name="radio switch" switch>radio</label>
                     </div>
                   </div>
                 </div>
