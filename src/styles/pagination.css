@@ -34,3 +34,9 @@
 .pagination>.active{
   color: #0af;
 }
+
+@supports (border-width: .5px){
+  .pagination{
+    border-width: .5px;
+  }
+}

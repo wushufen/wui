@@ -10,7 +10,7 @@ html {
   z-index: 1;
   background: #fff;
   height: 50px;
-  box-shadow: 3px 3px 10px rgba(225, 225, 225, 0.4);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 .logo {
   color: #0af;
@@ -147,7 +147,7 @@ html {
               </div>
             </div>
           </div>
-          <h3>container</h3>
+          <h3>grid</h3>
           <div class="panel">
             <div class="example container-example">
               <div
@@ -237,6 +237,14 @@ html {
                       <label><input type="radio" name="radio">radio</label>
                       <label><input type="radio" name="radio">radio</label>
                       <label><input type="radio" name="radio">radio</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label>switch</label>
+                  <div>
+                    <div class="checkbox-group">
+                      <label><input type="checkbox" switch>switch</label>
                     </div>
                   </div>
                 </div>
