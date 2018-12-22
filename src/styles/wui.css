@@ -5,6 +5,7 @@
 @import url("panel.css");
 @import url("form.css");
 @import url("input.less");
+@import url("checkbox.less");
 @import url("table.css");
 @import url("pagination.css");
 @import url("tabs.css");

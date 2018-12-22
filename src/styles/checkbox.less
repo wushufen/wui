@@ -1,0 +1,40 @@
+input{
+    &[type="checkbox"],
+    &[type="radio"]{
+        appearance: none;
+        width: 1em;
+        height: 1em;
+        line-height: 1;
+        padding: 0;
+        &:checked{
+            background: #0af;
+            border: solid 3px #fff;
+            box-shadow: 0 0 0 1px #ddd;
+        }
+    }
+    &[type="radio"]{
+        border-radius: 9em;
+    }
+}
+label{
+    user-select: none;
+    >input{
+        &[type="checkbox"],
+        &[type="radio"]{
+            margin-right: 1ex;
+        }
+    }
+}
+
+.checkbox-group,
+.radio-group{
+    vertical-align: middle;
+    margin-left: -1ex;
+    margin-right: -1ex;
+    >label{
+        display: inline-block;
+        line-height: 30px;
+        padding-left: 1ex;
+        padding-right: 1ex;
+    }
+}

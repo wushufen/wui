@@ -23,25 +23,24 @@ html {
   display: block;
   padding: 1em;
   border-radius: 3px;
-  background: #f5f5f5;
+  // background: #f7f7f7;
   color: #555;
   margin: 1em 0;
 }
 
 .layout-example {
   height: 200px;
+  line-height: 3.5em;
+  text-indent: 1em;
   .layout-header {
-    padding: 1em;
     background: #d0e0ff;
     border-radius: 5px;
   }
   .layout-sidebar {
-    padding: 1em;
     background: #d0f0ff;
     border-radius: 5px;
   }
   .layout-content {
-    padding: 1em;
     background: #d0fff4;
     border-radius: 5px;
   }
@@ -50,7 +49,7 @@ html {
   .col {
     line-height: 3;
     text-align: center;
-    background: #87d4fa;
+    background: #e4d0ff;
     border-radius: 5px;
   }
 }
@@ -196,19 +195,10 @@ html {
                   </div>
                 </div>
                 <div class="row">
-                  <label></label>
-                  <div>
-                    <button>button</button>
-                  </div>
-                </div>
-                <div class="row">
                   <label>input-group</label>
                   <div>
                     <div class="input-group">
                       <span>span</span>
-                      <select>
-                        <option value="1">select</option>
-                      </select>
                       <input placeholder="input">
                       <button>button</button>
                     </div>
@@ -228,6 +218,32 @@ html {
                         <option value="1">select</option>
                       </select>
                     </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label>checkbox</label>
+                  <div>
+                    <div class="checkbox-group">
+                      <label><input type="checkbox">checkbox</label>
+                      <label><input type="checkbox">checkbox</label>
+                      <label><input type="checkbox">checkbox</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label>radio</label>
+                  <div>
+                    <div class="radio-group">
+                      <label><input type="radio" name="radio">radio</label>
+                      <label><input type="radio" name="radio">radio</label>
+                      <label><input type="radio" name="radio">radio</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label>button</label>
+                  <div>
+                    <button>button</button>
                   </div>
                 </div>
                 <div class="row">

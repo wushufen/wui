@@ -12,14 +12,14 @@
     box-shadow: 0 0 0 5px rgba(0, 0, 0, .05) inset;
   }
   :hover::-webkit-scrollbar-thumb {
-    box-shadow: 0 0 0 5px rgba(0, 0, 0, .1) inset;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, .15) inset;
   }
   ::-webkit-scrollbar-thumb:hover {
-    box-shadow: 0 0 0 5px rgba(0, 0, 0, .15) inset;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, .25) inset;
   }
 }
 
-@media all and(min-width:1280px) {
+@media all and (min-width:1280px) {
   html {
     overflow-x: hidden;
   }

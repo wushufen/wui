@@ -244,6 +244,7 @@ module.exports = function (env, args) {
     devServer: {
       host: '0.0.0.0',
       useLocalIp: true,
+      disableHostCheck: true,
       hot: true, // 模块热替换[]
       historyApiFallback: true, // 404->index.html
       // 接口代理
