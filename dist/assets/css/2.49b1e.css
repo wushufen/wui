@@ -1,0 +1,50 @@
+html {
+  background: #f7f7f7;
+}
+
+.layout-header[data-v-a83bd3b0] {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  height: 50px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.logo[data-v-a83bd3b0] {
+  color: #0af;
+  line-height: 50px;
+  font-size: 20px;
+  text-align: center;
+}
+.example[data-v-a83bd3b0] {
+  display: block;
+  padding: 1em;
+  border-radius: 3px;
+  color: #555;
+  margin: 1em 0;
+}
+.layout-example[data-v-a83bd3b0] {
+  height: 200px;
+  line-height: 3.5em;
+  text-indent: 1em;
+}
+.layout-example .layout-header[data-v-a83bd3b0] {
+  background: #d0e0ff;
+  border-radius: 5px;
+}
+.layout-example .layout-sidebar[data-v-a83bd3b0] {
+  background: #d0f0ff;
+  border-radius: 5px;
+}
+.layout-example .layout-content[data-v-a83bd3b0] {
+  background: #d0fff4;
+  border-radius: 5px;
+}
+.container-example .col[data-v-a83bd3b0] {
+  line-height: 3;
+  text-align: center;
+  background: #e4d0ff;
+  border-radius: 5px;
+}
+
+
+/*# sourceMappingURL=../sourcemaps/css/2.49b1e.css.map*/
