@@ -189,7 +189,7 @@ html {
                 <div class="row">
                   <label>loooooooooong label</label>
                   <div>
-                    <select>
+                    <select onclick="return false">
                       <option value="1">select</option>
                     </select>
                   </div>
