@@ -6,6 +6,8 @@ button,
 .button,
 .input-group>span,
 .button-group>span {
+  appearance: none;
+  outline: none;
   max-width: 100%;
   height: 30px;
   line-height: 28px;
@@ -16,6 +18,9 @@ button,
   vertical-align: middle;
   background: #fff;
   transition: .3s border, box-shadow;
+  @supports (border-width: .5px) {
+    // border-width: .5px;
+  }
 }
 
 input,
@@ -26,6 +31,7 @@ button,
 .button {
   &:hover {
     border-color: #aaa;
+    box-shadow: 0px 0px 5px #ddd;
     z-index: 1;
   }
   &:focus {
@@ -46,11 +52,12 @@ textarea {
   width: 250px;
 }
 
-textarea{
+textarea {
   min-height: 30px;
   height: 60px;
   resize: vertical;
 }
+
 textarea[rows] {
   height: auto;
 }
@@ -72,6 +79,7 @@ button,
   display: inline-flex;
   >* {
     position: relative;
+    margin: 0;
     margin-right: -1px;
     &:not(:first-child) {
       border-top-left-radius: 0;
@@ -91,20 +99,7 @@ button,
     flex: 99;
   }
   button,
-  .button{
+  .button {
     flex: 1;
-  }
-}
-
-@supports (border-width: .5px){
-  input,
-  .input,
-  textarea,
-  select,
-  button,
-  .button,
-  .input-group>span,
-  .button-group>span{
-    border-width: .5px;
   }
 }

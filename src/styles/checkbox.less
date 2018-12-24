@@ -1,55 +1,56 @@
-input{
-    &[type="checkbox"],
-    &[type="radio"]{
-        appearance: none;
-        width: 1em;
-        height: 1em;
-        line-height: 1;
-        padding: 0;
-        background: #fff no-repeat center url('data:image/svg+xml,<svg />');
-        background: #fff no-repeat center url('checkbox.svg');
-        background-position: 0 -1em;
-        transition: .3s;
-        &:checked{
-            background-color: #0af;
-            background-position: 0 0;
-        }
+input {
+  &[type="checkbox"],
+  &[type="radio"] {
+    appearance: none;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    padding: 0;
+    background: #fff no-repeat center url('data:image/svg+xml,<svg />');
+    background: #fff no-repeat center url('checkbox.svg');
+    background-position: 0 -1em;
+    transition: .3s;
+    &:checked {
+      background-color: #0af;
+      background-position: 0 0;
     }
-    &[type="radio"]{
-        border-radius: 9em;
+  }
+  &[type="radio"] {
+    border-radius: 9em;
+  }
+  &[switch] {
+    width: 36px;
+    height: 18px;
+    border-radius: 9em;
+    background-color: #fff;
+    background: #fff no-repeat url('switch.svg');
+    background-position: -.5px 0;
+    &:checked {
+      background-color: #0af;
+      background-position: 18px 0;
     }
-    &[switch]{
-        width: 36px;
-        height: 18px;
-        border-radius: 9em;
-        background-color: #fff;
-        background: #fff no-repeat url('switch.svg');
-        background-position: -.5px 0;
-        &:checked{
-            background-color: #0af;
-            background-position: 18px 0;
-        }
-    }
+  }
 }
-label{
-    user-select: none;
-    >input{
-        &[type="checkbox"],
-        &[type="radio"]{
-            margin-right: 1ex;
-        }
+
+label {
+  user-select: none;
+  >input {
+    &[type="checkbox"],
+    &[type="radio"] {
+      margin-right: 1ex;
     }
+  }
 }
 
 .checkbox-group,
-.radio-group{
-    vertical-align: middle;
-    margin-left: -1ex;
-    margin-right: -1ex;
-    >label{
-        display: inline-block;
-        line-height: 30px;
-        padding-left: 1ex;
-        padding-right: 1ex;
-    }
+.radio-group {
+  vertical-align: middle;
+  margin-left: -1ex;
+  margin-right: -1ex;
+  >label {
+    display: inline-block;
+    line-height: 30px;
+    padding-left: 1ex;
+    padding-right: 1ex;
+  }
 }

@@ -20,10 +20,12 @@ body>.layout-row {
 }
 
 .layout,
-.layout-row {
+.layout-row,
+.layout-content {
   height: 100%;
   flex: 1 1 100%;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .layout-header {
@@ -36,9 +38,6 @@ body>.layout-row {
 }
 
 .layout-content {
-  height: 100%;
-  flex: 1 1 100%;
-  overflow: auto;
   padding: 0 1em;
 }
 

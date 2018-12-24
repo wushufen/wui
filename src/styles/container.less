@@ -393,6 +393,8 @@
 [class*="col-"]:before,
 [class*="col-"]:after {
   content: "";
+  width: 0;
+  height: 0;
   /*display:table 可避免父子 margin 合并， block不行*/
   display: table;
   clear: both;

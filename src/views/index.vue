@@ -58,7 +58,7 @@ html {
 <template>
   <div class="layout index">
     <div class="layout-row">
-      <div class="layout-sidebar">
+      <div class="layout-sidebar none">
         <div class="layout-header">
           <div class="logo">WUI</div>
         </div>
@@ -150,16 +150,9 @@ html {
           <h3>grid</h3>
           <div class="panel">
             <div class="example container-example">
-              <div
-                class="container"
-                style="width:100%"
-              >
+              <div class="container" style="width:100%">
                 <div class="row">
-                  <div
-                    v-for="i in 24"
-                    :key="i"
-                    class="col xs-8 sm-4 md-2"
-                  >{{i}}</div>
+                  <div v-for="i in 24" :key="i" class="col xs-8 sm-4 md-2">{{i}}</div>
                 </div>
               </div>
             </div>
@@ -171,19 +164,13 @@ html {
                 <div class="row">
                   <label>label</label>
                   <div>
-                    <input
-                      v-model="input"
-                      placeholder="input"
-                    >
+                    <input v-model="input" placeholder="input">
                   </div>
                 </div>
                 <div class="row">
                   <label>textarea</label>
                   <div>
-                    <textarea
-                      xrows="2"
-                      placeholder="textarea"
-                    ></textarea>
+                    <textarea xrows="2" placeholder="textarea"></textarea>
                   </div>
                 </div>
                 <div class="row">
@@ -224,9 +211,15 @@ html {
                   <label>checkbox</label>
                   <div>
                     <div class="checkbox-group">
-                      <label><input type="checkbox" checked>checkbox</label>
-                      <label><input type="checkbox">checkbox</label>
-                      <label><input type="checkbox">checkbox</label>
+                      <label>
+                        <input type="checkbox" checked>checkbox
+                      </label>
+                      <label>
+                        <input type="checkbox">checkbox
+                      </label>
+                      <label>
+                        <input type="checkbox">checkbox
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -234,9 +227,15 @@ html {
                   <label>radio</label>
                   <div>
                     <div class="radio-group">
-                      <label><input type="radio" name="radio" checked>radio</label>
-                      <label><input type="radio" name="radio">radio</label>
-                      <label><input type="radio" name="radio">radio</label>
+                      <label>
+                        <input type="radio" name="radio" checked>radio
+                      </label>
+                      <label>
+                        <input type="radio" name="radio">radio
+                      </label>
+                      <label>
+                        <input type="radio" name="radio">radio
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -244,10 +243,18 @@ html {
                   <label>switch</label>
                   <div>
                     <div class="checkbox-group">
-                      <label><input type="checkbox" switch checked>checkbox</label>
-                      <label><input type="checkbox" switch>checkbox</label>
-                      <label><input type="radio" name="radio switch" switch checked>radio</label>
-                      <label><input type="radio" name="radio switch" switch>radio</label>
+                      <label>
+                        <input type="checkbox" switch checked>checkbox
+                      </label>
+                      <label>
+                        <input type="checkbox" switch>checkbox
+                      </label>
+                      <label>
+                        <input type="radio" name="radio switch" switch checked>radio
+                      </label>
+                      <label>
+                        <input type="radio" name="radio switch" switch>radio
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -302,10 +309,7 @@ html {
               <div class="pagination">
                 <span class="icon-left"></span>
                 <span>1</span>
-                <span
-                  class="active"
-                  title="1000条/ (10条/页) = 999页"
-                >5</span>
+                <span class="active" title="1000条/ (10条/页) = 999页">5</span>
                 <span>999</span>
                 <span class="icon-right"></span>
               </div>

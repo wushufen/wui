@@ -39,7 +39,7 @@
   .form>*>* {
     display: block;
     padding-left: 0 !important;
-    margin: 0
+    margin: 0;
   }
   .form>*>*:first-child {
     width: auto;
