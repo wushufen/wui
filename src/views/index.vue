@@ -259,6 +259,15 @@ html {
                   </div>
                 </div>
                 <div class="row">
+                  <label>file</label>
+                  <div>
+                    <label class="button">
+                      <input type="file">
+                      上传文件
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
                   <label>button-group</label>
                   <div>
                     <div class="button-group">
@@ -309,6 +318,12 @@ html {
                 <span>999</span>
                 <span class="icon-right"></span>
               </div>
+            </div>
+          </div>
+          <h3>progress</h3>
+          <div class="panel">
+            <div class="progress">
+              <div style="width:50%">50%</div>
             </div>
           </div>
         </div>

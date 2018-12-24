@@ -7,6 +7,7 @@ button,
 .input-group>i,
 .input-group>span,
 .button-group>span {
+  display: inline-block;
   appearance: none;
   outline: none;
   max-width: 100%;
@@ -75,6 +76,19 @@ button,
   &:active {
     box-shadow: 0px 0px 5px #ddd inset;
     z-index: 3;
+  }
+}
+
+.button{
+  overflow: hidden;
+  position: relative;
+  input[type="file"]{
+    font-size: 99em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
   }
 }
 
