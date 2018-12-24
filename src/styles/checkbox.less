@@ -4,6 +4,8 @@ input {
     appearance: none;
     width: 1em;
     height: 1em;
+    min-width: 1em;
+    min-height: 1em;
     line-height: 1;
     padding: 0;
     background: #fff no-repeat center url('data:image/svg+xml,<svg />');
@@ -44,6 +46,8 @@ label {
 
 .checkbox-group,
 .radio-group {
+  display: flex;
+  flex-wrap: wrap;
   vertical-align: middle;
   margin-left: -1ex;
   margin-right: -1ex;
