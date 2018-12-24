@@ -1,16 +1,33 @@
 import $ from "../libs/$";
-console.log($)
-
 
 var flat = document.createComment('select')
 
-select = $0
-select.addEventListener('mousedown', function () {
-  var parent = select.parentNode
+var optionList = $('<div class="option-list"></div>')
 
-  parent.insertBefore(flat, select)
-  parent.removeChild(select)
-  parent.insertBefore(select, flat)
+$('select').on('mousedown', function () {
+  console.log('mousedown')
+  var parent = this.parentNode
+
+  parent.insertBefore(flat, this)
+  parent.removeChild(this)
+  parent.insertBefore(this, flat)
   parent.removeChild(flat)
+
+}).on('focus', function () {
+  console.log('focus')
+  var self = $(this)
+
+  var offset = this.getBoundingClientRect()
+  optionList.css({
+    left: offset.left + 'px',
+    top: offset.top + offset.height + 'px',
+    minWidth: offset.width + 'px'
+  })
+    .html(self.html())
+    .appendTo('body').show()
+
+}).on('blur', function () {
+  console.log('blur')
+  optionList.hide()
 
 })
