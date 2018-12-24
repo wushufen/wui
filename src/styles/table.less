@@ -1,0 +1,63 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.table {
+  display: table;
+  width: 100%;
+}
+
+.tblf {
+  table-layout: fixed
+}
+
+.tr {
+  display: table-row;
+}
+
+.table>*:before,
+.table>*:after {
+  display: none !important
+}
+
+th {
+  text-align: inherit;
+}
+
+.th {
+  display: table-cell;
+}
+
+.table th {
+  /*white-space: nowrap;*/
+}
+
+.table tr:first-child th {
+  border-bottom: solid 1px #ddd;
+}
+
+td {}
+
+.td {
+  display: table-cell;
+  float: none;
+  padding: .25em 1em;
+}
+
+.table td {
+  border-bottom: solid 1px #fafafa;
+  transition: .3s;
+}
+
+.table th,
+.table td,
+.th,
+.td {
+  height: 3em;
+  padding: .25em 1em;
+}
+
+.table tr:hover td {
+  background: #f7f7f7;
+}

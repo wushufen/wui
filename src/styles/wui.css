@@ -2,13 +2,13 @@
 @import url("layout.css");
 @import url("menu.css");
 @import url("container.less");
-@import url("panel.css");
-@import url("form.css");
+@import url("form.less");
 @import url("input.less");
 @import url("checkbox.less");
 @import url("select.less");
-@import url("table.css");
+@import url("table.less");
 @import url("pagination.css");
+@import url("panel.css");
 @import url("tabs.css");
 @import url("path.css");
 @import url("badge.css");

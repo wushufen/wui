@@ -279,32 +279,34 @@ html {
           </div>
           <h3>table</h3>
           <div class="panel">
-            <table class="table">
-              <tr>
-                <th>账号</th>
-                <th>角色</th>
-                <th>姓名</th>
-                <th>性别</th>
-                <th>手机</th>
-                <th>操作</th>
-              </tr>
-              <tr>
-                <td>oooooooo@oo.ooo</td>
-                <td>oooo</td>
-                <td>oooooo</td>
-                <td>oo</td>
-                <td>ooo-oooo-oooo</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>oooooooo@oo.ooo</td>
-                <td>oooo</td>
-                <td>oooooo</td>
-                <td>oo</td>
-                <td>ooo-oooo-oooo</td>
-                <td></td>
-              </tr>
-            </table>
+            <div class="ova">
+              <table class="table">
+                <tr>
+                  <th>账号</th>
+                  <th>角色</th>
+                  <th>姓名</th>
+                  <th>性别</th>
+                  <th>手机</th>
+                  <th>操作</th>
+                </tr>
+                <tr>
+                  <td>oooooooo@oo.ooo</td>
+                  <td>oooo</td>
+                  <td>oooooo</td>
+                  <td>oo</td>
+                  <td>ooo-oooo-oooo</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>oooooooo@oo.ooo</td>
+                  <td>oooo</td>
+                  <td>oooooo</td>
+                  <td>oo</td>
+                  <td>ooo-oooo-oooo</td>
+                  <td></td>
+                </tr>
+              </table>
+            </div>
             <div class="tac">
               <div class="pagination">
                 <span class="icon-left"></span>
