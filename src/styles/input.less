@@ -48,7 +48,9 @@ button,
 
 input,
 .input,
-textarea {
+textarea,
+select,
+.input-group {
   width: 250px;
 }
 
@@ -77,6 +79,7 @@ button,
 .input-group,
 .button-group {
   display: inline-flex;
+  max-width: 100%;
   >* {
     position: relative;
     margin: 0;
@@ -90,16 +93,18 @@ button,
       border-bottom-right-radius: 0;
     }
   }
-  >select {
-    flex: 1
-  }
   >input,
   .input,
   textarea {
-    flex: 99;
+    width: 110px;
+    flex: 100 100 100%;
+  }
+  >select {
+    width: auto;
+    flex: 10 0 auto;
   }
   button,
   .button {
-    flex: 1;
+    flex: 1 0 auto;
   }
 }
