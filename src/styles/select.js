@@ -1,3 +1,7 @@
+import $ from "../libs/$";
+console.log($)
+
+
 var flat = document.createComment('select')
 
 select = $0

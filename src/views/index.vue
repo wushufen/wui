@@ -163,6 +163,10 @@ html {
               <div class="form">
                 <div class="row">
                   <label>label</label>
+                  <div>text</div>
+                </div>
+                <div class="row">
+                  <label>input</label>
                   <div>
                     <input v-model="input" placeholder="input">
                   </div>
@@ -174,7 +178,7 @@ html {
                   </div>
                 </div>
                 <div class="row">
-                  <label>loooooooooong label</label>
+                  <label>select</label>
                   <div>
                     <select onclick="return false">
                       <option value="1">select</option>
@@ -217,9 +221,6 @@ html {
                       <label>
                         <input type="checkbox">checkbox
                       </label>
-                      <label>
-                        <input type="checkbox">checkbox
-                      </label>
                     </div>
                   </div>
                 </div>
@@ -229,9 +230,6 @@ html {
                     <div class="radio-group">
                       <label>
                         <input type="radio" name="radio" checked>radio
-                      </label>
-                      <label>
-                        <input type="radio" name="radio">radio
                       </label>
                       <label>
                         <input type="radio" name="radio">radio
@@ -248,12 +246,6 @@ html {
                       </label>
                       <label>
                         <input type="checkbox" switch>checkbox
-                      </label>
-                      <label>
-                        <input type="radio" name="radio switch" switch checked>radio
-                      </label>
-                      <label>
-                        <input type="radio" name="radio switch" switch>radio
                       </label>
                     </div>
                   </div>
@@ -286,7 +278,7 @@ html {
                   <th>角色</th>
                   <th>姓名</th>
                   <th>性别</th>
-                  <th>手机</th>
+                  <th>手机号码</th>
                   <th>操作</th>
                 </tr>
                 <tr>
