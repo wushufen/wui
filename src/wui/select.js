@@ -1,7 +1,6 @@
 import $ from "../libs/$";
 
 var flat = document.createComment('select')
-
 var options = $(document.createElement('options'))
 
 $('select').on('mousedown', function () {
