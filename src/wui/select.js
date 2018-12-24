@@ -2,7 +2,7 @@ import $ from "../libs/$";
 
 var flat = document.createComment('select')
 
-var optionList = $(document.createElement('options'))
+var options = $(document.createElement('options'))
 
 $('select').on('mousedown', function () {
   console.log('mousedown')
@@ -18,7 +18,7 @@ $('select').on('mousedown', function () {
   var self = $(this)
 
   var offset = this.getBoundingClientRect()
-  optionList.css({
+  options.css({
     left: offset.left + 'px',
     top: offset.top + offset.height + 'px',
     minWidth: offset.width + 'px'
@@ -28,6 +28,6 @@ $('select').on('mousedown', function () {
 
 }).on('blur', function () {
   console.log('blur')
-  optionList.hide()
+  options.hide()
 
 })
