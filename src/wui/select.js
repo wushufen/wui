@@ -2,7 +2,7 @@ import $ from "../libs/$";
 
 var flat = document.createComment('select')
 
-var optionList = $('<div class="option-list"></div>')
+var optionList = $(document.createElement('options'))
 
 $('select').on('mousedown', function () {
   console.log('mousedown')

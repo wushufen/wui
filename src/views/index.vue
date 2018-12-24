@@ -174,14 +174,15 @@ html {
                 <div class="row">
                   <label>textarea</label>
                   <div>
-                    <textarea xrows="2" placeholder="textarea"></textarea>
+                    <textarea rows="2" placeholder="textarea"></textarea>
                   </div>
                 </div>
                 <div class="row">
                   <label>select</label>
                   <div>
                     <select onclick="return false">
-                      <option value="1">select</option>
+                      <option value="0">select</option>
+                      <option v-for="i in 10" :key="i" value="0">option {{i}}</option>
                     </select>
                   </div>
                 </div>
@@ -199,8 +200,9 @@ html {
                   <label>input-group</label>
                   <div>
                     <div class="input-group">
-                      <select>
-                        <option value="1">select</option>
+                      <select placeholder="select">
+                        <option value="0">select</option>
+                        <option v-for="i in 10" :key="i" value="0">option {{i}}</option>
                       </select>
                       <select>
                         <option value="1">select</option>
