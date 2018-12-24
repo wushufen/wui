@@ -4,8 +4,7 @@ import routes from './routes'
 import app from './app.vue'
 
 // wui
-import './scripts/wui.js'
-import './styles/wui.css'
+import './wui'
 
 
 Vue.use(VueRouter)
