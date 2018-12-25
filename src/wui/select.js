@@ -1,7 +1,7 @@
 import $ from "../libs/$";
 
 var self = {
-  $el: $('<div class="_options">'),
+  $el: $('<div class="_options">').appendTo($('<div>').appendTo('body')),
   flat: document.createComment('select'),
   select: null,
   isShow: false,
@@ -20,8 +20,7 @@ var self = {
       }
     })
 
-    self.$el.appendTo('body').show()
-
+    self.$el.show()
     self.resize()
     self.scroll()
   },
