@@ -92,6 +92,19 @@ html {
           </div>
         </div>
         <div class="layout-content">
+          <options class="options" style="left: 100px; top: 100px; min-width: 250px;">
+            <option data-v-a83bd3b0 value="0">select</option>
+            <option data-v-a83bd3b0 value="0">option 1</option>
+            <option data-v-a83bd3b0 value="0">option 2</option>
+            <option data-v-a83bd3b0 value="0">option 3</option>
+            <option data-v-a83bd3b0 value="0">option 4</option>
+            <option data-v-a83bd3b0 value="0">option 5</option>
+            <option data-v-a83bd3b0 value="0">option 6</option>
+            <option data-v-a83bd3b0 value="0">option 7</option>
+            <option data-v-a83bd3b0 value="0">option 8</option>
+            <option data-v-a83bd3b0 value="0">option 9</option>
+            <option data-v-a83bd3b0 value="0">option 10</option>
+          </options>
           <h3>layout</h3>
           <div class="panel">
             <div class="row">
@@ -182,6 +195,10 @@ html {
                   <div>
                     <select onclick="return false">
                       <option value="0">select</option>
+                      <optgroup label="German Cars">
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                      </optgroup>
                       <option v-for="i in 10" :key="i" value="0">option {{i}}</option>
                     </select>
                   </div>
