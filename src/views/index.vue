@@ -172,6 +172,12 @@ html {
                   </div>
                 </div>
                 <div class="row">
+                  <label>input</label>
+                  <div>
+                    <input type="date" v-model="value" placeholder="input">
+                  </div>
+                </div>
+                <div class="row">
                   <label>textarea</label>
                   <div>
                     <textarea rows="2" placeholder="textarea"></textarea>
