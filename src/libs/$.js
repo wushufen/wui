@@ -43,7 +43,11 @@ $('selector')
                 }
             }
             if (typeof selector == 'object') {
-                els.push(selector)
+                if (selector.length) {
+                    [].push.apply(els, selector)
+                } else {
+                    els.push(selector)
+                }
             }
 
             return els
@@ -181,11 +185,16 @@ $('selector')
             return this.each(function () {
                 var style = this.style
                 for (var name in arg) {
-                    style['-webkit-' + name] = arg[name]
-                    style['-moz-' + name] = arg[name]
-                    style['-ms-' + name] = arg[name]
-                    style['-o-' + name] = arg[name]
-                    style[name] = arg[name]
+                    var value = arg[name]
+                    var cssNumber = /^(columnCount|fillOpacity|flexGrow|flexShrink|fontWeight|lineHeight|opacity|order|orphans|widows|zIndex|zoom)$/i
+                    if (!isNaN(value) && !name.replace(/-/g, '').match(cssNumber)) {
+                        value += 'px'
+                    }
+                    style['-webkit-' + name] = value
+                    style['-moz-' + name] = value
+                    style['-ms-' + name] = value
+                    style['-o-' + name] = value
+                    style[name] = value
                 }
             })
         }
@@ -256,9 +265,9 @@ $('selector')
         return this
     }
     $.fn.on = function (eventType, cb) {
-        var _this = this
+        var self = this
         document.addEventListener(eventType, function (e) {
-            var el = $(e.target).closest(_this.selector)[0]
+            var el = $(e.target).closest(self.selector)[0]
             if (el) {
                 cb.call(el, e)
             }

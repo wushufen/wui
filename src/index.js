@@ -5,6 +5,8 @@ import app from './app.vue'
 
 // wui
 import './wui'
+import $ from './libs/$'
+global.$ = $
 
 
 Vue.use(VueRouter)

@@ -6,12 +6,12 @@ select {
   background-repeat: no-repeat;
 }
 
-options {
+._options {
   position: fixed;
-  width: 100px;
   max-height: 100px;
-  max-height: 250px;
+  max-height: 20em;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   top: 0;
   left: 0;
   z-index: 9999;
@@ -23,16 +23,28 @@ options {
   border: solid 1px #ddd;
   border-radius: 3px;
   box-shadow: 0px 1px 10px 1px #ddd;
-  optgroup {
+  ._optgroup {
     padding-left: 1em;
     margin: 0;
   }
-  option {
-    padding: .375em 1em;
+  ._option {
+    padding: 0 2em;
+    line-height: 2;
     white-space: nowrap;
     cursor: pointer;
+    transition: .3s;
     &:hover {
       background: #eee;
+    }
+    &.selected {
+      background: #0af;
+      color: #fff;
+    }
+    &.disabled {
+      color: #bbb;
+      &.selected {
+        background: #e6f7ff;
+      }
     }
   }
 }

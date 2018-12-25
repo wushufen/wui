@@ -92,19 +92,6 @@ html {
           </div>
         </div>
         <div class="layout-content">
-          <options class="options" style="left: 100px; top: 100px; min-width: 250px;">
-            <option data-v-a83bd3b0 value="0">select</option>
-            <option data-v-a83bd3b0 value="0">option 1</option>
-            <option data-v-a83bd3b0 value="0">option 2</option>
-            <option data-v-a83bd3b0 value="0">option 3</option>
-            <option data-v-a83bd3b0 value="0">option 4</option>
-            <option data-v-a83bd3b0 value="0">option 5</option>
-            <option data-v-a83bd3b0 value="0">option 6</option>
-            <option data-v-a83bd3b0 value="0">option 7</option>
-            <option data-v-a83bd3b0 value="0">option 8</option>
-            <option data-v-a83bd3b0 value="0">option 9</option>
-            <option data-v-a83bd3b0 value="0">option 10</option>
-          </options>
           <h3>layout</h3>
           <div class="panel">
             <div class="row">
@@ -193,13 +180,13 @@ html {
                 <div class="row">
                   <label>select</label>
                   <div>
-                    <select onclick="return false">
-                      <option value="0">select</option>
+                    <select v-model="value" xmultiple>
+                      <option value hidden>请选择</option>
+                      <option v-for="i in 10" :key="i">option {{i}}</option>
                       <optgroup label="German Cars">
                         <option value="mercedes">Mercedes</option>
                         <option value="audi">Audi</option>
                       </optgroup>
-                      <option v-for="i in 10" :key="i" value="0">option {{i}}</option>
                     </select>
                   </div>
                 </div>
@@ -219,7 +206,7 @@ html {
                     <div class="input-group">
                       <select placeholder="select">
                         <option value="0">select</option>
-                        <option v-for="i in 10" :key="i" value="0">option {{i}}</option>
+                        <!-- <option v-for="i in 10" :key="i" value="0">option {{i}}</option> -->
                       </select>
                       <select>
                         <option value="1">select</option>
@@ -233,13 +220,15 @@ html {
                 <div class="row">
                   <label>checkbox</label>
                   <div>
-                    <div class="checkbox-group">
-                      <label>
-                        <input type="checkbox" checked>checkbox
-                      </label>
-                      <label>
-                        <input type="checkbox">checkbox
-                      </label>
+                    <div class="input">
+                      <div class="checkbox-group">
+                        <label>
+                          <input type="checkbox" checked>checkbox
+                        </label>
+                        <label>
+                          <input type="checkbox">checkbox
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -356,7 +345,8 @@ export default {
   data() {
     vm = this;
     return {
-      input: ""
+      input: "",
+      value: ""
     };
   },
   methods: {
