@@ -168,7 +168,7 @@ html {
                 <div class="row">
                   <label>input</label>
                   <div>
-                    <input v-model="input" placeholder="input">
+                    <input v-model="value" placeholder="input">
                   </div>
                 </div>
                 <div class="row">
@@ -220,15 +220,13 @@ html {
                 <div class="row">
                   <label>checkbox</label>
                   <div>
-                    <div class="input">
-                      <div class="checkbox-group">
-                        <label>
-                          <input type="checkbox" checked>checkbox
-                        </label>
-                        <label>
-                          <input type="checkbox">checkbox
-                        </label>
-                      </div>
+                    <div class="checkbox-group">
+                      <label>
+                        <input type="checkbox" checked>checkbox
+                      </label>
+                      <label>
+                        <input type="checkbox">checkbox
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -264,7 +262,7 @@ html {
                     <button>button</button>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row none">
                   <label>file</label>
                   <div>
                     <label class="button">
