@@ -10,6 +10,7 @@ input {
     padding: 0;
     background: #fff no-repeat center url('data:image/svg+xml,<svg />');
     background: #fff no-repeat center url('checkbox.svg');
+    background-size: 28px;
     background-position: 0 -1em;
     transition: .3s;
     &:checked {
@@ -21,15 +22,14 @@ input {
     border-radius: 9em;
   }
   &[switch] {
-    width: 36px;
-    height: 18px;
+    width: 40px;
+    height: 20px;
     border-radius: 9em;
     background-color: #fff;
     background: #fff no-repeat url('switch.svg');
-    background-position: -.5px 0;
     &:checked {
       background-color: #0af;
-      background-position: 18px 0;
+      background-position: 20px 0;
     }
   }
 }

@@ -78,10 +78,12 @@ $('select')
     var parent = this.parentNode
 
     // 去掉默认下拉列表
-    parent.insertBefore(self.flat, this)
-    parent.removeChild(this)
-    parent.insertBefore(this, self.flat)
-    parent.removeChild(self.flat)
+    if (!this.multiple) {
+      parent.insertBefore(self.flat, this)
+      parent.removeChild(this)
+      parent.insertBefore(this, self.flat)
+      parent.removeChild(self.flat)
+    }
 
   }).on('focus', function () {
     self.select = this
