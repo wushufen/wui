@@ -1,0 +1,29 @@
+.tooltip{
+  position: fixed;
+  z-index: 9999;
+  left: 10px;
+  top: 100px;
+  margin: 1ex;
+  display: inline-block;
+  max-width: 480px;
+  font-size: 12px;
+  line-height: 1.375;
+  padding: .375ex 1.5ex;
+  background: #333;
+  // background: rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  color: #fff;
+  box-shadow: 3px 5px 15px #666;
+  // filter: drop-shadow(5px 5px 5px #666);
+  &:after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 1em;
+    left: 50%;
+    margin-left: -.75ex;
+    border: solid .75ex transparent;
+    border-top-color: #333;
+    // border-top-color: rgba(0, 0, 0, 0.5);
+  }
+}

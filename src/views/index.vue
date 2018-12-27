@@ -92,6 +92,14 @@ html {
           </div>
         </div>
         <div class="layout-content">
+          <h3>tooltip</h3>
+          <div class="panel">
+            <div class="tooltip">this is a tooltip</div>
+          </div>
+          <h3>toast</h3>
+          <div class="panel">
+            <div class="toast">this is a toast</div>
+          </div>
           <h3>layout</h3>
           <div class="panel">
             <div class="row">
