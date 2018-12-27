@@ -28,7 +28,8 @@
 /* .col */
 
 .col,
-[class*="col-"] {
+[class^="col-"],
+[class*=" col-"] {
   flex: 1 1 auto;
   float: left;
   padding-left: .5em;
@@ -384,6 +385,7 @@
   *zoom: 1
 }
 
+// display: table 可避免父子 margin 合并， block不行
 .container:before,
 .container:after,
 .row:before,
@@ -395,7 +397,7 @@
   content: "";
   width: 0;
   height: 0;
-  /*display:table 可避免父子 margin 合并， block不行*/
-  display: table;
+  flex: none;
+  display: block;
   clear: both;
 }

@@ -1,9 +1,14 @@
 import $ from "../libs/$";
 
-$('body').on('DOMNodeInserted', function (e) {
-  $('input[type="date"]').attr('type', '_date')
+var timer = null
 
-  if (!$(e.target).closest('.console').length) {
-    console.log(e)
-  }
+$('body').on('load DOMNodeInserted', function (e) {
+  clearTimeout(timer)
+  timer = setTimeout(() => {
+    $('input[type="date"]').attr('type', '_date')
+
+    if (!$(e.target).closest('console').length) {
+      console.log(e)
+    }
+  }, 1);
 })

@@ -1,4 +1,5 @@
 import $ from "../libs/$";
+import attrtpl from "../libs/attrtpl";
 
 var self = {
   $el: $('<div class="_options">').appendTo($('<div>').appendTo('body')),
@@ -74,15 +75,24 @@ var self = {
 
 
 $('select')
-  .on('mousedown', function () {
+  .on('mousedown', function (e) {
+    console.log('mousedown')
+    var _this = this
     var parent = this.parentNode
 
     // 去掉默认下拉列表
     if (!this.multiple) {
-      parent.insertBefore(self.flat, this)
-      parent.removeChild(this)
-      parent.insertBefore(this, self.flat)
-      parent.removeChild(self.flat)
+      e.preventDefault()
+      // parent.insertBefore(self.flat, this)
+      // parent.removeChild(this)
+
+      // parent.insertBefore(this, self.flat)
+
+      setTimeout(() => {
+        // parent.insertBefore(this, self.flat)
+        // parent.removeChild(self.flat)
+        _this.focus()
+      }, 41);
     }
 
   }).on('focus', function () {
