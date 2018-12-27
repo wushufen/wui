@@ -24,34 +24,29 @@ $('selector')
 !(function () {
 
     var $ = function (selector) {
-        if (selector instanceof $) {
-            return selector
-        }
-        if (!(this instanceof $)) {
-            var els = new $
-            els.selector = selector
+        if (!(this instanceof $)) return new $(selector)
+        if (selector instanceof $) return selector
+        this.selector = selector
 
-            if (typeof selector == 'string') {
-                if (selector.match('<')) {
-                    var div = document.createElement('div')
-                    div.innerHTML = selector
-                    return $(div.children[0])
-                } else {
-                    var nodeList = document.querySelectorAll(selector)
-                    nodeList = els.slice.call(nodeList)
-                    els.splice.apply(els, [0, 0].concat(nodeList))
-                }
+        if (typeof selector == 'string') {
+            if (selector.match('<')) {
+                var div = document.createElement('div')
+                div.innerHTML = selector
+                return $(div.children[0])
+            } else {
+                var nodeList = document.querySelectorAll(selector)
+                nodeList = this.slice.call(nodeList)
+                this.splice.apply(this, [0, 0].concat(nodeList))
             }
-            if (typeof selector == 'object') {
-                if (selector.length) {
-                    [].push.apply(els, selector)
-                } else {
-                    els.push(selector)
-                }
-            }
-
-            return els
         }
+        if (selector && typeof selector == 'object') {
+            if (selector.length && !selector.nodeName) {
+                [].push.apply(this, selector)
+            } else {
+                this.push(selector)
+            }
+        }
+
     }
     $.fn = $.prototype = []
 
@@ -266,12 +261,14 @@ $('selector')
     }
     $.fn.on = function (eventType, cb) {
         var self = this
-        document.addEventListener(eventType, function (e) {
-            var el = $(e.target).closest(self.selector)[0]
-            if (el) {
-                cb.call(el, e)
-            }
-        }, true)
+        eventType.replace(/\S+/, function (eventType) {
+            document.addEventListener(eventType, function (e) {
+                var el = $(e.target).closest(self.selector)[0]
+                if (el) {
+                    cb.call(el, e)
+                }
+            }, true)
+        })
         return this
     }
 
