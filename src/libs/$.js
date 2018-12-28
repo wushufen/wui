@@ -261,7 +261,7 @@ $('selector')
     }
     $.fn.on = function (eventType, cb) {
         var self = this
-        eventType.replace(/\S+/, function (eventType) {
+        eventType.replace(/\S+/g, function (eventType) {
             document.addEventListener(eventType, function (e) {
                 var el = $(e.target).closest(self.selector)[0]
                 if (el) {

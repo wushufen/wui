@@ -58,7 +58,7 @@ html {
 <template>
   <div class="layout index">
     <div class="layout-row">
-      <div class="layout-sidebar none">
+      <div class="layout-sidebar">
         <div class="layout-header">
           <div class="logo">WUI</div>
         </div>
@@ -92,6 +92,65 @@ html {
           </div>
         </div>
         <div class="layout-content">
+          <h3>datepicker</h3>
+          <div class="panel">
+            <div class="date">
+              <div class="year">
+                <ul>
+                  <li>年</li>
+                </ul>
+                <ol>
+                  <li v-for="item in 9" :key="item">{{'201'+item}}</li>
+                </ol>
+              </div>
+              <div class="month">
+                <ul>
+                  <li>月</li>
+                </ul>
+                <ol>
+                  <li v-for="item in 30" :key="item">{{item}}</li>
+                </ol>
+              </div>
+              <div class="day">
+                <ul>
+                  <li>日</li>
+                  <li>一</li>
+                  <li>二</li>
+                  <li>三</li>
+                  <li>四</li>
+                  <li>五</li>
+                  <li>六</li>
+                </ul>
+                <ol>
+                  <li v-for="item in 30" :key="item">{{item}}</li>
+                </ol>
+              </div>
+              <div class="hour">
+                <ul>
+                  <li>时</li>
+                </ul>
+                <ol>
+                  <li v-for="item in 24" :key="item">{{item}}</li>
+                </ol>
+              </div>
+              <div class="minute">
+                <ul>
+                  <li>分</li>
+                </ul>
+                <ol>
+                  <li v-for="item in 60" :key="item">{{item}}</li>
+                </ol>
+              </div>
+              <div class="second">
+                <ul>
+                  <li>秒</li>
+                </ul>
+                <ol>
+                  <li v-for="item in 60" :key="item">{{item}}</li>
+                </ol>
+              </div>
+            </div>
+          </div>
           <h3>layout</h3>
           <div class="panel">
             <div class="row">

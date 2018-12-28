@@ -1,0 +1,47 @@
+.date {
+  display: inline-flex;
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px #ddd;
+  ul,
+  ol {
+    clear: both;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin: 0 .25ex;
+    li {
+      height: 2em;
+      line-height: 2;
+      padding: 0 .25ex;
+      text-align: center;
+    }
+  }
+  ol {
+    overflow: auto;
+    height: 12em;
+  }
+  .year {}
+  .month {
+    ol {
+      border-right: 1px solid #ddd;
+    }
+  }
+  .day {
+    width: 14em;
+    ol {}
+    li {
+      float: left;
+      width: 14.285714285714286%;
+    }
+  }
+  .hour {
+    ol {
+      border-left: 1px solid #ddd;
+    }
+  }
+  .minute {}
+  .second {}
+}
