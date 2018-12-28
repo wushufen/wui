@@ -6,6 +6,7 @@ var self = {
   flat: document.createComment('select'),
   select: null,
   isShow: false,
+  isHover: false,
   show() {
     self.isShow = true
     self.$el.html('')
@@ -116,6 +117,7 @@ $('._option')
     if (this.option.disabled) {
       return
     }
+    self.isHover = false
 
     var event = document.createEvent('Event')
     event.initEvent('change', true, true)
