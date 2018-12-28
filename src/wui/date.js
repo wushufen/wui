@@ -15,9 +15,18 @@ console.log(html)
 
 
 
-var timer = null
 
-$('body').on('DOMNodeInserted', function (e) {
+
+// "DOMSubtreeModified",
+// "DOMNodeInserted",
+// "DOMNodeRemoved",
+// "DOMNodeRemovedFromDocument",
+// "DOMNodeInsertedIntoDocument",
+// "DOMAttrModified",
+// "DOMCharacterDataModified"
+var timer = null
+document.addEventListener('DOMSubtreeModified', function (e) {
+
   clearTimeout(timer)
   timer = setTimeout(() => {
     $('input[type="date"]').attr('type', '_date')
@@ -26,6 +35,6 @@ $('body').on('DOMNodeInserted', function (e) {
       console.log(e, $('input[type="date"]'))
     }
   }, 1);
-})
+}, true)
 
 

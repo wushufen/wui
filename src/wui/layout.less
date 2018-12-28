@@ -42,8 +42,14 @@ body>.layout-row {
 .layout-content {
   padding: 0 1em;
   height: 100%;
-flex: 1 1 100%;
-overflow: auto;
+  flex: 1 1 100%;
+  overflow: auto;
+}
+
+@media all and (max-width: 768px) {
+  .layout-sidebar {
+    margin-left: -250px;
+  }
 }
 
 /*  */

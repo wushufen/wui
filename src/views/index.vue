@@ -153,7 +153,8 @@ html {
           </div>
           <h3>tooltip</h3>
           <div class="panel">
-            <div class="tooltip">this is a tooltip</div>
+            <div class="tooltip" style="position:relative">tooltip example</div>
+            <button title="this is a button">button</button>
           </div>
           <h3>toast</h3>
           <div class="panel">
@@ -239,9 +240,15 @@ html {
                   </div>
                 </div>
                 <div class="row">
-                  <label>input</label>
+                  <label>date</label>
                   <div>
-                    <input type="date" v-model="value" placeholder="input">
+                    <input type="date" v-model="value" placeholder="date">
+                  </div>
+                </div>
+                <div class="row">
+                  <label>color</label>
+                  <div>
+                    <input type="color" v-model="value" placeholder="color">
                   </div>
                 </div>
                 <div class="row">
