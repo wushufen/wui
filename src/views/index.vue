@@ -158,6 +158,7 @@ html {
           <h3>toast</h3>
           <div class="panel">
             <div class="toast">this is a toast</div>
+            <button @click="wui.toast('Im a toast')">click me</button>
           </div>
           <h3>layout</h3>
           <div class="panel">
@@ -417,11 +418,14 @@ html {
 </template>
 
 <script>
+import wui from "../wui";
+
 var vm;
 export default {
   data() {
     vm = this;
     return {
+      wui: wui,
       value: ""
     };
   },

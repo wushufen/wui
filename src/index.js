@@ -4,7 +4,9 @@ import routes from './routes'
 import app from './app.vue'
 
 // wui
-import './wui'
+import wui from './wui'
+global.wui = wui
+
 import $ from './libs/$'
 global.$ = $
 

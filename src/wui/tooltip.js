@@ -1,45 +1,65 @@
 import $ from "../libs/$";
 
-var tooltip = $('<div class="tooltip"></div>').appendTo('body').hide()
-var target = null
-
-function setPos() {
-  if (!target) {
-    return
+class Tooltip {
+  constructor() {
+    var self = this
+    this.target = null
+    this.$el = $('<div class="tooltip"></div>').appendTo('body').hide()
   }
+  show(text) {
+    if (!text) {
+      return
+    }
 
-  var offset = target.getBoundingClientRect()
+    this.$el.html(text).addClass('hide').show()
+    this.setPos()
+    setTimeout(() => {
+      this.$el.removeClass('hide')
+    }, 1);
+  }
+  hide() {
+    this.$el.addClass('hide')
 
-  tooltip.css({
-    left: offset.left + (offset.width - tooltip[0].offsetWidth) / 2,
-    top: offset.top - tooltip[0].offsetHeight
-  })
+    var delay = this.$el.css('transition-duration') || ''
+    delay = delay.replace('s', '') * 1000
+    setTimeout(() => {
+      this.$el.hide()
+    }, delay);
+  }
+  setPos() {
+    if (!this.target) {
+      return
+    }
+
+    var offset = this.target.getBoundingClientRect()
+
+    this.$el.css({
+      left: offset.left + (offset.width - this.$el[0].offsetWidth) / 2,
+      top: offset.top - this.$el[0].offsetHeight
+    })
+  }
 }
 
+var tooltip = new Tooltip()
 
 $('[title]')
   .on('mouseenter', function (e) {
-    target = e.target
+    var target = e.target
+    tooltip.target = target
+
     if (target.title) {
       $(this).attr('tooltip', target.title)
       target.title = ''
     }
 
     var title = $(this).attr('tooltip')
-
-    if (title) {
-      tooltip.html(title).show()
-      setPos()
-    }
-
+    tooltip.show(title)
   })
   .on('mouseleave', function (e) {
     tooltip.hide()
-    target = null
   })
-
 
 $('body')
   .on('scroll', function (e) {
-    setPos()
+    tooltip.setPos()
   })

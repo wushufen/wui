@@ -11,6 +11,7 @@
   border-radius: 5px;
   color: #fff;
   box-shadow: 3px 5px 15px #666; // filter: drop-shadow(5px 5px 5px #666);
+  transition: .3s;
   &:after {
     content: "";
     position: absolute;
@@ -21,5 +22,8 @@
     border: solid .75ex transparent;
     border-top-color: #333; // border-top-color: rgba(0, 0, 0, 0.5);
     border-bottom: 0;
+  }
+  &.hide {
+    opacity: 0;
   }
 }

@@ -1,2 +1,3 @@
 import './wui.less'
-import './wui.js'
+import wui from './wui.js'
+export default wui
