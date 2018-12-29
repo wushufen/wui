@@ -108,7 +108,7 @@ html {
                   <li>月</li>
                 </ul>
                 <ol>
-                  <li v-for="item in 30" :key="item">{{item}}</li>
+                  <li v-for="item in 12" :key="item">{{item}}</li>
                 </ol>
               </div>
               <div class="day">
@@ -157,7 +157,10 @@ html {
           </div>
           <h3>toast</h3>
           <div class="panel">
-            <div class="toast">this is a toast</div>
+            <div class="toast">
+              <i class="icon-setting" style="color:red"></i>
+              this is a toast
+            </div>
             <button @click="wui.toast('Im a toast')">click me</button>
           </div>
           <h3>layout</h3>
