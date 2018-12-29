@@ -153,8 +153,7 @@ html {
           </div>
           <h3>tooltip</h3>
           <div class="panel">
-            <div class="tooltip" style="position:relative">tooltip example</div>
-            <button title="this is a button">button</button>
+            <div class="tooltip" title="this is title" style="position:relative">[title]</div>
           </div>
           <h3>toast</h3>
           <div class="panel">
@@ -423,7 +422,6 @@ export default {
   data() {
     vm = this;
     return {
-      input: "",
       value: ""
     };
   },

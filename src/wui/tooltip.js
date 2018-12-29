@@ -27,8 +27,10 @@ $('[title]')
 
     var title = $(this).attr('tooltip')
 
-    tooltip.html(title).show()
-    setPos()
+    if (title) {
+      tooltip.html(title).show()
+      setPos()
+    }
 
   })
   .on('mouseleave', function (e) {
