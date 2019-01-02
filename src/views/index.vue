@@ -94,13 +94,14 @@ html {
         <div class="layout-content">
           <h3>datepicker</h3>
           <div class="panel">
-            <div class="date">
+            <input type="date" v-model="value" placeholder="date">
+            <div class="datepicker">
               <div class="year">
                 <ul>
                   <li>年</li>
                 </ul>
                 <ol>
-                  <li v-for="item in 99" :key="item">{{'20'+item}}</li>
+                  <li v-for="item in 20" v-if="item>9" :key="item">{{'20'+item}}</li>
                 </ol>
               </div>
               <div class="month">
@@ -108,6 +109,8 @@ html {
                   <li>月</li>
                 </ul>
                 <ol>
+                  <li class="prev">11</li>
+                  <li class="prev">12</li>
                   <li v-for="item in 12" :key="item">{{item}}</li>
                 </ol>
               </div>
@@ -122,7 +125,11 @@ html {
                   <li>六</li>
                 </ul>
                 <ol>
-                  <li v-for="item in 30" :key="item">{{item}}</li>
+                  <li class="prev">29</li>
+                  <li class="prev">30</li>
+                  <li class="prev">31</li>
+                  <li v-for="item in 30" :class="{current:item==15}">{{item}}</li>
+                  <li class="next" v-for="item in 9">{{item}}</li>
                 </ol>
               </div>
               <div class="hour">
@@ -130,7 +137,12 @@ html {
                   <li>时</li>
                 </ul>
                 <ol>
-                  <li v-for="item in 24" :key="item">{{item}}</li>
+                  <li class="prev">22</li>
+                  <li class="prev">23</li>
+                  <li v-for="item in 24" :key="item">{{item-1|p0}}</li>
+                  <li class="next">00</li>
+                  <li class="next">01</li>
+                  <li class="next">02</li>
                 </ol>
               </div>
               <div class="minute">
@@ -138,7 +150,7 @@ html {
                   <li>分</li>
                 </ul>
                 <ol>
-                  <li v-for="item in 60" :key="item">{{item}}</li>
+                  <li v-for="item in 60" :key="item">{{item|p0}}</li>
                 </ol>
               </div>
               <div class="second">
@@ -146,7 +158,7 @@ html {
                   <li>秒</li>
                 </ul>
                 <ol>
-                  <li v-for="item in 60" :key="item">{{item}}</li>
+                  <li v-for="item in 60" :key="item">{{item|p0}}</li>
                 </ol>
               </div>
             </div>
@@ -431,6 +443,11 @@ export default {
       wui: wui,
       value: ""
     };
+  },
+  filters: {
+    p0(value) {
+      return value < 10 ? "0" + value : value;
+    }
   },
   methods: {
     load() {}

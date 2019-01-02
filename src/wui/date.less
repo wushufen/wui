@@ -1,52 +1,78 @@
-.date {
-  display: inline-flex;
+.datepicker {
+  display: table;
+  min-width: 250px;
   font-size: 12px;
   background: #fff;
   color: #555;
   border: 1px solid #f7f7f7;
   border-radius: 2px;
   box-shadow: 3px 5px 10px rgba(100, 100, 100, 0.5);
-  ul,
-  ol {
-    clear: both;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin: 0 .25ex;
-    li {
-      height: 2em;
-      line-height: 2;
-      padding: 0 .25ex;
-      text-align: center;
-      cursor: pointer;
-    }
-  }
-  ul {
-    color: #888;
-  }
-  ol {
-    overflow: auto;
-    height: 12em;
-  }
-  .year {}
-  .month {
+  user-select: none;
+  >div {
+    display: table-cell;
+    vertical-align: top;
+    ul,
     ol {
-      border-right: 1px solid #ddd;
+      clear: both;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        height: 2em;
+        line-height: 2;
+        min-width: 2em;
+        padding: 0 .25em;
+        text-align: center;
+        cursor: pointer;
+        &.prev {
+          color: #ddd;
+        }
+        &.current {
+          color: #0af;
+        }
+        &.next {
+          color: #ddd;
+        }
+        &.today {
+          position: relative;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 4px;
+            height: 4px;
+            border-radius: 9px;
+            background: #0af;
+          }
+        }
+      }
     }
-  }
-  .day {
-    width: 14em;
-    ol {}
-    li {
-      float: left;
-      width: 14.285714285714286%;
+    ul {
+      color: #888;
     }
-  }
-  .hour {
     ol {
-      border-left: 1px solid #ddd;
+      overflow: auto;
+      height: 12em;
+    }
+    &.month {
+      ol {
+        border-right: 1px solid #ddd;
+      }
+    }
+    &.day {
+      width: 14.5em;
+      padding: 0 .25em;
+      li {
+        min-width: auto;
+        float: left;
+        width: 14.285714%;
+      }
+    }
+    &.hour {
+      ol {
+        border-left: 1px solid #ddd;
+      }
     }
   }
-  .minute {}
-  .second {}
 }

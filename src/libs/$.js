@@ -3,6 +3,7 @@
 
 $('selector')
     .each()
+    .index()
     .closest()
     .find()
     .parent()
@@ -70,6 +71,16 @@ $('selector')
         delayTime ? setTimeout(deal, delayTime) : deal()
 
         return this
+    }
+    $.fn.index = function (selector) {
+        var index = -1
+        var el = this[0]
+        this.parent().children().each(function (i, item) {
+            if (this == el) {
+                index = i
+            }
+        })
+        return index
     }
     $.fn.closest = function (selector) {
         var _els = $(selector)
@@ -167,8 +178,8 @@ $('selector')
         })
     }
     $.fn.css = function (arg, val) {
-        var item = this[0]
-        if (!item) return
+        var el = this[0]
+        if (!el) return
 
         if (val !== undefined) {
             var key = arg
@@ -180,11 +191,13 @@ $('selector')
             return this.each(function () {
                 var style = this.style
                 for (var name in arg) {
+
                     var value = arg[name]
-                    var cssNumber = /^(columnCount|fillOpacity|flexGrow|flexShrink|fontWeight|lineHeight|opacity|order|orphans|widows|zIndex|zoom)$/i
-                    if (!isNaN(value) && !name.replace(/-/g, '').match(cssNumber)) {
+                    var cssNumber = /^(top|bottom|left|right|(min|max)?(width|height)|border.+width|margin.+|padding.+|fontSize|backgroundPosition.)$/i
+                    if (!isNaN(value) && name.replace(/-/g, '').match(cssNumber)) {
                         value += 'px'
                     }
+
                     style['-webkit-' + name] = value
                     style['-moz-' + name] = value
                     style['-ms-' + name] = value
@@ -195,7 +208,7 @@ $('selector')
         }
         // get
         else {
-            var style = getComputedStyle(item, null)
+            var style = getComputedStyle(el, null)
             var value =
                 style['-webkit-' + arg] ||
                 style['-moz-' + arg] ||
