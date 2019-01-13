@@ -14,9 +14,7 @@ global.$ = $
 Vue.use(VueRouter)
 new Vue({
   el: '#app',
-  router: new VueRouter({
-    routes
-  }),
+  router: new VueRouter({ routes }),
   render: h => h(app)
 })
 

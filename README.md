@@ -1,17 +1,5 @@
 # wui
 
-wui
-* [title]
-* [affix]
-* toast()
+开发中
 
-* dialog()
-* code()
-* validate()
-* upload()
-* slider
-
-* ajax.js
-* store.js
-* proto.js
-* print.js
+![example](ex.20190113.png)
