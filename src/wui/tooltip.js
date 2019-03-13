@@ -1,4 +1,4 @@
-import $ from "../libs/$";
+import $ from '../libs/$'
 
 class Tooltip {
   constructor() {
@@ -15,7 +15,7 @@ class Tooltip {
     this.setPos()
     setTimeout(() => {
       this.$el.removeClass('hide')
-    }, 1);
+    }, 1)
   }
   hide() {
     this.$el.addClass('hide')
@@ -24,7 +24,7 @@ class Tooltip {
     delay = delay.replace('s', '') * 1000
     setTimeout(() => {
       this.$el.hide()
-    }, delay);
+    }, delay)
   }
   setPos() {
     if (!this.target) {

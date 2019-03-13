@@ -88,7 +88,7 @@
     return data ? fn(data) : fn
   }
 
-  if (typeof module != 'undefined') {
+  if (typeof module !== 'undefined') {
     module.exports = attrtpl
   } else {
     window.attrtpl = attrtpl
