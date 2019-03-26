@@ -1,59 +1,27 @@
-import $ from "../libs/$"
-import attrtpl from "../libs/attrtpl"
+import VM from '../libs/vm'
+import $ from '../libs/$'
 
-class View {
-  constructor(options) {
-    Object.assign(this, options, options.data)
 
-    this.el = $('<div wui>')[0]
-    this.render = attrtpl(options.tpl)
-
-    this.oncreate()
-  }
-  update() {
-    this.el.innerHTML = this.render(this)
-  }
-  show(target) {
-    this.target = target
-    this.date = new Date(target.value)
-
-    this.onshow()
-
-    this.update()
-    $(this.el).appendTo('body').show()
-    this.reposition()
-  }
-  reposition() {
-    if (!this.target) {
-      return
-    }
-
-    var offset = this.target.getBoundingClientRect()
-    $(this.el).css({
-      position: 'fixed',
-      left: offset.left,
-      top: offset.top + offset.height,
-    })
-  }
-  hide() {
-    setTimeout(() => {
-      $(this.el).hide()//.remove()
-    }, 100);
-  }
-  oncreate() { }
-  onshow() { }
-  onhide() { }
-}
-
-var datepicker = new View({
-  tpl: `
-<div class="datepicker">
+var tpl = `
+<div
+  v-show="input"
+  class="datepicker"
+  :style="{position:'fixed', left:left+'px', top:top+'px'}"
+  @mouseenter="mouseenter"
+  @mouseleave="mouseleave"
+>
   <div class="year">
     <ul>
       <li>年</li>
     </ul>
     <ol>
-      <li v-for="item in ys" class="{{y==item?'current':''}}">{{item}}</li>
+      <li
+        v-for="item in ys"
+        :class="{current:y==item}"
+        @click="setYear(item)"
+      >
+        {{item}}
+      </li>
     </ol>
   </div>
   <div class="month">
@@ -61,7 +29,7 @@ var datepicker = new View({
       <li>月</li>
     </ul>
     <ol>
-      <li v-for="item in Ms" class="{{M==item?'current':''}}">{{item+1}}</li>
+      <li v-for="item in Ms" :class="{current:M==item}"">{{item+1}}</li>
     </ol>
   </div>
   <div class="day">
@@ -75,7 +43,7 @@ var datepicker = new View({
       <li>六</li>
     </ul>
     <ol>
-      <li v-for="item in ds">{{item}}</li>
+      <li v-for="item in ds" :class="{current:d==item}"">{{item}}</li>
     </ol>
   </div>
   <div class="hour">
@@ -102,75 +70,113 @@ var datepicker = new View({
       <li v-for="item in ss" class="{{y==item?'current':''}}">{{item}}</li>
     </ol>
   </div>
-</div>`,
+</div>
+`
+var vm = new VM({
+  template: tpl,
   data: {
+    input: null,
+    left: 0,
+    top: 0,
+    isEditing: false,
+    hideTimer: null,
+    date: new Date,
     y: 2018,
     M: 0,
     d: 1,
     h: 0,
     m: 0,
     s: 0,
-    ys: [],
-    Ms: [],
+    ys: [2018],
+    Ms: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
     ds: [],
     hs: [],
     ms: [],
     ss: [],
   },
-  oncreate() {
-    var self = this
-    $('.datepicker').on('mouseenter', function (e) {
-      self.IsEditing = true
-      self.target.focus()
-    })
-    $('.datepicker .year li').on('click', function (e) {
-      console.log($(this).index())
-    })
-  },
-  onshow() {
-    var date = new Date(this.target.value)
-    if (isNaN(date)) {
-      date = new Date
+  computed: {
+    c() {
+      return 0
     }
-
-    this.y = date.getFullYear()
-    this.M = date.getMonth()
-    this.d = date.getDate()
-    this.h = date.getHours()
-    this.m = date.getMinutes()
-    this.s = date.getSeconds()
-
-    this.ys = Array(10).fill(1).map((item, i) => this.y + i - 5)
-    this.Ms = Array(12).fill(1).map((item, i) => i)
-    this.ds = Array(30).fill(1).map((item, i) => i + 1)
-    this.hs = Array(24).fill(1).map((item, i) => i)
-    this.ms = Array(60).fill(1).map((item, i) => i)
-    this.ss = Array(60).fill(1).map((item, i) => i)
-
   },
-  onhide() {
+  methods: {
+    focus(input) {
+      this.input = input
+      this.updatePostion()
+      this.update()
+    },
+    blur() {
+      if (!this.isEditing) {
+        this.input = null
+      }
+    },
+    mouseenter() {
+      this.isEditing = true
+      clearTimeout(this.hideTimer)
+    },
+    mouseleave() {
+      this.isEditing = false
+      this.hideTimer = window.setTimeout(() => {
+        this.input.blur()
+        this.input = null
+      }, 500)
+    },
+    update() {
+      var date = new Date(this.input.value)
+      if (isNaN(date)) {
+        date = new Date
+      }
+      this.date = date
 
-  }
+      var y = this.y = date.getFullYear()
+      var M = this.M = date.getMonth()
+      var d = this.d = date.getDate()
+      var h = this.h = date.getHours()
+      var m = this.m = date.getMinutes()
+      var s = this.s = date.getSeconds()
+
+      this.ys = Array(101).fill(1).map((item, i) => {
+        return i + y - 50
+      })
+
+
+      this.input.focus()
+    },
+    updatePostion() {
+      var offset = this.input.getBoundingClientRect()
+      this.left = offset.left
+      this.top = offset.top + offset.height
+      this.$foceUpdate()
+    },
+  },
+  mounted() {
+  },
 })
+
+
+window.datepicker = vm
+
+
+var view = $('<div>').appendTo('body')[0]
+vm.$mount(view)
 
 
 $('input[type="date"],input[type="_date"]')
   .on('focus', function (e) {
-    datepicker.show(this)
+    vm.focus(e.target)
   })
   .on('blur', function (e) {
-    if (!datepicker.IsEditing) {
-      datepicker.hide()
-    }
+    vm.blur()
   })
 
-$('body')
-  .on('scroll', function (e) {
-    datepicker.reposition()
-  })
+
+$('body').on('scroll', function (e) {
+  if (vm.input) {
+    vm.updatePostion()
+  }
+})
+
 
 $('body').on('DOMNodeInserted', function (e) {
   $('input[type="date"]').attr('type', '_date')
 })
-
-

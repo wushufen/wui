@@ -1,5 +1,5 @@
-import $ from "../libs/$";
-import attrtpl from "../libs/attrtpl";
+import $ from '../libs/$'
+// import attrtpl from '../libs/attrtpl'
 
 var self = {
   $el: $('<div class="_options">').appendTo($('<div>').appendTo('body')),
@@ -93,7 +93,7 @@ $('select')
         // parent.insertBefore(this, self.flat)
         // parent.removeChild(self.flat)
         _this.focus()
-      }, 41);
+      }, 41)
     }
 
   }).on('focus', function () {
