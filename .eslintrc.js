@@ -14,7 +14,9 @@ module.exports = {
   ],
   "extends": [
     "eslint:recommended",
-    // eslint-plugin-vue ***
+    /*
+     * eslint-plugin-vue
+     */
     // "plugin:vue/base",
     "plugin:vue/essential",
     // "plugin:vue/recommended",
@@ -42,7 +44,7 @@ module.exports = {
     // 对象属性多行。要么全换行，要么全不换行
     "object-property-newline": [1, { "allowMultiplePropertiesPerLine": true }],
     // 对象大括号换行。多行时换行
-    "object-curly-newline": [1, { "multiline": true }],
+    "object-curly-newline": [1, { "consistent": true }],
     // 属性引号。必要时才加。关键字加 "keywords": true
     "quote-props": [1, "as-needed", {}],
     // 同名属性
@@ -57,5 +59,12 @@ module.exports = {
     "no-console": [1, { "allow": ["warn", "error"] }]
   },
   "globals": {
+    // wxmp
+    "wx": true,
+    "App": true,
+    "getApp": true,
+    "Page": true,
+    "Component": true,
+    "getCurrentPages": true,
   }
 }

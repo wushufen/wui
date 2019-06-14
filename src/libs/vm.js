@@ -1,1390 +1,796 @@
-! function (window, document) {
-  var SHOW = {
-    uid: false,
-    vid: false,
-    mark: false,
-    dir: false
-  }
+/*! @preserve https://github.com/wusfen/vm */
 
-  var incUid = function (i) {
-    return function () {
-      return ++i
+(function (window, document, undefined) //---
+{
+  var requestAnimationFrame = window.requestAnimationFrame
+  var cancelAnimationFrame = window.cancelAnimationFrame
+  if (!requestAnimationFrame) {
+    requestAnimationFrame = function (fn) {
+      return setTimeout(fn, 0)
     }
-  }(0)
-
-  var incVid = function (i) {
-    return function () {
-      return ++i
-    }
-  }(0)
-
-  function hasOwn(obj, property) { // ie: !node.hasOwnProperty
-    if (obj.nodeType == 1) {
-      return obj[property] // all: !img.hasOwnProperty('onload') 'src' ..
-    } else {
-      return Object.hasOwnProperty.call(obj, property)
+    cancelAnimationFrame = function (timer) {
+      clearTimeout(timer)
     }
   }
 
-  function extend(obj, map) {
-    for (var key in map) {
-      if (!hasOwn(map, key)) continue
-      obj[key] = map[key]
-    }
-    return obj
-  }
-
-  function orExtend(obj, map) {
-    for (var key in map) {
-      if (!hasOwn(map, key)) continue
-      if (key in obj) continue
-      obj[key] = map[key]
-    }
-    return obj
-  }
-
-  function isArray(value) {
-    return value instanceof Array
-  }
-
-  function toArray(list) {
-    if (!list) return []
-    var length = list.length
-    var arr = new Array(length)
-    while (length--) {
-      arr[length] = list[length]
-    }
-    return arr
-  }
-
-  function forEach(list, fn) {
-    if (!list) return
-    for (var i = 0, length = list.length; i < length; i++) {
-      var item = list[i]
-      fn(item, i, i, list)
+  // for array|arrayLike
+  function forEach(arrayLike, fn) {
+    if (!arrayLike) return
+    for (var i = 0; i < arrayLike.length; i++) {
+      var rs = fn.call(this, arrayLike[i], i)
+      if (rs !== undefined) return rs // can break
     }
   }
 
+  // for array|object|string|number => []
   function each(list, fn) {
-    if (list instanceof Array) {
-      forEach(list, fn)
+    var array = [], i = 0, rs
+    if (list instanceof Array || typeof list == 'string') {
+      while (i < list.length) {
+        rs = fn.call(this, list[i], i, i++)
+        array.push(rs)
+      }
+    } else if (typeof list == 'number') {
+      while (i++ < list) {
+        rs = fn.call(this, i, i, i)
+        array.push(rs)
+      }
     } else {
-      var i = 0
       for (var key in list) {
-        if (!hasOwn(list, key)) continue
-        var item = list[key]
-        fn(item, key, i++, list)
+        if (list.hasOwnProperty(key)) {
+          rs = fn.call(this, list[key], key, i++)
+          array.push(rs)
+        }
       }
     }
+    return array // [].map
   }
 
-  var indexOf = [].indexOf ? function (array, value) {
-    return array.indexOf(value)
-  } : function (array, value) {
-    for (var i = 0; i < array.length; i++) {
-      if (array[i] == value) {
-        return i
-      }
-    }
-    return -1
+  // arrayLike => array
+  function toArray(arrayLike, start) {
+    var array = [], i = arrayLike.length
+    while (i--) array[i] = arrayLike[i]
+    return array.slice(start)
   }
 
-  function includes(array, value) {
-    return indexOf(array, value) > -1
-  }
-
-  function remove(array, value) {
-    for (var i = 0; i < array.length; i++) {
-      var item = array[i]
-      if (item === value) {
-        array.splice(i, 1), i--
-        return
-      }
-    }
-  }
-
-  var trim = ''.trim ? function (string) {
-    return string.trim()
-  } : function (string) {
-    return String(string).replace(/^\s+|\s+$/g, '')
-  }
-
-  function toNumber(value) {
-    if (!isNaN(value)) return Number(value)
-    return value
-  }
-
-  function strVars(s, vs) {
-    for (var k in vs) {
-      s = s.replace(RegExp(k, 'g'), vs[k])
-    }
-    return s + '\n'
-  }
-
-  function parseText(text) {
-    return '"' + text
-      // }}(["\]){{ -> "\"text\\"
-      .replace(/(^|}}).*?({{|$)/g, function ($) {
-        return $.replace(/\\/g, '\\\\').replace(/"/g, '\\"')
-      })
-      // \n -> "\n code"
-      .replace(/\r?\n/g, '\\n')
-      // {{exp}} -> "+(exp)+"
-      .replace(/{{(.*?)}}/g, '"+($1)+"')
-      // 
-      +
-      '"'
-  }
-
-  function parseFilter(text) {
-    var arr = text.replace('||', '\r\r').split('|')
-    var exp = arr[0].replace('\r\r', '||')
-    arr.shift()
-    var code = exp
-    forEach(arr, function (item) {
-      if (!item.match(/\(/)) {
-        code = '$FILTER.' + item + '( ' + code + ' )'
-      } else {
-        code = '$FILTER.' + item.replace(/\(/, '( ' + code + ', ')
-      }
+  // item index of array
+  function indexOf(array, item) {
+    var index = -1
+    forEach(array, function (_item, i) {
+      if (item == _item) return index = i
     })
-    return code
+    return index
   }
 
-  function createElement(name) {
-    return document.createElement(name)
+  // array remove item
+  function remove(array, item) {
+    var index = indexOf(array, item)
+    index != -1 && array.splice(index, 1)
   }
 
-  function createTextNode(value) {
-    return document.createTextNode(value)
-  }
-
-  function createComment(value) {
-    return document.createComment(value)
-  }
-
-  function insertBefore(node, target) {
-    if (!node.nodeType && 'length' in node) {
-      forEach(toArray(node), function (node) {
-        insertBefore(node, target)
+  // obj extend ... => obj
+  function assign(obj) {
+    forEach(toArray(arguments, 1), function (arg) {
+      each(arg, function (value, key) {
+        obj[key] = value
       })
-      return
+    })
+    return obj
+  }
+
+  // val => json
+  function toJson(val) {
+    if (val instanceof Array) {
+      return '[' + each(val, toJson).join(', ') + ']'
     }
-    target.parentNode.insertBefore(node, target)
+    if (val && typeof val == 'object') {
+      var items = each(val, function (item, key) {
+        return '"' + key + '": ' + toJson(item)
+      })
+      return '{' + items.join(', ') + '}'
+    }
+    if (typeof val == 'string') {
+      return '"' + val + '"'
+    }
+    return String(val)
   }
 
-  function removeChild(node) {
-    node.parentNode.removeChild(node)
+  // undefined => ''
+  // obj => json
+  function outValue(val) {
+    if (val == undefined) return ''
+    if (typeof val == 'object') return toJson(val)
+    return val
   }
 
-  var parseEl = createElement('div')
-
-  function parseHTML(html) {
-    parseEl.innerHTML = html
-    var el = parseEl.children[0] || parseEl.childNodes[0]
-    parseEl.removeChild(el) // ie8-: 如不移除就清空， el 的子节点也会被清空
-    parseEl.innerHTML = ''
-    return el
+  // selector => node
+  function querySelector(selector) {
+    if (typeof selector == 'string') {
+      var s = selector.substr(1)
+      if (selector.match(/^#/)) {
+        return document.getElementById(s)
+      } else if (selector.match(/^\./)) {
+        return forEach(document.getElementsByTagName('*'), function (el) {
+          if (el.className.match('\\b' + s + '\\b')) {
+            return el
+          }
+        })
+      }
+    }
+    return selector
   }
 
-  function outerHTML(node) {
-    if (node.outerHTML) return node.outerHTML
-    parseEl.innerHTML = ''
-    parseEl.appendChild(node.cloneNode(true))
-    return parseEl.innerHTML
+  // ie: input => onkeyup, focus => onfocusin
+  function ieEventType(type) { // ie
+    return 'on' + ({
+      input: 'keyup',
+      focus: 'focusin',
+      blur: 'focusout'
+    }[type] || type)
   }
 
-  var contains = parseEl.contains ? function (node, child) {
-    return node.contains(child)
-  } : function (node, child) {
-    return node == child || function loop(child) {
-      var parentNode = child.parentNode
-      return parentNode == node || (parentNode && loop(parentNode))
-    }(child)
-  }
-
-  function getElement(selector) {
-    if (!selector) return
-    if (selector.nodeType == 1) return selector
-    if (document.querySelector) return document.querySelector(selector)
-    if (selector.match(/^#/)) return document.getElementById(selector.slice(1))
-  }
-
-  // readonly -> readOnly
-  // innerhtml -> innerHTML
-  var attrPropMap = {
-    // 'text': 'innerText',
-    // 'html': 'innerHTML'
-  }
-  for (var name in createElement('input')) {
-    if (!name.match(/[A-Z]/)) continue
-    attrPropMap[name.toLowerCase()] = name
-  }
-  function attr2prop(name) {
-    return attrPropMap[name] || name
-  }
-
+  // addEventListener
   var on = function () {
     return window.addEventListener ? function (node, type, fn, useCapture) {
       node.addEventListener(type, fn, useCapture)
-
     } : function (node, type, fn) { // ie
-      type = {
-        input: 'keyup',
-        focus: 'focusin',
-        blur: 'focusout'
-      }[type] || type
-
-      node.attachEvent('on' + type, function () {
+      type = ieEventType(type)
+      var __ieFn = fn.__ieFn || function () {
         var event = window.event
         event.target = event.srcElement
         event.preventDefault = function () { event.returnValue = false }
         event.stopPropagation = function () { event.cancelBubble = true }
-        fn(event)
-      })
+        fn.call(this, event)
+      }
+      fn.__ieFn = __ieFn // for off
+      node.attachEvent(type, __ieFn)
     }
   }()
 
+  // removeEventListener
   var off = function () {
-    return window.removeEventListener ? function (node, fn) {
-      node.removeEventListener(fn)
-    } : function (node, fn) {
-      // todo
+    return window.removeEventListener ? function (node, type, fn) {
+      node.removeEventListener(type, fn)
+    } : function (node, type, fn) {
+      type = ieEventType(type)
+      fn = fn ? (fn.__ieFn || fn) : null
+      node.detachEvent(type, fn)
     }
   }()
 
-  var live = function (node, type, fn, useCapture) {
-    // true: 事件捕捉。 focus, blur 等事件不支持冒泡
-    useCapture = 'focus,blur'.match(type) ? true : useCapture
-    on(document, type, function (event) {
-      if (contains(node, event.target)) {
-        fn(event)
-      }
-    }, useCapture)
+  // html => node
+  function parse(html) {
+    parse.el = parse.el || document.createElement('div')
+    parse.el.innerHTML = html
+    var node = parse.el.children[0]
+    parse.el.removeChild(node) // ie
+    return node
   }
 
-  var canSetUidOnTextNode = (function () { // ie8-: false
-    try { return document.createTextNode('').uid = true } catch (e) { }
-  })()
-
-  var isCloneTextNodeAutoConcat = (function () { // ie8-: true
-    var parent = document.createElement('div')
-    var text1 = document.createTextNode('1')
-    var text2 = document.createTextNode('2')
-    parent.appendChild(text1)
-    parent.appendChild(text2)
-    var cloneNode = parent.cloneNode(true)
-    return parent.childNodes.length != cloneNode.childNodes.length
-  })()
-
-
-  // 
-  // 虚拟节点
-  // 
-  function VNode(node, cloneUid) {
-    // VNode(node) -> new VNode(node)
-    if (!(this instanceof VNode)) return new VNode(node, cloneUid)
-
-    // @dev
-    // VNode(uid) -> vnode
-    if (typeof node !== 'object') {
-      return VNode.map[node]
+  // node => vnodeData
+  function getVnodeData(node) {
+    var vnodeData = {
+      nodeType: node.nodeType,
+      tagName: node.tagName,
+      ns: node.namespaceURI,
+      attrs: {}, // attr="value"
+      props: {}, // :prop="value"
+      directives: [] // v-dir.mdfs="value"
     }
+    var attributes = toArray(node.attributes)
+    forEach(attributes, function (attribute) {
+      if (!attribute.specified && attribute.nodeName != 'value') return // ie
+      var attr = attribute.nodeName
+      var value = attribute.nodeValue
 
-    // VNode(node) -> return saved
-    if (!cloneUid) { // !cloneUid: ie会把 node.uid 复制到克隆节点
-      var uid = VNode.getUid(node)
-      if (uid) {
-        return VNode.map[uid]
-      }
-    }
+      // v-bind:title  :title  v-on:click  @click.prevent.stop
+      var m = attr.match(/^(:|@|v-([^.]*))([^.]*)(.*)/)
+      if (m) {
+        // remove directive attr
+        node.removeAttribute(attr)
 
-    // save
-    // VNode(unSavedNode) || VNode(node, cloneUid)
-    var uid = cloneUid || incUid()
-    this.uid = uid
-    this.node = node
-    this.attrs = VNode.getAttrs(node)
-    this.propertys = extend({}, this.attrs)
+        var name = m[2]
+        if (m[1] == ':') name = 'bind'
+        if (m[1] == '@') name = 'on'
+        var arg = m[3]
+        var mdfs = m[4]
 
-    VNode.setUid(node, uid) // node -> uid
-    VNode.map[uid] = this // uid -> vnode
-  }
-  extend(VNode, {
-    map: {}, // uid.key.path: node
-    setUid: function (node, uid) {
-      if (node.nodeType == 1) {
-        node.uid = uid
-        SHOW.uid && node.setAttribute('uid', uid) // @dev
-      } else if (node.nodeType == 3) {
-        if (canSetUidOnTextNode) {
-          node.uid = uid
-        } else { // ie
-          // save on parentNode
-          var parentNode = node.parentNode
-          var map = parentNode.uidNodeMap || (parentNode.uidNodeMap = {})
-          map[uid] = node
+        // "🚩value" => value without "" in runtime code
+        var dir = {
+          raw: attr,
+          expression: value,
+          value: '🚩' + value,
+          name: name,
+          arg: arg,
+          mdfs: mdfs
         }
-      }
-    },
-    getUid: function (node) {
-      if (node.nodeType == 1) {
-        return node.uid
-      } else if (node.nodeType == 3) {
-        if (canSetUidOnTextNode) {
-          return node.uid
-        }
-        var map = node.parentNode.uidNodeMap
-        for (var uid in map) {
-          if (map[uid] == node) {
-            return uid
-          }
-        }
-      }
-    },
-    getAttrs: function (node) {
-      var attrs = {}
-      forEach(node.attributes, function (attribute) {
-        if (attribute.specified || attribute.nodeName == 'value') { // ie || ie7-
-          attrs[attribute.nodeName] = attribute.nodeValue
-        }
-      })
-      return attrs
-    },
-    getDirs: function (node) {
-      // for 等特殊指令通过 dirs[name] 获取
-      // 普通指令遍历获取
-      var dirs = Array()
-      dirs.size = 0 // 通过 size 判断数量
 
-      // ie7: !!toArray ?? for??
-      forEach(toArray(node.attributes), function (attribute) {
-        if (!attribute.specified) return // ie
-
-        var nodeName = attribute.nodeName
-        var nodeValue = attribute.nodeValue
-        if (nodeName == 'for' && !nodeValue.match(/ (in|of) /)) return
-
-        // dir                      v-    .on  .:  @  on    :  click   .mdf.s
-        var m = nodeName.match(/^(?:v-)?(\.on|[.:]|@|[^.:]+):?([^.]+)?(.*)/) || []
-        var name = m[1]
-        if (name == '.') name = 'property'
-        if (name == ':') name = 'property'
-        if (name == 'bind') name = 'property'
-        if (name == '.on') name = 'on'
-        if (name == '@') name = 'on'
-        if (name == 'else-if') name = 'elseif'
-
-        if (name in VNode.prototype) { // 指令就是虚拟节点的方法
-          SHOW.dir || node.removeAttribute(nodeName) // !@dev
-          dirs.size += 1
-
-          var dir = {
-            nodeName: nodeName,
-            name: name,
-            arg: m[2] || '',
-            mdfs: m[3] || '',
-            exp: nodeValue || '""'
-          }
-
-          var $dirs = 'pre,for,if,elseif,else,model,is'.split(',') // 特殊指令
-          if (includes($dirs, name)) {
-            dirs[name] = dir
+        if (name == 'on') {
+          if (value.match(/[=();]/)) {
+            dir.value = '🚩function(){' + value + '}'
           } else {
-            dirs.push(dir)
+            dir.value = '🚩function(){' + value + '.apply(__vm,arguments)}'
           }
-
+        }
+        if (name == 'model') {
+          dir.setModel = '🚩function(value){' + value + '=value; __vm.$render()}'
+        }
+        if (name == 'for') {
+          // (item, i) in list
+          m = value.match(/(?:\(([^,]+),(\S+?)\)|(\S+))\s+(?:in|of)\s+(\S+)/)
+          dir.item = m[1] || m[3]
+          dir.index = m[2] || '$index'
+          dir.list = m[4]
         }
 
-      })
-      return dirs
-    },
-    getSlots: function (node) {
-      var slots = {}
-      'IIF',
-      function loop(node) {
-        forEach(node.children, function (child) {
-          if (child.nodeName.match(/slot/i)) {
-            var name = child.getAttribute('name')
-            slots[name || 'default'] = child
-          }
-          loop(child)
-        })
-      }(node)
-      return slots
-    },
-    getSlotContents: function (node) {
-      var slotContents = {}
-      var childNodes = toArray(node.childNodes)
-      for (var i = 0; i < childNodes.length; i++) {
-        var child = childNodes[i]
-        if (child.nodeType == 1) {
-          var slotName = child.getAttribute('slot')
-          if (slotName) {
-            slotContents[slotName] = child
-            if (child.nodeName.match(/template/i)) {
-              slotContents[slotName] = child.content || toArray(child.childNodes)
-            }
-            remove(childNodes, child), i--
-          }
-        }
-        if (child.nodeType == 3 && !child.nodeValue.match(/\S/)) {
-          remove(childNodes, child), i--
-        }
-      }
-      if (childNodes.length) {
-        slotContents['default'] = childNodes
-      }
-      return slotContents
-    }
-  })
-  // 虚拟节点方法：可以执行的指令
-  VNode.prototype = {
-    pre: null,
-    ref: function (vm, name) {
-      var $refs = vm.$refs || (vm.$refs = {})
-      var node = $refs[name]
-      if (!this.vfor) {
-        if (!node) {
-          $refs[name] = this.node
+        if (/^(for|if)$/.test(name)) {
+          vnodeData.directives[name] = dir
+        } else if (name == 'bind') {
+          vnodeData.props[arg] = '🚩' + value
+        } else {
+          vnodeData.directives.push(dir)
         }
       } else {
-        if (!node) {
-          // ??object
-          $refs[name] = []
+        vnodeData.attrs[attr] = value
+      }
+    })
+    return vnodeData
+  }
+
+  // vnodeData + childNodes => vnode tree
+  function createVnode(vnodeData, childNodes) {
+    var vnode = assign({
+      tagName: '',
+      attrs: {},
+      props: {},
+      directives: [],
+      childNodes: []
+    }, vnodeData)
+    vnode.tagName = vnode.tagName.toLowerCase()
+
+    // ['child', [for...]] => ['child', ...]
+    // 'text' => {nodeType:3, nodeValue:'text'}
+    forEach(childNodes, function (child) {
+      if (child instanceof Array) {
+        forEach(child, function (child) {
+          if (typeof child != 'object') {
+            child = { nodeType: 3, nodeValue: String(child) }
+          }
+          vnode.childNodes.push(child)
+        })
+      } else {
+        if (typeof child != 'object') {
+          child = { nodeType: 3, nodeValue: String(child) }
         }
-        if (!$refs[name][this.index]) {
-          $refs[name][this.index] = this.node
-        }
+        vnode.childNodes.push(child)
       }
-    },
-    autofocus: function () {
-      if (this.focused) return
-      var self = this
-      setTimeout(function () { // ie?
-        self.node.focus()
-      }, 411)
-      this.focused = true
-    },
-    property: function (name, value) {
-      var propertys = this.propertys
-      // get
-      if (arguments.length == 1) {
-        // :value="object"
-        return name in propertys ? propertys[name] : this.node[name]
-      }
-      // set
-      if (name == 'class') {
-        this.setClass(value)
-        return
-      }
+    })
+
+    return vnode
+  }
+
+  // vue createElement => createVnode => vnode
+  function createElement(tagName, data, childNodes) {
+    if (!childNodes) {
+      childNodes = data
+      data = {}
+    }
+    data = assign({
+      tagName: tagName,
+      nodeType: 1
+    }, data)
+    return createVnode(data, childNodes)
+  }
+
+  // vnode tree => node tree
+  function createNode(vnode) {
+    if (vnode.nodeType == 3) {
+      return document.createTextNode(vnode.nodeValue)
+    }
+
+    // createElement namespaceURI
+    var tagName = vnode.tagName
+    var node = vnode.ns && document.createElementNS
+      ? document.createElementNS(vnode.ns, tagName)
+      : document.createElement(tagName)
+
+    // attrs
+    each(vnode.attrs, function (value, name) {
+      node.setAttribute(name, value)
+      if (name == 'class') node.className = value // ie
+    })
+
+    // directives.bind
+    each(vnode.directives, function (directive) {
+      var name = directive.name
+      var bind = VM.options.directives[name].bind
+      bind(node, directive, vnode)
+    })
+
+    // props
+    updateProps(node, vnode.props)
+
+    // childNodes
+    forEach(vnode.childNodes, function (vchild) {
+      var child = createNode(vchild)
+      node.appendChild(child)
+    })
+
+    node.vnode = vnode // dev
+    return node
+  }
+
+  // *:props
+  function updateProps(node, props) {
+    each(props, function (value, name) {
       if (name == 'style') {
-        this.setStyle(value)
+        assign(node.style, value)
         return
       }
-      // vnode change?
-      if (propertys[name] === value && name in propertys) return value
-      return propertys[name] = this.node[name] = value
-    },
-    text: function (value) {
-      this.property('innerText', value)
-    },
-    html: function (value) {
-      this.property('innerHTML', value)
-    },
-    setStyle: function (map) {
-      var style = this.style = this.style || {}
-      for (var key in map) {
-        var value = map[key]
-        if (style[key] === value) continue
-        try { // ie
-          style[key] = this.node.style[key] = value
-        } catch (e) { }
-      }
-    },
-    hasClass: function (name) {
-      return this.node.className.match(RegExp('(^| )' + name + '( |$)', 'i'))
-    },
-    addClass: function (name) {
-      this.node.className += ' ' + name.replace(/, ?/g, ' ')
-    },
-    removeClass: function (name) {
-      this.node.className = this.node.className.replace(RegExp('(^| )' + name + '(?= |$)', 'ig'), '')
-    },
-    setClass: function (map) {
-      var classes = this.classes = this.classes || {}
-      for (var name in map) {
-        var bool = map[name]
-        if (bool && !classes[name]) {
-          this.addClass(name)
-          classes[name] = true
-        }
-        if (!bool && classes[name]) {
-          this.removeClass(name)
-          classes[name] = false
-        }
-      }
-    },
-    show: function (value) {
-      this.setStyle({ display: value ? '' : 'none' })
-    },
-    hide: function (value) {
-      this.show(!value)
-    },
-    if: function (value, fn) {
-      if (value) {
-        this.insert()
-        fn()
-      } else {
-        this.remove()
-      }
-      return {
-        value: value,
-        elseif: this['elseif'],
-        else: this['else']
-      }
-    },
-    elseif: function (vnode, value, fn) {
-      if (this.value) {
-        vnode.remove()
-      } else if (value) {
-        vnode.insert()
-        fn()
-      } else {
-        vnode.remove()
-      }
-      return {
-        value: this.value || value,
-        else: this['else']
-      }
-    },
-    else: function (vnode, fn) {
-      if (this.value) {
-        vnode.remove()
-      } else {
-        vnode.insert()
-        fn()
-      }
-    },
-    mark: function () {
-      if (this.markNode) return
-      var node = this.node
-      var mark = document.createTextNode('')
-      if (SHOW.mark || !canSetUidOnTextNode) {
-        var mark = document.createComment(this.uid) // @dev
-        // var mark = document.createComment(node.outerHTML) // @dev
-      }
-      insertBefore(mark, node)
-      this.markNode = mark
-      mark.node = node // @dev
-
-    },
-    remove: function () {
-      if (this.vcomponent) {
-        this.vcomponent.remove()
-        return
-      }
-      var node = this.node
-      var parentNode = node.parentNode
-      if (parentNode && parentNode.nodeType == 1) {
-        this.mark()
-        parentNode.removeChild(node)
-      }
-    },
-    insert: function (toNode) {
-      if (this.vcomponent) {
-        this.vcomponent.insert()
-        return
-      }
-      var node = this.node
-      var parentNode = node.parentNode
-      if (!parentNode || parentNode.nodeType != 1) {
-        var markNode = toNode || this.markNode || this.vfor.markNode
-        insertBefore(node, markNode)
-      }
-    },
-    clone: function (key) {
-      var clones = this.clones = this.clones || {}
-      var vnode = clones[key]
-      if (vnode) return vnode // cache
-
-      // clone
-      var vfor = this
-      var forNode = this.node
-      var cloneNode = forNode.cloneNode(true)
-
-      // 克隆元素标识，使能通过原节点标识找到克隆节点
-      // forNodeUid.key
-      'IIF',
-      function loop(forNode, cloneNode) {
-        var uid = VNode.getUid(forNode)
-        // save cloneNode
-        uid && VNode(cloneNode, uid + '.' + key) // **!!!**
-
-        var forChildNodes = forNode.childNodes
-        var childNodes = cloneNode.childNodes
-        for (var i = 0; i < forChildNodes.length; i++) {
-          loop(forChildNodes[i], childNodes[i])
-        }
-      }(forNode, cloneNode)
-
-      vnode = VNode(cloneNode)
-      vnode.vfor = vfor // vnode.$forNone.mackNode -> insert node
-
-      // cache
-      clones[key] = vnode
-
-      return vnode
-    },
-    /*
-        forKeyPath = vm.$VN.forKeyPath
-        for(key in list){
-            vm.$VN.forKeyPath += '.' + key
-        }
-        vm.$VN.forKeyPath = forKeyPath
-
-        vm.$VN(uid){
-            return VNode.map[uid + vm.$VN.forKeyPath]
-        }
-        */
-    for: function (vm, list, fn) {
-      var vfor = this.vis || this
-
-      // this.mark()
-      vfor.remove()
-
-      var forKeyPath = vm.$VN.forKeyPath // **!!!**
-      each(list, function (item, key, index) {
-        // clone
-        vm.$VN.forKeyPath = forKeyPath + '.' + key // **!!!**
-        var vnode = vfor.clone(key)
-        vnode.index = index
-
-        // 当 for, if 同时存在，for insert, if false remove, 会造成dom更新
-        if (!vnode.isIf) {
-          vnode.insert()
-        }
-
-        fn(item, key, index)
-
-        // console.log(vnode.property('key'))
-      })
-      vm.$VN.forKeyPath = forKeyPath // **!!!**
-
-      // remove
-      var clones = vfor.clones
-      for (var key in clones) {
-        var vnode = clones[key]
-        if (!list || !(key in list)) {
-          vnode.remove()
-        }
-      }
-    },
-    on: function (type, mdfs, fn) {
-      fn = arguments[arguments.length - 1] // mdfs?
-      this.eventMap = this.eventMap || {}
-
-      var key = type + mdfs // click.mdfs.ctrl
-      var handler = this.eventMap[key]
-      // 保存||更新 handler
-      this.eventMap[key] = fn //旧的fn有旧的闭包
-      if (handler) return
-
-      // 首次注册
-      var vnode = this
-      var node = this.node
-      on(node, type, function (event) {
-        // mfds
-        if (mdfs.match(/\.prevent\b/)) event.preventDefault()
-        if (mdfs.match(/\.stop\b/)) event.stopPropagation()
-        if (mdfs.match(/\.self\b/) && event.target != node) return
-
-        if (mdfs.match(/\.ctrl\b/) && !event.ctrlKey) return
-        if (mdfs.match(/\.alt\b/) && !event.altKey) return
-        if (mdfs.match(/\.shift\b/) && !event.shiftKey) return
-        if (mdfs.match(/\.meta\b/) && !event.metaKey) return
-
-        if (mdfs.match(/\.enter\b/) && event.keyCode != 13) return
-
-        var m = mdfs.match(/\.(\d+)/)
-        if (m && event.keyCode != m[1]) return
-
-        // call handler
-        vnode.eventMap[key].call(vnode, event) // vnode.on bind vnode
-      })
-    },
-    model: function (obj, key, mdfs, vm) {
-      var vnode = this
-      var node = this.node
-      var value = obj[key]
-
-      // m -> v
-      'IIF',
-      function updateView(i) {
-        if (!this._ieDelay && document.readyState != 'complete' && i < 5) { // ie: 刷新页面表单还保留上次的值
-          setTimeout(function () {
-            updateView(++i)
-          }, 41)
-          return
-        }
-        this._ieDelay = true
-
-
-        // checkbox
-        if (node.type == 'checkbox') {
-          // array
-          if (value instanceof Array) {
-            var has = includes(value, vnode.property('value'))
-            vnode.property('checked', has)
-          }
-          // boolean
-          else {
-            vnode.property('checked', value)
-          }
-        }
-        // radio
-        else if (node.type == 'radio') {
-          var eq = vnode.property('value') === value // ==?
-          vnode.property('checked', eq)
-        }
-        // select
-        else if (node.nodeName.match(/^select$/i)) {
-          setTimeout(function () { //wait option:value
-            var hasSelected = false
-            forEach(node.options, function (option) {
-              var voption = VNode(option)
-
-              // array [multiple]
-              if (value instanceof Array) {
-                var bool = includes(value, voption.property('value'))
-                voption.property('selected', bool)
-              }
-              // one
-              else {
-                vnode.property('value', value)
-
-                if (voption.property('value') === value) { // ==?
-                  voption.property('selected', true)
-                  hasSelected = true
-                } else {
-                  voption.property('selected', false) // !ie
-                }
-              }
-            })
-            if (!(value instanceof Array) && !hasSelected) { // ie
-              node.selectedIndex = -1
-            }
-          }, 1)
-        }
-        // input textarea ..
-        else {
-          // if ((document.hasFocus && document.hasFocus() )&& document.activeElement == node) return
-          vnode.property('value', value)
-        }
-      }(0)
-
-      // v -> m
-      var type = 'input'
-      if (mdfs.match('.lazy')) type = 'change'
-      if (node.type == 'checkbox') type = 'click'
-      if (node.type == 'radio') type = 'click'
-      if (node.nodeName.match(/^select$/i)) type = 'change'
-
-      this.on(type, '.model', function (e) {
-        var node = this.node
-
-        // checkbox
-        if (node.type == 'checkbox') {
-          // array
-          if (value instanceof Array) {
-            var array = value
-            if (node.checked) {
-              this.propertys.checked = true
-              array.push(this.property('value'))
-            } else {
-              this.propertys.checked = false
-              remove(array, this.property('value'))
-            }
+      if (name == 'class') {
+        each(value, function (bool, key) {
+          var className = node.className.replace(RegExp('(?:^|\\s+)' + key, 'g'), '')
+          if (bool) {
+            node.className = className ? className + ' ' + key : key
           } else {
-            obj[key] = this.propertys.checked = node.checked
+            node.className = className
           }
-        } else if (node.type == 'radio') {
-          node.checked = true // ie7-: 没有name属性无法选中 ![name] -> click false
-          obj[key] = this.property('value')
+        })
+        return
+      }
+      var oldValue = node[name]
+      if (value != oldValue) {
+        node[name] = value
+        // polygon:points ...
+        if (typeof oldValue == 'object') {
+          node.setAttribute(name, value)
         }
-        // select
-        else if (node.nodeName.match(/^select$/i)) {
-          forEach(node.options, function (option) {
-            var voption = VNode(option)
-            if (value instanceof Array) {
-              if (option.selected) {
-                voption.propertys.selected = true
-                if (!includes(value, voption.property('value'))) {
-                  value.push(voption.property('value'))
-                }
-              } else {
-                voption.propertys.selected = false
-                remove(value, voption.property('value'))
-              }
-            } else {
-              if (option.selected) {
-                vnode.property('value', voption.property('value'))
-                voption.propertys.selected = true
-                obj[key] = voption.property('value')
-              } else {
-                voption.propertys.selected = false
-              }
-            }
-          })
+      }
+    })
+  }
+
+  // node => render() => vnode
+  function compile(node) {
+    /*
+    createVnode({tagName:'div'}, [
+      'textNode', // textNode
+      createVnode({tagName:'ul'}, [
+        each(list, function(item, index){ // v-for
+          return createVnode({tagName:'li'}, [ loop ])
+        })
+      ]),
+      bool? createVnode({tagName:'span'}, [ loop ]) : '', // v-if
+      function component(){ // component
+        return createVnode()
+      }
+    ])
+    */
+    var code = ''
+    loop(node)
+    function loop(node) {
+      if (!code.match(/^$|\[\s*$/)) code += ',\n' // [childNode, ..]
+
+      // parse element
+      if (node.nodeType == 1) {
+        var vnodeData = getVnodeData(node)
+        var vnodeJson = toJson(vnodeData)
+        var dirs = vnodeData.directives
+        vnodeJson = vnodeJson.replace(/"🚩((?:\\.|.)*?)"/g, '$1') // rutime value without ""
+
+        // for if?
+        // each(, ()=> bool? createVnode(, [ loop ]): "" )
+        if (dirs['for']) {
+          var dir = dirs['for']
+          code += 'this.__each(' + dir.list + ',function(' + dir.item + ',' + dir.index + '){return '
         }
-        // input textarea ..
-        else {
-          var nodeValue = node.value
-          if (mdfs.match('.trim')) {
-            nodeValue = trim(nodeValue)
-          }
-          if (mdfs.match('.number')) {
-            nodeValue = toNumber(nodeValue)
-          }
-          obj[key] = this.propertys.value = nodeValue
+        // if
+        // bool? createVnode(,,[..loop..]): ""
+        if (dirs['if']) {
+          code += dirs['if'].expression + '? '
         }
 
-        // update view
-        vm.$render()
-      })
-    },
-    is: function (vm, name) {
-      var vis = this.vis || this
-      if (!vis.vcomponent) {
-        // new component
-        var options = VM.optionsMap[name]
-        if (!options) {
-          setTimeout(function () { throw name + ' is not a component' }, 1)
-          return
-        }
-        var component = VM(options)
+        // createVnode
+        code += 'this.__createVnode(' + vnodeJson + ', [\n'
 
-        // vis <-> vcomponent
-        var vcomponent = VNode(component.$el)
-        vcomponent.component = component
-        vis.vcomponent = vcomponent
-        vcomponent.vis = vis
-
-        // slots
-        var slots = VNode.getSlots(vcomponent.node)
-        var slotContents = VNode.getSlotContents(vis.node)
-        each(slots, function (slot, name) {
-          var content = slotContents[name] || slot.childNodes
-          insertBefore(content, slot)
-          removeChild(slot)
+        // childNodes
+        var childNodes = toArray(node.childNodes)
+        forEach(childNodes, function (childNode) {
+          loop(childNode)
         })
 
-        // $mount && $render
-        component.$mount(vis.node)
-
-        // component 第一次不能 $parent.$render , 父组件还没运行完
-        // 那么 for 指令又会运行导致 forKeyPath 错误
-        // !!! for is $render $parent.$render
-        //  -> for ... => xxx forKeyPath => xxx uid.0.0
-        // $parent <-> $children
-        component.$parent = vm
-        vm.$children = vm.$children || []
-        vm.$children.push(component)
+        // end createVnode
+        code += '])\n'
+        // end if
+        if (dirs['if']) code += ': ""\n' //: ""
+        // end for
+        if (dirs['for']) code += '})\n'
       }
+      // parse textNode
+      else if (node.nodeType == 3) {
+        // str{{exp}}in"g  =>  "str" +(exp)+ "in\"g"
+        var nodeValue = node.nodeValue.replace(/\s+/g, ' ')
+          .replace(/(^|}}).*?({{|$)/g, function (str) {
+            // \ => \\  " => \"
+            return str.replace(/\\/g, '\\\\').replace(/"/g, '\\"')
+          })
+          .replace(/{{(.*?)}}/g, '"+__outValue($1)+"')
+        code += '"' + nodeValue + '"'
+      }
+      // parse commentNode ...
+      else {
+        code += '""' // empty textNode
+      }
+    }
 
-      var vcomponent = vis.vcomponent
-      var component = vcomponent.component
+    var render = Function('data', 'var __vm=this;with(__vm){return ' + code + '}')
+    return render
+  }
 
-      // props
-      extend(component, vis.propertys)
-      // render
-      // component.$render() // $render by $parent.$children..$render
+  // node => dom diff update
+  function diff(node, vnode, parentNode) {
+    if (node && (!node.parentNode || node.parentNode.nodeType != 1)) { // out of document
+      return
+    }
+    // console.log(node && node.tagName, vnode && vnode.tagName)
+
+    parentNode = parentNode || node.parentNode
+    var newNode
+    // +
+    if (!node && vnode) {
+      newNode = createNode(vnode)
+      parentNode.appendChild(newNode)
+    }
+    // -
+    else if (node && !vnode) {
+      parentNode.removeChild(node)
+    }
+    // +- *nodeType || *tagName
+    else if (String(node.tagName).toLowerCase() != String(vnode.tagName)) {
+      newNode = createNode(vnode)
+      parentNode.replaceChild(newNode, node)
+    }
+    // *text
+    else if (node.nodeType == 3 && node.nodeValue != vnode.nodeValue) {
+      node.nodeValue = vnode.nodeValue
+    }
+    // *node
+    else if (node.tagName && vnode.tagName) {
+      // directives.update
+      each(vnode.directives, function (directive) {
+        var name = directive.name
+        var update = VM.options.directives[name].update
+        update && update(node, directive, vnode)
+      })
+      // *props
+      if (node.tagName && vnode.tagName) {
+        updateProps(node, vnode.props)
+      }
+      // childNodes
+      var childNodes = toArray(node.childNodes)
+      var newChildren = vnode.childNodes
+      var maxLength = Math.max(childNodes.length, newChildren.length)
+      for (var i = 0; i < maxLength; i++) {
+        diff(childNodes[i], newChildren[i], node)
+      }
     }
   }
 
+  // fn => fn() vm.$render()
+  function injectRender(vm, fn) {
+    var $fn = function () {
+      var restoreAsyncs = injectRenderToAsyncs(vm) // inject render to setTimout..
+      var rs = fn.apply(this, arguments)
+      restoreAsyncs() // restore setTimout..
+      vm.$render() // trigger render
+      return rs
+    }
+    return $fn
+  }
 
-  // 
-  // 视图模型： 编译，生成dom，更新dom
-  // 
+  // setTimout(fn) => fn() vm.$render()
+  function injectRenderToAsyncs(vm) {
+    var setTimeout = window.setTimeout
+    window.setTimeout = function (fn, delay) {
+      var args = toArray(arguments, 2)
+      return setTimeout(function () {
+        injectRender(vm, fn).apply(this, args)
+      }, delay)
+    }
+
+    var setInterval = window.setInterval
+    window.setInterval = function (fn, delay) {
+      var args = toArray(arguments, 2)
+      return setInterval(function () {
+        injectRender(vm, fn).apply(this, args)
+      }, delay)
+    }
+
+    var XMLHttpRequest = window.XMLHttpRequest || window.ActiveXObject
+    var XMLHttpRequest_prototype = XMLHttpRequest.prototype
+    var send = XMLHttpRequest_prototype.send
+    XMLHttpRequest.prototype.send = function () {
+      var xhr = this
+      each(xhr, function (callback, name) {
+        if (name.match(/^on/) && typeof callback == 'function') {
+          xhr[name] = injectRender(vm, callback)
+        }
+      })
+      return send && send.apply(xhr, arguments)
+    }
+
+    var Promise = window.Promise
+    if (Promise) {
+      var Promise_prototype = Promise.prototype
+      var then = Promise_prototype.then
+      var _catch = Promise_prototype['catch']
+      var _finally = Promise_prototype['finally']
+      Promise_prototype.then = function (fn) {
+        Promise_prototype.then = then // !!??
+        return then.call(this, injectRender(vm, fn))
+      }
+      Promise_prototype['catch'] = function (fn) {
+        Promise_prototype['catch'] = _catch // !!??
+        return _catch.call(this, injectRender(vm, fn))
+      }
+      Promise_prototype['finally'] = function (fn) {
+        Promise_prototype['finally'] = _finally // !!??
+        return _finally.call(this, injectRender(vm, fn))
+      }
+    }
+
+    return function restoreAsyncs() {
+      window.setTimeout = setTimeout
+      window.setInterval = setInterval
+      XMLHttpRequest_prototype.send = send
+      if (Promise) {
+        Promise_prototype.then = then
+        Promise_prototype['catch'] = _catch
+        Promise_prototype['finally'] = _finally
+      }
+    }
+  }
+
+  // VM class
   function VM(options) {
-    // VM() -> new VM()
-    if (!(this instanceof VM)) return new VM(options)
-
-    // options
-    options = options || {}
-    this.$options = options
+    var vm = this
+    vm.$options = options || (options = {})
 
     // data
     var data = options.data
-    if (typeof options.data === 'function') {
-      data = options.data()
-    }
-    VM.setData(this, data)
-    this.$data = data
+    if (typeof data == 'function') data = data.call(vm) // compoment data()
+    assign(vm, data)
 
     // methods
-    VM.setData(this, options.methods)
+    each(options.methods, function (fn, key) {
+      vm[key] = injectRender(vm, fn)
+    })
 
-    // computed
-    VM.setData(this, options.computed)
-
-    // el
-    var el = getElement(options.el)
-    if (!options.el && !options.template) { // default node
-      el = document.body  // ie: !html
-    }
-    if (el && el.computed) {
-      el = null
-      options.template = '<b>-_-</b>'
-    }
-    if (el) {
-      el.computed = true
-    }
-    // fix ie8-: <component>
-    if (el) {
-      // ie8-: component('tag') -> createElement('tag') -> <tag>ok</tag>
-      el.innerHTML = el.innerHTML
-    }
-
-    // template
-    var template = options.template || (el ? outerHTML(el) : '<b>^_^</b>')
-    // this.$template = template // @dev
+    // hooks
+    each(options, function (fn, key) {
+      if (typeof fn == 'function') {
+        vm[key] = injectRender(vm, fn)
+      }
+    })
 
     // $el
-    this.$el = el ? el : parseHTML(template)
-
-    // compile render
-    this.$foceUpdate = VM.compile(this.$el)
-
-    this.$VN = function (uid) {
-      var vnode = VNode.map[uid + this.$VN.forKeyPath]
-      return vnode.vcomponent || vnode
+    if (options.el) {
+      vm.$el = querySelector(options.el)
     }
-    this.$vid = incVid()
-    SHOW.vid && this.$el.setAttribute('vid', this.$vid)
-    this.$VN.forKeyPath = ''
-    this.$render = function (vms) {
-      var renderTimeStart = new Date
-      var self = this
 
-      // timeGap
-      var timeGap = 1000 / 24
-      var now = +new Date
-      var lastTime = this.$render.lastTime || 0
-      if (now - lastTime < timeGap) {
-        clearTimeout(this.$render.timer)
-        this.$render.timer = setTimeout(function () {
-          self.$render(vms)
-        }, timeGap)
-        return
-      }
-      this.$render.lastTime = now
+    // tpl
+    var tplNode = vm.$el
+    if (options.template) {
+      tplNode = parse(options.template)
+    }
 
-      // component tree updated
-      vms = vms || []
-      if (includes(vms, this)) return
-      vms.push(this.$vm || this) // ||proxy
+    // render: options.render || compile
+    var render = options.render
+    if (!render) {
+      tplNode = tplNode || {}
+      render = options.render = compile(tplNode)
+    }
 
-      // update self
-      self.$foceUpdate()
+    // force render
+    vm.$forceUpdate = function () {
+      var vnode = render.call(vm, createElement)
+      vm.$el && diff(vm.$el, vnode)
+      options.__vnode = vnode // dev
+    }
+    // async render
+    vm.$render = function () {
+      // update computed
+      // each(options.computed, function (fn, key) {
+      //   vm[key] = fn.call(vm)
+      // })
 
-      // update component tree
+      // trigger watch
 
-      // $children.$render
-      forEach(this.$children, function ($child) {
-        $child.$render(vms)
+      // dom diff update view
+      cancelAnimationFrame(render.timer)
+      render.timer = requestAnimationFrame(function () {
+        vm.$forceUpdate()
       })
+    }
 
-      // $parent
-      if (this.$parent) {
-        this.$parent.$render(vms)
+    // async call hooks
+    requestAnimationFrame(function () {
+      // created hook
+      vm.created && vm.created()
+
+      // $mount
+      if (vm.$el) {
+        vm.$mount(vm.$el)
       }
+    })
 
-      this.$render.renderTime = new Date - renderTimeStart
+    // test: return proxy
+    if (typeof Proxy == 'function') {
+      return new Proxy(vm, {
+        set: function (vm, key, val) {
+          vm[key] = val
+          vm.$render()
+        },
+        get: function (vm, key) {
+          vm.$render()
+          return vm[key]
+        }
+      })
     }
-
-    // first $render
-    if (!options.isComponent) {  // $children.$render
-      this.$render()
-    }
-
-    // mount
-    this.$mounted = options.mounted && VM.injectFunction(this, options.mounted)
-    el && this.$mount(el)
   }
+
+
+  var __createVnode = createVnode
+  var __each = each
+  var __outValue = outValue
   VM.prototype = {
+    constructor: VM,
+    __createVnode: __createVnode,
+    __each: __each,
+    __outValue: __outValue,
     $mount: function (el) {
-      // mount
-      el.parentNode.replaceChild(this.$el, el)
+      var vm = this
       this.$el = el
 
-      // mounted
-      this.$mounted && this.$mounted()
+      // render first
+      this.$render()
+      setTimeout(function () { // ie update form
+        vm.$render()
+      }, 41)
+
+      // mounted hook
+      this.mounted && this.mounted()
     }
   }
-  extend(VM, {
-    compile: function (node) {
-      /*
-            VNode(uid).if(bool, function(){
-                VNode(uid).text()
-            })
-            VNode(uid).for(list, function (item) {
-                VNode(uid).for(item.children, function (sub) {
-                    VNode(uid).text(sub)
-                })
-                VNode(uid).on('click', function ($event) {remove(item)})
-            })
-            VNode(uid).is('com')
-            */
-      var code = ''
-      // var code = 'console.log("r");' // @dev
-      // var code = 'console.trace("r");' // @dev
 
-      scan(node)
+  VM.options = {
+    directives: {}
+  }
 
-      function scan(node) {
-        // console.log(node)
-        // console.log(outerHTML(node))
-
-        switch (node.nodeType) {
-        case 1: // element
-
-          // <component>
-          var tag = node.nodeName.toLowerCase()
-          // console.log(node.outerHTML)
-          if (VM.optionsMap[tag]) {
-            node.setAttribute('is', tag)
-          }
-
-          // dirs
-          var dirs = VNode.getDirs(node)
-          var vnode = VNode(node)
-
-          // pre
-          if (dirs.pre) {
-            return
-          }
-
-          // for
-          var dir = dirs['for']
-          if (dir) {
-            var for_ = dir.exp
-            var item_list = for_.split(/ (?:in|of) /)
-            var list_ = item_list[1]
-            var item_ = item_list[0]
-            var key_ = '$key'
-            var index_ = '$index'
-
-            var item_m = item_.match(/\((.*)\)/) // (item, key, index)
-            if (item_m) {
-              var item_key_index = item_m[1].split(',')
-              item_ = item_key_index[0]
-              key_ = item_key_index[1]
-              index_ = item_key_index[2]
-            }
-            code += strVars('$THISVM.$VN(@id)["for"]( $THISVM, @list, function( @item, @key, @index ){ ', {
-              '@id': vnode.uid,
-              '@list': list_,
-              '@item': item_,
-              '@key': key_,
-              '@index': index_
-            })
-          }
-          // if
-          var dir = dirs['if']
-          if (dir) {
-            vnode.isIf = true // if for insert
-            code += strVars('$THISVM.$VN(@id)["if"]( @value, function(){ ', {
-              '@id': vnode.uid,
-              '@value': dir.exp
-            })
-          }
-          // elseif
-          var dir = dirs['elseif']
-          if (dir) {
-            code += strVars('["elseif"]( $THISVM.$VN(@id), @value, function(){ ', {
-              '@id': vnode.uid,
-              '@value': dir.exp
-            })
-          }
-          // else
-          var dir = dirs['else']
-          if (dir) {
-            code += strVars('["else"]( $THISVM.$VN(@id), function(){ ', { '@id': vnode.uid })
-          }
-
-          // dirs
-          each(dirs, function (dir) {
-            switch (dir.name) {
-            case 'on':
-              code += strVars('$THISVM.$VN(@id).on("@type", "@mdfs", function($event){ @code ;$THISVM.$render()})', {
-                '@id': vnode.uid,
-                '@type': dir.arg,
-                '@mdfs': dir.mdfs,
-                '@code': dir.exp.match(/[(=+-]/) ?
-                  dir.exp : // 语句
-                  dir.exp + '($event)' // handler
-              })
-              break
-            case 'property':
-              code += strVars('$THISVM.$VN(@id).property("@name", @value)', {
-                '@id': vnode.uid,
-                '@name': attr2prop(dir.arg),
-                '@value': dir.exp
-              })
-              break
-            case 'ref':
-              code += strVars('$THISVM.$VN(@id).ref($THISVM, "@name")', {
-                '@id': vnode.uid,
-                '@name': dir.exp
-              })
-              break
-            default:
-              code += strVars('$THISVM.$VN(@id)["@dir"](@value, "@arg", "@mdfs")', {
-                '@id': vnode.uid,
-                '@dir': dir.name,
-                '@arg': dir.arg,
-                '@mdfs': dir.mdfs,
-                '@value': dir.exp
-              })
-            }
-          })
-
-          // model
-          // 放于 :value 后
-          var dir = dirs['model']
-          if (dir) {
-            var obj_ = '$THISVM'
-            var key_ = '"' + dir.exp + '"'
-            //                       obj     .key  | ['key' ]
-            var okm = dir.exp.match(/(.+)(?:\.(.+?)|\[(.+?)\])\s*$/)
-            if (okm) {
-              obj_ = okm[1]
-              key_ = okm[2] ? '"' + okm[2] + '"' : okm[3]
-            }
-
-            code += strVars('$THISVM.$VN(@id).model( @obj, @key, "@mdfs", $THISVM )', {
-              '@id': vnode.uid,
-              '@obj': obj_,
-              '@key': key_,
-              '@mdfs': dir.mdfs
-            })
-          }
-
-          // is
-          // 要放在所有指令最后，等property等指令设置完才能获取数据更新组件
-          var dir = dirs['is']
-          if (dir) {
-            code += strVars('$THISVM.$VN(@id).is($THISVM, "@name")', {
-              '@id': vnode.uid,
-              '@name': dir.exp
-            })
-          }
-
-          // compile childNodes
-          var childNodes = toArray(node.childNodes)
-          for (var i = 0; i < childNodes.length; i++) {
-            scan(childNodes[i])
-          }
-
-          // end: for if elseif else
-          if (dirs['for']) code += '})\n'
-          if (dirs['if']) code += '})\n'
-          if (dirs['elseif']) code += '})\n'
-          if (dirs['else']) code += '})\n'
-
-          break
-        case 3: // text
-
-          var nodeValue = String(node.nodeValue) // ie: null, boolean
-
-          // {{}}
-          if (nodeValue.match('{{')) {
-
-            var nodeValue = node.nodeValue
-            var arr = nodeValue.split('}}')
-            node.nodeValue = arr.pop()
-            forEach(arr, function (t_e_) {
-              var t_e = t_e_.split('{{') // text {{ exp
-              var text = t_e[0]
-              var exp = t_e[1]
-              var textNode = createTextNode(text)
-              insertBefore(textNode, node)
-              isCloneTextNodeAutoConcat && insertBefore(createComment('exp:'), node)
-              if (!textNode.nodeValue) { // ie: !''
-                removeChild(textNode)
-              }
-
-              // {{ exp }}
-              var expNode = createTextNode(' ') // ie: !''
-              insertBefore(expNode, node)
-              isCloneTextNodeAutoConcat && insertBefore(createComment('exp;'), node)
-
-              var vexp = VNode(expNode)
-
-              code += strVars('$THISVM.$VN(@id).property( "nodeValue", @value )', {
-                '@id': vexp.uid,
-                '@value': parseFilter(exp)
-              })
-            })
-            if (!node.nodeValue) { // ie: !''
-              removeChild(node)
-            }
-
-          }
-
-          break
-        }
-
-      }
-
-      var render = Function('var $THISVM=this;with(this){\n' + code + '\n}')
-      return render
-    },
-    injectFunction: function (vm, fn) {
-      var $fn = function () {
-
-        // inject setTimeout, setInterval, img.onload, ajax.onload
-        // ie8-:
-        // typeof setTimeout == 'object'; !setTimeout.apply
-        // window.setTimeout = 1; setTimeout != window.setTimeout // -_-!!
-        // 
-        // typeof setInterval == 'object'; !setInterval.apply
-        // window.setInterval = 1; setInterval == window.setInterval
-        // 
-        // !a1~aN
-        var setTimeout = window.setTimeout
-        window.setTimeout = function (fn, time, a1, a2, a3) {
-          return setTimeout(VM.injectFunction(vm, function () {
-            fn.apply(this, arguments)
-          }), time, a1, a2, a3)
-        }
-        var setInterval = window.setInterval
-        window.setInterval = function (fn, time, a1, a2, a3) {
-          return setInterval(VM.injectFunction(vm, function () {
-            fn.apply(this, arguments)
-          }), time, a1, a2, a3)
-        }
-        var Image = window.Image
-        window.Image = function (width, height) {
-          var self = new Image(width, height)
-          setTimeout(function () {
-            each(self, function (handler, name) {
-              if (name.match(/^on/) && typeof handler === 'function') {
-                self[name] = VM.injectFunction(vm, function () {
-                  handler.apply(self, arguments)
-                })
-              }
-            })
-          }, 1)
-          return self
-        }
-        var XMLHttpRequest = window.XMLHttpRequest || window.ActiveXObject
-        var XHRprototype = XMLHttpRequest.prototype
-        var send = XHRprototype.send
-        XHRprototype.send = function () {
-          var self = this
-          each(self, function (handler, name) {
-            if (name.match(/^on/) && typeof handler === 'function') {
-              self[name] = VM.injectFunction(vm, function () {
-                handler.apply(this, arguments)
-              })
-            }
-          })
-          return send && send.apply(this, arguments)
-        }
-
-        // run
-        var rs = fn.apply(vm, arguments)
-
-        // restore
-        window.setTimeout = setTimeout
-        window.setInterval = setInterval
-        window.Image = Image
-        XMLHttpRequest.prototype.send = send
-
-        // $render
-        vm.$render()
-        return rs
-      }
-
-      // computed
-      if (String(fn).match('return')) { // ie8-: log(vm) -> vm.method.toString()
-        $fn.toJSON = $fn.toString = $fn.valueOf = function () {
-          return fn.call(vm)
-        }
-      }
-
-      $fn.fn = fn
-      return $fn
-    },
-    overwriteFunction: function (vm, fn) {
-      // ?? scope
-      var code = fn.toString()
-      console.log(code)
-    },
-    setData: function (vm, data) {
-      for (var key in data) {
-        if (!hasOwn(data, key)) continue
-        var item = data[key]
-        if (typeof item === 'function') {
-          vm[key] = VM.injectFunction(vm, item)
-        } else {
-          vm[key] = item
-        }
+  // directive: v-directive
+  // definition.bind -> createNode
+  // definition.update -> diff
+  VM.directive = function (name, definition) {
+    if (typeof definition == 'function') {
+      definition = {
+        bind: definition,
+        update: definition
       }
     }
+    VM.options.directives[name] = definition
+  }
+
+  // v-bind:prop  :prop
+  // vnode.props || directive('bind') ??
+
+  // v-on:click @click
+  VM.directive('on', function (el, binding) {
+    off(el, binding.arg, el['__' + binding.raw]) // one
+    on(el, binding.arg, el['__' + binding.raw] = function (e) {
+      // mdfs
+      var mdfs = binding.mdfs
+      if (mdfs.match(/\.prevent\b/)) event.preventDefault()
+      if (mdfs.match(/\.stop\b/)) event.stopPropagation()
+      if (mdfs.match(/\.self\b/) && event.target != el) return
+
+      if (mdfs.match(/\.ctrl\b/) && !event.ctrlKey) return
+      if (mdfs.match(/\.alt\b/) && !event.altKey) return
+      if (mdfs.match(/\.shift\b/) && !event.shiftKey) return
+      if (mdfs.match(/\.meta\b/) && !event.metaKey) return
+
+      if (mdfs.match(/\.enter\b/) && event.keyCode != 13) return
+
+      var m = mdfs.match(/\.(\d+)/)
+      if (m && event.keyCode != m[1]) return
+      binding.value(e)
+    })
   })
 
+  // v-model
+  VM.directive('model', function (el, binding, vnode) {
+    var model = binding.value
+    var attrs = vnode.attrs
+    var props = vnode.props
+    var value = props.value !== undefined ? props.value : attrs.value
 
-  // 
-  // component
-  // VNode().is( name ) -> VM( optionsMap[name] )->$mount()
-  // 
-  VM.optionsMap = {}
-  VM.component = function (name, options) {
-    createElement(name) // ie8-: <component>+</component>
-    options.isComponent = true
-    VM.optionsMap[name] = options
-  }
-
-
-  // console
-  if (typeof Proxy !== 'undefined') {
-    setTimeout(function () {
-      for (name in window) {
-        if (name.match('webkit')) continue // !warn
-        var vm = window[name]
-        if (vm && typeof vm.$render === 'function') {
-          var proxy = window[name] = new Proxy(vm, {
-            set: function (vm, key, value) {
-              vm[key] = value
-              setTimeout(function () {
-                vm.$render()
-              }, 41)
-            },
-            get: function (vm, key) {
-              setTimeout(function () {
-                vm.$render()
-              }, 41)
-              return vm[key]
-            }
-          })
-          proxy.$vm = vm
-        }
+    // checkbox
+    if (el.type == 'checkbox') {
+      if (model instanceof Array) {
+        props.checked = indexOf(model, value) != -1
+        el.__m || on(el, 'click', el.__m = function () { // once
+          if (el.checked) {
+            model.push(value)
+          } else {
+            remove(model, value)
+          }
+          binding.setModel(model)
+        })
+        return
       }
-    }, 500)
-  }
+      props.checked = model
+      el.__m || on(el, 'click', el.__m = function () { // once
+        binding.setModel(el.checked)
+      })
+      return
+    }
 
+    // radio
+    if (el.type == 'radio') {
+      props.checked = model == value
+      el.__m || on(el, 'click', el.__m = function () { // once
+        binding.setModel(value)
+      })
+      return
+    }
 
-  // export
-  VM.VNode = VNode
-  if (typeof module === 'object') {
+    // select
+    if (el.type == 'select-one') {
+      vnode.props.value = model
+      forEach(vnode.childNodes, function (voption) {
+        if (voption.nodeType == 1) {
+          var optionValue = voption.props.value
+          if (optionValue == undefined) {
+            optionValue = voption.attrs.value || voption.childNodes[0].nodeValue
+          }
+          voption.props.selected = optionValue == model
+        }
+      })
+      off(el, 'change', el.__modelFn) // once !!
+      on(el, 'change', el.__modelFn = function () { // !! update closure vnode
+        forEach(el.options, function (option) {
+          if (option.selected) {
+            var vindex = -1
+            forEach(vnode.childNodes, function (voption) {
+              if (voption.nodeType == 1) {
+                vindex += 1
+                if (vindex == option.index) {
+                  var optionValue = voption.props.value
+                  if (optionValue == undefined) {
+                    optionValue = voption.attrs.value || voption.childNodes[0].nodeValue
+                  }
+                  binding.setModel(optionValue)
+                }
+              }
+            })
+          }
+        })
+      })
+      return
+    }
+
+    // input ...
+    props.value = model
+    el.__m || on(el, 'input', el.__m = function () { // once
+      binding.setModel(el.value)
+    })
+  })
+
+  // exports
+  if (typeof module == 'object') {
     module.exports = VM
   } else {
-    window.V = VM
     window.VM = VM
     window.Vue = VM
-    window.VNode = VNode // @dev
   }
-}(window, document)
+
+} //
+)(window, document) //---
