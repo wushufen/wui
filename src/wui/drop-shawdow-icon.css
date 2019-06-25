@@ -1,0 +1,26 @@
+/* overflow: 隐藏原图 */
+/* transition: [hack] 触发 :before color 继承重绘，因有浏览器不更新颜色变化 */
+/* transform: translate() 偏移隐藏，不能超出页面否则有浏览器不绘制 drop-shadow */
+/* filter: drop-shadow() 投影副本，偏回原位 */
+
+[class*="icon-"] {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  transition: initial;
+}
+
+[class*="icon-"]:before {
+  content: "";
+  display: block;
+  height: 100%;
+  transform: translate(-1em);
+  filter: drop-shadow(1em 0);
+  background: center no-repeat;
+  background-size: contain;
+}
+
+[class*="icon-"]:before {
+  background-image: url('data:image/svg+xml,<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M928 538.656h-128v-177.344l86.08-82.176a32 32 0 1 0-44.192-46.304L750.624 320H273.376L182.08 232.864a31.968 31.968 0 1 0-44.16 46.272L224 361.344v177.344H96a32 32 0 0 0 0 64h128V640c0 52.96 14.304 102.592 39.232 145.216L137.92 904.864a32 32 0 1 0 44.192 46.304l119.712-114.272a287.104 287.104 0 0 0 178.208 89.344V544a32 32 0 0 1 64 0v382.24a287.424 287.424 0 0 0 178.208-89.344l119.712 114.272a32.032 32.032 0 0 0 44.192-46.304l-125.344-119.648A287.04 287.04 0 0 0 800 640v-37.344h128a32 32 0 0 0 0-64z"></path><path d="M672 240a160 160 0 0 0-320 0v21.344h320V240z"></path></svg>');
+}
