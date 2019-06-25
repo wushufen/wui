@@ -25,12 +25,12 @@
   // for array|object|string|number => []
   function each(list, fn) {
     var array = [], i = 0, rs
-    if (list instanceof Array || typeof list == 'string') {
+    if (list instanceof Array || typeof list === 'string') {
       while (i < list.length) {
         rs = fn.call(this, list[i], i, i++)
         array.push(rs)
       }
-    } else if (typeof list == 'number') {
+    } else if (typeof list === 'number') {
       while (i++ < list) {
         rs = fn.call(this, i, i, i)
         array.push(rs)
@@ -83,13 +83,13 @@
     if (val instanceof Array) {
       return '[' + each(val, toJson).join(', ') + ']'
     }
-    if (val && typeof val == 'object') {
+    if (val && typeof val === 'object') {
       var items = each(val, function (item, key) {
         return '"' + key + '": ' + toJson(item)
       })
       return '{' + items.join(', ') + '}'
     }
-    if (typeof val == 'string') {
+    if (typeof val === 'string') {
       return '"' + val + '"'
     }
     return String(val)
@@ -99,13 +99,13 @@
   // obj => json
   function outValue(val) {
     if (val == undefined) return ''
-    if (typeof val == 'object') return toJson(val)
+    if (typeof val === 'object') return toJson(val)
     return val
   }
 
   // selector => node
   function querySelector(selector) {
-    if (typeof selector == 'string') {
+    if (typeof selector === 'string') {
       var s = selector.substr(1)
       if (selector.match(/^#/)) {
         return document.getElementById(s)
@@ -253,13 +253,13 @@
     forEach(childNodes, function (child) {
       if (child instanceof Array) {
         forEach(child, function (child) {
-          if (typeof child != 'object') {
+          if (typeof child !== 'object') {
             child = { nodeType: 3, nodeValue: String(child) }
           }
           vnode.childNodes.push(child)
         })
       } else {
-        if (typeof child != 'object') {
+        if (typeof child !== 'object') {
           child = { nodeType: 3, nodeValue: String(child) }
         }
         vnode.childNodes.push(child)
@@ -342,7 +342,7 @@
       if (value != oldValue) {
         node[name] = value
         // polygon:points ...
-        if (typeof oldValue == 'object') {
+        if (typeof oldValue === 'object') {
           node.setAttribute(name, value)
         }
       }
@@ -421,6 +421,8 @@
         code += '""' // empty textNode
       }
     }
+
+    console.log(code)
 
     var render = Function('data', 'var __vm=this;with(__vm){return ' + code + '}')
     return render
@@ -511,7 +513,7 @@
     XMLHttpRequest.prototype.send = function () {
       var xhr = this
       each(xhr, function (callback, name) {
-        if (name.match(/^on/) && typeof callback == 'function') {
+        if (name.match(/^on/) && typeof callback === 'function') {
           xhr[name] = injectRender(vm, callback)
         }
       })
@@ -557,7 +559,7 @@
 
     // data
     var data = options.data
-    if (typeof data == 'function') data = data.call(vm) // compoment data()
+    if (typeof data === 'function') data = data.call(vm) // compoment data()
     assign(vm, data)
 
     // methods
@@ -567,7 +569,7 @@
 
     // hooks
     each(options, function (fn, key) {
-      if (typeof fn == 'function') {
+      if (typeof fn === 'function') {
         vm[key] = injectRender(vm, fn)
       }
     })
@@ -624,7 +626,7 @@
     })
 
     // test: return proxy
-    if (typeof Proxy == 'function') {
+    if (typeof Proxy === 'function') {
       return new Proxy(vm, {
         set: function (vm, key, val) {
           vm[key] = val
@@ -670,7 +672,7 @@
   // definition.bind -> createNode
   // definition.update -> diff
   VM.directive = function (name, definition) {
-    if (typeof definition == 'function') {
+    if (typeof definition === 'function') {
       definition = {
         bind: definition,
         update: definition
@@ -785,7 +787,7 @@
   })
 
   // exports
-  if (typeof module == 'object') {
+  if (typeof module === 'object') {
     module.exports = VM
   } else {
     window.VM = VM

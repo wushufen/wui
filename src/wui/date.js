@@ -29,7 +29,7 @@ var tpl = `
       <li>月</li>
     </ul>
     <ol>
-      <li v-for="item in Ms" :class="{current:M==item}"">{{item+1}}</li>
+      <li v-for="item in Ms" :class="{current:M==item}">{{item+1}}</li>
     </ol>
   </div>
   <div class="day">
@@ -43,7 +43,7 @@ var tpl = `
       <li>六</li>
     </ul>
     <ol>
-      <li v-for="item in ds" :class="{current:d==item}"">{{item}}</li>
+      <li v-for="item in ds" :class="{current:d==item}">{{item}}</li>
     </ol>
   </div>
   <div class="hour">

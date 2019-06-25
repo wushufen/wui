@@ -27,7 +27,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FileManagerPlugin = require('filemanager-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
@@ -50,7 +50,7 @@ module.exports = function (env, args) {
       // production
       {
         // [path]/[entry.name]
-        // 输出包[entry.name] 
+        // 输出包[entry.name]
         // filename:[chunkhash]不能和热替换插件同用
         filename: '[name].js____[hash:5].js',
         // [path]/js/[chunk]
@@ -201,8 +201,8 @@ module.exports = function (env, args) {
         env.production ? [
           // css 提取出单独文件[]
           new MiniCssExtractPlugin({
-            filename: "css/[name].[hash:5].css",
-            chunkFilename: "css/[id].[hash:5].css"
+            filename: 'css/[name].[hash:5].css',
+            chunkFilename: 'css/[id].[hash:5].css'
           }),
           // 删除与打包
           new FileManagerPlugin({
@@ -258,7 +258,7 @@ module.exports = function (env, args) {
     },
     // performance: {
     //   // hints: false, // 警告提示
-    // }  
+    // }
     optimization: env.production ?
       // 开发环境不要设置，会使代码不执行
       {
